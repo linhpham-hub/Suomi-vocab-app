@@ -12,6 +12,13 @@ the format used by the Metropolia Finnish A1.2 glossary handouts.
 Re-run this whenever a new "Glossary chapter N.docx" file is added to the
 course folder (e.g. chapter 6, 7, ...): it picks up any file matching
 "Glossary chapter*.docx" automatically, so no code changes are needed.
+
+Contextual "hint" text (shown by the Write-mode Hint button) is stored
+separately in data/hints.json, keyed by word id, and merged in here -- it is
+NOT regenerated from the docx files, since it takes human/editorial judgment.
+Any word id with no entry in hints.json simply has no hint (the Hint button
+falls back to a generic behavior for it). After adding a new chapter, add
+hint entries for its new ids to hints.json if you want hints for them.
 """
 import argparse
 import glob
@@ -68,10 +75,23 @@ def extract_pairs(path: str):
     return pairs
 
 
+def load_hints(hints_path: str):
+    if not os.path.exists(hints_path):
+        return {}
+    with open(hints_path, "r", encoding="utf-8") as f:
+        raw = json.load(f)
+    return {k: v for k, v in raw.items() if not k.startswith("_")}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("source_dir", help="Folder containing 'Glossary chapter *.docx' files")
     ap.add_argument("--out", default="data/vocab.json", help="Output JSON path")
+    ap.add_argument(
+        "--hints",
+        default=None,
+        help="Path to hints.json (default: hints.json next to --out)",
+    )
     args = ap.parse_args()
 
     pattern = os.path.join(args.source_dir, "Glossary chapter*.docx")
@@ -87,14 +107,24 @@ def main():
 
     ordered_labels = sorted(by_file.keys(), key=chapter_sort_key)
 
+    out_path = args.out
+    hints_path = args.hints or os.path.join(os.path.dirname(out_path) or ".", "hints.json")
+    hints = load_hints(hints_path)
+
     words = []
     uid = 1
+    missing_hints = []
     for label in ordered_labels:
         for fi, en in by_file[label]:
-            words.append({"id": uid, "chapter": label, "fi": fi, "en": en})
+            word = {"id": uid, "chapter": label, "fi": fi, "en": en}
+            hint = hints.get(str(uid))
+            if hint:
+                word["hint"] = hint
+            else:
+                missing_hints.append(uid)
+            words.append(word)
             uid += 1
 
-    out_path = args.out
     os.makedirs(os.path.dirname(out_path) or ".", exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(
@@ -107,6 +137,12 @@ def main():
     print(f"Wrote {len(words)} words across {len(ordered_labels)} chapters -> {out_path}")
     for label in ordered_labels:
         print(f"  {label}: {len(by_file[label])} words")
+    if missing_hints:
+        print(
+            f"\n{len(missing_hints)} word(s) have no hint yet in {hints_path} "
+            f"(ids: {missing_hints[0]}-{missing_hints[-1]}). "
+            "The Write-mode Hint button falls back to a generic hint for these."
+        )
 
 
 if __name__ == "__main__":

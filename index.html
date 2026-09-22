@@ -15,6 +15,18 @@
 
 <div id="app" class="app"></div>
 
+<div id="name-modal" class="modal-overlay" hidden>
+  <div class="modal-card">
+    <h2>Welcome! 👋</h2>
+    <p>What's your name? So if this gets shared with friends, your progress shows up correctly.</p>
+    <input id="name-input" type="text" placeholder="Your name" maxlength="30" autocomplete="off" />
+    <div class="modal-actions">
+      <button id="name-skip" type="button" class="ghost-btn">Skip</button>
+      <button id="name-submit" type="button" class="primary-btn">Start studying</button>
+    </div>
+  </div>
+</div>
+
 <template id="tpl-home">
   <header class="app-header">
     <h1>Suomen Sanasto</h1>
@@ -60,7 +72,10 @@
     </button>
   </section>
 
-  <button class="link-btn" data-role="stats-link">View progress by chapter →</button>
+  <div class="link-row">
+    <button class="link-btn" data-role="stats-link">View progress by chapter →</button>
+    <button class="link-btn" data-role="glossary-link">📖 Browse full glossary →</button>
+  </div>
 </template>
 
 <template id="tpl-session">
@@ -101,6 +116,7 @@
     <span class="prompt-word" data-role="prompt"></span>
   </div>
   <div class="options-grid" data-role="options"></div>
+  <div class="write-feedback" data-role="quiz-feedback" hidden></div>
   <button class="primary-btn" data-role="next" hidden>Next →</button>
 </template>
 
@@ -111,8 +127,9 @@
   </div>
   <form data-role="form" autocomplete="off">
     <input class="write-input" data-role="input" type="text" placeholder="Type the translation…" autocapitalize="off" autocorrect="off" spellcheck="false" />
+    <div class="hint-text" data-role="hint-text" hidden></div>
     <div class="write-actions">
-      <button type="button" class="ghost-btn" data-role="hint">Hint</button>
+      <button type="button" class="ghost-btn" data-role="hint">💡 Hint</button>
       <button type="submit" class="primary-btn" data-role="check">Check</button>
     </div>
   </form>
@@ -137,10 +154,47 @@
     <h2>Progress</h2>
     <button class="icon-btn" data-role="reset" aria-label="Reset progress" title="Reset all progress">↺</button>
   </header>
+
+  <section class="card badge-explainer">
+    <div class="badge-explainer-row">
+      <span class="badge-dot badge-dot--new"></span>
+      <div>
+        <strong>New</strong>
+        <p>You haven't studied this word yet.</p>
+      </div>
+    </div>
+    <div class="badge-explainer-row">
+      <span class="badge-dot badge-dot--learning"></span>
+      <div>
+        <strong>Learning</strong>
+        <p>You've started practicing it, but haven't gotten it right 5 times in a row yet.</p>
+      </div>
+    </div>
+    <div class="badge-explainer-row">
+      <span class="badge-dot badge-dot--mastered"></span>
+      <div>
+        <strong>Mastered 🏆</strong>
+        <p>You got it right 5 times in a row!</p>
+      </div>
+    </div>
+    <p class="badge-explainer-note">⚠️ Any wrong answer — or using a Hint — resets that streak back to 0, so it goes back to Learning.</p>
+  </section>
+
   <main class="stats-body" data-role="body"></main>
 </template>
 
+<template id="tpl-glossary">
+  <header class="session-header session-header--plain">
+    <button class="icon-btn" data-role="exit" aria-label="Back">←</button>
+    <h2>Full Glossary</h2>
+    <span class="icon-btn-spacer" aria-hidden="true"></span>
+  </header>
+  <main class="glossary-body" data-role="body"></main>
+</template>
+
+<script src="js/config.js"></script>
 <script src="js/srs.js"></script>
+<script src="js/sync.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

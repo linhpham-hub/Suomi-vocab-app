@@ -3,6 +3,53 @@
 const PREFS_KEY = "finVocabPrefs.v1";
 const SESSION_LENGTH = 15; // words per flashcard/quiz/write session
 
+// Fun, varied ways to say "correct!" -- picked at random so it doesn't feel robotic.
+const PRAISE = [
+  "Correct! :)",
+  "Nice! (^_^)",
+  "Yes! ✅",
+  "Great job! 🎉",
+  "Keep it up! 💪",
+  "You got it! 🙌",
+  "Awesome! ✨",
+  "Well done! (๑˃̵ᴗ˂̵)و",
+  "Perfect! 👏",
+  "Way to go! 🌟",
+  "Superb! (づ｡◕‿‿◕｡)づ",
+  "Nailed it! 🔥",
+  "Good job! (^o^)/",
+  "Excellent! 🥳",
+  "Congratulations! ^o^",
+];
+
+function randomPraise() {
+  return PRAISE[Math.floor(Math.random() * PRAISE.length)];
+}
+
+const SUMMARY_PRAISE_PERFECT = [
+  "Perfect score! ٩(◕‿◕)۶",
+  "Flawless! 🏆",
+  "100%?! Amazing! 🥳",
+  "Wow, nailed every one! ✨",
+];
+const SUMMARY_PRAISE_GOOD = [
+  "Nice work! 🎉",
+  "Great session! (^o^)/",
+  "Keep it up! 💪",
+  "You're on a roll! 🔥",
+  "Solid work! 👏",
+];
+const SUMMARY_PRAISE_KEEP_GOING = [
+  "Keep practising — you'll get there. 🌱",
+  "Good effort — every rep counts! 💪",
+  "Getting there — try again? 🙂",
+  "Practice makes progress. 🌱",
+];
+
+function randomFrom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
 const state = {
   words: [],
   chapters: [],
@@ -56,6 +103,7 @@ async function init() {
 
   renderHome();
   registerServiceWorker();
+  if (typeof maybeShowNamePrompt === "function") maybeShowNamePrompt();
 }
 
 function activeWordPool() {
@@ -143,6 +191,7 @@ function renderHome() {
   });
 
   app.querySelector('[data-role="stats-link"]').addEventListener("click", renderStats);
+  app.querySelector('[data-role="glossary-link"]').addEventListener("click", renderGlossary);
 }
 
 // ---------- SESSION SETUP ----------
@@ -306,6 +355,7 @@ function renderQuiz(session, body) {
 
   const grid = body.querySelector('[data-role="options"]');
   const nextBtn = body.querySelector('[data-role="next"]');
+  const quizFeedback = body.querySelector('[data-role="quiz-feedback"]');
   let answered = false;
 
   options.forEach((opt) => {
@@ -324,6 +374,16 @@ function renderQuiz(session, body) {
       SRS.grade(word.id, correct);
       if (correct) session.score += 1;
       else session.missed.push(word);
+
+      quizFeedback.hidden = false;
+      if (correct) {
+        quizFeedback.className = "write-feedback write-feedback--correct";
+        quizFeedback.textContent = randomPraise();
+      } else {
+        quizFeedback.className = "write-feedback write-feedback--wrong";
+        quizFeedback.textContent = `Correct answer: ${answer}`;
+      }
+
       nextBtn.hidden = false;
       nextBtn.focus();
     });
@@ -403,6 +463,7 @@ function renderWrite(session, body) {
   const feedback = body.querySelector('[data-role="feedback"]');
   const nextBtn = body.querySelector('[data-role="next"]');
   const hintBtn = body.querySelector('[data-role="hint"]');
+  const hintText = body.querySelector('[data-role="hint-text"]');
   input.focus();
 
   let answered = false;
@@ -410,8 +471,16 @@ function renderWrite(session, body) {
 
   hintBtn.addEventListener("click", () => {
     hintUsed = true;
-    const firstLetter = answer.replace(/^\(/, "").trim()[0] || "?";
-    hintBtn.textContent = `Starts with "${firstLetter}"`;
+    if (word.hint) {
+      hintText.textContent = "💡 " + word.hint;
+    } else {
+      // Fallback for words that don't have a written hint yet (e.g. a newly
+      // added chapter) -- see scripts/build_vocab.py / data/hints.json.
+      const firstLetter = answer.replace(/^\(/, "").trim()[0] || "?";
+      hintText.textContent = `💡 Starts with "${firstLetter}"`;
+    }
+    hintText.hidden = false;
+    hintBtn.disabled = true;
   });
 
   form.addEventListener("submit", (e) => {
@@ -425,7 +494,7 @@ function renderWrite(session, body) {
     feedback.hidden = false;
     if (lenientCorrect) {
       feedback.className = "write-feedback write-feedback--correct";
-      feedback.textContent = hintUsed ? `Correct (with hint) — ${answer}` : "Correct!";
+      feedback.textContent = hintUsed ? `Correct (with hint) — ${answer}` : randomPraise();
     } else {
       feedback.className = "write-feedback write-feedback--wrong";
       feedback.textContent = `Correct answer: ${answer}`;
@@ -451,6 +520,9 @@ function renderSummary(session) {
   app.innerHTML = "";
   app.appendChild(tpl("tpl-summary"));
 
+  // Best-effort, silent, never blocks the UI -- see js/sync.js.
+  if (typeof syncProgress === "function") syncProgress(state.words, state.chapters);
+
   const total = session.queue.length;
   const headline = app.querySelector('[data-role="headline"]');
   const detail = app.querySelector('[data-role="detail"]');
@@ -461,7 +533,9 @@ function renderSummary(session) {
   } else {
     headline.textContent = `${session.score} / ${total} correct`;
     const pct = Math.round((session.score / total) * 100);
-    detail.textContent = pct >= 80 ? "Nice work! 🎉" : "Keep practising — you'll get there.";
+    if (pct === 100) detail.textContent = randomFrom(SUMMARY_PRAISE_PERFECT);
+    else if (pct >= 80) detail.textContent = randomFrom(SUMMARY_PRAISE_GOOD);
+    else detail.textContent = randomFrom(SUMMARY_PRAISE_KEEP_GOING);
   }
 
   app.querySelector('[data-role="home"]').addEventListener("click", renderHome);
@@ -517,6 +591,47 @@ function renderStats() {
     <span><i class="legend-dot legend-dot--new"></i>New</span>
   `;
   body.appendChild(legend);
+}
+
+// ---------- GLOSSARY (browse all words) ----------
+
+function renderGlossary() {
+  state.view = "glossary";
+  app.innerHTML = "";
+  app.appendChild(tpl("tpl-glossary"));
+  app.querySelector('[data-role="exit"]').addEventListener("click", renderHome);
+
+  const body = app.querySelector('[data-role="body"]');
+  body.innerHTML = "";
+
+  state.chapters.forEach((chapter) => {
+    const words = state.words.filter((w) => w.chapter === chapter);
+
+    const section = document.createElement("section");
+    section.className = "glossary-chapter";
+
+    const heading = document.createElement("h3");
+    heading.className = "glossary-chapter-heading";
+    heading.textContent = `${chapter} (${words.length} words)`;
+    section.appendChild(heading);
+
+    const list = document.createElement("div");
+    list.className = "glossary-list";
+    words.forEach((w) => {
+      const row = document.createElement("div");
+      row.className = "glossary-row";
+      row.innerHTML = `<span class="glossary-fi">${escapeHtml(w.fi)}</span><span class="glossary-en">${escapeHtml(w.en)}</span>`;
+      list.appendChild(row);
+    });
+    section.appendChild(list);
+    body.appendChild(section);
+  });
+}
+
+function escapeHtml(s) {
+  const div = document.createElement("div");
+  div.textContent = s;
+  return div.innerHTML;
 }
 
 // ---------- SERVICE WORKER ----------

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Dashboard — Suomen Sanasto</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="app">
+
+  <div id="gate" class="card dashboard-gate">
+    <h2>🔒 Dashboard</h2>
+    <p>Enter the passphrase to view everyone's progress.</p>
+    <input id="passphrase-input" type="password" placeholder="Passphrase" autocomplete="off" />
+    <button id="passphrase-submit" class="primary-btn">Unlock</button>
+    <p id="gate-error" class="write-feedback write-feedback--wrong" hidden>Incorrect passphrase.</p>
+  </div>
+
+  <div id="dashboard-content" hidden>
+    <header class="app-header">
+      <h1>Friends' Progress</h1>
+      <p class="subtitle">Only visible to you</p>
+    </header>
+
+    <div id="dashboard-status" class="card" hidden></div>
+    <div id="dashboard-list"></div>
+
+    <button id="refresh-btn" class="ghost-btn dashboard-refresh">↻ Refresh</button>
+  </div>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

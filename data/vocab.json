@@ -10,1873 +10,2185 @@
       "id": 1,
       "chapter": "Chapters 1-2",
       "fi": "Hei! / Moi!",
-      "en": "Hi! / Hello!"
+      "en": "Hi! / Hello!",
+      "hint": "A casual greeting you say when meeting someone."
     },
     {
       "id": 2,
       "chapter": "Chapters 1-2",
       "fi": "ja",
-      "en": "and"
+      "en": "and",
+      "hint": "Joins two words together, like 'bread ___ butter'."
     },
     {
       "id": 3,
       "chapter": "Chapters 1-2",
       "fi": "Tervetuloa!",
-      "en": "Welcome!"
+      "en": "Welcome!",
+      "hint": "What a host says when you arrive somewhere."
     },
     {
       "id": 4,
       "chapter": "Chapters 1-2",
       "fi": "Anteeksi!",
-      "en": "I am sorry!"
+      "en": "I am sorry!",
+      "hint": "You say this after bumping into someone."
     },
     {
       "id": 5,
       "chapter": "Chapters 1-2",
       "fi": "Anteeksi, ---",
-      "en": "Excuse me, ---"
+      "en": "Excuse me, ---",
+      "hint": "You say this to politely get a stranger's attention."
     },
     {
       "id": 6,
       "chapter": "Chapters 1-2",
       "fi": "täällä",
-      "en": "(around) here"
+      "en": "(around) here",
+      "hint": "Describes a general area you're currently in."
     },
     {
       "id": 7,
       "chapter": "Chapters 1-2",
       "fi": "tässä",
-      "en": "(right) here"
+      "en": "(right) here",
+      "hint": "Points to this exact spot, like handing something over."
     },
     {
       "id": 8,
       "chapter": "Chapters 1-2",
       "fi": "suomen kurssi",
-      "en": "Finnish course"
+      "en": "Finnish course",
+      "hint": "What Chloe is currently taking to learn this language."
     },
     {
       "id": 9,
       "chapter": "Chapters 1-2",
       "fi": "joo / kyllä",
-      "en": "yes"
+      "en": "yes",
+      "hint": "The answer you give when you agree."
     },
     {
       "id": 10,
       "chapter": "Chapters 1-2",
       "fi": "olla",
-      "en": "to be"
+      "en": "to be",
+      "hint": "One of the most basic verbs -- 'I ___ happy.'"
     },
     {
       "id": 11,
       "chapter": "Chapters 1-2",
       "fi": "tämä",
-      "en": "this"
+      "en": "this",
+      "hint": "Points to something close to you."
     },
     {
       "id": 12,
       "chapter": "Chapters 1-2",
       "fi": "tuo",
-      "en": "that"
+      "en": "that",
+      "hint": "Points to something further away."
     },
     {
       "id": 13,
       "chapter": "Chapters 1-2",
       "fi": "paikka",
-      "en": "place / seat"
+      "en": "place / seat",
+      "hint": "What you reserve at a restaurant or cinema."
     },
     {
       "id": 14,
       "chapter": "Chapters 1-2",
       "fi": "vapaa",
-      "en": "free / vacant"
+      "en": "free / vacant",
+      "hint": "Describes a seat nobody is sitting in."
     },
     {
       "id": 15,
       "chapter": "Chapters 1-2",
       "fi": "kiva",
-      "en": "nice"
+      "en": "nice",
+      "hint": "A casual compliment, like 'nice!' or 'cool!'"
     },
     {
       "id": 16,
       "chapter": "Chapters 1-2",
       "fi": "minä",
-      "en": "I"
+      "en": "I",
+      "hint": "Refers to yourself."
     },
     {
       "id": 17,
       "chapter": "Chapters 1-2",
       "fi": "sinä",
-      "en": "you"
+      "en": "you",
+      "hint": "Refers to the person you're talking to."
     },
     {
       "id": 18,
       "chapter": "Chapters 1-2",
       "fi": "Hauska tutustua!",
-      "en": "Nice to meet you! (Nice to get to know you)"
+      "en": "Nice to meet you! (Nice to get to know you)",
+      "hint": "What you say right after being introduced to someone."
     },
     {
       "id": 19,
       "chapter": "Chapters 1-2",
       "fi": "Kiitos samoin!",
-      "en": "Thank you, the same / likewise."
+      "en": "Thank you, the same / likewise.",
+      "hint": "A reply to a greeting, meaning 'you too'."
     },
     {
       "id": 20,
       "chapter": "Chapters 1-2",
       "fi": "Mitä kuuluu?",
-      "en": "How are you?"
+      "en": "How are you?",
+      "hint": "A common question when greeting someone."
     },
     {
       "id": 21,
       "chapter": "Chapters 1-2",
       "fi": "Terve!",
-      "en": "Hello!"
+      "en": "Hello!",
+      "hint": "A casual, friendly greeting."
     },
     {
       "id": 22,
       "chapter": "Chapters 1-2",
       "fi": "kiitos",
-      "en": "thank you"
+      "en": "thank you",
+      "hint": "What you say after receiving a gift or help."
     },
     {
       "id": 23,
       "chapter": "Chapters 1-2",
       "fi": "Minulle kuuluu hyvää.",
-      "en": "I am fine."
+      "en": "I am fine.",
+      "hint": "A typical answer to 'How are you?'"
     },
     {
       "id": 24,
       "chapter": "Chapters 1-2",
       "fi": "Entä",
-      "en": "How about / what about"
+      "en": "How about / what about",
+      "hint": "Used to turn a question back, like 'And you?'"
     },
     {
       "id": 25,
       "chapter": "Chapters 1-2",
       "fi": "Ihan hyvää, kiitos.",
-      "en": "Just fine, thanks."
+      "en": "Just fine, thanks.",
+      "hint": "Another common reply to 'How are you?'"
     },
     {
       "id": 26,
       "chapter": "Chapters 1-2",
       "fi": "minun",
-      "en": "my / mine"
+      "en": "my / mine",
+      "hint": "Shows something belongs to you."
     },
     {
       "id": 27,
       "chapter": "Chapters 1-2",
       "fi": "sinun",
-      "en": "your / yours"
+      "en": "your / yours",
+      "hint": "Shows something belongs to the person you're talking to."
     },
     {
       "id": 28,
       "chapter": "Chapters 1-2",
       "fi": "nimi",
-      "en": "a name"
+      "en": "a name",
+      "hint": "What you're asked for when someone wants to know who you are."
     },
     {
       "id": 29,
       "chapter": "Chapters 1-2",
       "fi": "opettaja",
-      "en": "a teacher"
+      "en": "a teacher",
+      "hint": "The person leading your Finnish class."
     },
     {
       "id": 30,
       "chapter": "Chapters 1-2",
       "fi": "Miten se kirjoitetaan?",
-      "en": "How is it spelled? (literally: How is it written?)"
+      "en": "How is it spelled? (literally: How is it written?)",
+      "hint": "You ask this when you need someone to spell a word out."
     },
     {
       "id": 31,
       "chapter": "Chapters 1-2",
       "fi": "etunimi",
-      "en": "first name"
+      "en": "first name",
+      "hint": "The name that comes before your family name."
     },
     {
       "id": 32,
       "chapter": "Chapters 1-2",
       "fi": "sukunimi",
-      "en": "last name / family name"
+      "en": "last name / family name",
+      "hint": "The name you share with your family."
     },
     {
       "id": 33,
       "chapter": "Chapters 1-2",
       "fi": "päivä",
-      "en": "a day"
+      "en": "a day",
+      "hint": "24 hours, like Monday or Tuesday."
     },
     {
       "id": 34,
       "chapter": "Chapters 1-2",
       "fi": "kello",
-      "en": "a clock / a watch / a bell"
+      "en": "a clock / a watch / a bell",
+      "hint": "What you check to know the time."
     },
     {
       "id": 35,
       "chapter": "Chapters 1-2",
       "fi": "loppua",
-      "en": "to end / to finish"
+      "en": "to end / to finish",
+      "hint": "What a movie or a class does when it's over."
     },
     {
       "id": 36,
       "chapter": "Chapters 1-2",
       "fi": "muu",
-      "en": "other"
+      "en": "other",
+      "hint": "Refers to something different from what was just mentioned."
     },
     {
       "id": 37,
       "chapter": "Chapters 1-2",
       "fi": "opiskelija",
-      "en": "a student"
+      "en": "a student",
+      "hint": "Someone studying at a school or university."
     },
     {
       "id": 38,
       "chapter": "Chapters 1-2",
       "fi": "mennä",
-      "en": "to go"
+      "en": "to go",
+      "hint": "What you do to move from one place to another."
     },
     {
       "id": 39,
       "chapter": "Chapters 1-2",
       "fi": "koti",
-      "en": "a home"
+      "en": "a home",
+      "hint": "The place you live and go back to at the end of the day."
     },
     {
       "id": 40,
       "chapter": "Chapters 1-2",
       "fi": "mutta",
-      "en": "but"
+      "en": "but",
+      "hint": "Introduces a contrast, like 'I like it, ___ it's expensive.'"
     },
     {
       "id": 41,
       "chapter": "Chapters 1-2",
       "fi": "ostaa",
-      "en": "to buy"
+      "en": "to buy",
+      "hint": "What you do with money at a shop."
     },
     {
       "id": 42,
       "chapter": "Chapters 1-2",
       "fi": "jäätelö",
-      "en": "ice cream"
+      "en": "ice cream",
+      "hint": "A cold, sweet treat, often eaten in summer."
     },
     {
       "id": 43,
       "chapter": "Chapters 1-2",
       "fi": "maksaa",
-      "en": "to cost / to pay"
+      "en": "to cost / to pay",
+      "hint": "What you do at the checkout with your money or card."
     },
     {
       "id": 44,
       "chapter": "Chapters 1-2",
       "fi": "ei",
-      "en": "no"
+      "en": "no",
+      "hint": "The answer you give when you disagree or refuse."
     },
     {
       "id": 45,
       "chapter": "Chapters 1-2",
       "fi": "koska",
-      "en": "because"
+      "en": "because",
+      "hint": "Explains the reason for something."
     },
     {
       "id": 46,
       "chapter": "Chapters 1-2",
       "fi": "säästää",
-      "en": "to save"
+      "en": "to save",
+      "hint": "What you do with money instead of spending it."
     },
     {
       "id": 47,
       "chapter": "Chapters 1-2",
       "fi": "raha",
-      "en": "money"
+      "en": "money",
+      "hint": "What you use to pay -- cash."
     },
     {
       "id": 48,
       "chapter": "Chapters 1-2",
       "fi": "sitten",
-      "en": "then"
+      "en": "then",
+      "hint": "Describes what happens next in a sequence."
     },
     {
       "id": 49,
       "chapter": "Chapters 1-2",
       "fi": "istua",
-      "en": "to sit"
+      "en": "to sit",
+      "hint": "What you do on a chair."
     },
     {
       "id": 50,
       "chapter": "Chapters 1-2",
       "fi": "puisto",
-      "en": "a park"
+      "en": "a park",
+      "hint": "A green outdoor place with trees and benches."
     },
     {
       "id": 51,
       "chapter": "Chapters 1-2",
       "fi": "puhua",
-      "en": "to speak"
+      "en": "to speak",
+      "hint": "What you do with your mouth to communicate."
     },
     {
       "id": 52,
       "chapter": "Chapters 1-2",
       "fi": "nauraa",
-      "en": "to laugh"
+      "en": "to laugh",
+      "hint": "What you do when something is funny."
     },
     {
       "id": 53,
       "chapter": "Chapters 1-2",
       "fi": "mistä",
-      "en": "from where"
+      "en": "from where",
+      "hint": "A question asking about someone's origin."
     },
     {
       "id": 54,
       "chapter": "Chapters 1-2",
       "fi": "kieli",
-      "en": "a language / a tongue"
+      "en": "a language / a tongue",
+      "hint": "Also the word for the body part inside your mouth used to taste."
     },
     {
       "id": 55,
       "chapter": "Chapters 1-2",
       "fi": "äidinkieli",
-      "en": "a mother tongue / a native language"
+      "en": "a mother tongue / a native language",
+      "hint": "The language you learned first, from your family."
     },
     {
       "id": 56,
       "chapter": "Chapters 1-2",
       "fi": "englanti",
-      "en": "English"
+      "en": "English",
+      "hint": "The language widely spoken worldwide, e.g. in the UK and US."
     },
     {
       "id": 57,
       "chapter": "Chapters 1-2",
       "fi": "myös",
-      "en": "also"
+      "en": "also",
+      "hint": "Adds something extra, like 'I like tea, ___ coffee.'"
     },
     {
       "id": 58,
       "chapter": "Chapters 1-2",
       "fi": "vähän",
-      "en": "a little bit"
+      "en": "a little bit",
+      "hint": "A small amount of something."
     },
     {
       "id": 59,
       "chapter": "Chapters 1-2",
       "fi": "en puhu",
-      "en": "I don’t speak"
+      "en": "I don’t speak",
+      "hint": "What you'd say if someone asks if you speak a language you don't know."
     },
     {
       "id": 60,
       "chapter": "Chapters 1-2",
       "fi": "totta",
-      "en": "true"
+      "en": "true",
+      "hint": "Describes a fact that is correct."
     },
     {
       "id": 61,
       "chapter": "Chapters 1-2",
       "fi": "ajaa",
-      "en": "to drive"
+      "en": "to drive",
+      "hint": "What you do behind the wheel of a car."
     },
     {
       "id": 62,
       "chapter": "Chapters 1-2",
       "fi": "auto",
-      "en": "a car"
+      "en": "a car",
+      "hint": "A vehicle with four wheels you drive."
     },
     {
       "id": 63,
       "chapter": "Chapters 1-2",
       "fi": "bussipysäkki",
-      "en": "a bus stop"
+      "en": "a bus stop",
+      "hint": "Where you wait to catch public transport."
     },
     {
       "id": 64,
       "chapter": "Chapters 1-2",
       "fi": "missä",
-      "en": "where"
+      "en": "where",
+      "hint": "A question asking about a location."
     },
     {
       "id": 65,
       "chapter": "Chapters 1-2",
       "fi": "asua",
-      "en": "to live"
+      "en": "to live",
+      "hint": "What you do in the place you call home."
     },
     {
       "id": 66,
       "chapter": "Chapters 1-2",
       "fi": "bussi",
-      "en": "a buss"
+      "en": "a buss",
+      "hint": "A large public vehicle you ride with many other passengers."
     },
     {
       "id": 67,
       "chapter": "Chapters 1-2",
       "fi": "ei X vaan Y",
-      "en": "not X but Y"
+      "en": "not X but Y",
+      "hint": "A pattern for correcting something, like 'not red but blue'."
     },
     {
       "id": 68,
       "chapter": "Chapters 1-2",
       "fi": "ensin",
-      "en": "first"
+      "en": "first",
+      "hint": "Describes what happens before everything else."
     },
     {
       "id": 69,
       "chapter": "Chapters 1-2",
       "fi": "nyt",
-      "en": "now"
+      "en": "now",
+      "hint": "Refers to this exact moment."
     },
     {
       "id": 70,
       "chapter": "Chapters 1-2",
       "fi": "tulla",
-      "en": "to come"
+      "en": "to come",
+      "hint": "What you do when moving toward the speaker."
     },
     {
       "id": 71,
       "chapter": "Chapters 1-2",
       "fi": "pallo",
-      "en": "a ball / a scoop"
+      "en": "a ball / a scoop",
+      "hint": "What you use to play football, or a portion of ice cream."
     },
     {
       "id": 72,
       "chapter": "Chapters 1-2",
       "fi": "ottaa",
-      "en": "to take"
+      "en": "to take",
+      "hint": "What you do when you grab something for yourself."
     },
     {
       "id": 73,
       "chapter": "Chapters 1-2",
       "fi": "suklaa",
-      "en": "chocolate"
+      "en": "chocolate",
+      "hint": "A sweet treat often made from cocoa."
     },
     {
       "id": 74,
       "chapter": "Chapters 1-2",
       "fi": "mansikka",
-      "en": "strawberry"
+      "en": "strawberry",
+      "hint": "A small red fruit with seeds on the outside."
     },
     {
       "id": 75,
       "chapter": "Chapters 1-2",
       "fi": "yhteensä",
-      "en": "total"
+      "en": "total",
+      "hint": "The full amount added up together."
     },
     {
       "id": 76,
       "chapter": "Chapters 1-2",
       "fi": "kortti",
-      "en": "a card"
+      "en": "a card",
+      "hint": "The plastic card you swipe or tap to pay."
     },
     {
       "id": 77,
       "chapter": "Chapters 1-2",
       "fi": "kuitti",
-      "en": "a receipt"
+      "en": "a receipt",
+      "hint": "The paper proof you get after paying at a shop."
     },
     {
       "id": 78,
       "chapter": "Chapter 3",
       "fi": "soittaa 1",
-      "en": "to call"
+      "en": "to call",
+      "hint": "What you do to reach a friend on the phone."
     },
     {
       "id": 79,
       "chapter": "Chapter 3",
       "fi": "ystävä",
-      "en": "a friend"
+      "en": "a friend",
+      "hint": "Someone close to you who you enjoy spending time with."
     },
     {
       "id": 80,
       "chapter": "Chapter 3",
       "fi": "videopuhelu",
-      "en": "a video call"
+      "en": "a video call",
+      "hint": "A phone call where you can also see the other person."
     },
     {
       "id": 81,
       "chapter": "Chapter 3",
       "fi": "olla töissä",
-      "en": "to work"
+      "en": "to work",
+      "hint": "What you do at your job during the day."
     },
     {
       "id": 82,
       "chapter": "Chapter 3",
       "fi": "jo",
-      "en": "already"
+      "en": "already",
+      "hint": "Says something has happened sooner than expected."
     },
     {
       "id": 83,
       "chapter": "Chapter 3",
       "fi": "ei vielä",
-      "en": "not yet"
+      "en": "not yet",
+      "hint": "The answer when something hasn't happened, but will."
     },
     {
       "id": 84,
       "chapter": "Chapter 3",
       "fi": "vasta",
-      "en": "only / just"
+      "en": "only / just",
+      "hint": "Says something happened later than expected, or very recently."
     },
     {
       "id": 85,
       "chapter": "Chapter 3",
       "fi": "puoli",
-      "en": "half"
+      "en": "half",
+      "hint": "One of two equal parts, like 'half past two'."
     },
     {
       "id": 86,
       "chapter": "Chapter 3",
       "fi": "Ai niin, totta.",
-      "en": "Oh yeah, true."
+      "en": "Oh yeah, true.",
+      "hint": "You say this when you suddenly remember something is correct."
     },
     {
       "id": 87,
       "chapter": "Chapter 3",
       "fi": "sää",
-      "en": "weather"
+      "en": "weather",
+      "hint": "What you check before deciding what to wear outside."
     },
     {
       "id": 88,
       "chapter": "Chapter 3",
       "fi": "aika",
-      "en": "quite (also: time)"
+      "en": "quite (also: time)",
+      "hint": "Can mean 'rather / quite', or refer to hours and minutes."
     },
     {
       "id": 89,
       "chapter": "Chapter 3",
       "fi": "huono",
-      "en": "bad"
+      "en": "bad",
+      "hint": "The opposite of good."
     },
     {
       "id": 90,
       "chapter": "Chapter 3",
       "fi": "-kin = myös",
-      "en": "also"
+      "en": "also",
+      "hint": "A short ending added to a word to mean 'too / also'."
     },
     {
       "id": 91,
       "chapter": "Chapter 3",
       "fi": "Sataa.",
-      "en": "It rains."
+      "en": "It rains.",
+      "hint": "You'd say this while grabbing an umbrella."
     },
     {
       "id": 92,
       "chapter": "Chapter 3",
       "fi": "On tuulista.",
-      "en": "It is windy."
+      "en": "It is windy.",
+      "hint": "Describes weather when it's hard to keep your hair in place."
     },
     {
       "id": 93,
       "chapter": "Chapter 3",
       "fi": "Aurinko paistaa.",
-      "en": "The sun is shining."
+      "en": "The sun is shining.",
+      "hint": "Describes a bright, sunny day."
     },
     {
       "id": 94,
       "chapter": "Chapter 3",
       "fi": "tosi",
-      "en": "very / really"
+      "en": "very / really",
+      "hint": "Adds emphasis, like 'that's ___ good'."
     },
     {
       "id": 95,
       "chapter": "Chapter 3",
       "fi": "lämmin",
-      "en": "warm"
+      "en": "warm",
+      "hint": "Describes pleasant weather, not too hot or cold."
     },
     {
       "id": 96,
       "chapter": "Chapter 3",
       "fi": "aste",
-      "en": "a degree"
+      "en": "a degree",
+      "hint": "The unit used to measure temperature."
     },
     {
       "id": 97,
       "chapter": "Chapter 3",
       "fi": "yö",
-      "en": "a night"
+      "en": "a night",
+      "hint": "The dark hours between evening and morning."
     },
     {
       "id": 98,
       "chapter": "Chapter 3",
       "fi": "niin",
-      "en": "so"
+      "en": "so",
+      "hint": "Used to agree, or to mean 'that way'."
     },
     {
       "id": 99,
       "chapter": "Chapter 3",
       "fi": "valoisa",
-      "en": "bright"
+      "en": "bright",
+      "hint": "Describes a room or day full of light."
     },
     {
       "id": 100,
       "chapter": "Chapter 3",
       "fi": "että",
-      "en": "that"
+      "en": "that",
+      "hint": "Connects two parts of a sentence, like 'I think ___ it's true.'"
     },
     {
       "id": 101,
       "chapter": "Chapter 3",
       "fi": "vaikea",
-      "en": "difficult"
+      "en": "difficult",
+      "hint": "The opposite of easy."
     },
     {
       "id": 102,
       "chapter": "Chapter 3",
       "fi": "nukkua 1",
-      "en": "to sleep"
+      "en": "to sleep",
+      "hint": "What you do at night in bed."
     },
     {
       "id": 103,
       "chapter": "Chapter 3",
       "fi": "kesä",
-      "en": "summer"
+      "en": "summer",
+      "hint": "The warmest season of the year."
     },
     {
       "id": 104,
       "chapter": "Chapter 3",
       "fi": "nauttia 1",
-      "en": "to enjoy"
+      "en": "to enjoy",
+      "hint": "What you do when you're having a great time doing something."
     },
     {
       "id": 105,
       "chapter": "Chapter 3",
       "fi": "marraskuu",
-      "en": "November"
+      "en": "November",
+      "hint": "The 11th month of the year."
     },
     {
       "id": 106,
       "chapter": "Chapter 3",
       "fi": "pimeä",
-      "en": "dark"
+      "en": "dark",
+      "hint": "Describes a room or night with no light."
     },
     {
       "id": 107,
       "chapter": "Chapter 3",
       "fi": "Niin kuulemma.",
-      "en": "So I hear."
+      "en": "So I hear.",
+      "hint": "You say this about something you heard secondhand, not confirmed yourself."
     },
     {
       "id": 108,
       "chapter": "Chapter 3",
       "fi": "Onko sinulla",
-      "en": "Do you have"
+      "en": "Do you have",
+      "hint": "A question asking if someone possesses something."
     },
     {
       "id": 109,
       "chapter": "Chapter 3",
       "fi": "työpaikka",
-      "en": "a job / a work place"
+      "en": "a job / a work place",
+      "hint": "Where you go to earn a living."
     },
     {
       "id": 110,
       "chapter": "Chapter 3",
       "fi": "etsiä töitä",
-      "en": "to look for a job"
+      "en": "to look for a job",
+      "hint": "What someone unemployed is actively doing."
     },
     {
       "id": 111,
       "chapter": "Chapter 3",
       "fi": "helppo",
-      "en": "easy"
+      "en": "easy",
+      "hint": "The opposite of difficult."
     },
     {
       "id": 112,
       "chapter": "Chapter 3",
       "fi": "Hieno juttu!",
-      "en": "That’s great!"
+      "en": "That’s great!",
+      "hint": "An enthusiastic reaction to good news."
     },
     {
       "id": 113,
       "chapter": "Chapter 3",
       "fi": "millainen",
-      "en": "what kind / what (is something or someone) like?"
+      "en": "what kind / what (is something or someone) like?",
+      "hint": "A question asking to describe something's qualities."
     },
     {
       "id": 114,
       "chapter": "Chapter 3",
       "fi": "mukava",
-      "en": "nice / comfortable"
+      "en": "nice / comfortable",
+      "hint": "Describes a person who's pleasant, or a chair that's comfy."
     },
     {
       "id": 115,
       "chapter": "Chapter 3",
       "fi": "sama",
-      "en": "same"
+      "en": "same",
+      "hint": "Describes two things that are identical."
     },
     {
       "id": 116,
       "chapter": "Chapter 3",
       "fi": "maanantaisin",
-      "en": "on Mondays"
+      "en": "on Mondays",
+      "hint": "Describes something that happens every week -- the first weekday."
     },
     {
       "id": 117,
       "chapter": "Chapter 3",
       "fi": "keskiviikkoisin",
-      "en": "on Wednesdays"
+      "en": "on Wednesdays",
+      "hint": "Describes something that happens every week -- the middle weekday."
     },
     {
       "id": 118,
       "chapter": "Chapter 3",
       "fi": "torstaisin",
-      "en": "on Thursdays"
+      "en": "on Thursdays",
+      "hint": "Describes something that happens every week -- the day before Friday."
     },
     {
       "id": 119,
       "chapter": "Chapter 3",
       "fi": "kerta",
-      "en": "time (as is “two times”)"
+      "en": "time (as is “two times”)",
+      "hint": "Counts how many occurrences, like 'three ___s'."
     },
     {
       "id": 120,
       "chapter": "Chapter 3",
       "fi": "yhtä hyvin kuin",
-      "en": "as well as"
+      "en": "as well as",
+      "hint": "Compares two things as being equally good."
     },
     {
       "id": 121,
       "chapter": "Chapter 3",
       "fi": "vielä",
-      "en": "still (in positive sentence) / yet (in neg. sentence)"
+      "en": "still (in positive sentence) / yet (in neg. sentence)",
+      "hint": "Describes something ongoing, or not yet finished."
     },
     {
       "id": 122,
       "chapter": "Chapter 3",
       "fi": "opiskelija-asunto",
-      "en": "a student apartment"
+      "en": "a student apartment",
+      "hint": "Housing rented specifically for people studying."
     },
     {
       "id": 123,
       "chapter": "Chapter 3",
       "fi": "muuttaa 1",
-      "en": "to move (from one place to another)"
+      "en": "to move (from one place to another)",
+      "hint": "What you do when you change your home address."
     },
     {
       "id": 124,
       "chapter": "Chapter 3",
       "fi": "syyskuu",
-      "en": "September"
+      "en": "September",
+      "hint": "The 9th month of the year, when many courses start."
     },
     {
       "id": 125,
       "chapter": "Chapter 3",
       "fi": "meidän",
-      "en": "our / ours"
+      "en": "our / ours",
+      "hint": "Shows something belongs to a group that includes you."
     },
     {
       "id": 126,
       "chapter": "Chapter 3",
       "fi": "uusi",
-      "en": "new"
+      "en": "new",
+      "hint": "The opposite of old."
     },
     {
       "id": 127,
       "chapter": "Chapter 3",
       "fi": "Kuulostaa hyvältä.",
-      "en": "Sounds good."
+      "en": "Sounds good.",
+      "hint": "A friendly way to agree with a plan."
     },
     {
       "id": 128,
       "chapter": "Chapter 3",
       "fi": "minun täytyy",
-      "en": "I must / I have to"
+      "en": "I must / I have to",
+      "hint": "Expresses an obligation you can't avoid."
     },
     {
       "id": 129,
       "chapter": "Chapter 3",
       "fi": "lähteä töihin",
-      "en": "to go to work"
+      "en": "to go to work",
+      "hint": "What you do each morning before your job starts."
     },
     {
       "id": 130,
       "chapter": "Chapter 3",
       "fi": "Terveisiä Hannalle!",
-      "en": "Greetings to Hanna!"
+      "en": "Greetings to Hanna!",
+      "hint": "A way to send your regards to someone through another person."
     },
     {
       "id": 131,
       "chapter": "Chapter 3",
       "fi": "kertoa 1",
-      "en": "to tell"
+      "en": "to tell",
+      "hint": "What you do when sharing information with someone."
     },
     {
       "id": 132,
       "chapter": "Chapter 3",
       "fi": "ilmoittautua 1",
-      "en": "to enroll / to register"
+      "en": "to enroll / to register",
+      "hint": "What you do to officially sign up for a course."
     },
     {
       "id": 133,
       "chapter": "Chapter 3",
       "fi": "haluta 4",
-      "en": "to want"
+      "en": "to want",
+      "hint": "Expresses a desire for something."
     },
     {
       "id": 134,
       "chapter": "Chapter 3",
       "fi": "toimisto",
-      "en": "an office"
+      "en": "an office",
+      "hint": "A room or building where administrative work happens."
     },
     {
       "id": 135,
       "chapter": "Chapter 3",
       "fi": "kurssisihteeri",
-      "en": "a course secretary"
+      "en": "a course secretary",
+      "hint": "The staff member who handles course paperwork and registration."
     },
     {
       "id": 136,
       "chapter": "Chapter 3",
       "fi": "taso",
-      "en": "level"
+      "en": "level",
+      "hint": "Describes how advanced a course or skill is, e.g. A1, A2."
     },
     {
       "id": 137,
       "chapter": "Chapter 3",
       "fi": "seuraava",
-      "en": "next (= next one)"
+      "en": "next (= next one)",
+      "hint": "The one that comes right after this one."
     },
     {
       "id": 138,
       "chapter": "Chapter 3",
       "fi": "alkaa 1",
-      "en": "to start, to begin"
+      "en": "to start, to begin",
+      "hint": "What a class or movie does at its scheduled time."
     },
     {
       "id": 139,
       "chapter": "Chapter 3",
       "fi": "Se ei käy.",
-      "en": "It is not ok."
+      "en": "It is not ok.",
+      "hint": "You say this when something doesn't work for you."
     },
     {
       "id": 140,
       "chapter": "Chapter 3",
       "fi": "no",
-      "en": "well"
+      "en": "well",
+      "hint": "A filler word used before continuing a sentence."
     },
     {
       "id": 141,
       "chapter": "Chapter 3",
       "fi": "toinen",
-      "en": "another / second"
+      "en": "another / second",
+      "hint": "Refers to one more of something, or the 2nd in order."
     },
     {
       "id": 142,
       "chapter": "Chapter 3",
       "fi": "hetkinen",
-      "en": "just a moment"
+      "en": "just a moment",
+      "hint": "You say this when asking someone to wait briefly."
     },
     {
       "id": 143,
       "chapter": "Chapter 3",
       "fi": "tarkistaa 1",
-      "en": "to check out"
+      "en": "to check out",
+      "hint": "What you do to verify if something is correct."
     },
     {
       "id": 144,
       "chapter": "Chapter 3",
       "fi": "siellä",
-      "en": "over there"
+      "en": "over there",
+      "hint": "Points to a location away from both speakers."
     },
     {
       "id": 145,
       "chapter": "Chapter 3",
       "fi": "pari",
-      "en": "pair / couple"
+      "en": "pair / couple",
+      "hint": "Two of something that go together, like shoes."
     },
     {
       "id": 146,
       "chapter": "Chapter 3",
       "fi": "Sanotko uudelleen?",
-      "en": "literally: Will you say again? / Can you say again?"
+      "en": "literally: Will you say again? / Can you say again?",
+      "hint": "You ask this when you didn't hear or understand something."
     },
     {
       "id": 147,
       "chapter": "Chapter 3",
       "fi": "saada 2",
-      "en": "to get"
+      "en": "to get",
+      "hint": "What happens when you receive something."
     },
     {
       "id": 148,
       "chapter": "Chapter 3",
       "fi": "lomake",
-      "en": "a form"
+      "en": "a form",
+      "hint": "A paper or digital document you fill in with your information."
     },
     {
       "id": 149,
       "chapter": "Chapter 3",
       "fi": "voida",
-      "en": "can / to be able to do"
+      "en": "can / to be able to do",
+      "hint": "Expresses ability or permission, like 'I ___ help you.'"
     },
     {
       "id": 150,
       "chapter": "Chapter 3",
       "fi": "auttaa 1",
-      "en": "to help"
+      "en": "to help",
+      "hint": "What you do to support someone with a task."
     },
     {
       "id": 151,
       "chapter": "Chapter 3",
       "fi": "tarkoittaa 1",
-      "en": "to mean"
+      "en": "to mean",
+      "hint": "What a word or sentence does -- conveys meaning."
     },
     {
       "id": 152,
       "chapter": "Chapter 3",
       "fi": "kaupunki",
-      "en": "a city / a town"
+      "en": "a city / a town",
+      "hint": "A large populated place, like Helsinki."
     },
     {
       "id": 153,
       "chapter": "Chapter 3",
       "fi": "valmis",
-      "en": "ready"
+      "en": "ready",
+      "hint": "Describes something finished or prepared."
     },
     {
       "id": 154,
       "chapter": "Chapter 3",
       "fi": "Kiitos avusta!",
-      "en": "Thanks for help!"
+      "en": "Thanks for help!",
+      "hint": "You say this after someone has helped you."
     },
     {
       "id": 155,
       "chapter": "Chapter 3",
       "fi": "tehty",
-      "en": "done"
+      "en": "done",
+      "hint": "Describes a task that has already been finished."
     },
     {
       "id": 156,
       "chapter": "Chapter 3",
       "fi": "lasku",
-      "en": "an invoice / a bill"
+      "en": "an invoice / a bill",
+      "hint": "The paper that tells you how much money you owe."
     },
     {
       "id": 157,
       "chapter": "Chapter 3",
       "fi": "sähköpostitse",
-      "en": "by e-mail / via e-mail"
+      "en": "by e-mail / via e-mail",
+      "hint": "Describes sending something using electronic mail."
     },
     {
       "id": 158,
       "chapter": "Chapter 3",
       "fi": "ensi",
-      "en": "next (with expressions of time, like ‘next week’)"
+      "en": "next (with expressions of time, like ‘next week’)",
+      "hint": "Used before a time word, like 'next week'."
     },
     {
       "id": 159,
       "chapter": "Chapter 4",
       "fi": "naimisissa",
-      "en": "married"
+      "en": "married",
+      "hint": "Describes two people who are legally wed."
     },
     {
       "id": 160,
       "chapter": "Chapter 4",
       "fi": "kanssa",
-      "en": "with"
+      "en": "with",
+      "hint": "Describes doing something together with someone."
     },
     {
       "id": 161,
       "chapter": "Chapter 4",
       "fi": "rakastaa",
-      "en": "to love"
+      "en": "to love",
+      "hint": "A strong feeling of deep affection for someone."
     },
     {
       "id": 162,
       "chapter": "Chapter 4",
       "fi": "meillä on",
-      "en": "we have"
+      "en": "we have",
+      "hint": "Describes something a group, including you, possesses."
     },
     {
       "id": 163,
       "chapter": "Chapter 4",
       "fi": "lapsi",
-      "en": "a child"
+      "en": "a child",
+      "hint": "A young person, someone's son or daughter."
     },
     {
       "id": 164,
       "chapter": "Chapter 4",
       "fi": "söpö",
-      "en": "cute"
+      "en": "cute",
+      "hint": "Describes something adorable, like a puppy or baby."
     },
     {
       "id": 165,
       "chapter": "Chapter 4",
       "fi": "4-vuotias",
-      "en": "4 years old"
+      "en": "4 years old",
+      "hint": "Describes someone's age, at their fourth birthday."
     },
     {
       "id": 166,
       "chapter": "Chapter 4",
       "fi": "tyttö",
-      "en": "a girl"
+      "en": "a girl",
+      "hint": "A young female person."
     },
     {
       "id": 167,
       "chapter": "Chapter 4",
       "fi": "bussikuski",
-      "en": "a bus driver"
+      "en": "a bus driver",
+      "hint": "The person steering the bus you ride."
     },
     {
       "id": 168,
       "chapter": "Chapter 4",
       "fi": "minulla ei ole",
-      "en": "I don’t have / I haven’t got"
+      "en": "I don’t have / I haven’t got",
+      "hint": "Says you lack or don't possess something."
     },
     {
       "id": 169,
       "chapter": "Chapter 4",
       "fi": "etsiä",
-      "en": "to look for / to search"
+      "en": "to look for / to search",
+      "hint": "What you do when trying to find something."
     },
     {
       "id": 170,
       "chapter": "Chapter 4",
       "fi": "hoikka",
-      "en": "slim"
+      "en": "slim",
+      "hint": "Describes someone with a thin body build."
     },
     {
       "id": 171,
       "chapter": "Chapter 4",
       "fi": "pitää",
-      "en": "to like"
+      "en": "to like",
+      "hint": "Expresses that you enjoy or are fond of something."
     },
     {
       "id": 172,
       "chapter": "Chapter 4",
       "fi": "urheilu",
-      "en": "sports"
+      "en": "sports",
+      "hint": "Physical activities like football or swimming."
     },
     {
       "id": 173,
       "chapter": "Chapter 4",
       "fi": "rauhallinen",
-      "en": "calm"
+      "en": "calm",
+      "hint": "Describes someone relaxed, not stressed or loud."
     },
     {
       "id": 174,
       "chapter": "Chapter 4",
       "fi": "ehkä",
-      "en": "maybe / perhaps"
+      "en": "maybe / perhaps",
+      "hint": "Expresses uncertainty about something."
     },
     {
       "id": 175,
       "chapter": "Chapter 4",
       "fi": "ujo",
-      "en": "shy"
+      "en": "shy",
+      "hint": "Describes someone nervous about meeting new people."
     },
     {
       "id": 176,
       "chapter": "Chapter 4",
       "fi": "eronnut",
-      "en": "divorced"
+      "en": "divorced",
+      "hint": "Describes someone whose marriage has legally ended."
     },
     {
       "id": 177,
       "chapter": "Chapter 4",
       "fi": "sinkku",
-      "en": "single"
+      "en": "single",
+      "hint": "Describes someone not in a relationship."
     },
     {
       "id": 178,
       "chapter": "Chapter 4",
       "fi": "perhe",
-      "en": "a family"
+      "en": "a family",
+      "hint": "Your parents, siblings, and close relatives."
     },
     {
       "id": 179,
       "chapter": "Chapter 4",
       "fi": "suku",
-      "en": "kin / extended family"
+      "en": "kin / extended family",
+      "hint": "Includes relatives beyond your immediate family, like cousins."
     },
     {
       "id": 180,
       "chapter": "Chapter 4",
       "fi": "pikkusisko",
-      "en": "a little sister / a younger sister"
+      "en": "a little sister / a younger sister",
+      "hint": "Your younger female sibling."
     },
     {
       "id": 181,
       "chapter": "Chapter 4",
       "fi": "isoveli",
-      "en": "a big brother / an older brother"
+      "en": "a big brother / an older brother",
+      "hint": "Your older male sibling."
     },
     {
       "id": 182,
       "chapter": "Chapter 4",
       "fi": "täti",
-      "en": "an aunt"
+      "en": "an aunt",
+      "hint": "Your parent's sister."
     },
     {
       "id": 183,
       "chapter": "Chapter 4",
       "fi": "setä",
-      "en": "an uncle"
+      "en": "an uncle",
+      "hint": "Your parent's brother."
     },
     {
       "id": 184,
       "chapter": "Chapter 4",
       "fi": "serkku",
-      "en": "a cousin"
+      "en": "a cousin",
+      "hint": "Your aunt or uncle's child."
     },
     {
       "id": 185,
       "chapter": "Chapter 4",
       "fi": "helsinkiläinen",
-      "en": "a helsinkian / a person who lives in Helsinki"
+      "en": "a helsinkian / a person who lives in Helsinki",
+      "hint": "Describes someone who lives in Finland's capital city."
     },
     {
       "id": 186,
       "chapter": "Chapter 4",
       "fi": "talo",
-      "en": "a house"
+      "en": "a house",
+      "hint": "A building where a family lives."
     },
     {
       "id": 187,
       "chapter": "Chapter 4",
       "fi": "kerros",
-      "en": "a floor (1st, 2nd…)"
+      "en": "a floor (1st, 2nd…)",
+      "hint": "Describes which level of a building you're on, like the 2nd."
     },
     {
       "id": 188,
       "chapter": "Chapter 4",
       "fi": "huone",
-      "en": "a room"
+      "en": "a room",
+      "hint": "A separate space inside a house, like a bedroom."
     },
     {
       "id": 189,
       "chapter": "Chapter 4",
       "fi": "keittiö",
-      "en": "a kitchen"
+      "en": "a kitchen",
+      "hint": "The room where you cook food."
     },
     {
       "id": 190,
       "chapter": "Chapter 4",
       "fi": "puhelias",
-      "en": "talkative"
+      "en": "talkative",
+      "hint": "Describes someone who loves to chat a lot."
     },
     {
       "id": 191,
       "chapter": "Chapter 4",
       "fi": "iloinen",
-      "en": "glad / joyful / happy"
+      "en": "glad / joyful / happy",
+      "hint": "Describes someone in a good, cheerful mood."
     },
     {
       "id": 192,
       "chapter": "Chapter 4",
       "fi": "musta",
-      "en": "black"
+      "en": "black",
+      "hint": "The darkest color, like the night sky."
     },
     {
       "id": 193,
       "chapter": "Chapter 4",
       "fi": "kihara",
-      "en": "curly"
+      "en": "curly",
+      "hint": "Describes hair that spirals instead of lying flat."
     },
     {
       "id": 194,
       "chapter": "Chapter 4",
       "fi": "tumma",
-      "en": "dark (hair, eyes etc.)"
+      "en": "dark (hair, eyes etc.)",
+      "hint": "Describes deep-colored hair or eyes."
     },
     {
       "id": 195,
       "chapter": "Chapter 4",
       "fi": "pimeä",
-      "en": "dark (night, room etc.)"
+      "en": "dark (night, room etc.)",
+      "hint": "Describes a lack of light in a place."
     },
     {
       "id": 196,
       "chapter": "Chapter 4",
       "fi": "tyttöystävä",
-      "en": "a girlfriend"
+      "en": "a girlfriend",
+      "hint": "A female romantic partner."
     },
     {
       "id": 197,
       "chapter": "Chapter 4",
       "fi": "kauppa",
-      "en": "a shop / a store"
+      "en": "a shop / a store",
+      "hint": "Where you go to buy groceries or goods."
     },
     {
       "id": 198,
       "chapter": "Chapter 4",
       "fi": "meillä ei ole",
-      "en": "we don’t have"
+      "en": "we don’t have",
+      "hint": "Says a group, including you, lacks something."
     },
     {
       "id": 199,
       "chapter": "Chapter 4",
       "fi": "pyörä",
-      "en": "a bike"
+      "en": "a bike",
+      "hint": "A two-wheeled vehicle you pedal."
     },
     {
       "id": 200,
       "chapter": "Chapter 4",
       "fi": "surullinen",
-      "en": "sad"
+      "en": "sad",
+      "hint": "Describes feeling down or unhappy."
     },
     {
       "id": 201,
       "chapter": "Chapter 4",
       "fi": "hiljainen",
-      "en": "quiet"
+      "en": "quiet",
+      "hint": "Describes someone or something making little noise."
     },
     {
       "id": 202,
       "chapter": "Chapter 4",
       "fi": "ystävällinen",
-      "en": "friendly / kind"
+      "en": "friendly / kind",
+      "hint": "Describes someone warm and pleasant to others."
     },
     {
       "id": 203,
       "chapter": "Chapter 4",
       "fi": "epäystävällinen",
-      "en": "unfriendly / unkind"
+      "en": "unfriendly / unkind",
+      "hint": "Describes someone cold or rude to others."
     },
     {
       "id": 204,
       "chapter": "Chapter 4",
       "fi": "nuori",
-      "en": "young"
+      "en": "young",
+      "hint": "The opposite of old, describes someone's age."
     },
     {
       "id": 205,
       "chapter": "Chapter 4",
       "fi": "vanha",
-      "en": "old"
+      "en": "old",
+      "hint": "The opposite of young, or something not new."
     },
     {
       "id": 206,
       "chapter": "Chapter 4",
       "fi": "vihainen",
-      "en": "angry"
+      "en": "angry",
+      "hint": "Describes someone upset or mad."
     },
     {
       "id": 207,
       "chapter": "Chapter 4",
       "fi": "valkoinen",
-      "en": "white"
+      "en": "white",
+      "hint": "The color of fresh snow."
     },
     {
       "id": 208,
       "chapter": "Chapter 4",
       "fi": "punainen",
-      "en": "red"
+      "en": "red",
+      "hint": "The color of a stop sign."
     },
     {
       "id": 209,
       "chapter": "Chapter 4",
       "fi": "sininen",
-      "en": "blue"
+      "en": "blue",
+      "hint": "The color of a clear sky."
     },
     {
       "id": 210,
       "chapter": "Chapter 4",
       "fi": "vihreä",
-      "en": "green"
+      "en": "green",
+      "hint": "The color of grass."
     },
     {
       "id": 211,
       "chapter": "Chapter 4",
       "fi": "keltainen",
-      "en": "yellow"
+      "en": "yellow",
+      "hint": "The color of a banana."
     },
     {
       "id": 212,
       "chapter": "Chapter 4",
       "fi": "ruskea",
-      "en": "brown"
+      "en": "brown",
+      "hint": "The color of chocolate or soil."
     },
     {
       "id": 213,
       "chapter": "Chapter 4",
       "fi": "harmaa",
-      "en": "grey"
+      "en": "grey",
+      "hint": "The color of a cloudy sky."
     },
     {
       "id": 214,
       "chapter": "Chapter 4",
       "fi": "oranssi",
-      "en": "orange"
+      "en": "orange",
+      "hint": "The color of a pumpkin."
     },
     {
       "id": 215,
       "chapter": "Chapter 4",
       "fi": "pinkki",
-      "en": "pink"
+      "en": "pink",
+      "hint": "A light, playful shade of red."
     },
     {
       "id": 216,
       "chapter": "Chapter 4",
       "fi": "liila",
-      "en": "purple"
+      "en": "purple",
+      "hint": "A color made by mixing red and blue."
     },
     {
       "id": 217,
       "chapter": "Chapter 4",
       "fi": "tummanpunainen",
-      "en": "dark red"
+      "en": "dark red",
+      "hint": "A deep shade of the color of blood."
     },
     {
       "id": 218,
       "chapter": "Chapter 4",
       "fi": "vaaleansininen",
-      "en": "light blue"
+      "en": "light blue",
+      "hint": "A pale shade of the color of the sky."
     },
     {
       "id": 219,
       "chapter": "Chapter 4",
       "fi": "leski",
-      "en": "widow"
+      "en": "widow",
+      "hint": "Describes someone whose spouse has passed away."
     },
     {
       "id": 220,
       "chapter": "Chapter 4",
       "fi": "yksinhuoltaja",
-      "en": "single parent"
+      "en": "single parent",
+      "hint": "A parent raising a child without a partner."
     },
     {
       "id": 221,
       "chapter": "Chapter 4",
       "fi": "vaimo",
-      "en": "a wife"
+      "en": "a wife",
+      "hint": "A married woman, in relation to her husband."
     },
     {
       "id": 222,
       "chapter": "Chapter 4",
       "fi": "mies",
-      "en": "a man / a husband"
+      "en": "a man / a husband",
+      "hint": "An adult male, or a married woman's spouse."
     },
     {
       "id": 223,
       "chapter": "Chapter 4",
       "fi": "lemmikki",
-      "en": "a pet"
+      "en": "a pet",
+      "hint": "An animal you keep at home, like a cat or dog."
     },
     {
       "id": 224,
       "chapter": "Chapter 4",
       "fi": "töissä",
-      "en": "at work / working"
+      "en": "at work / working",
+      "hint": "Describes being currently at your job."
     },
     {
       "id": 225,
       "chapter": "Chapter 4",
       "fi": "työtön",
-      "en": "unemployed"
+      "en": "unemployed",
+      "hint": "Describes someone without a job."
     },
     {
       "id": 226,
       "chapter": "Chapter 4",
       "fi": "opiskelija",
-      "en": "a student"
+      "en": "a student",
+      "hint": "Someone currently studying."
     },
     {
       "id": 227,
       "chapter": "Chapter 4",
       "fi": "eläkkeellä",
-      "en": "retired"
+      "en": "retired",
+      "hint": "Describes someone no longer working due to age."
     },
     {
       "id": 228,
       "chapter": "Chapter 4",
       "fi": "vaatekauppa",
-      "en": "a clothing store"
+      "en": "a clothing store",
+      "hint": "A shop where you buy shirts, pants, and dresses."
     },
     {
       "id": 229,
       "chapter": "Chapter 4",
       "fi": "farkkutakki",
-      "en": "a denim jacket"
+      "en": "a denim jacket",
+      "hint": "An outer garment made from the same fabric as jeans."
     },
     {
       "id": 230,
       "chapter": "Chapter 4",
       "fi": "Voinko auttaa?",
-      "en": "Can I help (you)?"
+      "en": "Can I help (you)?",
+      "hint": "What a shop assistant asks when you walk in."
     },
     {
       "id": 231,
       "chapter": "Chapter 4",
       "fi": "katsoa",
-      "en": "to watch, to look at"
+      "en": "to watch, to look at",
+      "hint": "What you do with your eyes toward something."
     },
     {
       "id": 232,
       "chapter": "Chapter 4",
       "fi": "katsella",
-      "en": "to look around"
+      "en": "to look around",
+      "hint": "What you do when browsing a shop without buying yet."
     },
     {
       "id": 233,
       "chapter": "Chapter 4",
       "fi": "haluta",
-      "en": "to want"
+      "en": "to want",
+      "hint": "Expresses a desire for something."
     },
     {
       "id": 234,
       "chapter": "Chapter 4",
       "fi": "myöhemmin",
-      "en": "later"
+      "en": "later",
+      "hint": "Refers to a time after now."
     },
     {
       "id": 235,
       "chapter": "Chapter 4",
       "fi": "koko",
-      "en": "size"
+      "en": "size",
+      "hint": "What you check before buying clothes to make sure they fit."
     },
     {
       "id": 236,
       "chapter": "Chapter 4",
       "fi": "hetki",
-      "en": "a moment"
+      "en": "a moment",
+      "hint": "A brief period of time."
     },
     {
       "id": 237,
       "chapter": "Chapter 4",
       "fi": "tarkistaa",
-      "en": "to check"
+      "en": "to check",
+      "hint": "What you do to make sure something is correct."
     },
     {
       "id": 238,
       "chapter": "Chapter 4",
       "fi": "valitettavasti",
-      "en": "unfortunately"
+      "en": "unfortunately",
+      "hint": "Introduces disappointing news."
     },
     {
       "id": 239,
       "chapter": "Chapter 4",
       "fi": "sovituskoppi",
-      "en": "a fitting booth / a changing room"
+      "en": "a fitting booth / a changing room",
+      "hint": "The small room where you try on clothes in a store."
     },
     {
       "id": 240,
       "chapter": "Chapter 4",
       "fi": "takana",
-      "en": "behind"
+      "en": "behind",
+      "hint": "Describes a position at the back of something."
     },
     {
       "id": 241,
       "chapter": "Chapter 4",
       "fi": "saada",
-      "en": "to get"
+      "en": "to get",
+      "hint": "What happens when you receive something."
     },
     {
       "id": 242,
       "chapter": "Chapter 4",
       "fi": "prosentti",
-      "en": "percent / percentage"
+      "en": "percent / percentage",
+      "hint": "A way to express a portion out of 100."
     },
     {
       "id": 243,
       "chapter": "Chapter 4",
       "fi": "alennus",
-      "en": "discount"
+      "en": "discount",
+      "hint": "A reduced price on an item."
     },
     {
       "id": 244,
       "chapter": "Chapter 4",
       "fi": "tarvita",
-      "en": "to need"
+      "en": "to need",
+      "hint": "Expresses something necessary, not just wanted."
     },
     {
       "id": 245,
       "chapter": "Chapter 4",
       "fi": "muovipussi",
-      "en": "a plastic bag"
+      "en": "a plastic bag",
+      "hint": "What a cashier might put your purchases in."
     },
     {
       "id": 246,
       "chapter": "Chapter 4",
       "fi": "oma",
-      "en": "(one’s) own"
+      "en": "(one’s) own",
+      "hint": "Describes something that belongs specifically to you, not shared."
     },
     {
       "id": 247,
       "chapter": "Chapter 4",
       "fi": "kassi",
-      "en": "a bag"
+      "en": "a bag",
+      "hint": "What you carry your shopping in."
     },
     {
       "id": 248,
       "chapter": "Chapter 4",
       "fi": "paita",
-      "en": "a shirt"
+      "en": "a shirt",
+      "hint": "A piece of clothing worn on the upper body."
     },
     {
       "id": 249,
       "chapter": "Chapter 4",
       "fi": "housut",
-      "en": "trousers"
+      "en": "trousers",
+      "hint": "Clothing you wear on your legs, longer than shorts."
     },
     {
       "id": 250,
       "chapter": "Chapter 4",
       "fi": "farkut",
-      "en": "jeans"
+      "en": "jeans",
+      "hint": "Trousers made of denim fabric."
     },
     {
       "id": 251,
       "chapter": "Chapter 4",
       "fi": "hame",
-      "en": "a skirt"
+      "en": "a skirt",
+      "hint": "A piece of clothing worn on the lower body, often by women."
     },
     {
       "id": 252,
       "chapter": "Chapter 4",
       "fi": "mekko",
-      "en": "a dress"
+      "en": "a dress",
+      "hint": "A one-piece garment covering the body and legs."
     },
     {
       "id": 253,
       "chapter": "Chapter 4",
       "fi": "puku",
-      "en": "a suit"
+      "en": "a suit",
+      "hint": "Formal clothing worn to weddings or job interviews."
     },
     {
       "id": 254,
       "chapter": "Chapter 4",
       "fi": "kengät",
-      "en": "shoes"
+      "en": "shoes",
+      "hint": "What you wear on your feet outdoors."
     },
     {
       "id": 255,
       "chapter": "Chapter 4",
       "fi": "saappaat",
-      "en": "boots"
+      "en": "boots",
+      "hint": "Tall shoes often worn in winter or rain."
     },
     {
       "id": 256,
       "chapter": "Chapter 4",
       "fi": "huivi",
-      "en": "a scarf"
+      "en": "a scarf",
+      "hint": "What you wrap around your neck to stay warm."
     },
     {
       "id": 257,
       "chapter": "Chapter 4",
       "fi": "käsineet",
-      "en": "gloves"
+      "en": "gloves",
+      "hint": "What you wear on your hands in cold weather."
     },
     {
       "id": 258,
       "chapter": "Chapter 4",
       "fi": "solmio",
-      "en": "a neck tie"
+      "en": "a neck tie",
+      "hint": "A thin strip of fabric worn around the collar with a suit."
     },
     {
       "id": 259,
       "chapter": "Chapter 4",
       "fi": "vyö",
-      "en": "a belt"
+      "en": "a belt",
+      "hint": "What you wear around your waist to hold up trousers."
     },
     {
       "id": 260,
       "chapter": "Chapter 4",
       "fi": "sateenvarjo",
-      "en": "an umbrella"
+      "en": "an umbrella",
+      "hint": "What you open when it starts to rain."
     },
     {
       "id": 261,
       "chapter": "Chapter 4",
       "fi": "sukat",
-      "en": "socks"
+      "en": "socks",
+      "hint": "What you wear on your feet, under your shoes."
     },
     {
       "id": 262,
       "chapter": "Chapter 5",
       "fi": "herätä",
-      "en": "to wake up"
+      "en": "to wake up",
+      "hint": "What you do in the morning when your alarm goes off."
     },
     {
       "id": 263,
       "chapter": "Chapter 5",
       "fi": "herätyskello",
-      "en": "an alarm clock"
+      "en": "an alarm clock",
+      "hint": "The device that wakes you up in the morning."
     },
     {
       "id": 264,
       "chapter": "Chapter 5",
       "fi": "soida",
-      "en": "to ring"
+      "en": "to ring",
+      "hint": "What a phone or alarm does to get your attention."
     },
     {
       "id": 265,
       "chapter": "Chapter 5",
       "fi": "käydä suihkussa",
-      "en": "to take a shower"
+      "en": "to take a shower",
+      "hint": "What you do in the bathroom to get clean."
     },
     {
       "id": 266,
       "chapter": "Chapter 5",
       "fi": "pukea päälle",
-      "en": "to dress up"
+      "en": "to dress up",
+      "hint": "What you do after showering -- put your clothes on."
     },
     {
       "id": 267,
       "chapter": "Chapter 5",
       "fi": "sen jälkeen",
-      "en": "after that"
+      "en": "after that",
+      "hint": "Describes what happens next in a sequence of events."
     },
     {
       "id": 268,
       "chapter": "Chapter 5",
       "fi": "tehdä",
-      "en": "to do / to make"
+      "en": "to do / to make",
+      "hint": "A general verb for performing an action or creating something."
     },
     {
       "id": 269,
       "chapter": "Chapter 5",
       "fi": "aamupala",
-      "en": "breakfast"
+      "en": "breakfast",
+      "hint": "The first meal of the day."
     },
     {
       "id": 270,
       "chapter": "Chapter 5",
       "fi": "lukea",
-      "en": "to read"
+      "en": "to read",
+      "hint": "What you do with a book or newspaper."
     },
     {
       "id": 271,
       "chapter": "Chapter 5",
       "fi": "lehti",
-      "en": "a newspaper/ a magazine"
+      "en": "a newspaper/ a magazine",
+      "hint": "Printed pages with news or articles you read."
     },
     {
       "id": 272,
       "chapter": "Chapter 5",
       "fi": "yhdessä",
-      "en": "together"
+      "en": "together",
+      "hint": "Doing something with someone else, not alone."
     },
     {
       "id": 273,
       "chapter": "Chapter 5",
       "fi": "syödä",
-      "en": "to eat"
+      "en": "to eat",
+      "hint": "What you do with food."
     },
     {
       "id": 274,
       "chapter": "Chapter 5",
       "fi": "yleensä",
-      "en": "usually"
+      "en": "usually",
+      "hint": "Describes something that happens most of the time."
     },
     {
       "id": 275,
       "chapter": "Chapter 5",
       "fi": "muroja",
-      "en": "cereal"
+      "en": "cereal",
+      "hint": "A breakfast food eaten with milk."
     },
     {
       "id": 276,
       "chapter": "Chapter 5",
       "fi": "leipä",
-      "en": "bread"
+      "en": "bread",
+      "hint": "A basic food made from baked flour dough."
     },
     {
       "id": 277,
       "chapter": "Chapter 5",
       "fi": "ei mitään",
-      "en": "nothing"
+      "en": "nothing",
+      "hint": "The answer when there's no item or activity to mention."
     },
     {
       "id": 278,
       "chapter": "Chapter 5",
       "fi": "juoda",
-      "en": "to drink"
+      "en": "to drink",
+      "hint": "What you do with coffee or water."
     },
     {
       "id": 279,
       "chapter": "Chapter 5",
       "fi": "vain",
-      "en": "only / just"
+      "en": "only / just",
+      "hint": "Limits something to just one thing, like 'I have ___ one.'"
     },
     {
       "id": 280,
       "chapter": "Chapter 5",
       "fi": "kahvi",
-      "en": "coffee"
+      "en": "coffee",
+      "hint": "A hot drink many people have in the morning."
     },
     {
       "id": 281,
       "chapter": "Chapter 5",
       "fi": "lounasravintola",
-      "en": "lunch restaurant / lunchroom"
+      "en": "lunch restaurant / lunchroom",
+      "hint": "A place people go to eat their midday meal."
     },
     {
       "id": 282,
       "chapter": "Chapter 5",
       "fi": "kokki",
-      "en": "a cook, a chef"
+      "en": "a cook, a chef",
+      "hint": "The person who prepares food in a restaurant."
     },
     {
       "id": 283,
       "chapter": "Chapter 5",
       "fi": "tehdä ruokaa",
-      "en": "to cook"
+      "en": "to cook",
+      "hint": "What you do in the kitchen to prepare a meal."
     },
     {
       "id": 284,
       "chapter": "Chapter 5",
       "fi": "työkaveri",
-      "en": "a work mate"
+      "en": "a work mate",
+      "hint": "A person you work with at your job."
     },
     {
       "id": 285,
       "chapter": "Chapter 5",
       "fi": "kävellä",
-      "en": "to walk"
+      "en": "to walk",
+      "hint": "What you do with your legs to move slowly on foot."
     },
     {
       "id": 286,
       "chapter": "Chapter 5",
       "fi": "päiväkoti",
-      "en": "a day care center / a nursery / a kindergarten"
+      "en": "a day care center / a nursery / a kindergarten",
+      "hint": "Where young children go before starting school."
     },
     {
       "id": 287,
       "chapter": "Chapter 5",
       "fi": "apteekki",
-      "en": "a pharmacy"
+      "en": "a pharmacy",
+      "hint": "Where you go to buy medicine."
     },
     {
       "id": 288,
       "chapter": "Chapter 5",
       "fi": "koulu",
-      "en": "a school"
+      "en": "a school",
+      "hint": "Where children go to learn."
     },
     {
       "id": 289,
       "chapter": "Chapter 5",
       "fi": "kahdelta",
-      "en": "at two o’clock"
+      "en": "at two o’clock",
+      "hint": "Describes when something happens -- 2:00."
     },
     {
       "id": 290,
       "chapter": "Chapter 5",
       "fi": "kaveri",
-      "en": "a pal / a mate / buddy (compare: ystävä = a close friend)"
+      "en": "a pal / a mate / buddy (compare: ystävä = a close friend)",
+      "hint": "A casual word for a friend, less close than 'ystava'."
     },
     {
       "id": 291,
       "chapter": "Chapter 5",
       "fi": "pelata",
-      "en": "to play (a game)"
+      "en": "to play (a game)",
+      "hint": "What you do when playing football or a board game."
     },
     {
       "id": 292,
       "chapter": "Chapter 5",
       "fi": "jalkapallo",
-      "en": "football"
+      "en": "football",
+      "hint": "A sport played by kicking a ball into a goal."
     },
     {
       "id": 293,
       "chapter": "Chapter 5",
       "fi": "iltaisin",
-      "en": "in the evenings / every evening"
+      "en": "in the evenings / every evening",
+      "hint": "Describes something that happens every evening."
     },
     {
       "id": 294,
       "chapter": "Chapter 5",
       "fi": "usein",
-      "en": "often"
+      "en": "often",
+      "hint": "Describes something that happens frequently."
     },
     {
       "id": 295,
       "chapter": "Chapter 5",
       "fi": "jotain",
-      "en": "something"
+      "en": "something",
+      "hint": "Refers to an unspecified item or thing."
     },
     {
       "id": 296,
       "chapter": "Chapter 5",
       "fi": "uimahalli",
-      "en": "a swimming hall"
+      "en": "a swimming hall",
+      "hint": "An indoor building with a swimming pool."
     },
     {
       "id": 297,
       "chapter": "Chapter 5",
       "fi": "uida",
-      "en": "to swim"
+      "en": "to swim",
+      "hint": "What you do in a pool or lake using your arms and legs."
     },
     {
       "id": 298,
       "chapter": "Chapter 5",
       "fi": "tunti",
-      "en": "an hour"
+      "en": "an hour",
+      "hint": "A unit of time -- 60 minutes."
     },
     {
       "id": 299,
       "chapter": "Chapter 5",
       "fi": "kenkä, kengät",
-      "en": "a shoe, shoes"
+      "en": "a shoe, shoes",
+      "hint": "What you wear on your feet outdoors."
     },
     {
       "id": 300,
       "chapter": "Chapter 5",
       "fi": "tarvita",
-      "en": "to need"
+      "en": "to need",
+      "hint": "Expresses something necessary, not just wanted."
     },
     {
       "id": 301,
       "chapter": "Chapter 5",
       "fi": "valita",
-      "en": "to choose"
+      "en": "to choose",
+      "hint": "What you do when picking one option among several."
     },
     {
       "id": 302,
       "chapter": "Chapter 5",
       "fi": "sandaalit",
-      "en": "sandals"
+      "en": "sandals",
+      "hint": "Open shoes often worn in summer."
     },
     {
       "id": 303,
       "chapter": "Chapter 5",
       "fi": "haluta",
-      "en": "to want"
+      "en": "to want",
+      "hint": "Expresses a desire for something."
     },
     {
       "id": 304,
       "chapter": "Chapter 5",
       "fi": "katsoa",
-      "en": "to look"
+      "en": "to look",
+      "hint": "What you do with your eyes toward something."
     },
     {
       "id": 305,
       "chapter": "Chapter 5",
       "fi": "väsynyt",
-      "en": "tired"
+      "en": "tired",
+      "hint": "Describes how you feel after a long day, needing rest."
     },
     {
       "id": 306,
       "chapter": "Chapter 5",
       "fi": "kirja",
-      "en": "a book"
+      "en": "a book",
+      "hint": "Something you read, made of printed pages."
     },
     {
       "id": 307,
       "chapter": "Chapter 5",
       "fi": "yhdeksältä",
-      "en": "at nine o’clock"
+      "en": "at nine o’clock",
+      "hint": "Describes when something happens -- 9:00."
     },
     {
       "id": 308,
       "chapter": "Chapter 5",
       "fi": "pestä hampaat",
-      "en": "to brush teeth"
+      "en": "to brush teeth",
+      "hint": "What you do in the bathroom with a toothbrush."
     },
     {
       "id": 309,
       "chapter": "Chapter 5",
       "fi": "sanoa",
-      "en": "to say"
+      "en": "to say",
+      "hint": "What you do with words to express something."
     },
     {
       "id": 310,
       "chapter": "Chapter 5",
       "fi": "mennä nukkumaan",
-      "en": "to go to sleep / to go to bed"
+      "en": "to go to sleep / to go to bed",
+      "hint": "What you do at the end of the day when you're tired."
     },
     {
       "id": 311,
       "chapter": "Chapter 5",
       "fi": "Mihin aikaan…?",
-      "en": "At what time…?"
+      "en": "At what time…?",
+      "hint": "A question asking when something happens."
     },
     {
       "id": 312,
       "chapter": "Chapter 5",
       "fi": "vaikka = esimerkiksi",
-      "en": "for example / for instance"
+      "en": "for example / for instance",
+      "hint": "Introduces a specific instance to illustrate a point."
     }
   ]
 }
