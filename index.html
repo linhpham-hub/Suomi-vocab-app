@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Suomen Sanasto — Finnish Vocabulary</title>
+<meta name="description" content="Flashcards, quizzes and writing practice for Finnish A1.2 vocabulary." />
+<meta name="theme-color" content="#E6EEC9" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div id="app" class="app"></div>
+
+<template id="tpl-home">
+  <header class="app-header">
+    <h1>Suomen Sanasto</h1>
+    <p class="subtitle">Finnish A1.2 vocabulary practice</p>
+  </header>
+
+  <section class="card panel">
+    <h2 class="panel-title">Chapters</h2>
+    <div class="chip-row" data-role="chapters"></div>
+  </section>
+
+  <section class="card panel">
+    <h2 class="panel-title">Direction</h2>
+    <div class="segmented" data-role="direction">
+      <button class="segmented-btn" data-value="fi-en">FI → EN</button>
+      <button class="segmented-btn" data-value="en-fi">EN → FI</button>
+      <button class="segmented-btn" data-value="mixed">Mixed</button>
+    </div>
+  </section>
+
+  <section class="card panel stats-panel" data-role="stats-summary"></section>
+
+  <section class="mode-grid">
+    <button class="mode-btn" data-mode="review">
+      <span class="mode-emoji">⏰</span>
+      <span class="mode-name">Review due</span>
+      <span class="mode-desc" data-role="due-count">Smart review</span>
+    </button>
+    <button class="mode-btn" data-mode="flashcards">
+      <span class="mode-emoji">🃏</span>
+      <span class="mode-name">Flashcards</span>
+      <span class="mode-desc">Flip &amp; self-grade</span>
+    </button>
+    <button class="mode-btn" data-mode="quiz">
+      <span class="mode-emoji">🎯</span>
+      <span class="mode-name">Quiz</span>
+      <span class="mode-desc">Multiple choice</span>
+    </button>
+    <button class="mode-btn" data-mode="write">
+      <span class="mode-emoji">⌨️</span>
+      <span class="mode-name">Write</span>
+      <span class="mode-desc">Type the answer</span>
+    </button>
+  </section>
+
+  <button class="link-btn" data-role="stats-link">View progress by chapter →</button>
+</template>
+
+<template id="tpl-session">
+  <header class="session-header">
+    <button class="icon-btn" data-role="exit" aria-label="Back">←</button>
+    <div class="session-progress">
+      <div class="session-progress-bar"><div class="session-progress-fill" data-role="progress-fill"></div></div>
+      <span class="session-progress-label" data-role="progress-label"></span>
+    </div>
+    <span class="session-score" data-role="score"></span>
+  </header>
+  <main class="session-body" data-role="body"></main>
+</template>
+
+<template id="tpl-flashcard">
+  <div class="flashcard" data-role="flashcard">
+    <div class="flashcard-inner" data-role="flashcard-inner">
+      <div class="flashcard-face flashcard-front">
+        <span class="flashcard-chapter" data-role="chapter"></span>
+        <span class="flashcard-word" data-role="front"></span>
+        <span class="flashcard-hint">tap to flip</span>
+      </div>
+      <div class="flashcard-face flashcard-back">
+        <span class="flashcard-chapter" data-role="chapter-back"></span>
+        <span class="flashcard-word" data-role="back"></span>
+      </div>
+    </div>
+  </div>
+  <div class="grade-row" data-role="grade-row" hidden>
+    <button class="grade-btn grade-again" data-grade="again">Still learning</button>
+    <button class="grade-btn grade-good" data-grade="good">Got it</button>
+  </div>
+</template>
+
+<template id="tpl-quiz">
+  <div class="prompt-card">
+    <span class="prompt-chapter" data-role="chapter"></span>
+    <span class="prompt-word" data-role="prompt"></span>
+  </div>
+  <div class="options-grid" data-role="options"></div>
+  <button class="primary-btn" data-role="next" hidden>Next →</button>
+</template>
+
+<template id="tpl-write">
+  <div class="prompt-card">
+    <span class="prompt-chapter" data-role="chapter"></span>
+    <span class="prompt-word" data-role="prompt"></span>
+  </div>
+  <form data-role="form" autocomplete="off">
+    <input class="write-input" data-role="input" type="text" placeholder="Type the translation…" autocapitalize="off" autocorrect="off" spellcheck="false" />
+    <div class="write-actions">
+      <button type="button" class="ghost-btn" data-role="hint">Hint</button>
+      <button type="submit" class="primary-btn" data-role="check">Check</button>
+    </div>
+  </form>
+  <div class="write-feedback" data-role="feedback" hidden></div>
+  <button class="primary-btn" data-role="next" hidden>Next →</button>
+</template>
+
+<template id="tpl-summary">
+  <div class="summary-card">
+    <h2 data-role="headline"></h2>
+    <p data-role="detail"></p>
+    <div class="summary-actions">
+      <button class="ghost-btn" data-role="home">Home</button>
+      <button class="primary-btn" data-role="again">Study again</button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-stats">
+  <header class="session-header session-header--plain">
+    <button class="icon-btn" data-role="exit" aria-label="Back">←</button>
+    <h2>Progress</h2>
+    <button class="icon-btn" data-role="reset" aria-label="Reset progress" title="Reset all progress">↺</button>
+  </header>
+  <main class="stats-body" data-role="body"></main>
+</template>
+
+<script src="js/srs.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1882 @@
+{
+  "chapters": [
+    "Chapters 1-2",
+    "Chapter 3",
+    "Chapter 4",
+    "Chapter 5"
+  ],
+  "words": [
+    {
+      "id": 1,
+      "chapter": "Chapters 1-2",
+      "fi": "Hei! / Moi!",
+      "en": "Hi! / Hello!"
+    },
+    {
+      "id": 2,
+      "chapter": "Chapters 1-2",
+      "fi": "ja",
+      "en": "and"
+    },
+    {
+      "id": 3,
+      "chapter": "Chapters 1-2",
+      "fi": "Tervetuloa!",
+      "en": "Welcome!"
+    },
+    {
+      "id": 4,
+      "chapter": "Chapters 1-2",
+      "fi": "Anteeksi!",
+      "en": "I am sorry!"
+    },
+    {
+      "id": 5,
+      "chapter": "Chapters 1-2",
+      "fi": "Anteeksi, ---",
+      "en": "Excuse me, ---"
+    },
+    {
+      "id": 6,
+      "chapter": "Chapters 1-2",
+      "fi": "täällä",
+      "en": "(around) here"
+    },
+    {
+      "id": 7,
+      "chapter": "Chapters 1-2",
+      "fi": "tässä",
+      "en": "(right) here"
+    },
+    {
+      "id": 8,
+      "chapter": "Chapters 1-2",
+      "fi": "suomen kurssi",
+      "en": "Finnish course"
+    },
+    {
+      "id": 9,
+      "chapter": "Chapters 1-2",
+      "fi": "joo / kyllä",
+      "en": "yes"
+    },
+    {
+      "id": 10,
+      "chapter": "Chapters 1-2",
+      "fi": "olla",
+      "en": "to be"
+    },
+    {
+      "id": 11,
+      "chapter": "Chapters 1-2",
+      "fi": "tämä",
+      "en": "this"
+    },
+    {
+      "id": 12,
+      "chapter": "Chapters 1-2",
+      "fi": "tuo",
+      "en": "that"
+    },
+    {
+      "id": 13,
+      "chapter": "Chapters 1-2",
+      "fi": "paikka",
+      "en": "place / seat"
+    },
+    {
+      "id": 14,
+      "chapter": "Chapters 1-2",
+      "fi": "vapaa",
+      "en": "free / vacant"
+    },
+    {
+      "id": 15,
+      "chapter": "Chapters 1-2",
+      "fi": "kiva",
+      "en": "nice"
+    },
+    {
+      "id": 16,
+      "chapter": "Chapters 1-2",
+      "fi": "minä",
+      "en": "I"
+    },
+    {
+      "id": 17,
+      "chapter": "Chapters 1-2",
+      "fi": "sinä",
+      "en": "you"
+    },
+    {
+      "id": 18,
+      "chapter": "Chapters 1-2",
+      "fi": "Hauska tutustua!",
+      "en": "Nice to meet you! (Nice to get to know you)"
+    },
+    {
+      "id": 19,
+      "chapter": "Chapters 1-2",
+      "fi": "Kiitos samoin!",
+      "en": "Thank you, the same / likewise."
+    },
+    {
+      "id": 20,
+      "chapter": "Chapters 1-2",
+      "fi": "Mitä kuuluu?",
+      "en": "How are you?"
+    },
+    {
+      "id": 21,
+      "chapter": "Chapters 1-2",
+      "fi": "Terve!",
+      "en": "Hello!"
+    },
+    {
+      "id": 22,
+      "chapter": "Chapters 1-2",
+      "fi": "kiitos",
+      "en": "thank you"
+    },
+    {
+      "id": 23,
+      "chapter": "Chapters 1-2",
+      "fi": "Minulle kuuluu hyvää.",
+      "en": "I am fine."
+    },
+    {
+      "id": 24,
+      "chapter": "Chapters 1-2",
+      "fi": "Entä",
+      "en": "How about / what about"
+    },
+    {
+      "id": 25,
+      "chapter": "Chapters 1-2",
+      "fi": "Ihan hyvää, kiitos.",
+      "en": "Just fine, thanks."
+    },
+    {
+      "id": 26,
+      "chapter": "Chapters 1-2",
+      "fi": "minun",
+      "en": "my / mine"
+    },
+    {
+      "id": 27,
+      "chapter": "Chapters 1-2",
+      "fi": "sinun",
+      "en": "your / yours"
+    },
+    {
+      "id": 28,
+      "chapter": "Chapters 1-2",
+      "fi": "nimi",
+      "en": "a name"
+    },
+    {
+      "id": 29,
+      "chapter": "Chapters 1-2",
+      "fi": "opettaja",
+      "en": "a teacher"
+    },
+    {
+      "id": 30,
+      "chapter": "Chapters 1-2",
+      "fi": "Miten se kirjoitetaan?",
+      "en": "How is it spelled? (literally: How is it written?)"
+    },
+    {
+      "id": 31,
+      "chapter": "Chapters 1-2",
+      "fi": "etunimi",
+      "en": "first name"
+    },
+    {
+      "id": 32,
+      "chapter": "Chapters 1-2",
+      "fi": "sukunimi",
+      "en": "last name / family name"
+    },
+    {
+      "id": 33,
+      "chapter": "Chapters 1-2",
+      "fi": "päivä",
+      "en": "a day"
+    },
+    {
+      "id": 34,
+      "chapter": "Chapters 1-2",
+      "fi": "kello",
+      "en": "a clock / a watch / a bell"
+    },
+    {
+      "id": 35,
+      "chapter": "Chapters 1-2",
+      "fi": "loppua",
+      "en": "to end / to finish"
+    },
+    {
+      "id": 36,
+      "chapter": "Chapters 1-2",
+      "fi": "muu",
+      "en": "other"
+    },
+    {
+      "id": 37,
+      "chapter": "Chapters 1-2",
+      "fi": "opiskelija",
+      "en": "a student"
+    },
+    {
+      "id": 38,
+      "chapter": "Chapters 1-2",
+      "fi": "mennä",
+      "en": "to go"
+    },
+    {
+      "id": 39,
+      "chapter": "Chapters 1-2",
+      "fi": "koti",
+      "en": "a home"
+    },
+    {
+      "id": 40,
+      "chapter": "Chapters 1-2",
+      "fi": "mutta",
+      "en": "but"
+    },
+    {
+      "id": 41,
+      "chapter": "Chapters 1-2",
+      "fi": "ostaa",
+      "en": "to buy"
+    },
+    {
+      "id": 42,
+      "chapter": "Chapters 1-2",
+      "fi": "jäätelö",
+      "en": "ice cream"
+    },
+    {
+      "id": 43,
+      "chapter": "Chapters 1-2",
+      "fi": "maksaa",
+      "en": "to cost / to pay"
+    },
+    {
+      "id": 44,
+      "chapter": "Chapters 1-2",
+      "fi": "ei",
+      "en": "no"
+    },
+    {
+      "id": 45,
+      "chapter": "Chapters 1-2",
+      "fi": "koska",
+      "en": "because"
+    },
+    {
+      "id": 46,
+      "chapter": "Chapters 1-2",
+      "fi": "säästää",
+      "en": "to save"
+    },
+    {
+      "id": 47,
+      "chapter": "Chapters 1-2",
+      "fi": "raha",
+      "en": "money"
+    },
+    {
+      "id": 48,
+      "chapter": "Chapters 1-2",
+      "fi": "sitten",
+      "en": "then"
+    },
+    {
+      "id": 49,
+      "chapter": "Chapters 1-2",
+      "fi": "istua",
+      "en": "to sit"
+    },
+    {
+      "id": 50,
+      "chapter": "Chapters 1-2",
+      "fi": "puisto",
+      "en": "a park"
+    },
+    {
+      "id": 51,
+      "chapter": "Chapters 1-2",
+      "fi": "puhua",
+      "en": "to speak"
+    },
+    {
+      "id": 52,
+      "chapter": "Chapters 1-2",
+      "fi": "nauraa",
+      "en": "to laugh"
+    },
+    {
+      "id": 53,
+      "chapter": "Chapters 1-2",
+      "fi": "mistä",
+      "en": "from where"
+    },
+    {
+      "id": 54,
+      "chapter": "Chapters 1-2",
+      "fi": "kieli",
+      "en": "a language / a tongue"
+    },
+    {
+      "id": 55,
+      "chapter": "Chapters 1-2",
+      "fi": "äidinkieli",
+      "en": "a mother tongue / a native language"
+    },
+    {
+      "id": 56,
+      "chapter": "Chapters 1-2",
+      "fi": "englanti",
+      "en": "English"
+    },
+    {
+      "id": 57,
+      "chapter": "Chapters 1-2",
+      "fi": "myös",
+      "en": "also"
+    },
+    {
+      "id": 58,
+      "chapter": "Chapters 1-2",
+      "fi": "vähän",
+      "en": "a little bit"
+    },
+    {
+      "id": 59,
+      "chapter": "Chapters 1-2",
+      "fi": "en puhu",
+      "en": "I don’t speak"
+    },
+    {
+      "id": 60,
+      "chapter": "Chapters 1-2",
+      "fi": "totta",
+      "en": "true"
+    },
+    {
+      "id": 61,
+      "chapter": "Chapters 1-2",
+      "fi": "ajaa",
+      "en": "to drive"
+    },
+    {
+      "id": 62,
+      "chapter": "Chapters 1-2",
+      "fi": "auto",
+      "en": "a car"
+    },
+    {
+      "id": 63,
+      "chapter": "Chapters 1-2",
+      "fi": "bussipysäkki",
+      "en": "a bus stop"
+    },
+    {
+      "id": 64,
+      "chapter": "Chapters 1-2",
+      "fi": "missä",
+      "en": "where"
+    },
+    {
+      "id": 65,
+      "chapter": "Chapters 1-2",
+      "fi": "asua",
+      "en": "to live"
+    },
+    {
+      "id": 66,
+      "chapter": "Chapters 1-2",
+      "fi": "bussi",
+      "en": "a buss"
+    },
+    {
+      "id": 67,
+      "chapter": "Chapters 1-2",
+      "fi": "ei X vaan Y",
+      "en": "not X but Y"
+    },
+    {
+      "id": 68,
+      "chapter": "Chapters 1-2",
+      "fi": "ensin",
+      "en": "first"
+    },
+    {
+      "id": 69,
+      "chapter": "Chapters 1-2",
+      "fi": "nyt",
+      "en": "now"
+    },
+    {
+      "id": 70,
+      "chapter": "Chapters 1-2",
+      "fi": "tulla",
+      "en": "to come"
+    },
+    {
+      "id": 71,
+      "chapter": "Chapters 1-2",
+      "fi": "pallo",
+      "en": "a ball / a scoop"
+    },
+    {
+      "id": 72,
+      "chapter": "Chapters 1-2",
+      "fi": "ottaa",
+      "en": "to take"
+    },
+    {
+      "id": 73,
+      "chapter": "Chapters 1-2",
+      "fi": "suklaa",
+      "en": "chocolate"
+    },
+    {
+      "id": 74,
+      "chapter": "Chapters 1-2",
+      "fi": "mansikka",
+      "en": "strawberry"
+    },
+    {
+      "id": 75,
+      "chapter": "Chapters 1-2",
+      "fi": "yhteensä",
+      "en": "total"
+    },
+    {
+      "id": 76,
+      "chapter": "Chapters 1-2",
+      "fi": "kortti",
+      "en": "a card"
+    },
+    {
+      "id": 77,
+      "chapter": "Chapters 1-2",
+      "fi": "kuitti",
+      "en": "a receipt"
+    },
+    {
+      "id": 78,
+      "chapter": "Chapter 3",
+      "fi": "soittaa 1",
+      "en": "to call"
+    },
+    {
+      "id": 79,
+      "chapter": "Chapter 3",
+      "fi": "ystävä",
+      "en": "a friend"
+    },
+    {
+      "id": 80,
+      "chapter": "Chapter 3",
+      "fi": "videopuhelu",
+      "en": "a video call"
+    },
+    {
+      "id": 81,
+      "chapter": "Chapter 3",
+      "fi": "olla töissä",
+      "en": "to work"
+    },
+    {
+      "id": 82,
+      "chapter": "Chapter 3",
+      "fi": "jo",
+      "en": "already"
+    },
+    {
+      "id": 83,
+      "chapter": "Chapter 3",
+      "fi": "ei vielä",
+      "en": "not yet"
+    },
+    {
+      "id": 84,
+      "chapter": "Chapter 3",
+      "fi": "vasta",
+      "en": "only / just"
+    },
+    {
+      "id": 85,
+      "chapter": "Chapter 3",
+      "fi": "puoli",
+      "en": "half"
+    },
+    {
+      "id": 86,
+      "chapter": "Chapter 3",
+      "fi": "Ai niin, totta.",
+      "en": "Oh yeah, true."
+    },
+    {
+      "id": 87,
+      "chapter": "Chapter 3",
+      "fi": "sää",
+      "en": "weather"
+    },
+    {
+      "id": 88,
+      "chapter": "Chapter 3",
+      "fi": "aika",
+      "en": "quite (also: time)"
+    },
+    {
+      "id": 89,
+      "chapter": "Chapter 3",
+      "fi": "huono",
+      "en": "bad"
+    },
+    {
+      "id": 90,
+      "chapter": "Chapter 3",
+      "fi": "-kin = myös",
+      "en": "also"
+    },
+    {
+      "id": 91,
+      "chapter": "Chapter 3",
+      "fi": "Sataa.",
+      "en": "It rains."
+    },
+    {
+      "id": 92,
+      "chapter": "Chapter 3",
+      "fi": "On tuulista.",
+      "en": "It is windy."
+    },
+    {
+      "id": 93,
+      "chapter": "Chapter 3",
+      "fi": "Aurinko paistaa.",
+      "en": "The sun is shining."
+    },
+    {
+      "id": 94,
+      "chapter": "Chapter 3",
+      "fi": "tosi",
+      "en": "very / really"
+    },
+    {
+      "id": 95,
+      "chapter": "Chapter 3",
+      "fi": "lämmin",
+      "en": "warm"
+    },
+    {
+      "id": 96,
+      "chapter": "Chapter 3",
+      "fi": "aste",
+      "en": "a degree"
+    },
+    {
+      "id": 97,
+      "chapter": "Chapter 3",
+      "fi": "yö",
+      "en": "a night"
+    },
+    {
+      "id": 98,
+      "chapter": "Chapter 3",
+      "fi": "niin",
+      "en": "so"
+    },
+    {
+      "id": 99,
+      "chapter": "Chapter 3",
+      "fi": "valoisa",
+      "en": "bright"
+    },
+    {
+      "id": 100,
+      "chapter": "Chapter 3",
+      "fi": "että",
+      "en": "that"
+    },
+    {
+      "id": 101,
+      "chapter": "Chapter 3",
+      "fi": "vaikea",
+      "en": "difficult"
+    },
+    {
+      "id": 102,
+      "chapter": "Chapter 3",
+      "fi": "nukkua 1",
+      "en": "to sleep"
+    },
+    {
+      "id": 103,
+      "chapter": "Chapter 3",
+      "fi": "kesä",
+      "en": "summer"
+    },
+    {
+      "id": 104,
+      "chapter": "Chapter 3",
+      "fi": "nauttia 1",
+      "en": "to enjoy"
+    },
+    {
+      "id": 105,
+      "chapter": "Chapter 3",
+      "fi": "marraskuu",
+      "en": "November"
+    },
+    {
+      "id": 106,
+      "chapter": "Chapter 3",
+      "fi": "pimeä",
+      "en": "dark"
+    },
+    {
+      "id": 107,
+      "chapter": "Chapter 3",
+      "fi": "Niin kuulemma.",
+      "en": "So I hear."
+    },
+    {
+      "id": 108,
+      "chapter": "Chapter 3",
+      "fi": "Onko sinulla",
+      "en": "Do you have"
+    },
+    {
+      "id": 109,
+      "chapter": "Chapter 3",
+      "fi": "työpaikka",
+      "en": "a job / a work place"
+    },
+    {
+      "id": 110,
+      "chapter": "Chapter 3",
+      "fi": "etsiä töitä",
+      "en": "to look for a job"
+    },
+    {
+      "id": 111,
+      "chapter": "Chapter 3",
+      "fi": "helppo",
+      "en": "easy"
+    },
+    {
+      "id": 112,
+      "chapter": "Chapter 3",
+      "fi": "Hieno juttu!",
+      "en": "That’s great!"
+    },
+    {
+      "id": 113,
+      "chapter": "Chapter 3",
+      "fi": "millainen",
+      "en": "what kind / what (is something or someone) like?"
+    },
+    {
+      "id": 114,
+      "chapter": "Chapter 3",
+      "fi": "mukava",
+      "en": "nice / comfortable"
+    },
+    {
+      "id": 115,
+      "chapter": "Chapter 3",
+      "fi": "sama",
+      "en": "same"
+    },
+    {
+      "id": 116,
+      "chapter": "Chapter 3",
+      "fi": "maanantaisin",
+      "en": "on Mondays"
+    },
+    {
+      "id": 117,
+      "chapter": "Chapter 3",
+      "fi": "keskiviikkoisin",
+      "en": "on Wednesdays"
+    },
+    {
+      "id": 118,
+      "chapter": "Chapter 3",
+      "fi": "torstaisin",
+      "en": "on Thursdays"
+    },
+    {
+      "id": 119,
+      "chapter": "Chapter 3",
+      "fi": "kerta",
+      "en": "time (as is “two times”)"
+    },
+    {
+      "id": 120,
+      "chapter": "Chapter 3",
+      "fi": "yhtä hyvin kuin",
+      "en": "as well as"
+    },
+    {
+      "id": 121,
+      "chapter": "Chapter 3",
+      "fi": "vielä",
+      "en": "still (in positive sentence) / yet (in neg. sentence)"
+    },
+    {
+      "id": 122,
+      "chapter": "Chapter 3",
+      "fi": "opiskelija-asunto",
+      "en": "a student apartment"
+    },
+    {
+      "id": 123,
+      "chapter": "Chapter 3",
+      "fi": "muuttaa 1",
+      "en": "to move (from one place to another)"
+    },
+    {
+      "id": 124,
+      "chapter": "Chapter 3",
+      "fi": "syyskuu",
+      "en": "September"
+    },
+    {
+      "id": 125,
+      "chapter": "Chapter 3",
+      "fi": "meidän",
+      "en": "our / ours"
+    },
+    {
+      "id": 126,
+      "chapter": "Chapter 3",
+      "fi": "uusi",
+      "en": "new"
+    },
+    {
+      "id": 127,
+      "chapter": "Chapter 3",
+      "fi": "Kuulostaa hyvältä.",
+      "en": "Sounds good."
+    },
+    {
+      "id": 128,
+      "chapter": "Chapter 3",
+      "fi": "minun täytyy",
+      "en": "I must / I have to"
+    },
+    {
+      "id": 129,
+      "chapter": "Chapter 3",
+      "fi": "lähteä töihin",
+      "en": "to go to work"
+    },
+    {
+      "id": 130,
+      "chapter": "Chapter 3",
+      "fi": "Terveisiä Hannalle!",
+      "en": "Greetings to Hanna!"
+    },
+    {
+      "id": 131,
+      "chapter": "Chapter 3",
+      "fi": "kertoa 1",
+      "en": "to tell"
+    },
+    {
+      "id": 132,
+      "chapter": "Chapter 3",
+      "fi": "ilmoittautua 1",
+      "en": "to enroll / to register"
+    },
+    {
+      "id": 133,
+      "chapter": "Chapter 3",
+      "fi": "haluta 4",
+      "en": "to want"
+    },
+    {
+      "id": 134,
+      "chapter": "Chapter 3",
+      "fi": "toimisto",
+      "en": "an office"
+    },
+    {
+      "id": 135,
+      "chapter": "Chapter 3",
+      "fi": "kurssisihteeri",
+      "en": "a course secretary"
+    },
+    {
+      "id": 136,
+      "chapter": "Chapter 3",
+      "fi": "taso",
+      "en": "level"
+    },
+    {
+      "id": 137,
+      "chapter": "Chapter 3",
+      "fi": "seuraava",
+      "en": "next (= next one)"
+    },
+    {
+      "id": 138,
+      "chapter": "Chapter 3",
+      "fi": "alkaa 1",
+      "en": "to start, to begin"
+    },
+    {
+      "id": 139,
+      "chapter": "Chapter 3",
+      "fi": "Se ei käy.",
+      "en": "It is not ok."
+    },
+    {
+      "id": 140,
+      "chapter": "Chapter 3",
+      "fi": "no",
+      "en": "well"
+    },
+    {
+      "id": 141,
+      "chapter": "Chapter 3",
+      "fi": "toinen",
+      "en": "another / second"
+    },
+    {
+      "id": 142,
+      "chapter": "Chapter 3",
+      "fi": "hetkinen",
+      "en": "just a moment"
+    },
+    {
+      "id": 143,
+      "chapter": "Chapter 3",
+      "fi": "tarkistaa 1",
+      "en": "to check out"
+    },
+    {
+      "id": 144,
+      "chapter": "Chapter 3",
+      "fi": "siellä",
+      "en": "over there"
+    },
+    {
+      "id": 145,
+      "chapter": "Chapter 3",
+      "fi": "pari",
+      "en": "pair / couple"
+    },
+    {
+      "id": 146,
+      "chapter": "Chapter 3",
+      "fi": "Sanotko uudelleen?",
+      "en": "literally: Will you say again? / Can you say again?"
+    },
+    {
+      "id": 147,
+      "chapter": "Chapter 3",
+      "fi": "saada 2",
+      "en": "to get"
+    },
+    {
+      "id": 148,
+      "chapter": "Chapter 3",
+      "fi": "lomake",
+      "en": "a form"
+    },
+    {
+      "id": 149,
+      "chapter": "Chapter 3",
+      "fi": "voida",
+      "en": "can / to be able to do"
+    },
+    {
+      "id": 150,
+      "chapter": "Chapter 3",
+      "fi": "auttaa 1",
+      "en": "to help"
+    },
+    {
+      "id": 151,
+      "chapter": "Chapter 3",
+      "fi": "tarkoittaa 1",
+      "en": "to mean"
+    },
+    {
+      "id": 152,
+      "chapter": "Chapter 3",
+      "fi": "kaupunki",
+      "en": "a city / a town"
+    },
+    {
+      "id": 153,
+      "chapter": "Chapter 3",
+      "fi": "valmis",
+      "en": "ready"
+    },
+    {
+      "id": 154,
+      "chapter": "Chapter 3",
+      "fi": "Kiitos avusta!",
+      "en": "Thanks for help!"
+    },
+    {
+      "id": 155,
+      "chapter": "Chapter 3",
+      "fi": "tehty",
+      "en": "done"
+    },
+    {
+      "id": 156,
+      "chapter": "Chapter 3",
+      "fi": "lasku",
+      "en": "an invoice / a bill"
+    },
+    {
+      "id": 157,
+      "chapter": "Chapter 3",
+      "fi": "sähköpostitse",
+      "en": "by e-mail / via e-mail"
+    },
+    {
+      "id": 158,
+      "chapter": "Chapter 3",
+      "fi": "ensi",
+      "en": "next (with expressions of time, like ‘next week’)"
+    },
+    {
+      "id": 159,
+      "chapter": "Chapter 4",
+      "fi": "naimisissa",
+      "en": "married"
+    },
+    {
+      "id": 160,
+      "chapter": "Chapter 4",
+      "fi": "kanssa",
+      "en": "with"
+    },
+    {
+      "id": 161,
+      "chapter": "Chapter 4",
+      "fi": "rakastaa",
+      "en": "to love"
+    },
+    {
+      "id": 162,
+      "chapter": "Chapter 4",
+      "fi": "meillä on",
+      "en": "we have"
+    },
+    {
+      "id": 163,
+      "chapter": "Chapter 4",
+      "fi": "lapsi",
+      "en": "a child"
+    },
+    {
+      "id": 164,
+      "chapter": "Chapter 4",
+      "fi": "söpö",
+      "en": "cute"
+    },
+    {
+      "id": 165,
+      "chapter": "Chapter 4",
+      "fi": "4-vuotias",
+      "en": "4 years old"
+    },
+    {
+      "id": 166,
+      "chapter": "Chapter 4",
+      "fi": "tyttö",
+      "en": "a girl"
+    },
+    {
+      "id": 167,
+      "chapter": "Chapter 4",
+      "fi": "bussikuski",
+      "en": "a bus driver"
+    },
+    {
+      "id": 168,
+      "chapter": "Chapter 4",
+      "fi": "minulla ei ole",
+      "en": "I don’t have / I haven’t got"
+    },
+    {
+      "id": 169,
+      "chapter": "Chapter 4",
+      "fi": "etsiä",
+      "en": "to look for / to search"
+    },
+    {
+      "id": 170,
+      "chapter": "Chapter 4",
+      "fi": "hoikka",
+      "en": "slim"
+    },
+    {
+      "id": 171,
+      "chapter": "Chapter 4",
+      "fi": "pitää",
+      "en": "to like"
+    },
+    {
+      "id": 172,
+      "chapter": "Chapter 4",
+      "fi": "urheilu",
+      "en": "sports"
+    },
+    {
+      "id": 173,
+      "chapter": "Chapter 4",
+      "fi": "rauhallinen",
+      "en": "calm"
+    },
+    {
+      "id": 174,
+      "chapter": "Chapter 4",
+      "fi": "ehkä",
+      "en": "maybe / perhaps"
+    },
+    {
+      "id": 175,
+      "chapter": "Chapter 4",
+      "fi": "ujo",
+      "en": "shy"
+    },
+    {
+      "id": 176,
+      "chapter": "Chapter 4",
+      "fi": "eronnut",
+      "en": "divorced"
+    },
+    {
+      "id": 177,
+      "chapter": "Chapter 4",
+      "fi": "sinkku",
+      "en": "single"
+    },
+    {
+      "id": 178,
+      "chapter": "Chapter 4",
+      "fi": "perhe",
+      "en": "a family"
+    },
+    {
+      "id": 179,
+      "chapter": "Chapter 4",
+      "fi": "suku",
+      "en": "kin / extended family"
+    },
+    {
+      "id": 180,
+      "chapter": "Chapter 4",
+      "fi": "pikkusisko",
+      "en": "a little sister / a younger sister"
+    },
+    {
+      "id": 181,
+      "chapter": "Chapter 4",
+      "fi": "isoveli",
+      "en": "a big brother / an older brother"
+    },
+    {
+      "id": 182,
+      "chapter": "Chapter 4",
+      "fi": "täti",
+      "en": "an aunt"
+    },
+    {
+      "id": 183,
+      "chapter": "Chapter 4",
+      "fi": "setä",
+      "en": "an uncle"
+    },
+    {
+      "id": 184,
+      "chapter": "Chapter 4",
+      "fi": "serkku",
+      "en": "a cousin"
+    },
+    {
+      "id": 185,
+      "chapter": "Chapter 4",
+      "fi": "helsinkiläinen",
+      "en": "a helsinkian / a person who lives in Helsinki"
+    },
+    {
+      "id": 186,
+      "chapter": "Chapter 4",
+      "fi": "talo",
+      "en": "a house"
+    },
+    {
+      "id": 187,
+      "chapter": "Chapter 4",
+      "fi": "kerros",
+      "en": "a floor (1st, 2nd…)"
+    },
+    {
+      "id": 188,
+      "chapter": "Chapter 4",
+      "fi": "huone",
+      "en": "a room"
+    },
+    {
+      "id": 189,
+      "chapter": "Chapter 4",
+      "fi": "keittiö",
+      "en": "a kitchen"
+    },
+    {
+      "id": 190,
+      "chapter": "Chapter 4",
+      "fi": "puhelias",
+      "en": "talkative"
+    },
+    {
+      "id": 191,
+      "chapter": "Chapter 4",
+      "fi": "iloinen",
+      "en": "glad / joyful / happy"
+    },
+    {
+      "id": 192,
+      "chapter": "Chapter 4",
+      "fi": "musta",
+      "en": "black"
+    },
+    {
+      "id": 193,
+      "chapter": "Chapter 4",
+      "fi": "kihara",
+      "en": "curly"
+    },
+    {
+      "id": 194,
+      "chapter": "Chapter 4",
+      "fi": "tumma",
+      "en": "dark (hair, eyes etc.)"
+    },
+    {
+      "id": 195,
+      "chapter": "Chapter 4",
+      "fi": "pimeä",
+      "en": "dark (night, room etc.)"
+    },
+    {
+      "id": 196,
+      "chapter": "Chapter 4",
+      "fi": "tyttöystävä",
+      "en": "a girlfriend"
+    },
+    {
+      "id": 197,
+      "chapter": "Chapter 4",
+      "fi": "kauppa",
+      "en": "a shop / a store"
+    },
+    {
+      "id": 198,
+      "chapter": "Chapter 4",
+      "fi": "meillä ei ole",
+      "en": "we don’t have"
+    },
+    {
+      "id": 199,
+      "chapter": "Chapter 4",
+      "fi": "pyörä",
+      "en": "a bike"
+    },
+    {
+      "id": 200,
+      "chapter": "Chapter 4",
+      "fi": "surullinen",
+      "en": "sad"
+    },
+    {
+      "id": 201,
+      "chapter": "Chapter 4",
+      "fi": "hiljainen",
+      "en": "quiet"
+    },
+    {
+      "id": 202,
+      "chapter": "Chapter 4",
+      "fi": "ystävällinen",
+      "en": "friendly / kind"
+    },
+    {
+      "id": 203,
+      "chapter": "Chapter 4",
+      "fi": "epäystävällinen",
+      "en": "unfriendly / unkind"
+    },
+    {
+      "id": 204,
+      "chapter": "Chapter 4",
+      "fi": "nuori",
+      "en": "young"
+    },
+    {
+      "id": 205,
+      "chapter": "Chapter 4",
+      "fi": "vanha",
+      "en": "old"
+    },
+    {
+      "id": 206,
+      "chapter": "Chapter 4",
+      "fi": "vihainen",
+      "en": "angry"
+    },
+    {
+      "id": 207,
+      "chapter": "Chapter 4",
+      "fi": "valkoinen",
+      "en": "white"
+    },
+    {
+      "id": 208,
+      "chapter": "Chapter 4",
+      "fi": "punainen",
+      "en": "red"
+    },
+    {
+      "id": 209,
+      "chapter": "Chapter 4",
+      "fi": "sininen",
+      "en": "blue"
+    },
+    {
+      "id": 210,
+      "chapter": "Chapter 4",
+      "fi": "vihreä",
+      "en": "green"
+    },
+    {
+      "id": 211,
+      "chapter": "Chapter 4",
+      "fi": "keltainen",
+      "en": "yellow"
+    },
+    {
+      "id": 212,
+      "chapter": "Chapter 4",
+      "fi": "ruskea",
+      "en": "brown"
+    },
+    {
+      "id": 213,
+      "chapter": "Chapter 4",
+      "fi": "harmaa",
+      "en": "grey"
+    },
+    {
+      "id": 214,
+      "chapter": "Chapter 4",
+      "fi": "oranssi",
+      "en": "orange"
+    },
+    {
+      "id": 215,
+      "chapter": "Chapter 4",
+      "fi": "pinkki",
+      "en": "pink"
+    },
+    {
+      "id": 216,
+      "chapter": "Chapter 4",
+      "fi": "liila",
+      "en": "purple"
+    },
+    {
+      "id": 217,
+      "chapter": "Chapter 4",
+      "fi": "tummanpunainen",
+      "en": "dark red"
+    },
+    {
+      "id": 218,
+      "chapter": "Chapter 4",
+      "fi": "vaaleansininen",
+      "en": "light blue"
+    },
+    {
+      "id": 219,
+      "chapter": "Chapter 4",
+      "fi": "leski",
+      "en": "widow"
+    },
+    {
+      "id": 220,
+      "chapter": "Chapter 4",
+      "fi": "yksinhuoltaja",
+      "en": "single parent"
+    },
+    {
+      "id": 221,
+      "chapter": "Chapter 4",
+      "fi": "vaimo",
+      "en": "a wife"
+    },
+    {
+      "id": 222,
+      "chapter": "Chapter 4",
+      "fi": "mies",
+      "en": "a man / a husband"
+    },
+    {
+      "id": 223,
+      "chapter": "Chapter 4",
+      "fi": "lemmikki",
+      "en": "a pet"
+    },
+    {
+      "id": 224,
+      "chapter": "Chapter 4",
+      "fi": "töissä",
+      "en": "at work / working"
+    },
+    {
+      "id": 225,
+      "chapter": "Chapter 4",
+      "fi": "työtön",
+      "en": "unemployed"
+    },
+    {
+      "id": 226,
+      "chapter": "Chapter 4",
+      "fi": "opiskelija",
+      "en": "a student"
+    },
+    {
+      "id": 227,
+      "chapter": "Chapter 4",
+      "fi": "eläkkeellä",
+      "en": "retired"
+    },
+    {
+      "id": 228,
+      "chapter": "Chapter 4",
+      "fi": "vaatekauppa",
+      "en": "a clothing store"
+    },
+    {
+      "id": 229,
+      "chapter": "Chapter 4",
+      "fi": "farkkutakki",
+      "en": "a denim jacket"
+    },
+    {
+      "id": 230,
+      "chapter": "Chapter 4",
+      "fi": "Voinko auttaa?",
+      "en": "Can I help (you)?"
+    },
+    {
+      "id": 231,
+      "chapter": "Chapter 4",
+      "fi": "katsoa",
+      "en": "to watch, to look at"
+    },
+    {
+      "id": 232,
+      "chapter": "Chapter 4",
+      "fi": "katsella",
+      "en": "to look around"
+    },
+    {
+      "id": 233,
+      "chapter": "Chapter 4",
+      "fi": "haluta",
+      "en": "to want"
+    },
+    {
+      "id": 234,
+      "chapter": "Chapter 4",
+      "fi": "myöhemmin",
+      "en": "later"
+    },
+    {
+      "id": 235,
+      "chapter": "Chapter 4",
+      "fi": "koko",
+      "en": "size"
+    },
+    {
+      "id": 236,
+      "chapter": "Chapter 4",
+      "fi": "hetki",
+      "en": "a moment"
+    },
+    {
+      "id": 237,
+      "chapter": "Chapter 4",
+      "fi": "tarkistaa",
+      "en": "to check"
+    },
+    {
+      "id": 238,
+      "chapter": "Chapter 4",
+      "fi": "valitettavasti",
+      "en": "unfortunately"
+    },
+    {
+      "id": 239,
+      "chapter": "Chapter 4",
+      "fi": "sovituskoppi",
+      "en": "a fitting booth / a changing room"
+    },
+    {
+      "id": 240,
+      "chapter": "Chapter 4",
+      "fi": "takana",
+      "en": "behind"
+    },
+    {
+      "id": 241,
+      "chapter": "Chapter 4",
+      "fi": "saada",
+      "en": "to get"
+    },
+    {
+      "id": 242,
+      "chapter": "Chapter 4",
+      "fi": "prosentti",
+      "en": "percent / percentage"
+    },
+    {
+      "id": 243,
+      "chapter": "Chapter 4",
+      "fi": "alennus",
+      "en": "discount"
+    },
+    {
+      "id": 244,
+      "chapter": "Chapter 4",
+      "fi": "tarvita",
+      "en": "to need"
+    },
+    {
+      "id": 245,
+      "chapter": "Chapter 4",
+      "fi": "muovipussi",
+      "en": "a plastic bag"
+    },
+    {
+      "id": 246,
+      "chapter": "Chapter 4",
+      "fi": "oma",
+      "en": "(one’s) own"
+    },
+    {
+      "id": 247,
+      "chapter": "Chapter 4",
+      "fi": "kassi",
+      "en": "a bag"
+    },
+    {
+      "id": 248,
+      "chapter": "Chapter 4",
+      "fi": "paita",
+      "en": "a shirt"
+    },
+    {
+      "id": 249,
+      "chapter": "Chapter 4",
+      "fi": "housut",
+      "en": "trousers"
+    },
+    {
+      "id": 250,
+      "chapter": "Chapter 4",
+      "fi": "farkut",
+      "en": "jeans"
+    },
+    {
+      "id": 251,
+      "chapter": "Chapter 4",
+      "fi": "hame",
+      "en": "a skirt"
+    },
+    {
+      "id": 252,
+      "chapter": "Chapter 4",
+      "fi": "mekko",
+      "en": "a dress"
+    },
+    {
+      "id": 253,
+      "chapter": "Chapter 4",
+      "fi": "puku",
+      "en": "a suit"
+    },
+    {
+      "id": 254,
+      "chapter": "Chapter 4",
+      "fi": "kengät",
+      "en": "shoes"
+    },
+    {
+      "id": 255,
+      "chapter": "Chapter 4",
+      "fi": "saappaat",
+      "en": "boots"
+    },
+    {
+      "id": 256,
+      "chapter": "Chapter 4",
+      "fi": "huivi",
+      "en": "a scarf"
+    },
+    {
+      "id": 257,
+      "chapter": "Chapter 4",
+      "fi": "käsineet",
+      "en": "gloves"
+    },
+    {
+      "id": 258,
+      "chapter": "Chapter 4",
+      "fi": "solmio",
+      "en": "a neck tie"
+    },
+    {
+      "id": 259,
+      "chapter": "Chapter 4",
+      "fi": "vyö",
+      "en": "a belt"
+    },
+    {
+      "id": 260,
+      "chapter": "Chapter 4",
+      "fi": "sateenvarjo",
+      "en": "an umbrella"
+    },
+    {
+      "id": 261,
+      "chapter": "Chapter 4",
+      "fi": "sukat",
+      "en": "socks"
+    },
+    {
+      "id": 262,
+      "chapter": "Chapter 5",
+      "fi": "herätä",
+      "en": "to wake up"
+    },
+    {
+      "id": 263,
+      "chapter": "Chapter 5",
+      "fi": "herätyskello",
+      "en": "an alarm clock"
+    },
+    {
+      "id": 264,
+      "chapter": "Chapter 5",
+      "fi": "soida",
+      "en": "to ring"
+    },
+    {
+      "id": 265,
+      "chapter": "Chapter 5",
+      "fi": "käydä suihkussa",
+      "en": "to take a shower"
+    },
+    {
+      "id": 266,
+      "chapter": "Chapter 5",
+      "fi": "pukea päälle",
+      "en": "to dress up"
+    },
+    {
+      "id": 267,
+      "chapter": "Chapter 5",
+      "fi": "sen jälkeen",
+      "en": "after that"
+    },
+    {
+      "id": 268,
+      "chapter": "Chapter 5",
+      "fi": "tehdä",
+      "en": "to do / to make"
+    },
+    {
+      "id": 269,
+      "chapter": "Chapter 5",
+      "fi": "aamupala",
+      "en": "breakfast"
+    },
+    {
+      "id": 270,
+      "chapter": "Chapter 5",
+      "fi": "lukea",
+      "en": "to read"
+    },
+    {
+      "id": 271,
+      "chapter": "Chapter 5",
+      "fi": "lehti",
+      "en": "a newspaper/ a magazine"
+    },
+    {
+      "id": 272,
+      "chapter": "Chapter 5",
+      "fi": "yhdessä",
+      "en": "together"
+    },
+    {
+      "id": 273,
+      "chapter": "Chapter 5",
+      "fi": "syödä",
+      "en": "to eat"
+    },
+    {
+      "id": 274,
+      "chapter": "Chapter 5",
+      "fi": "yleensä",
+      "en": "usually"
+    },
+    {
+      "id": 275,
+      "chapter": "Chapter 5",
+      "fi": "muroja",
+      "en": "cereal"
+    },
+    {
+      "id": 276,
+      "chapter": "Chapter 5",
+      "fi": "leipä",
+      "en": "bread"
+    },
+    {
+      "id": 277,
+      "chapter": "Chapter 5",
+      "fi": "ei mitään",
+      "en": "nothing"
+    },
+    {
+      "id": 278,
+      "chapter": "Chapter 5",
+      "fi": "juoda",
+      "en": "to drink"
+    },
+    {
+      "id": 279,
+      "chapter": "Chapter 5",
+      "fi": "vain",
+      "en": "only / just"
+    },
+    {
+      "id": 280,
+      "chapter": "Chapter 5",
+      "fi": "kahvi",
+      "en": "coffee"
+    },
+    {
+      "id": 281,
+      "chapter": "Chapter 5",
+      "fi": "lounasravintola",
+      "en": "lunch restaurant / lunchroom"
+    },
+    {
+      "id": 282,
+      "chapter": "Chapter 5",
+      "fi": "kokki",
+      "en": "a cook, a chef"
+    },
+    {
+      "id": 283,
+      "chapter": "Chapter 5",
+      "fi": "tehdä ruokaa",
+      "en": "to cook"
+    },
+    {
+      "id": 284,
+      "chapter": "Chapter 5",
+      "fi": "työkaveri",
+      "en": "a work mate"
+    },
+    {
+      "id": 285,
+      "chapter": "Chapter 5",
+      "fi": "kävellä",
+      "en": "to walk"
+    },
+    {
+      "id": 286,
+      "chapter": "Chapter 5",
+      "fi": "päiväkoti",
+      "en": "a day care center / a nursery / a kindergarten"
+    },
+    {
+      "id": 287,
+      "chapter": "Chapter 5",
+      "fi": "apteekki",
+      "en": "a pharmacy"
+    },
+    {
+      "id": 288,
+      "chapter": "Chapter 5",
+      "fi": "koulu",
+      "en": "a school"
+    },
+    {
+      "id": 289,
+      "chapter": "Chapter 5",
+      "fi": "kahdelta",
+      "en": "at two o’clock"
+    },
+    {
+      "id": 290,
+      "chapter": "Chapter 5",
+      "fi": "kaveri",
+      "en": "a pal / a mate / buddy (compare: ystävä = a close friend)"
+    },
+    {
+      "id": 291,
+      "chapter": "Chapter 5",
+      "fi": "pelata",
+      "en": "to play (a game)"
+    },
+    {
+      "id": 292,
+      "chapter": "Chapter 5",
+      "fi": "jalkapallo",
+      "en": "football"
+    },
+    {
+      "id": 293,
+      "chapter": "Chapter 5",
+      "fi": "iltaisin",
+      "en": "in the evenings / every evening"
+    },
+    {
+      "id": 294,
+      "chapter": "Chapter 5",
+      "fi": "usein",
+      "en": "often"
+    },
+    {
+      "id": 295,
+      "chapter": "Chapter 5",
+      "fi": "jotain",
+      "en": "something"
+    },
+    {
+      "id": 296,
+      "chapter": "Chapter 5",
+      "fi": "uimahalli",
+      "en": "a swimming hall"
+    },
+    {
+      "id": 297,
+      "chapter": "Chapter 5",
+      "fi": "uida",
+      "en": "to swim"
+    },
+    {
+      "id": 298,
+      "chapter": "Chapter 5",
+      "fi": "tunti",
+      "en": "an hour"
+    },
+    {
+      "id": 299,
+      "chapter": "Chapter 5",
+      "fi": "kenkä, kengät",
+      "en": "a shoe, shoes"
+    },
+    {
+      "id": 300,
+      "chapter": "Chapter 5",
+      "fi": "tarvita",
+      "en": "to need"
+    },
+    {
+      "id": 301,
+      "chapter": "Chapter 5",
+      "fi": "valita",
+      "en": "to choose"
+    },
+    {
+      "id": 302,
+      "chapter": "Chapter 5",
+      "fi": "sandaalit",
+      "en": "sandals"
+    },
+    {
+      "id": 303,
+      "chapter": "Chapter 5",
+      "fi": "haluta",
+      "en": "to want"
+    },
+    {
+      "id": 304,
+      "chapter": "Chapter 5",
+      "fi": "katsoa",
+      "en": "to look"
+    },
+    {
+      "id": 305,
+      "chapter": "Chapter 5",
+      "fi": "väsynyt",
+      "en": "tired"
+    },
+    {
+      "id": 306,
+      "chapter": "Chapter 5",
+      "fi": "kirja",
+      "en": "a book"
+    },
+    {
+      "id": 307,
+      "chapter": "Chapter 5",
+      "fi": "yhdeksältä",
+      "en": "at nine o’clock"
+    },
+    {
+      "id": 308,
+      "chapter": "Chapter 5",
+      "fi": "pestä hampaat",
+      "en": "to brush teeth"
+    },
+    {
+      "id": 309,
+      "chapter": "Chapter 5",
+      "fi": "sanoa",
+      "en": "to say"
+    },
+    {
+      "id": 310,
+      "chapter": "Chapter 5",
+      "fi": "mennä nukkumaan",
+      "en": "to go to sleep / to go to bed"
+    },
+    {
+      "id": 311,
+      "chapter": "Chapter 5",
+      "fi": "Mihin aikaan…?",
+      "en": "At what time…?"
+    },
+    {
+      "id": 312,
+      "chapter": "Chapter 5",
+      "fi": "vaikka = esimerkiksi",
+      "en": "for example / for instance"
+    }
+  ]
+}
