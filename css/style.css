@@ -202,6 +202,14 @@ button { font-family: inherit; }
 
 .icon-btn-spacer { display: inline-block; width: 38px; height: 38px; }
 
+.app-credit {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  opacity: 0.75;
+}
+
 /* ---------- Badge explainer ---------- */
 
 .badge-explainer { display: flex; flex-direction: column; gap: 12px; padding: 16px 18px; }
