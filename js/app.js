@@ -136,8 +136,10 @@ function renderHome() {
     btn.dataset.chapter = chapter;
     if (state.selectedChapters.has(chapter)) btn.classList.add("chip--active");
     btn.addEventListener("click", () => {
+      // Freely toggle -- it's fine to end up with zero chapters selected;
+      // the mode buttons below get disabled with a hint in that case.
       if (state.selectedChapters.has(chapter)) {
-        if (state.selectedChapters.size > 1) state.selectedChapters.delete(chapter);
+        state.selectedChapters.delete(chapter);
       } else {
         state.selectedChapters.add(chapter);
       }
@@ -158,6 +160,16 @@ function renderHome() {
   });
   chapterRow.prepend(allBtn);
 
+  const noneBtn = document.createElement("button");
+  noneBtn.className = "chip chip--none";
+  noneBtn.textContent = "None";
+  noneBtn.addEventListener("click", () => {
+    state.selectedChapters = new Set();
+    savePrefs();
+    renderHome();
+  });
+  chapterRow.insertBefore(noneBtn, chapterRow.children[1] || null);
+
   const dirSeg = app.querySelector('[data-role="direction"]');
   dirSeg.querySelectorAll(".segmented-btn").forEach((btn) => {
     if (btn.dataset.value === state.direction) btn.classList.add("segmented-btn--active");
@@ -174,20 +186,28 @@ function renderHome() {
   const due = SRS.dueCount(ids);
 
   const summary = app.querySelector('[data-role="stats-summary"]');
-  summary.innerHTML = `
-    <div class="stats-row">
-      <div class="stat"><span class="stat-num">${stats.total}</span><span class="stat-label">words</span></div>
-      <div class="stat"><span class="stat-num">${stats.new}</span><span class="stat-label">new</span></div>
-      <div class="stat"><span class="stat-num">${stats.learning}</span><span class="stat-label">learning</span></div>
-      <div class="stat"><span class="stat-num">${stats.mastered}</span><span class="stat-label">mastered</span></div>
-    </div>
-  `;
+  if (pool.length === 0) {
+    summary.innerHTML = `<p class="empty-selection-note">Pick at least one chapter above to start studying.</p>`;
+  } else {
+    summary.innerHTML = `
+      <div class="stats-row">
+        <div class="stat"><span class="stat-num">${stats.total}</span><span class="stat-label">words</span></div>
+        <div class="stat"><span class="stat-num">${stats.new}</span><span class="stat-label">new</span></div>
+        <div class="stat"><span class="stat-num">${stats.learning}</span><span class="stat-label">learning</span></div>
+        <div class="stat"><span class="stat-num">${stats.mastered}</span><span class="stat-label">mastered</span></div>
+      </div>
+    `;
+  }
 
   const dueLabel = app.querySelector('[data-role="due-count"]');
-  dueLabel.textContent = due > 0 ? `${due} due now` : "All caught up";
+  dueLabel.textContent = pool.length === 0 ? "Pick a chapter" : due > 0 ? `${due} due now` : "All caught up";
 
   app.querySelectorAll(".mode-btn").forEach((btn) => {
-    btn.addEventListener("click", () => startSession(btn.dataset.mode));
+    btn.disabled = pool.length === 0;
+    btn.addEventListener("click", () => {
+      if (pool.length === 0) return;
+      startSession(btn.dataset.mode);
+    });
   });
 
   app.querySelector('[data-role="stats-link"]').addEventListener("click", renderStats);
@@ -597,35 +617,98 @@ function renderStats() {
 
 function renderGlossary() {
   state.view = "glossary";
+  state.glossaryChapters = state.glossaryChapters || new Set(state.chapters);
+  state.glossaryQuery = state.glossaryQuery || "";
+
   app.innerHTML = "";
   app.appendChild(tpl("tpl-glossary"));
   app.querySelector('[data-role="exit"]').addEventListener("click", renderHome);
 
+  const chapterRow = app.querySelector('[data-role="glossary-chapters"]');
+  state.chapters.forEach((chapter) => {
+    const btn = document.createElement("button");
+    btn.className = "chip";
+    btn.textContent = chapter;
+    if (state.glossaryChapters.has(chapter)) btn.classList.add("chip--active");
+    btn.addEventListener("click", () => {
+      if (state.glossaryChapters.has(chapter)) {
+        state.glossaryChapters.delete(chapter);
+      } else {
+        state.glossaryChapters.add(chapter);
+      }
+      renderGlossaryBody();
+      updateGlossaryChapterChips();
+    });
+    chapterRow.appendChild(btn);
+  });
+
+  const allBtn = document.createElement("button");
+  allBtn.className = "chip chip--all";
+  allBtn.textContent = "All";
+  allBtn.addEventListener("click", () => {
+    state.glossaryChapters = new Set(state.chapters);
+    renderGlossaryBody();
+    updateGlossaryChapterChips();
+  });
+  chapterRow.prepend(allBtn);
+
+  const searchInput = app.querySelector('[data-role="glossary-search"]');
+  searchInput.value = state.glossaryQuery;
+  searchInput.addEventListener("input", () => {
+    state.glossaryQuery = searchInput.value;
+    renderGlossaryBody();
+  });
+
+  renderGlossaryBody();
+}
+
+function updateGlossaryChapterChips() {
+  app.querySelectorAll('[data-role="glossary-chapters"] .chip:not(.chip--all)').forEach((btn) => {
+    btn.classList.toggle("chip--active", state.glossaryChapters.has(btn.textContent));
+  });
+}
+
+function renderGlossaryBody() {
   const body = app.querySelector('[data-role="body"]');
   body.innerHTML = "";
 
-  state.chapters.forEach((chapter) => {
-    const words = state.words.filter((w) => w.chapter === chapter);
+  const query = state.glossaryQuery.trim().toLowerCase();
+  let anyResults = false;
 
-    const section = document.createElement("section");
-    section.className = "glossary-chapter";
+  state.chapters
+    .filter((chapter) => state.glossaryChapters.has(chapter))
+    .forEach((chapter) => {
+      const words = state.words.filter((w) => {
+        if (w.chapter !== chapter) return false;
+        if (!query) return true;
+        return w.fi.toLowerCase().includes(query) || w.en.toLowerCase().includes(query);
+      });
+      if (!words.length) return;
+      anyResults = true;
 
-    const heading = document.createElement("h3");
-    heading.className = "glossary-chapter-heading";
-    heading.textContent = `${chapter} (${words.length} words)`;
-    section.appendChild(heading);
+      const section = document.createElement("section");
+      section.className = "glossary-chapter";
 
-    const list = document.createElement("div");
-    list.className = "glossary-list";
-    words.forEach((w) => {
-      const row = document.createElement("div");
-      row.className = "glossary-row";
-      row.innerHTML = `<span class="glossary-fi">${escapeHtml(w.fi)}</span><span class="glossary-en">${escapeHtml(w.en)}</span>`;
-      list.appendChild(row);
+      const heading = document.createElement("h3");
+      heading.className = "glossary-chapter-heading";
+      heading.textContent = `${chapter} (${words.length} word${words.length === 1 ? "" : "s"})`;
+      section.appendChild(heading);
+
+      const list = document.createElement("div");
+      list.className = "glossary-list";
+      words.forEach((w) => {
+        const row = document.createElement("div");
+        row.className = "glossary-row";
+        row.innerHTML = `<span class="glossary-fi">${escapeHtml(w.fi)}</span><span class="glossary-en">${escapeHtml(w.en)}</span>`;
+        list.appendChild(row);
+      });
+      section.appendChild(list);
+      body.appendChild(section);
     });
-    section.appendChild(list);
-    body.appendChild(section);
-  });
+
+  if (!anyResults) {
+    body.innerHTML = `<p class="empty-selection-note">No words match${query ? ` "${escapeHtml(state.glossaryQuery)}"` : ""}. Try a different search or pick a chapter above.</p>`;
+  }
 }
 
 function escapeHtml(s) {
