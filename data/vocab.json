@@ -548,8 +548,9 @@
     {
       "id": 78,
       "chapter": "Chapter 3",
-      "fi": "soittaa 1",
+      "fi": "soittaa",
       "en": "to call",
+      "verbType": 1,
       "hint": "What you do to reach a friend on the phone."
     },
     {
@@ -716,8 +717,9 @@
     {
       "id": 102,
       "chapter": "Chapter 3",
-      "fi": "nukkua 1",
+      "fi": "nukkua",
       "en": "to sleep",
+      "verbType": 1,
       "hint": "What you do at night in bed."
     },
     {
@@ -730,8 +732,9 @@
     {
       "id": 104,
       "chapter": "Chapter 3",
-      "fi": "nauttia 1",
+      "fi": "nauttia",
       "en": "to enjoy",
+      "verbType": 1,
       "hint": "What you do when you're having a great time doing something."
     },
     {
@@ -863,8 +866,9 @@
     {
       "id": 123,
       "chapter": "Chapter 3",
-      "fi": "muuttaa 1",
+      "fi": "muuttaa",
       "en": "to move (from one place to another)",
+      "verbType": 1,
       "hint": "What you do when you change your home address."
     },
     {
@@ -919,22 +923,25 @@
     {
       "id": 131,
       "chapter": "Chapter 3",
-      "fi": "kertoa 1",
+      "fi": "kertoa",
       "en": "to tell",
+      "verbType": 1,
       "hint": "What you do when sharing information with someone."
     },
     {
       "id": 132,
       "chapter": "Chapter 3",
-      "fi": "ilmoittautua 1",
+      "fi": "ilmoittautua",
       "en": "to enroll / to register",
+      "verbType": 1,
       "hint": "What you do to officially sign up for a course."
     },
     {
       "id": 133,
       "chapter": "Chapter 3",
-      "fi": "haluta 4",
+      "fi": "haluta",
       "en": "to want",
+      "verbType": 4,
       "hint": "Expresses a desire for something."
     },
     {
@@ -968,8 +975,9 @@
     {
       "id": 138,
       "chapter": "Chapter 3",
-      "fi": "alkaa 1",
+      "fi": "alkaa",
       "en": "to start, to begin",
+      "verbType": 1,
       "hint": "What a class or movie does at its scheduled time."
     },
     {
@@ -1003,8 +1011,9 @@
     {
       "id": 143,
       "chapter": "Chapter 3",
-      "fi": "tarkistaa 1",
+      "fi": "tarkistaa",
       "en": "to check out",
+      "verbType": 1,
       "hint": "What you do to verify if something is correct."
     },
     {
@@ -1031,8 +1040,9 @@
     {
       "id": 147,
       "chapter": "Chapter 3",
-      "fi": "saada 2",
+      "fi": "saada",
       "en": "to get",
+      "verbType": 2,
       "hint": "What happens when you receive something."
     },
     {
@@ -1052,15 +1062,17 @@
     {
       "id": 150,
       "chapter": "Chapter 3",
-      "fi": "auttaa 1",
+      "fi": "auttaa",
       "en": "to help",
+      "verbType": 1,
       "hint": "What you do to support someone with a task."
     },
     {
       "id": 151,
       "chapter": "Chapter 3",
-      "fi": "tarkoittaa 1",
+      "fi": "tarkoittaa",
       "en": "to mean",
+      "verbType": 1,
       "hint": "What a word or sentence does -- conveys meaning."
     },
     {

@@ -26,8 +26,17 @@
       <p class="subtitle">Only visible to you</p>
     </header>
 
+    <h2 class="dashboard-section-title">📈 Progress</h2>
     <div id="dashboard-status" class="card" hidden></div>
     <div id="dashboard-list"></div>
+
+    <h2 class="dashboard-section-title">💬 Feedback</h2>
+    <div class="feedback-tools">
+      <button id="copy-emails" class="ghost-btn" type="button">📋 Copy all emails</button>
+      <a id="email-all" class="ghost-btn" href="#" hidden>✉️ Email everyone (BCC)</a>
+    </div>
+    <div id="feedback-status" class="card" hidden></div>
+    <div id="feedback-list"></div>
 
     <button id="refresh-btn" class="ghost-btn dashboard-refresh">↻ Refresh</button>
   </div>
@@ -35,6 +44,7 @@
 </div>
 
 <script src="js/config.js"></script>
+<script src="js/ui.js"></script>
 <script src="js/dashboard.js"></script>
 </body>
 </html>

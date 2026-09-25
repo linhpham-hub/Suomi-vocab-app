@@ -69,9 +69,17 @@ def extract_pairs(path: str):
             continue
         fi = re.sub(r"\s+", " ", cells[0]).strip()
         en = re.sub(r"\s+", " ", cells[1]).strip()
+        # The glossaries mark verb types with a trailing number ("soittaa 1",
+        # "haluta 4"). That's a grammar note, not part of the word, so drop it
+        # -- otherwise Write mode would expect learners to type the digit.
+        verb_type = None
+        m = re.search(r"\s+(\d+)$", fi)
+        if m:
+            verb_type = int(m.group(1))
+            fi = fi[: m.start()].strip()
         if not fi and not en:
             continue
-        pairs.append((fi, en))
+        pairs.append((fi, en, verb_type))
     return pairs
 
 
@@ -115,8 +123,10 @@ def main():
     uid = 1
     missing_hints = []
     for label in ordered_labels:
-        for fi, en in by_file[label]:
+        for fi, en, verb_type in by_file[label]:
             word = {"id": uid, "chapter": label, "fi": fi, "en": en}
+            if verb_type:
+                word["verbType"] = verb_type
             hint = hints.get(str(uid))
             if hint:
                 word["hint"] = hint

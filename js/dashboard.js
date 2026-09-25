@@ -22,22 +22,124 @@ function configured() {
   return !!(c && c.SUPABASE_URL && c.SUPABASE_ANON_KEY && !c.SUPABASE_URL.startsWith("YOUR_SUPABASE_URL"));
 }
 
-function unlock() {
+let passphrase = sessionStorage.getItem(UNLOCK_KEY) || "";
+
+function unlock(pass) {
+  passphrase = pass;
   gate.hidden = true;
   content.hidden = false;
-  sessionStorage.setItem(UNLOCK_KEY, "1");
+  sessionStorage.setItem(UNLOCK_KEY, pass);
   loadDashboard();
 }
 
-function tryUnlock() {
-  const c = window.APP_CONFIG;
-  if (!c || passInput.value !== c.DASHBOARD_PASSPHRASE) {
+// The passphrase is checked on the server (dashboard_check in setup.sql).
+// Falls back to the old browser-only check only if that function doesn't
+// exist yet AND a DASHBOARD_PASSPHRASE is set in js/config.js.
+async function checkPassphrase(pass) {
+  const c = window.APP_CONFIG || {};
+  if (configured()) {
+    try {
+      const res = await fetch(`${c.SUPABASE_URL}/rest/v1/rpc/dashboard_check`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", apikey: c.SUPABASE_ANON_KEY, Authorization: `Bearer ${c.SUPABASE_ANON_KEY}` },
+        body: JSON.stringify({ p_passphrase: pass }),
+      });
+      if (res.ok) return (await res.json()) === true;
+    } catch (e) {
+      console.warn("dashboard_check failed", e);
+    }
+  }
+  return !!c.DASHBOARD_PASSPHRASE && pass === c.DASHBOARD_PASSPHRASE;
+}
+
+async function tryUnlock() {
+  const pass = passInput.value;
+  passSubmit.disabled = true;
+  const ok = await checkPassphrase(pass);
+  passSubmit.disabled = false;
+  if (!ok) {
     gateError.hidden = false;
     return;
   }
   gateError.hidden = true;
-  unlock();
+  unlock(pass);
 }
+
+// ---------- Feedback ----------
+// Feedback rows can include friends' email addresses, so they are NOT
+// readable with the public key directly: the list_feedback() database
+// function returns them only when given the dashboard passphrase (stored in
+// the app_secrets table, see README).
+
+const fbStatus = document.getElementById("feedback-status");
+const fbList = document.getElementById("feedback-list");
+const copyBtn = document.getElementById("copy-emails");
+const emailAll = document.getElementById("email-all");
+let feedbackEmails = [];
+
+copyBtn.addEventListener("click", async () => {
+  if (!feedbackEmails.length) {
+    toast("No emails yet.");
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(feedbackEmails.join(", "));
+    toast(`Copied ${feedbackEmails.length} email${feedbackEmails.length === 1 ? "" : "s"} ✓`);
+  } catch {
+    prompt("Copy these emails:", feedbackEmails.join(", "));
+  }
+});
+
+async function loadFeedback() {
+  fbList.innerHTML = "";
+  fbStatus.hidden = true;
+  feedbackEmails = [];
+  emailAll.hidden = true;
+  if (!configured()) return;
+  const c = window.APP_CONFIG;
+  try {
+    const res = await fetch(`${c.SUPABASE_URL}/rest/v1/rpc/list_feedback`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: c.SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${c.SUPABASE_ANON_KEY}`,
+      },
+      body: JSON.stringify({ p_passphrase: passphrase }),
+    });
+    if (res.status === 404) throw new Error("the feedback table isn't set up yet (run the new SQL in README → Feedback)");
+    if (!res.ok) throw new Error(`Supabase returned ${res.status}. Check the passphrase in app_secrets matches js/config.js`);
+    const rows = await res.json();
+    if (!rows.length) {
+      fbStatus.hidden = false;
+      fbStatus.textContent = "No feedback yet.";
+      return;
+    }
+    feedbackEmails = [...new Set(rows.map((r) => (r.email || "").trim()).filter(Boolean))];
+    if (feedbackEmails.length) {
+      emailAll.hidden = false;
+      emailAll.href = `mailto:?bcc=${encodeURIComponent(feedbackEmails.join(","))}&subject=${encodeURIComponent("Suomen Sanasto has been updated!")}`;
+    }
+    rows.forEach((r) => {
+      const card = document.createElement("div");
+      card.className = "card feedback-item";
+      const faces = ["", "😞", "😕", "🙂", "😊", "🤩"];
+      card.innerHTML = `
+        <div class="feedback-item-head">
+          <strong>${escapeHtml(r.name || "Anonymous")}${r.rating ? " " + faces[r.rating] : ""}</strong>
+          <span class="muted">${escapeHtml(relativeTime(r.created_at))}</span>
+        </div>
+        <p>${escapeHtml(r.message)}</p>
+        ${r.email ? `<p class="muted small">✉️ <a href="mailto:${encodeURIComponent(r.email)}">${escapeHtml(r.email)}</a></p>` : ""}
+      `;
+      fbList.appendChild(card);
+    });
+  } catch (e) {
+    fbStatus.hidden = false;
+    fbStatus.textContent = `Couldn't load feedback: ${e.message}.`;
+  }
+}
+
 
 passSubmit.addEventListener("click", tryUnlock);
 passInput.addEventListener("keydown", (e) => {
@@ -64,6 +166,7 @@ function showStatus(message) {
 async function loadDashboard() {
   list.innerHTML = "";
   statusBox.hidden = true;
+  loadFeedback();
 
   if (!configured()) {
     showStatus(
@@ -132,15 +235,10 @@ function pct(n, total) {
   return total ? Math.round((n / total) * 100) : 0;
 }
 
-function escapeHtml(s) {
-  const div = document.createElement("div");
-  div.textContent = s;
-  return div.innerHTML;
-}
 
 // Skip the gate if already unlocked earlier this tab session.
-if (sessionStorage.getItem(UNLOCK_KEY) === "1") {
-  unlock();
+if (passphrase && passphrase !== "1") {
+  checkPassphrase(passphrase).then((ok) => (ok ? unlock(passphrase) : sessionStorage.removeItem(UNLOCK_KEY)));
 } else {
   passInput.focus();
 }

@@ -4,7 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Suomen Sanasto — Finnish Vocabulary</title>
-<meta name="description" content="Flashcards, quizzes and writing practice for Finnish A1.2 vocabulary." />
+<meta name="description" content="Flashcards, quizzes, dialogues, numbers and oral-test practice for Finnish A1.2." />
+<meta name="author" content="LinhPham" />
 <meta name="theme-color" content="#E6EEC9" />
 <link rel="manifest" href="manifest.webmanifest" />
 <link rel="icon" href="icons/icon-192.png" />
@@ -14,12 +15,25 @@
 <body>
 
 <div id="app" class="app"></div>
+<nav id="tabbar" class="tabbar" aria-label="Sections" hidden></nav>
 
+<!-- Name prompt (first visit) + optional "save to all my devices" -->
 <div id="name-modal" class="modal-overlay" hidden>
   <div class="modal-card">
-    <h2>Welcome! 👋</h2>
-    <p>What's your name? So if this gets shared with friends, your progress shows up correctly.</p>
+    <h2 id="name-title">Welcome! 👋</h2>
+    <p>What's your name? It's shown on your Study page.</p>
     <input id="name-input" type="text" placeholder="Your name" maxlength="30" autocomplete="off" />
+    <div id="link-row" class="link-box">
+      <label class="check-row">
+        <input id="link-check" type="checkbox" />
+        <span><strong>Save my progress to all my devices</strong><br /><span class="muted small">Use the same name + PIN on another phone or browser to continue where you left off. Already did this on another device? Tick it and type the same name + PIN.</span></span>
+      </label>
+      <div id="pin-wrap" hidden>
+        <input id="pin-input" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="4-digit PIN" autocomplete="off" />
+        <p class="muted small">Pick 4 numbers you'll remember. Not your bank PIN!</p>
+      </div>
+    </div>
+    <p id="name-error" class="form-error" hidden></p>
     <div class="modal-actions">
       <button id="name-skip" type="button" class="ghost-btn">Skip</button>
       <button id="name-submit" type="button" class="primary-btn">Start studying</button>
@@ -27,11 +41,14 @@
   </div>
 </div>
 
-<template id="tpl-home">
+<!-- ================= Study tab ================= -->
+<template id="tpl-study">
   <header class="app-header">
     <h1>Suomen Sanasto</h1>
-    <p class="subtitle">Finnish A1.2 vocabulary practice</p>
+    <p class="greeting" data-role="greeting"></p>
   </header>
+
+  <section class="card panel whats-new" data-role="whats-new" hidden></section>
 
   <section class="card panel">
     <h2 class="panel-title">Chapters</h2>
@@ -41,48 +58,52 @@
   <section class="card panel">
     <h2 class="panel-title">Direction</h2>
     <div class="segmented" data-role="direction">
-      <button class="segmented-btn" data-value="fi-en">FI → EN</button>
-      <button class="segmented-btn" data-value="en-fi">EN → FI</button>
-      <button class="segmented-btn" data-value="mixed">Mixed</button>
+      <button type="button" class="segmented-btn" data-value="fi-en">FI → EN</button>
+      <button type="button" class="segmented-btn" data-value="en-fi">EN → FI</button>
+      <button type="button" class="segmented-btn" data-value="mixed">Mixed</button>
     </div>
+    <h2 class="panel-title panel-title--spaced">Words per session</h2>
+    <div class="segmented segmented--five" data-role="session-size"></div>
   </section>
 
   <section class="card panel stats-panel" data-role="stats-summary"></section>
 
   <section class="mode-grid">
-    <button class="mode-btn" data-mode="review">
-      <span class="mode-emoji">⏰</span>
-      <span class="mode-name">Review due</span>
-      <span class="mode-desc" data-role="due-count">Smart review</span>
+    <button type="button" class="mode-btn mode-btn--focus" data-mode="focus">
+      <span class="mode-emoji">🎯</span>
+      <span class="mode-name">Focus words</span>
+      <span class="mode-desc"></span>
     </button>
-    <button class="mode-btn" data-mode="flashcards">
+    <button type="button" class="mode-btn" data-mode="flashcards">
       <span class="mode-emoji">🃏</span>
       <span class="mode-name">Flashcards</span>
-      <span class="mode-desc">Flip &amp; self-grade</span>
+      <span class="mode-desc"></span>
     </button>
-    <button class="mode-btn" data-mode="quiz">
-      <span class="mode-emoji">🎯</span>
+    <button type="button" class="mode-btn" data-mode="quiz">
+      <span class="mode-emoji">🎲</span>
       <span class="mode-name">Quiz</span>
-      <span class="mode-desc">Multiple choice</span>
+      <span class="mode-desc"></span>
     </button>
-    <button class="mode-btn" data-mode="write">
+    <button type="button" class="mode-btn" data-mode="write">
       <span class="mode-emoji">⌨️</span>
       <span class="mode-name">Write</span>
-      <span class="mode-desc">Type the answer</span>
+      <span class="mode-desc"></span>
     </button>
   </section>
 
-  <div class="link-row">
-    <button class="link-btn" data-role="stats-link">View progress by chapter →</button>
-    <button class="link-btn" data-role="glossary-link">📖 Browse full glossary →</button>
-  </div>
+  <button type="button" class="card cta-card" data-role="words-link">
+    <span class="cta-icon">📖</span>
+    <span class="cta-text"><strong>Browse &amp; search all words</strong><span>Every glossary word with meaning and 🔊</span></span>
+    <span class="cta-arrow">→</span>
+  </button>
 
   <p class="app-credit">Created by LinhPham</p>
 </template>
 
+<!-- ================= Study session ================= -->
 <template id="tpl-session">
   <header class="session-header">
-    <button class="icon-btn" data-role="exit" aria-label="Back">←</button>
+    <button type="button" class="icon-btn" data-role="exit" aria-label="Back">←</button>
     <div class="session-progress">
       <div class="session-progress-bar"><div class="session-progress-fill" data-role="progress-fill"></div></div>
       <span class="session-progress-label" data-role="progress-label"></span>
@@ -93,22 +114,24 @@
 </template>
 
 <template id="tpl-flashcard">
-  <div class="flashcard" data-role="flashcard">
-    <div class="flashcard-inner" data-role="flashcard-inner">
+  <div class="flashcard" data-role="flashcard" tabindex="0" role="button" aria-label="Flashcard, tap to flip">
+    <div class="flashcard-inner">
       <div class="flashcard-face flashcard-front">
         <span class="flashcard-chapter" data-role="chapter"></span>
         <span class="flashcard-word" data-role="front"></span>
+        <span data-role="speak-front"></span>
         <span class="flashcard-hint">tap to flip</span>
       </div>
       <div class="flashcard-face flashcard-back">
         <span class="flashcard-chapter" data-role="chapter-back"></span>
         <span class="flashcard-word" data-role="back"></span>
+        <span data-role="speak-back"></span>
       </div>
     </div>
   </div>
   <div class="grade-row" data-role="grade-row" hidden>
-    <button class="grade-btn grade-again" data-grade="again">Still learning</button>
-    <button class="grade-btn grade-good" data-grade="good">Got it</button>
+    <button type="button" class="grade-btn grade-again" data-grade="again">Still learning</button>
+    <button type="button" class="grade-btn grade-good" data-grade="good">Got it</button>
   </div>
 </template>
 
@@ -116,19 +139,27 @@
   <div class="prompt-card">
     <span class="prompt-chapter" data-role="chapter"></span>
     <span class="prompt-word" data-role="prompt"></span>
+    <span data-role="prompt-speak"></span>
   </div>
   <div class="options-grid" data-role="options"></div>
   <div class="write-feedback" data-role="quiz-feedback" hidden></div>
-  <button class="primary-btn" data-role="next" hidden>Next →</button>
+  <button type="button" class="primary-btn" data-role="next" hidden>Next →</button>
 </template>
 
 <template id="tpl-write">
   <div class="prompt-card">
     <span class="prompt-chapter" data-role="chapter"></span>
     <span class="prompt-word" data-role="prompt"></span>
+    <span data-role="prompt-speak"></span>
   </div>
   <form data-role="form" autocomplete="off">
     <input class="write-input" data-role="input" type="text" placeholder="Type the translation…" autocapitalize="off" autocorrect="off" spellcheck="false" />
+    <div class="letter-row" data-role="letters">
+      <button type="button" class="letter-btn" aria-label="Insert ä">ä</button>
+      <button type="button" class="letter-btn" aria-label="Insert ö">ö</button>
+      <button type="button" class="letter-btn" aria-label="Insert Ä">Ä</button>
+      <button type="button" class="letter-btn" aria-label="Insert Ö">Ö</button>
+    </div>
     <div class="hint-text" data-role="hint-text" hidden></div>
     <div class="write-actions">
       <button type="button" class="ghost-btn" data-role="hint">💡 Hint</button>
@@ -136,7 +167,7 @@
     </div>
   </form>
   <div class="write-feedback" data-role="feedback" hidden></div>
-  <button class="primary-btn" data-role="next" hidden>Next →</button>
+  <button type="button" class="primary-btn" data-role="next" hidden>Next →</button>
 </template>
 
 <template id="tpl-summary">
@@ -144,71 +175,119 @@
     <h2 data-role="headline"></h2>
     <p data-role="detail"></p>
     <div class="summary-actions">
-      <button class="ghost-btn" data-role="home">Home</button>
-      <button class="primary-btn" data-role="again">Study again</button>
+      <button type="button" class="ghost-btn" data-role="home">Done</button>
+      <button type="button" class="primary-btn" data-role="again">Study again</button>
     </div>
   </div>
+  <section class="missed" data-role="missed" hidden></section>
 </template>
 
-<template id="tpl-stats">
-  <header class="session-header session-header--plain">
-    <button class="icon-btn" data-role="exit" aria-label="Back">←</button>
-    <h2>Progress</h2>
-    <button class="icon-btn" data-role="reset" aria-label="Reset progress" title="Reset all progress">↺</button>
+<!-- ================= Words tab ================= -->
+<template id="tpl-words">
+  <header class="tab-header">
+    <h1>📖 Words</h1>
+    <p class="muted" data-role="count"></p>
+  </header>
+  <div class="search-wrap">
+    <input type="search" class="glossary-search" data-role="search" placeholder="🔍 Search Finnish or English…" autocomplete="off" aria-label="Search words" />
+    <button type="button" class="search-clear" data-role="search-clear" aria-label="Clear search" hidden>×</button>
+  </div>
+  <section class="card panel">
+    <h2 class="panel-title">Chapters</h2>
+    <div class="chip-row" data-role="chapters"></div>
+    <label class="level-filter">
+      <span class="panel-title">Level</span>
+      <select data-role="level" class="select"></select>
+    </label>
+  </section>
+  <div data-role="games"></div>
+  <main class="glossary-body" data-role="list"></main>
+</template>
+
+<!-- ================= Talk tab ================= -->
+<template id="tpl-talk">
+  <header class="tab-header">
+    <h1>💬 Talk</h1>
+  </header>
+  <div class="segmented" data-role="talk-sections">
+    <button type="button" class="segmented-btn" data-value="dialogues">Dialogues</button>
+    <button type="button" class="segmented-btn" data-value="numbers">Numbers</button>
+    <button type="button" class="segmented-btn" data-value="shopping">Shopping</button>
+  </div>
+  <main class="talk-body" data-role="talk-body"></main>
+</template>
+
+<!-- ================= Oral test tab ================= -->
+<template id="tpl-oral">
+  <header class="tab-header">
+    <h1>🎤 Oral test</h1>
+  </header>
+  <section class="card panel oral-intro">
+    <p>In the oral test the teacher picks <strong>5 random questions</strong> from this list and you answer them out loud. <span class="muted">(How it's graded will be announced later.)</span></p>
+    <button type="button" class="primary-btn" data-role="drill">🎲 Practise 5 random questions</button>
+    <button type="button" class="ghost-btn" data-role="drill-hard" hidden></button>
+    <div class="oral-toggles">
+      <label class="check-row"><input type="checkbox" data-role="toggle-spoken" /> <span>Show spoken forms</span></label>
+      <label class="check-row"><input type="checkbox" data-role="toggle-english" /> <span>Show English</span></label>
+    </div>
+    <div class="link-list" data-role="oral-links"></div>
+  </section>
+  <main class="oral-list" data-role="questions"></main>
+</template>
+
+<!-- ================= Progress tab ================= -->
+<template id="tpl-progress">
+  <header class="tab-header">
+    <h1>📊 Progress</h1>
   </header>
 
-  <section class="card badge-explainer">
-    <div class="badge-explainer-row">
-      <span class="badge-dot badge-dot--new"></span>
-      <div>
-        <strong>New</strong>
-        <p>You haven't studied this word yet.</p>
-      </div>
-    </div>
-    <div class="badge-explainer-row">
-      <span class="badge-dot badge-dot--learning"></span>
-      <div>
-        <strong>Learning</strong>
-        <p>You've started practicing it, but haven't gotten it right 5 times in a row yet.</p>
-      </div>
-    </div>
-    <div class="badge-explainer-row">
-      <span class="badge-dot badge-dot--mastered"></span>
-      <div>
-        <strong>Mastered 🏆</strong>
-        <p>You got it right 5 times in a row!</p>
-      </div>
-    </div>
-    <p class="badge-explainer-note">⚠️ Any wrong answer — or using a Hint — resets that streak back to 0, so it goes back to Learning.</p>
+  <details class="card rules-card">
+    <summary><strong>How do words get “Mastered”?</strong></summary>
+    <ol class="rules-list">
+      <li>Every time you get a word <strong>right</strong>, it moves up one step: <span class="streak-dots streak-dots--demo"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></li>
+      <li><strong>5 right in a row</strong> = 🏆 Mastered.</li>
+      <li>A <strong>wrong</strong> answer sends it back to the start (🎯 Needs focus).</li>
+      <li><strong>Half right</strong> (missing the dots on ä/ö, or used a 💡 hint) = +0.5 point, and the word stays where it is.</li>
+      <li>In Flashcards, “Got it” counts as right and “Still learning” as wrong.</li>
+    </ol>
+  </details>
+
+  <section class="stats-body" data-role="chapter-bars"></section>
+  <div class="chapter-stat-legend">
+    <span><i class="legend-dot legend-dot--mastered"></i>Mastered</span>
+    <span><i class="legend-dot legend-dot--learning"></i>Learning</span>
+    <span><i class="legend-dot legend-dot--new"></i>Not started</span>
+  </div>
+
+  <section class="card panel">
+    <h2 class="panel-title">Your words by level</h2>
+    <div class="bucket-row" data-role="buckets"></div>
+  </section>
+  <section data-role="bucket-list" class="bucket-list"></section>
+
+  <section class="card panel" data-role="sync"></section>
+  <section class="card panel" data-role="voice"></section>
+
+  <section class="card panel feedback-card">
+    <h2 class="panel-title">💬 Feedback</h2>
+    <p class="small">Found a bug or have an idea? Send it to LinhPham, with your email or anonymously.</p>
+    <button type="button" class="primary-btn" data-role="feedback">Send feedback</button>
   </section>
 
-  <main class="stats-body" data-role="body"></main>
-</template>
-
-<template id="tpl-glossary">
-  <header class="session-header session-header--plain">
-    <button class="icon-btn" data-role="exit" aria-label="Back">←</button>
-    <h2>Full Glossary</h2>
-    <span class="icon-btn-spacer" aria-hidden="true"></span>
-  </header>
-
-  <div class="glossary-controls">
-    <input
-      type="text"
-      class="glossary-search"
-      data-role="glossary-search"
-      placeholder="Search Finnish or English..."
-      autocomplete="off"
-    />
-    <div class="chip-row" data-role="glossary-chapters"></div>
-  </div>
-
-  <main class="glossary-body" data-role="body"></main>
+  <button type="button" class="link-btn danger-link" data-role="reset">↺ Reset my progress on this device</button>
+  <p class="app-credit">Created by LinhPham</p>
 </template>
 
 <script src="js/config.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/speech.js"></script>
 <script src="js/srs.js"></script>
 <script src="js/sync.js"></script>
+<script src="js/feedback.js"></script>
+<script src="js/words.js"></script>
+<script src="js/talk.js"></script>
+<script src="js/oral.js"></script>
+<script src="js/progress.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

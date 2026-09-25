@@ -1,54 +1,79 @@
 # Suomen Sanasto — Finnish A1.2 Vocabulary App
 
-A flashcard / quiz / writing-practice app for the vocabulary from the Metropolia
-Finnish A1.2 course. Plain HTML/CSS/JS — no framework, no build step, no
-backend — so there's nothing to install to run or edit it, and it works fully
-offline once loaded (installable as a PWA on your phone or laptop).
+A study app for the Metropolia Finnish A1.2 course: vocabulary practice,
+dialogues, numbers, shopping phrases and oral-test prep, with pronunciation.
+Plain HTML/CSS/JS, so there's no framework and no build step. It works fully
+offline once loaded (installable as a PWA). Online extras (friend dashboard,
+device sync, feedback) are optional and use a free Supabase project.
 
 ## What it does
 
-- **312 words** pulled from the course glossaries (Chapters 1–2, 3, 4, 5)
-- **Flashcards** — flip to reveal the answer, self-grade "Still learning" / "Got it"
-- **Quiz** — multiple choice, 4 options per question
-- **Write** — type the translation; accepts reasonable variants (e.g. "call" for
-  "to call", ignores optional "(around)" hints, accepts "/"-separated alternatives)
-- Pick a **direction**: FI → EN, EN → FI, or Mixed
-- Filter by **chapter**, or study everything at once
-- **Review due** uses simple spaced repetition (a 6-box Leitner system) so words
-  you keep getting right show up less often, and ones you miss come back sooner
-- **Progress** is saved on-device only (`localStorage`) — private, no login, but
-  it won't follow you to a different phone/laptop
-- **Browse Glossary** — every word from every chapter on one page, for a quick
-  scan or lookup (not a study mode, just a reference list)
-- **Hints** in Write mode are contextual clues ("What you use to pay — cash"),
-  not spoilers like "starts with R"
-- Installable as a **PWA**: "Add to Home Screen" on phone, or install icon in
-  Chrome/Edge on desktop. Once installed it keeps working with no internet.
-- **Optional: share progress with friends.** Friends can use their own copy of
-  the app fully offline with no setup. If you want a private dashboard to see
-  everyone's progress, see "Sharing this with friends" below — it's opt-in and
-  the app works completely fine without it.
+Five tabs along the bottom:
+
+- **📚 Study**: pick chapters (✓ shows what's included; **All** / **None**
+  shortcuts), direction (FI → EN, EN → FI, Mixed) and **words per session**
+  (10 / 15 / 25 / 50 / All). Then:
+  - **🎯 Focus words**: only the words you got wrong (or half right) last time
+  - **🃏 Flashcards**: flip and self-grade
+  - **🎲 Quiz**: multiple choice
+  - **⌨️ Write**: type the answer. Accepts variants ("call" for "to call",
+    either side of "/", optional "(around)"). Missing the dots (a for ä) gives
+    **+0.5**. There are ä/ö buttons for keyboards without them, and 💡 hints
+    are contextual clues, not the first letter.
+- **📖 Words**: every glossary word with search (Finnish or English, works
+  without typing the dots), chapter + level filters, 🔊 pronunciation, and the
+  teacher's Wordwall games.
+- **💬 Talk**: 5 short practice dialogues (chapters 1–3) where every glossary
+  word is underlined (tap for meaning + sound, ▶ Play all). Also numbers in
+  standard vs spoken Finnish, a price trainer, a listening game and shopping
+  phrases.
+- **🎤 Oral test**: the teacher's 26 basic questions with spoken forms and
+  example answers, a random-5 practice run, ⭐ for hard ones, and a box to
+  write (and hear) your own answer.
+- **📊 Progress**: how "Mastered" works, bars per chapter, and every word
+  grouped by level (🎯 Needs focus / 🌱 Getting there / 🔥 Almost / 🏆 Mastered /
+  ⚪ Not started). Also device sync, voice settings and feedback.
+
+**Levels:** each right answer moves a word up one step; 5 right in a row =
+Mastered. A wrong answer resets it. Half right (missing dots, or used a hint)
+= +0.5 point and the word stays where it is.
+
+**Pronunciation** uses the device's built-in Finnish voice (free, no key).
+Android (Google) and iPhone (Satu) have one. On Windows, add it under
+Settings → Time & language → Speech → Add voices → Finnish.
+
+Progress is saved on the device. Optionally, learners can tick **"Save my
+progress to all my devices"** and use a name + 4-digit PIN to open the same
+progress on any phone or browser (see setup below). It's installable as a
+**PWA** and works offline.
 
 ## Project structure
 
 ```
 vocab-app/
-├── index.html            # single-page app shell + all view templates
-├── dashboard.html        # hidden, passphrase-gated owner dashboard (optional feature)
-├── manifest.webmanifest  # PWA metadata
-├── sw.js                 # offline service worker (cache-first)
+├── index.html            # page shell, tab bar and all view templates
+├── dashboard.html        # hidden, passphrase-gated owner dashboard
+├── sw.js                 # offline service worker (network first, cache fallback)
 ├── css/style.css
 ├── js/
-│   ├── app.js            # all app logic & rendering
-│   ├── srs.js            # spaced-repetition + localStorage progress
-│   ├── sync.js           # name prompt + optional silent progress sync
-│   ├── dashboard.js       # dashboard.html logic
-│   └── config.js         # Supabase URL/key + dashboard passphrase (fill in to enable sharing)
+│   ├── config.js         # Supabase URL/key, Microsoft Form link
+│   ├── ui.js             # shared helpers (🔊 buttons, chapter chips, toasts, word popover)
+│   ├── speech.js         # pronunciation (Web Speech API)
+│   ├── srs.js            # word levels / spaced repetition, saved in localStorage
+│   ├── sync.js           # dashboard snapshot + name/PIN device sync
+│   ├── feedback.js       # feedback form
+│   ├── app.js            # data loading, tabs, Study tab and study sessions
+│   ├── words.js | talk.js | oral.js | progress.js   # the other tabs
+│   └── dashboard.js      # dashboard.html logic
 ├── data/
-│   ├── vocab.json         # the word list (generated, see below)
-│   └── hints.json         # contextual hint text per word, merged into vocab.json on build
-├── icons/                 # app icons
-└── scripts/build_vocab.py # regenerates data/vocab.json from the glossary .docx files + hints.json
+│   ├── vocab.json         # glossary words (generated, see below)
+│   ├── hints.json         # contextual hints per word id, merged into vocab.json
+│   ├── conversations.json # practice dialogues ([word] / [form](glossary word) markup)
+│   ├── phrases.json       # shopping phrases (standard + spoken)
+│   ├── oral.json          # oral test questions + example answers
+│   └── links.json         # teacher's Wordwall links
+├── supabase/setup.sql     # all database setup (run once in Supabase)
+└── scripts/build_vocab.py # regenerates data/vocab.json from the glossary .docx files
 ```
 
 ## Adding new chapters later
@@ -64,7 +89,8 @@ python3 scripts/build_vocab.py "/path/to/Glossaries/word lists and games" --out 
 ```
 
 It picks up any file matching `Glossary chapter*.docx` automatically — no code
-changes needed for new chapters. Commit the updated `data/vocab.json` and
+changes needed for new chapters. Trailing verb-type numbers in the glossary
+("soittaa 1") are removed from the word and kept as a small "vt 1" note. Commit the updated `data/vocab.json` and
 redeploy (see below).
 
 New words won't have a hint yet — the build script prints a warning listing
@@ -86,7 +112,7 @@ python3 -m http.server 8000
 (Opening `index.html` directly by double-clicking won't work for the `fetch()`
 of `data/vocab.json` — a local server, or a real deployment, is needed.)
 
-## Sharing this with friends (optional)
+## Sharing this with friends, device sync and feedback (optional)
 
 By default, friends can just install the same deployed app and study with it —
 progress stays on their own device, nothing to set up, no accounts. If you
@@ -103,75 +129,55 @@ protected by a passphrase you choose.
 
 **Security note, read before turning this on:** the passphrase on
 `/dashboard.html` only hides the page from someone casually browsing your
-site — it is not real login security. The same public key that lets the
-dashboard read the data also lives in the app's own JavaScript files (visible
-to anyone who opens dev tools), so someone sufficiently determined could
-technically query the data directly, bypassing the passphrase entirely. This
-is an accepted trade-off for a small friend group sharing low-stakes data
-(word-mastery counts — nothing personal or sensitive). Don't use this pattern
-for anything more sensitive than that.
+site. It is not real login security. The public key that lets the dashboard
+read the **progress summaries** is in the app's own JavaScript, so a
+determined person could read those counts directly. That's an accepted
+trade-off for low-stakes data (word-mastery counts only). The **accounts**
+(full progress + hashed PIN) and **feedback** (may contain emails) tables are
+different: they can't be read with the public key at all, only through
+database functions that check the PIN or passphrase on the server.
 
 ### Setup steps
 
 1. **Create a free Supabase project** at [supabase.com](https://supabase.com) →
-   New Project. Pick any name/password/region (the password is just for the
-   project's own database console — you won't need it day to day).
+   New Project (already done for this app).
 
-2. **Create the `progress` table.** In the Supabase dashboard, go to the
-   **SQL Editor** → New query, paste this, and run it:
+2. **Run the database setup.** Open `supabase/setup.sql`, change
+   `YOUR_DASHBOARD_PASSPHRASE` to a **new** passphrase (it's checked on the
+   server and never goes in the app's public files), then paste the whole file into Supabase → **SQL Editor** → New query → **Run**.
+   It's safe to run again later; it only adds what's missing. It creates:
+   - `progress`: one summary row per learner for your dashboard
+   - `accounts` + `account_pull` / `account_push`: "save to all my devices".
+     The table can't be read directly; the functions check the name + PIN.
+     PINs are stored hashed, and 10 wrong PINs lock that name for 15 minutes.
+   - `feedback` + `list_feedback`: anyone can send feedback, but only the
+     dashboard (with the passphrase) can read it, since it may contain emails.
+   - `app_secrets` + `dashboard_check`: your dashboard passphrase, checked on
+     the server.
 
-   ```sql
-   create table if not exists progress (
-     device_id text primary key,
-     name text not null default 'Friend',
-     chapters jsonb not null default '{}'::jsonb,
-     total_mastered int not null default 0,
-     total_learning int not null default 0,
-     total_words int not null default 0,
-     last_active timestamptz not null default now(),
-     updated_at timestamptz not null default now()
-   );
+3. **Fill in `js/config.js`**: Project URL and the `anon` `public` key (never
+   the `service_role` key). Leave `DASHBOARD_PASSPHRASE` empty: the
+   passphrase lives in the database now.
 
-   alter table progress enable row level security;
+4. **Feedback with a Microsoft Form (optional).** Create a form at
+   [forms.office.com](https://forms.office.com), turn on "Get email
+   notification of each response", copy its share link and paste it into
+   `FEEDBACK_FORM_URL` in `js/config.js`. The Feedback button then opens the
+   form, and all answers are kept in Excel (Responses → Open in Excel).
+   Without a link, the app's built-in feedback box saves to the dashboard.
 
-   create policy "anon can upsert their own row"
-     on progress for insert to anon with check (true);
+5. **Commit and push.** Open `https://<your-app>.vercel.app/dashboard.html`
+   and enter your passphrase to see everyone's progress and feedback. **📋 Copy
+   all emails** and **✉️ Email everyone (BCC)** are there for telling friends
+   about an update. The app also shows a "What's new" card to returning users
+   after each update (edit `WHATS_NEW` / `APP_VERSION` in `js/app.js`).
 
-   create policy "anon can update any row"
-     on progress for update to anon using (true) with check (true);
+Anything left as a placeholder in `js/config.js` is simply skipped: nothing
+breaks and nothing is sent anywhere.
 
-   create policy "anon can read all rows"
-     on progress for select to anon using (true);
-   ```
-
-   This makes a table with one row per device, and opens it up so the app's
-   public "anon" key can write a friend's own progress and read everyone's —
-   there's no per-user login, so these permissive policies are what make the
-   "no registration" sharing model work. This is the same trade-off described
-   in the security note above.
-
-3. **Get your API keys.** In Supabase: Project Settings → API. Copy the
-   **Project URL** and the **`anon` `public`** key (not the `service_role`
-   key — never put that one in client-side code).
-
-4. **Fill in `js/config.js`** in this folder:
-
-   ```js
-   window.APP_CONFIG = {
-     SUPABASE_URL: "https://xxxxx.supabase.co",   // your Project URL
-     SUPABASE_ANON_KEY: "eyJ...",                  // your anon public key
-     DASHBOARD_PASSPHRASE: "pick-something-only-you-know",
-   };
-   ```
-
-5. **Commit and redeploy** (`git add . && git commit -m "Enable friend sharing" && git push`).
-   Once deployed, open `https://<your-app>.vercel.app/dashboard.html`, enter
-   your passphrase, and you'll see every friend who has studied since, listed
-   by name with their per-chapter progress.
-
-Until you fill in real values, `js/config.js` ships with placeholder text
-(`YOUR_SUPABASE_URL_HERE`) and the app quietly skips syncing — nothing breaks,
-nothing is sent anywhere, and the dashboard just shows "sync isn't set up yet."
+**PIN note:** the 4-digit PIN is light protection for low-stakes study data,
+not bank-grade security. It's also remembered on each linked device so sync
+happens automatically. Tell friends not to reuse a real PIN.
 
 ## Deploy — GitHub + Vercel (same pattern as the property tracker app)
 

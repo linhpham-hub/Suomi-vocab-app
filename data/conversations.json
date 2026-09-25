@@ -1,0 +1,116 @@
+{
+  "_comment": "Original practice dialogues written for this app, built around the chapter 1-3 glossary words (not copied from the textbook). Markup in 'fi': [word] marks a glossary word written exactly as in the glossary; [surface](lemma) marks an inflected form, where lemma is the glossary entry. Tapping a marked word shows its meaning and pronunciation.",
+  "conversations": [
+    {
+      "id": "uusi-kurssi",
+      "chapter": "Chapters 1-2",
+      "title": "Uusi kurssi",
+      "subtitle": "A new course: greetings, names and spelling",
+      "lines": [
+        { "who": "Sofia", "fi": "[Hei]! [Anteeksi], onko [tämä] [paikka] [vapaa]?", "en": "Hi! Excuse me, is this seat free?" },
+        { "who": "Leo", "fi": "[Joo], on.", "en": "Yes, it is." },
+        { "who": "Sofia", "fi": "[Kiva]. [Minä] [olen](olla) Sofia.", "en": "Nice. I'm Sofia." },
+        { "who": "Leo", "fi": "[Minä] [olen](olla) Leo. [Hauska tutustua]!", "en": "I'm Leo. Nice to meet you!" },
+        { "who": "Sofia", "fi": "[Kiitos samoin]! Onko [täällä] [suomen kurssi]?", "en": "Likewise! Is the Finnish course here?" },
+        { "who": "Leo", "fi": "[Joo]. [Tämä] on Suomi 1.", "en": "Yes. This is Finnish 1." },
+        { "who": "Matti", "fi": "[Moi](Hei! / Moi!), Leo! [Mitä kuuluu]?", "en": "Hi, Leo! How are you?" },
+        { "who": "Leo", "fi": "[Terve], Matti! [Ihan hyvää, kiitos]. [Entä] sinulle?", "en": "Hey, Matti! Just fine, thanks. And you?" },
+        { "who": "Matti", "fi": "[Minulle kuuluu hyvää].", "en": "I'm fine." },
+        { "who": "Opettaja", "fi": "[Hei] [ja] [tervetuloa]! [Minun] [nimi] on Liisa Virtanen. [Minä] [olen](olla) teidän [opettaja].", "en": "Hi and welcome! My name is Liisa Virtanen. I'm your teacher." },
+        { "who": "Sofia", "fi": "[Anteeksi], [miten se kirjoitetaan]?", "en": "Excuse me, how is it spelled?" },
+        { "who": "Opettaja", "fi": "[Etunimi] on L-I-I-S-A [ja] [sukunimi] V-I-R-T-A-N-E-N.", "en": "The first name is L-I-I-S-A and the last name V-I-R-T-A-N-E-N." },
+        { "who": "Opettaja", "fi": "Kurssi on [kello] 18–20. Se [loppuu](loppua) [kello] 20.", "en": "The course is at 18–20. It ends at 20." },
+        { "who": "Sofia", "fi": "[Kiitos]!", "en": "Thank you!" }
+      ]
+    },
+    {
+      "id": "jaatelokioski",
+      "chapter": "Chapters 1-2",
+      "title": "Jäätelökioskilla",
+      "subtitle": "At the ice-cream kiosk: prices, spoken numbers, card or cash",
+      "lines": [
+        { "who": "Myyjä", "fi": "[Hei]!", "en": "Hi!" },
+        { "who": "Sofia", "fi": "[Hei]. Mitä yks [pallo] [maksaa]?", "en": "Hi. How much is one scoop?" },
+        { "who": "Myyjä", "fi": "Yks [pallo] [maksaa] kolme euroo, kaks [palloo](pallo) viis euroo.", "en": "One scoop costs three euros, two scoops five euros." },
+        { "who": "Sofia", "fi": "Okei. Mä [otan](ottaa) yks [pallo] [mansikkaa](mansikka).", "en": "OK. I'll take one scoop of strawberry." },
+        { "who": "Leo", "fi": "Mä [otan](ottaa) kaks [palloo](pallo): [suklaata](suklaa) [ja] [mansikkaa](mansikka).", "en": "I'll take two scoops: chocolate and strawberry." },
+        { "who": "Myyjä", "fi": "Selvä. Tuleeks [muuta](muu)?", "en": "Sure. Anything else?" },
+        { "who": "Leo", "fi": "[Ei], [kiitos].", "en": "No, thanks." },
+        { "who": "Myyjä", "fi": "Kaheksan euroo [yhteensä]. Käteisellä vai [kortilla](kortti)?", "en": "Eight euros in total. Cash or card?" },
+        { "who": "Sofia", "fi": "[Kortilla](kortti), [kiitos]. Mä [maksan](maksaa) nää.", "en": "By card, please. I'll pay for these." },
+        { "who": "Myyjä", "fi": "Tarviitko [kuittia](kuitti)?", "en": "Do you need a receipt?" },
+        { "who": "Sofia", "fi": "[Ei] kiitti.", "en": "No, thanks." },
+        { "who": "Leo", "fi": "[Kiitos], Sofia! [Ensi] [kerralla](kerta) mä [maksan](maksaa).", "en": "Thanks, Sofia! Next time I'll pay." }
+      ]
+    },
+    {
+      "id": "mista-olet",
+      "chapter": "Chapters 1-2",
+      "title": "Mistä sinä olet kotoisin?",
+      "subtitle": "In the park: countries, languages and getting home",
+      "lines": [
+        { "who": "Matti", "fi": "Sofia, [mistä] [sinä] [olet](olla) kotoisin?", "en": "Sofia, where are you from?" },
+        { "who": "Sofia", "fi": "[Minä] [olen](olla) kotoisin Italiasta. [Entä] [sinä]?", "en": "I'm from Italy. How about you?" },
+        { "who": "Matti", "fi": "[Minä] [olen](olla) suomalainen, [mutta] äiti on ruotsalainen.", "en": "I'm Finnish, but my mother is Swedish." },
+        { "who": "Leo", "fi": "[Minä] [olen](olla) kotoisin Kanadasta. [Minun] [äidinkieli] on [englanti].", "en": "I'm from Canada. My mother tongue is English." },
+        { "who": "Matti", "fi": "[Puhutko](puhua) [sinä] [myös] ranskaa?", "en": "Do you also speak French?" },
+        { "who": "Leo", "fi": "[Vähän]. [En puhu] ranskaa hyvin.", "en": "A little. I don't speak French well." },
+        { "who": "Sofia", "fi": "[Minun] [äidinkieli] on italia. Mitä [kieltä](kieli) [sinä] [puhut](puhua), Matti?", "en": "My mother tongue is Italian. What languages do you speak, Matti?" },
+        { "who": "Matti", "fi": "Suomea, ruotsia [ja] [englantia](englanti).", "en": "Finnish, Swedish and English." },
+        { "who": "Sofia", "fi": "[Missä] [sinä] [asut](asua), Leo?", "en": "Where do you live, Leo?" },
+        { "who": "Leo", "fi": "[Asun](asua) Helsingissä. [Menen](mennä) [kotiin](koti) [bussilla](bussi).", "en": "I live in Helsinki. I go home by bus." },
+        { "who": "Matti", "fi": "[Minä] en asu Helsingissä [vaan](ei X vaan Y) Espoossa. [Minä] [ajan](ajaa) [autolla](auto).", "en": "I don't live in Helsinki but in Espoo. I drive." },
+        { "who": "Sofia", "fi": "[Ai niin, totta]! Nähdään huomenna!", "en": "Oh yeah, true! See you tomorrow!" }
+      ]
+    },
+    {
+      "id": "videopuhelu",
+      "chapter": "Chapter 3",
+      "title": "Videopuhelu",
+      "subtitle": "A video call with a friend: work, weather and moving",
+      "lines": [
+        { "who": "Sofia", "fi": "[Moi](Hei! / Moi!), Anni! [Nukutko](nukkua) [vielä]?", "en": "Hi, Anni! Are you still sleeping?" },
+        { "who": "Anni", "fi": "En! [Kello] on [jo] [puoli] yhdeksän. [Minun täytyy] [lähteä töihin] pian.", "en": "No! It's already half past eight. I have to leave for work soon." },
+        { "who": "Sofia", "fi": "[Ai niin, totta]! Sinulla on [uusi] [työpaikka]. [Millainen] se on?", "en": "Oh right! You have a new job. What is it like?" },
+        { "who": "Anni", "fi": "[Tosi] [mukava]. [Entä] sinä? [Oletko](olla) [jo] [töissä](olla töissä)?", "en": "Really nice. And you? Are you working already?" },
+        { "who": "Sofia", "fi": "[Ei vielä]. [Etsin töitä](etsiä töitä), [mutta] se ei ole [helppoa](helppo).", "en": "Not yet. I'm looking for a job, but it isn't easy." },
+        { "who": "Sofia", "fi": "[Nyt] olen [suomen kurssilla](suomen kurssi) [maanantaisin], [keskiviikkoisin] [ja] [torstaisin].", "en": "Now I'm on a Finnish course on Mondays, Wednesdays and Thursdays." },
+        { "who": "Anni", "fi": "[Hieno juttu]! Sinun suomi on [jo] [tosi] hyvä.", "en": "That's great! Your Finnish is already really good." },
+        { "who": "Sofia", "fi": "[Kiitos], [mutta] en puhu [yhtä hyvin kuin] sinä.", "en": "Thanks, but I don't speak as well as you." },
+        { "who": "Sofia", "fi": "[Millainen] [sää] on Rovaniemellä?", "en": "What's the weather like in Rovaniemi?" },
+        { "who": "Anni", "fi": "[Aika] [huono]. Vain kahdeksan [astetta](aste). [Sataa] [ja] [on tuulista].", "en": "Quite bad. Only eight degrees. It's raining and windy." },
+        { "who": "Sofia", "fi": "Täällä [aurinko paistaa] [ja] on [lämmin]. Mutta [kesällä](kesä) [yö] on [valoisa], [ja] en [nuku](nukkua) hyvin.", "en": "Here the sun is shining and it's warm. But in summer the night is bright, and I don't sleep well." },
+        { "who": "Anni", "fi": "[Marraskuussa](marraskuu) täällä on [tosi] [pimeää](pimeä). [Nauti](nauttia) valosta!", "en": "In November it's really dark here. Enjoy the light!" },
+        { "who": "Sofia", "fi": "[Niin kuulemma]!", "en": "So I hear!" },
+        { "who": "Anni", "fi": "Asutteko te [vielä] [opiskelija-asunnossa](opiskelija-asunto)?", "en": "Do you still live in the student apartment?" },
+        { "who": "Sofia", "fi": "Joo, [mutta] me [muutamme](muuttaa) [syyskuussa](syyskuu). [Meidän] [uusi] [koti] on Vantaalla.", "en": "Yes, but we're moving in September. Our new home is in Vantaa." },
+        { "who": "Anni", "fi": "[Kuulostaa hyvältä]! Nyt [minun täytyy] mennä. [Terveisiä Hannalle!]", "en": "Sounds good! Now I have to go. Say hi to Hanna!" },
+        { "who": "Sofia", "fi": "[Kiitos], [minä] [kerron](kertoa)! Moi moi!", "en": "Thanks, I'll tell her! Bye bye!" }
+      ]
+    },
+    {
+      "id": "kurssitoimisto",
+      "chapter": "Chapter 3",
+      "title": "Kurssitoimistossa",
+      "subtitle": "At the course office: enrolling in the next course",
+      "lines": [
+        { "who": "Kurssisihteeri", "fi": "[Hei]! Voinko [auttaa]?", "en": "Hi! Can I help?" },
+        { "who": "Leo", "fi": "[Hei]. [Haluan](haluta) [ilmoittautua] suomen kurssille.", "en": "Hi. I want to enroll in a Finnish course." },
+        { "who": "Kurssisihteeri", "fi": "Mikä [taso]?", "en": "Which level?" },
+        { "who": "Leo", "fi": "Suomi 2. Milloin [seuraava] kurssi [alkaa]?", "en": "Finnish 2. When does the next course start?" },
+        { "who": "Kurssisihteeri", "fi": "[Hetkinen], [minä] [tarkistan](tarkistaa)… [Seuraava] kurssi [alkaa] [ensi] maanantaina [kello] 9.", "en": "Just a moment, I'll check… The next course starts next Monday at 9." },
+        { "who": "Leo", "fi": "Aamulla? [Se ei käy]. Olen aamulla [töissä](olla töissä).", "en": "In the morning? That doesn't work. I'm at work in the mornings." },
+        { "who": "Kurssisihteeri", "fi": "[No], on [myös] [toinen] ryhmä: [maanantaisin] [ja] [keskiviikkoisin] [kello] 18.", "en": "Well, there's also another group: on Mondays and Wednesdays at 18." },
+        { "who": "Leo", "fi": "[Anteeksi], [sanotko uudelleen]?", "en": "Sorry, can you say that again?" },
+        { "who": "Kurssisihteeri", "fi": "[Maanantaisin] [ja] [keskiviikkoisin], [kello] kuusi illalla.", "en": "On Mondays and Wednesdays, at six in the evening." },
+        { "who": "Leo", "fi": "Hyvä, se käy!", "en": "Good, that works!" },
+        { "who": "Kurssisihteeri", "fi": "[Tässä] on [lomake]. Kirjoita [etunimi], [sukunimi] [ja] kotikunta.", "en": "Here's a form. Write your first name, last name and home municipality." },
+        { "who": "Leo", "fi": "Mitä \"kotikunta\" [tarkoittaa]?", "en": "What does \"kotikunta\" mean?" },
+        { "who": "Kurssisihteeri", "fi": "Se [tarkoittaa] [kaupunkia](kaupunki), missä sinä [asut](asua).", "en": "It means the city where you live." },
+        { "who": "Leo", "fi": "Okei. [Valmis]!", "en": "OK. Ready!" },
+        { "who": "Kurssisihteeri", "fi": "[Kiitos]. Nyt kaikki on [tehty]. [Saat](saada) [laskun](lasku) [sähköpostitse].", "en": "Thanks. Now everything is done. You'll get the invoice by e-mail." },
+        { "who": "Leo", "fi": "[Kiitos avusta]!", "en": "Thanks for the help!" }
+      ]
+    }
+  ]
+}

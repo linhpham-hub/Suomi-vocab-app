@@ -1,0 +1,80 @@
+{
+  "_comment": "Teacher's Wordwall practice links, from 'Glossary_practise links .docx' and the lesson 8 slides (15.9.2026).",
+  "glossary": [
+    { "chapter": "Chapters 1-2", "parts": [
+      { "name": "Part 1", "games": [
+        { "type": "Combine", "url": "https://wordwall.net/play/106205/554/689?wwmethod=link" },
+        { "type": "Multiple choice", "url": "https://wordwall.net/play/106205/554/713?wwmethod=link" },
+        { "type": "Flash cards", "url": "https://wordwall.net/play/106205/554/195" } ] },
+      { "name": "Part 2", "games": [
+        { "type": "Combine", "url": "https://wordwall.net/play/106205/801/229?wwmethod=link" },
+        { "type": "Multiple choice", "url": "https://wordwall.net/play/106205/801/513?wwmethod=link" },
+        { "type": "Flash cards", "url": "https://wordwall.net/play/106205/801/557" } ] },
+      { "name": "Part 3", "games": [
+        { "type": "Combine", "url": "https://wordwall.net/play/106206/171/166?wwmethod=link" },
+        { "type": "Multiple choice", "url": "https://wordwall.net/play/106206/171/631?wwmethod=link" },
+        { "type": "Flash cards", "url": "https://wordwall.net/play/106206/171/750" } ] }
+    ] },
+    { "chapter": "Chapter 3", "parts": [
+      { "name": "Part 1", "games": [
+        { "type": "Combine", "url": "https://wordwall.net/play/106783/380/321?wwmethod=link" },
+        { "type": "Multiple choice", "url": "https://wordwall.net/play/106783/380/499?wwmethod=link" },
+        { "type": "Flash cards", "url": "https://wordwall.net/play/106783/380/651" },
+        { "type": "Write", "url": "https://wordwall.net/play/106783/380/680?wwmethod=link" } ] },
+      { "name": "Part 2", "games": [
+        { "type": "Combine", "url": "https://wordwall.net/play/106784/262/430?wwmethod=link" },
+        { "type": "Multiple choice", "url": "https://wordwall.net/play/106784/262/927?wwmethod=link" },
+        { "type": "Flash cards", "url": "https://wordwall.net/play/106784/262/567" },
+        { "type": "Write", "url": "https://wordwall.net/play/106784/262/130?wwmethod=link" } ] },
+      { "name": "Part 3", "games": [
+        { "type": "Combine", "url": "https://wordwall.net/play/106784/786/447?wwmethod=link" },
+        { "type": "Multiple choice", "url": "https://wordwall.net/play/106784/786/891?wwmethod=link" },
+        { "type": "Flash cards", "url": "https://wordwall.net/play/106784/786/714" },
+        { "type": "Write", "url": "https://wordwall.net/play/106784/786/764?wwmethod=link" } ] }
+    ] },
+    { "chapter": "Chapter 4", "parts": [
+      { "name": "Part 1", "games": [
+        { "type": "Combine", "url": "https://wordwall.net/play/108382/070/320?wwmethod=link" },
+        { "type": "Multiple choice", "url": "https://wordwall.net/play/108382/070/765?wwmethod=link" },
+        { "type": "Flash cards", "url": "https://wordwall.net/play/108382/070/310" },
+        { "type": "Write", "url": "https://wordwall.net/play/108382/070/295?wwmethod=link" } ] },
+      { "name": "Part 2", "games": [
+        { "type": "Combine", "url": "https://wordwall.net/play/108382/490/410?wwmethod=link" },
+        { "type": "Multiple choice", "url": "https://wordwall.net/play/108382/490/712?wwmethod=link" },
+        { "type": "Flash cards", "url": "https://wordwall.net/play/108382/490/664" },
+        { "type": "Write", "url": "https://wordwall.net/play/108382/490/955?wwmethod=link" } ] },
+      { "name": "Part 3", "games": [
+        { "type": "Combine", "url": "https://wordwall.net/play/108382/876/897?wwmethod=link" },
+        { "type": "Multiple choice", "url": "https://wordwall.net/play/108382/876/709?wwmethod=link" },
+        { "type": "Flash cards", "url": "https://wordwall.net/play/108382/876/536" },
+        { "type": "Write", "url": "https://wordwall.net/play/108382/876/961?wwmethod=link" } ] },
+      { "name": "Part 4", "games": [
+        { "type": "Combine", "url": "https://wordwall.net/play/108383/173/405?wwmethod=link" },
+        { "type": "Multiple choice", "url": "https://wordwall.net/play/108383/173/222?wwmethod=link" },
+        { "type": "Flash cards", "url": "https://wordwall.net/play/108383/173/136" },
+        { "type": "Write", "url": "https://wordwall.net/play/108383/173/196?wwmethod=link" } ] }
+    ] },
+    { "chapter": "Chapter 5", "parts": [
+      { "name": "Part 1", "games": [
+        { "type": "Combine", "url": "https://wordwall.net/play/110092/932/999?wwmethod=link" },
+        { "type": "Multiple choice", "url": "https://wordwall.net/play/110092/932/167?wwmethod=link" },
+        { "type": "Flash cards", "url": "https://wordwall.net/play/110092/932/171" },
+        { "type": "Write", "url": "https://wordwall.net/play/110092/932/750?wwmethod=link" } ] },
+      { "name": "Part 2", "games": [
+        { "type": "Combine", "url": "https://wordwall.net/play/110094/967/475?wwmethod=link" },
+        { "type": "Multiple choice", "url": "https://wordwall.net/play/110094/967/339?wwmethod=link" },
+        { "type": "Flash cards", "url": "https://wordwall.net/play/110094/967/368" },
+        { "type": "Write", "url": "https://wordwall.net/play/110094/967/741?wwmethod=link" } ] }
+    ] }
+  ],
+  "prices": [
+    { "title": "Ice-cream kiosk dialogue: fill in the gaps", "url": "https://wordwall.net/fi/resource/109083938/suomi-1/dialogi-j%C3%A4%C3%A4telokioskilla-sm1-kpl-2" },
+    { "title": "How much is this? (listen: the prices)", "url": "https://wordwall.net/fi/resource/86454237/s2/mit%C3%A4-t%C3%A4m%C3%A4-maksaa" },
+    { "title": "Listen: the prices", "url": "https://wordwall.net/fi/resource/117079065/s2/kuuntele-hinta" },
+    { "title": "Listen: the prices, spoken Finnish (1)", "url": "https://wordwall.net/fi/resource/61576358/suomi-toisena-kielen%C3%A4/kuuntele-ja-yhdist%C3%A4-mik%C3%A4-hinta" },
+    { "title": "Listen: the prices, spoken Finnish (2)", "url": "https://wordwall.net/fi/resource/87936475/puhekielen-numerot-hinta-kuuntele" }
+  ],
+  "oral": [
+    { "title": "Wheel of fortune: basic questions", "url": "https://wordwall.net/play/88732/838/244?wwmethod=link" }
+  ]
+}

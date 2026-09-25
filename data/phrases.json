@@ -1,0 +1,22 @@
+{
+  "_comment": "Shopping phrases, from the teacher's handout 'Shopping phrases.docx' and the lesson 8 slides. 'spoken' is empty when the everyday form is the same.",
+  "shopping": [
+    { "fi": "Voinko auttaa?", "spoken": "", "en": "Can I help?" },
+    { "fi": "Kuinka paljon tämä maksaa?", "spoken": "Mitä tää maksaa?", "en": "How much is this?" },
+    { "fi": "Kuinka paljon nämä maksavat?", "spoken": "Mitä nää maksaa?", "en": "How much are these?" },
+    { "fi": "Se maksaa viisitoista euroa.", "spoken": "Se maksaa viistoist euroo.", "en": "It costs 15 euros." },
+    { "fi": "Ne maksavat kaksikymmentä euroa.", "spoken": "Ne maksaa kakskyt euroo.", "en": "They cost 20 euros." },
+    { "fi": "Se on liian kallis.", "spoken": "", "en": "It's too expensive." },
+    { "fi": "Se on liian paljon.", "spoken": "", "en": "It's too much." },
+    { "fi": "Minä maksan viisi euroa, okei?", "spoken": "Mä maksan viis euroo, okei?", "en": "I'll pay 5 euros, OK?" },
+    { "fi": "Minä otan tämän.", "spoken": "Mä otan tän.", "en": "I'll take this." },
+    { "fi": "Minä otan sen.", "spoken": "Mä otan sen.", "en": "I'll take it." },
+    { "fi": "Minä otan nämä.", "spoken": "Mä otan nää.", "en": "I'll take these." },
+    { "fi": "Tuleeko muuta?", "spoken": "Tuleeks muuta?", "en": "Anything else?" },
+    { "fi": "Käteisellä vai kortilla?", "spoken": "", "en": "Cash or card?" },
+    { "fi": "Käteisellä, kiitos.", "spoken": "", "en": "Cash, please." },
+    { "fi": "Kortilla, kiitos.", "spoken": "", "en": "By card, please." },
+    { "fi": "Tarvitsetko kuittia?", "spoken": "Tarviitko kuittia?", "en": "Do you need a receipt?" },
+    { "fi": "Ei kiitos.", "spoken": "Ei kiitti.", "en": "No, thanks." }
+  ]
+}

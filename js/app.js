@@ -1,64 +1,57 @@
-// Suomen Sanasto -- main app logic. No build step, no framework: plain DOM + templates.
+// Suomen Sanasto -- main app: data loading, tab navigation, the Study tab and
+// the study sessions (Focus / Flashcards / Quiz / Write). Other tabs live in
+// words.js, talk.js, oral.js and progress.js. Plain DOM, no build step.
+
+const APP_VERSION = "2026-09-26";
+const WHATS_NEW = [
+  "🎯 Focus words replaces “Review due”: it practises only the words you keep missing",
+  "📖 Words is its own tab now, with search, ✓ filters and the teacher's Wordwall games",
+  "🔊 Tap any 🔊 to hear the Finnish pronunciation",
+  "💬 Talk tab: dialogues, numbers (standard + spoken) and shopping phrases",
+  "🎤 Oral test tab: all 26 questions, random-5 practice, space for your own answers",
+  "☁️ Save your progress on all your devices with your name + a 4-digit PIN",
+  "✍️ Forgot the dots (a instead of ä)? You now get half a point",
+];
 
 const PREFS_KEY = "finVocabPrefs.v1";
-const SESSION_LENGTH = 15; // words per flashcard/quiz/write session
+const SEEN_VERSION_KEY = "finVocabSeenVersion.v1";
+const SESSION_SIZES = [10, 15, 25, 50, 0]; // 0 = all words in the selection
 
-// Fun, varied ways to say "correct!" -- picked at random so it doesn't feel robotic.
 const PRAISE = [
-  "Correct! :)",
-  "Nice! (^_^)",
-  "Yes! ✅",
-  "Great job! 🎉",
-  "Keep it up! 💪",
-  "You got it! 🙌",
-  "Awesome! ✨",
-  "Well done! (๑˃̵ᴗ˂̵)و",
-  "Perfect! 👏",
-  "Way to go! 🌟",
-  "Superb! (づ｡◕‿‿◕｡)づ",
-  "Nailed it! 🔥",
-  "Good job! (^o^)/",
-  "Excellent! 🥳",
-  "Congratulations! ^o^",
+  "Correct! :)", "Nice! (^_^)", "Yes! ✅", "Great job! 🎉", "Keep it up! 💪",
+  "You got it! 🙌", "Awesome! ✨", "Well done! (๑˃̵ᴗ˂̵)و", "Perfect! 👏", "Way to go! 🌟",
+  "Superb! (づ｡◕‿‿◕｡)づ", "Nailed it! 🔥", "Good job! (^o^)/", "Excellent! 🥳", "Congratulations! ^o^",
 ];
-
-function randomPraise() {
-  return PRAISE[Math.floor(Math.random() * PRAISE.length)];
-}
-
-const SUMMARY_PRAISE_PERFECT = [
-  "Perfect score! ٩(◕‿◕)۶",
-  "Flawless! 🏆",
-  "100%?! Amazing! 🥳",
-  "Wow, nailed every one! ✨",
-];
-const SUMMARY_PRAISE_GOOD = [
-  "Nice work! 🎉",
-  "Great session! (^o^)/",
-  "Keep it up! 💪",
-  "You're on a roll! 🔥",
-  "Solid work! 👏",
-];
+const SUMMARY_PRAISE_PERFECT = ["Perfect score! ٩(◕‿◕)۶", "Flawless! 🏆", "100%?! Amazing! 🥳", "Wow, nailed every one! ✨"];
+const SUMMARY_PRAISE_GOOD = ["Nice work! 🎉", "Great session! (^o^)/", "Keep it up! 💪", "You're on a roll! 🔥", "Solid work! 👏"];
 const SUMMARY_PRAISE_KEEP_GOING = [
-  "Keep practising — you'll get there. 🌱",
-  "Good effort — every rep counts! 💪",
-  "Getting there — try again? 🙂",
-  "Practice makes progress. 🌱",
+  "Keep practising, you'll get there. 🌱", "Good effort, every rep counts! 💪",
+  "Getting there. Try again? 🙂", "Practice makes progress. 🌱",
 ];
 
 function randomFrom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
+function randomPraise() {
+  return randomFrom(PRAISE);
+}
 
 const state = {
   words: [],
   chapters: [],
+  byId: new Map(),
+  conversations: [],
+  phrases: [],
+  oral: [],
+  links: { glossary: [], prices: [], oral: [] },
   selectedChapters: new Set(),
   direction: "fi-en", // 'fi-en' | 'en-fi' | 'mixed'
-  view: "home",
+  sessionSize: 15,
+  view: "study",
 };
 
 const app = document.getElementById("app");
+const tabbar = document.getElementById("tabbar");
 
 function tpl(id) {
   return document.getElementById(id).content.cloneNode(true);
@@ -66,127 +59,209 @@ function tpl(id) {
 
 function loadPrefs() {
   try {
-    const raw = localStorage.getItem(PREFS_KEY);
-    if (!raw) return null;
-    return JSON.parse(raw);
+    return JSON.parse(localStorage.getItem(PREFS_KEY)) || null;
   } catch {
     return null;
   }
 }
 
 function savePrefs() {
-  localStorage.setItem(
-    PREFS_KEY,
-    JSON.stringify({
-      selectedChapters: [...state.selectedChapters],
-      direction: state.direction,
-    })
-  );
+  try {
+    const prev = loadPrefs() || {};
+    localStorage.setItem(
+      PREFS_KEY,
+      JSON.stringify({
+        ...prev,
+        selectedChapters: [...state.selectedChapters],
+        chaptersTouched: true,
+        direction: state.direction,
+        sessionSize: state.sessionSize,
+      })
+    );
+  } catch {}
+}
+
+async function loadJson(path, fallback) {
+  try {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(res.status);
+    return await res.json();
+  } catch (e) {
+    console.warn("Could not load", path, e);
+    return fallback;
+  }
 }
 
 async function init() {
-  const res = await fetch("data/vocab.json");
-  const data = await res.json();
-  state.words = data.words;
-  state.chapters = data.chapters;
+  const [vocab, conv, phrases, oral, links] = await Promise.all([
+    loadJson("data/vocab.json", { chapters: [], words: [] }),
+    loadJson("data/conversations.json", { conversations: [] }),
+    loadJson("data/phrases.json", { shopping: [] }),
+    loadJson("data/oral.json", { questions: [] }),
+    loadJson("data/links.json", { glossary: [], prices: [], oral: [] }),
+  ]);
+  state.words = vocab.words;
+  state.chapters = vocab.chapters;
+  state.byId = new Map(vocab.words.map((w) => [w.id, w]));
+  state.conversations = conv.conversations || [];
+  state.phrases = phrases.shopping || [];
+  state.oral = oral.questions || [];
+  state.links = { glossary: [], prices: [], oral: [], ...links };
 
   const prefs = loadPrefs();
-  if (prefs && prefs.selectedChapters && prefs.selectedChapters.length) {
-    state.selectedChapters = new Set(
-      prefs.selectedChapters.filter((c) => state.chapters.includes(c))
-    );
-  }
-  if (!state.selectedChapters.size) {
+  if (prefs && Array.isArray(prefs.selectedChapters)) {
+    state.selectedChapters = new Set(prefs.selectedChapters.filter((c) => state.chapters.includes(c)));
+    // Older versions never stored an empty selection; treat that as "all".
+    if (!state.selectedChapters.size && !prefs.chaptersTouched) state.selectedChapters = new Set(state.chapters);
+  } else {
     state.selectedChapters = new Set(state.chapters);
   }
   if (prefs && prefs.direction) state.direction = prefs.direction;
+  if (prefs && SESSION_SIZES.includes(prefs.sessionSize)) state.sessionSize = prefs.sessionSize;
 
-  renderHome();
+  window.addEventListener("hashchange", route);
+  route();
   registerServiceWorker();
-  if (typeof maybeShowNamePrompt === "function") maybeShowNamePrompt();
+  maybeShowNamePrompt();
+
+  // Linked devices: quietly pull progress made elsewhere, then refresh the view.
+  if (getAccount()) {
+    syncAccount().then((r) => {
+      if (r.ok && r.merged && state.view !== "session") showTab(state.view);
+    });
+  }
 }
+
+// ---------- Tabs ----------
+
+const TABS = [
+  { id: "study", icon: "📚", label: "Study", render: () => renderStudy() },
+  { id: "words", icon: "📖", label: "Words", render: () => renderWords() },
+  { id: "talk", icon: "💬", label: "Talk", render: () => renderTalk() },
+  { id: "oral", icon: "🎤", label: "Oral test", render: () => renderOral() },
+  { id: "progress", icon: "📊", label: "Progress", render: () => renderProgress() },
+];
+
+function currentTabId() {
+  const m = location.hash.match(/^#\/([\w-]+)/);
+  return m && TABS.some((t) => t.id === m[1]) ? m[1] : "study";
+}
+
+function route() {
+  showTab(currentTabId());
+}
+
+function go(tabId) {
+  if (currentTabId() === tabId && location.hash) showTab(tabId);
+  else location.hash = "#/" + tabId;
+}
+
+function showTab(id) {
+  const tab = TABS.find((t) => t.id === id) || TABS[0];
+  Speech.stop();
+  closeWordPopover();
+  state.view = tab.id;
+  app.innerHTML = "";
+  tabbar.hidden = false;
+  document.body.classList.add("has-tabbar");
+  try {
+    tab.render();
+  } catch (e) {
+    console.error(e);
+    app.innerHTML = `<div class="card"><p>Something went wrong showing this page. Try reloading.</p></div>`;
+  }
+  renderTabBar(tab.id);
+  window.scrollTo(0, 0);
+}
+
+function renderTabBar(activeId) {
+  tabbar.innerHTML = "";
+  TABS.forEach((t) => {
+    tabbar.appendChild(
+      el("a", {
+        href: "#/" + t.id,
+        class: "tab" + (t.id === activeId ? " tab--active" : ""),
+        "aria-current": t.id === activeId ? "page" : false,
+        html: `<span class="tab-icon" aria-hidden="true">${t.icon}</span><span class="tab-label">${t.label}</span>`,
+      })
+    );
+  });
+}
+
+// ---------- Study tab ----------
 
 function activeWordPool() {
   return state.words.filter((w) => state.selectedChapters.has(w.chapter));
 }
 
-function pickDirectionFor(word) {
-  if (state.direction === "mixed") {
-    return Math.random() < 0.5 ? "fi-en" : "en-fi";
-  }
-  return state.direction;
+// Focus words = the ones that need work: got wrong last time (streak 0) or
+// only half right (missing dots / used a hint). Most-missed first.
+function isFocusWord(w) {
+  const lv = SRS.level(w.id);
+  return lv === "focus" || (lv !== "mastered" && lv !== "new" && SRS.get(w.id).lastResult === "half");
 }
 
-function promptAndAnswer(word, dir) {
-  return dir === "fi-en" ? { prompt: word.fi, answer: word.en } : { prompt: word.en, answer: word.fi };
+function focusPool() {
+  return activeWordPool()
+    .filter(isFocusWord)
+    .sort((a, b) => SRS.get(b.id).wrong - SRS.get(a.id).wrong || SRS.get(a.id).box - SRS.get(b.id).box);
 }
 
-// ---------- HOME ----------
+function renderStudy() {
+  app.appendChild(tpl("tpl-study"));
 
-function renderHome() {
-  state.view = "home";
-  app.innerHTML = "";
-  app.appendChild(tpl("tpl-home"));
+  // Greeting with the learner's name (tap to change).
+  const greet = app.querySelector('[data-role="greeting"]');
+  const name = displayName();
+  const acct = getAccount();
+  greet.innerHTML = "";
+  greet.appendChild(el("span", { text: name ? `Hei, ${name}! 👋` : "Hei! 👋" }));
+  greet.appendChild(
+    el("button", {
+      type: "button",
+      class: "name-edit-btn",
+      text: name ? (acct ? "☁️ edit" : "✏️ edit") : "Set your name",
+      onclick: () => openNameModal({ editing: true }),
+    })
+  );
 
-  const chapterRow = app.querySelector('[data-role="chapters"]');
-  state.chapters.forEach((chapter) => {
-    const btn = document.createElement("button");
-    btn.className = "chip";
-    btn.textContent = chapter;
-    btn.dataset.chapter = chapter;
-    if (state.selectedChapters.has(chapter)) btn.classList.add("chip--active");
-    btn.addEventListener("click", () => {
-      // Freely toggle -- it's fine to end up with zero chapters selected;
-      // the mode buttons below get disabled with a hint in that case.
-      if (state.selectedChapters.has(chapter)) {
-        state.selectedChapters.delete(chapter);
-      } else {
-        state.selectedChapters.add(chapter);
-      }
-      savePrefs();
-      renderHome();
-    });
-    chapterRow.appendChild(btn);
-  });
+  renderWhatsNew(app.querySelector('[data-role="whats-new"]'));
 
-  const allBtn = document.createElement("button");
-  allBtn.className = "chip chip--all";
-  const allSelected = state.selectedChapters.size === state.chapters.length;
-  allBtn.textContent = allSelected ? "All ✓" : "All";
-  allBtn.addEventListener("click", () => {
-    state.selectedChapters = new Set(state.chapters);
+  chapterChips(app.querySelector('[data-role="chapters"]'), state.chapters, state.selectedChapters, (next) => {
+    state.selectedChapters = next;
     savePrefs();
-    renderHome();
+    showTab("study");
   });
-  chapterRow.prepend(allBtn);
 
-  const noneBtn = document.createElement("button");
-  noneBtn.className = "chip chip--none";
-  noneBtn.textContent = "None";
-  noneBtn.addEventListener("click", () => {
-    state.selectedChapters = new Set();
-    savePrefs();
-    renderHome();
-  });
-  chapterRow.insertBefore(noneBtn, chapterRow.children[1] || null);
-
-  const dirSeg = app.querySelector('[data-role="direction"]');
-  dirSeg.querySelectorAll(".segmented-btn").forEach((btn) => {
-    if (btn.dataset.value === state.direction) btn.classList.add("segmented-btn--active");
+  app.querySelectorAll('[data-role="direction"] .segmented-btn').forEach((btn) => {
+    btn.classList.toggle("segmented-btn--active", btn.dataset.value === state.direction);
     btn.addEventListener("click", () => {
       state.direction = btn.dataset.value;
       savePrefs();
-      renderHome();
+      showTab("study");
     });
   });
 
-  const pool = activeWordPool();
-  const ids = pool.map((w) => w.id);
-  const stats = SRS.statsForIds(ids);
-  const due = SRS.dueCount(ids);
+  const sizeRow = app.querySelector('[data-role="session-size"]');
+  SESSION_SIZES.forEach((n) => {
+    sizeRow.appendChild(
+      el("button", {
+        type: "button",
+        class: "segmented-btn" + (state.sessionSize === n ? " segmented-btn--active" : ""),
+        text: n ? String(n) : "All",
+        onclick: () => {
+          state.sessionSize = n;
+          savePrefs();
+          showTab("study");
+        },
+      })
+    );
+  });
 
+  const pool = activeWordPool();
+  const stats = SRS.statsForIds(pool.map((w) => w.id));
   const summary = app.querySelector('[data-role="stats-summary"]');
-  if (pool.length === 0) {
+  if (!pool.length) {
     summary.innerHTML = `<p class="empty-selection-note">Pick at least one chapter above to start studying.</p>`;
   } else {
     summary.innerHTML = `
@@ -195,50 +270,138 @@ function renderHome() {
         <div class="stat"><span class="stat-num">${stats.new}</span><span class="stat-label">new</span></div>
         <div class="stat"><span class="stat-num">${stats.learning}</span><span class="stat-label">learning</span></div>
         <div class="stat"><span class="stat-num">${stats.mastered}</span><span class="stat-label">mastered</span></div>
-      </div>
-    `;
+      </div>`;
   }
 
-  const dueLabel = app.querySelector('[data-role="due-count"]');
-  dueLabel.textContent = pool.length === 0 ? "Pick a chapter" : due > 0 ? `${due} due now` : "All caught up";
+  const focusCount = focusPool().length;
+  const sizeLabel = state.sessionSize ? `${Math.min(state.sessionSize, pool.length)} words` : `all ${pool.length} words`;
+  const descs = {
+    focus: !pool.length ? "Pick a chapter" : focusCount ? `${focusCount} weak word${focusCount === 1 ? "" : "s"} · quiz` : "No weak words yet 🎉",
+    flashcards: `${sizeLabel} · flip & self-grade`,
+    quiz: `${sizeLabel} · multiple choice`,
+    write: `${sizeLabel} · type the answer`,
+  };
 
   app.querySelectorAll(".mode-btn").forEach((btn) => {
-    btn.disabled = pool.length === 0;
+    const mode = btn.dataset.mode;
+    btn.querySelector(".mode-desc").textContent = descs[mode];
+    const disabled = !pool.length || (mode === "focus" && !focusCount);
+    btn.disabled = disabled;
     btn.addEventListener("click", () => {
-      if (pool.length === 0) return;
-      startSession(btn.dataset.mode);
+      if (!disabled) startSession(mode);
     });
   });
 
-  app.querySelector('[data-role="stats-link"]').addEventListener("click", renderStats);
-  app.querySelector('[data-role="glossary-link"]').addEventListener("click", renderGlossary);
+  app.querySelector('[data-role="words-link"]').addEventListener("click", () => go("words"));
 }
 
-// ---------- SESSION SETUP ----------
-
-function buildQueue(mode) {
-  const pool = activeWordPool();
-  if (!pool.length) return [];
-
-  let candidates;
-  if (mode === "review") {
-    candidates = pool.filter((w) => SRS.isDue(w.id));
-    if (!candidates.length) candidates = [...pool]; // nothing due -> just study the set
-  } else {
-    candidates = [...pool];
+function renderWhatsNew(box) {
+  let seen = null;
+  try { seen = localStorage.getItem(SEEN_VERSION_KEY); } catch {}
+  const returning = !!(getPlayerName() || Object.keys(SRS.exportAll()).length);
+  if (seen === APP_VERSION || !returning) {
+    if (!returning) try { localStorage.setItem(SEEN_VERSION_KEY, APP_VERSION); } catch {}
+    box.remove();
+    return;
   }
-
-  shuffle(candidates);
-
-  // Prioritise due/new words first, then fill with the rest, capped to SESSION_LENGTH.
-  candidates.sort((a, b) => {
-    const aDue = SRS.isDue(a.id) ? 0 : 1;
-    const bDue = SRS.isDue(b.id) ? 0 : 1;
-    return aDue - bDue;
-  });
-
-  return candidates.slice(0, Math.min(SESSION_LENGTH, candidates.length));
+  box.hidden = false;
+  box.innerHTML = "";
+  box.appendChild(el("h2", { class: "panel-title", text: "✨ What's new" }));
+  box.appendChild(el("ul", { class: "whats-new-list" }, WHATS_NEW.map((t) => el("li", { text: t }))));
+  box.appendChild(
+    el("button", {
+      type: "button",
+      class: "ghost-btn whats-new-ok",
+      text: "Got it",
+      onclick: () => {
+        try { localStorage.setItem(SEEN_VERSION_KEY, APP_VERSION); } catch {}
+        box.remove();
+      },
+    })
+  );
 }
+
+// ---------- Name + device-link prompt ----------
+
+function maybeShowNamePrompt() {
+  if (getPlayerName()) return;
+  openNameModal({ editing: false });
+}
+
+function openNameModal({ editing }) {
+  const modal = document.getElementById("name-modal");
+  const input = document.getElementById("name-input");
+  const linkRow = document.getElementById("link-row");
+  const linkBox = document.getElementById("link-check");
+  const pinWrap = document.getElementById("pin-wrap");
+  const pinInput = document.getElementById("pin-input");
+  const err = document.getElementById("name-error");
+  const submitBtn = document.getElementById("name-submit");
+  const skipBtn = document.getElementById("name-skip");
+  const title = document.getElementById("name-title");
+  const acct = getAccount();
+
+  title.textContent = editing ? "Your name" : "Welcome! 👋";
+  input.value = displayName();
+  err.hidden = true;
+  pinInput.value = "";
+  linkRow.hidden = !syncIsConfigured() || !!acct;
+  linkBox.checked = false;
+  pinWrap.hidden = true;
+  skipBtn.textContent = editing ? "Cancel" : "Skip";
+  submitBtn.textContent = editing ? "Save" : "Start studying";
+  submitBtn.disabled = false;
+  modal.hidden = false;
+  input.focus();
+
+  linkBox.onchange = () => {
+    pinWrap.hidden = !linkBox.checked;
+    if (linkBox.checked) pinInput.focus();
+  };
+  pinInput.oninput = () => (pinInput.value = pinInput.value.replace(/\D/g, "").slice(0, 4));
+
+  const close = () => {
+    modal.hidden = true;
+    if (state.view !== "session") showTab(state.view);
+  };
+
+  skipBtn.onclick = () => {
+    if (!editing && !getPlayerName()) setPlayerName("Friend");
+    close();
+  };
+
+  const submit = async () => {
+    const name = input.value.trim().slice(0, 30);
+    err.hidden = true;
+    if (linkBox.checked) {
+      if (!name) {
+        err.hidden = false;
+        err.textContent = "Type a name to save your progress under.";
+        return;
+      }
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Connecting…";
+      const r = await linkAccount(name, pinInput.value);
+      submitBtn.disabled = false;
+      submitBtn.textContent = editing ? "Save" : "Start studying";
+      if (!r.ok) {
+        err.hidden = false;
+        err.textContent = r.message;
+        return;
+      }
+      toast(r.created ? "☁️ Saved! Use the same name + PIN on your other devices." : `☁️ Welcome back! Progress loaded${r.merged ? ` (${r.merged} words updated)` : ""}.`, 4500);
+    } else {
+      setPlayerName(name || "Friend");
+      if (acct) syncAccount();
+    }
+    close();
+  };
+  submitBtn.onclick = submit;
+  input.onkeydown = (e) => { if (e.key === "Enter") submit(); };
+  pinInput.onkeydown = (e) => { if (e.key === "Enter") submit(); };
+}
+
+// ---------- Session setup ----------
 
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -248,35 +411,54 @@ function shuffle(arr) {
   return arr;
 }
 
-function startSession(mode) {
-  const queue = buildQueue(mode);
+function buildQueue(mode) {
+  const size = state.sessionSize || Infinity;
+  if (mode === "focus") {
+    return shuffle(focusPool().slice(0, size));
+  }
+  const candidates = shuffle([...activeWordPool()]);
+  // Words that are due (never seen, or scheduled for review) come first.
+  candidates.sort((a, b) => (SRS.isDue(a.id) ? 0 : 1) - (SRS.isDue(b.id) ? 0 : 1));
+  return candidates.slice(0, Math.min(size, candidates.length));
+}
+
+function startSession(mode, customQueue) {
+  const queue = customQueue || buildQueue(mode);
   if (!queue.length) {
-    renderHome();
+    showTab("study");
     return;
   }
-  const session = {
-    mode: mode === "review" ? "flashcards" : mode, // review reuses flashcard UI
+  renderSession({
+    kind: mode,
+    mode: mode === "focus" ? "quiz" : mode,
     queue,
     index: 0,
     score: 0,
     missed: [],
-  };
-  renderSession(session);
+    returnTab: state.view === "session" ? "study" : state.view,
+  });
 }
 
-// ---------- SESSION SHELL ----------
+// ---------- Session shell ----------
 
 function renderSession(session) {
   state.view = "session";
+  Speech.stop();
   app.innerHTML = "";
+  tabbar.hidden = true;
+  document.body.classList.remove("has-tabbar");
   app.appendChild(tpl("tpl-session"));
-  app.querySelector('[data-role="exit"]').addEventListener("click", renderHome);
+  app.querySelector('[data-role="exit"]').addEventListener("click", () => go(session.returnTab || "study"));
   updateSessionChrome(session);
+  renderCurrent(session);
+  window.scrollTo(0, 0);
+}
 
+function renderCurrent(session) {
   const body = app.querySelector('[data-role="body"]');
   if (session.mode === "flashcards") renderFlashcard(session, body);
   else if (session.mode === "quiz") renderQuiz(session, body);
-  else if (session.mode === "write") renderWrite(session, body);
+  else renderWrite(session, body);
 }
 
 function updateSessionChrome(session) {
@@ -284,9 +466,9 @@ function updateSessionChrome(session) {
   const fill = app.querySelector('[data-role="progress-fill"]');
   if (fill) fill.style.width = pct + "%";
   const label = app.querySelector('[data-role="progress-label"]');
-  if (label) label.textContent = `${session.index + 1} / ${session.queue.length}`;
+  if (label) label.textContent = `${session.index + 1} / ${session.queue.length}${session.kind === "focus" ? " · 🎯 focus" : ""}`;
   const score = app.querySelector('[data-role="score"]');
-  if (score && session.mode !== "flashcards") score.textContent = `${session.score}✓`;
+  if (score && session.mode !== "flashcards") score.textContent = `${formatScore(session.score)}✓`;
 }
 
 function advance(session) {
@@ -295,64 +477,94 @@ function advance(session) {
     renderSummary(session);
     return;
   }
-  const body = app.querySelector('[data-role="body"]');
   updateSessionChrome(session);
-  if (session.mode === "flashcards") renderFlashcard(session, body);
-  else if (session.mode === "quiz") renderQuiz(session, body);
-  else if (session.mode === "write") renderWrite(session, body);
+  renderCurrent(session);
 }
 
-// ---------- FLASHCARDS ----------
+function pickDirectionFor() {
+  if (state.direction === "mixed") return Math.random() < 0.5 ? "fi-en" : "en-fi";
+  return state.direction;
+}
+
+function promptAndAnswer(word, dir) {
+  return dir === "fi-en" ? { prompt: word.fi, answer: word.en } : { prompt: word.en, answer: word.fi };
+}
+
+function maybeAutoplay(text) {
+  if (Speech.settings().autoplay) setTimeout(() => Speech.say(text), 150);
+}
+
+function recordResult(session, word, result) {
+  SRS.grade(word.id, result);
+  if (result === true) session.score += 1;
+  else if (result === "half") {
+    session.score += 0.5;
+    session.missed.push(word);
+  } else session.missed.push(word);
+  updateSessionChrome(session);
+}
+
+// ---------- Flashcards ----------
 
 function renderFlashcard(session, body) {
   const word = session.queue[session.index];
-  const dir = pickDirectionFor(word);
+  const dir = pickDirectionFor();
   const { prompt, answer } = promptAndAnswer(word, dir);
 
   body.innerHTML = "";
   body.appendChild(tpl("tpl-flashcard"));
-
   body.querySelector('[data-role="chapter"]').textContent = word.chapter;
   body.querySelector('[data-role="chapter-back"]').textContent = word.chapter;
   body.querySelector('[data-role="front"]').textContent = prompt;
   body.querySelector('[data-role="back"]').textContent = answer;
+  // 🔊 goes on whichever face shows the Finnish word.
+  body.querySelector(dir === "fi-en" ? '[data-role="speak-front"]' : '[data-role="speak-back"]').appendChild(speakBtn(word.fi));
+  if (dir === "fi-en") maybeAutoplay(word.fi);
 
   const card = body.querySelector('[data-role="flashcard"]');
   const gradeRow = body.querySelector('[data-role="grade-row"]');
   let flipped = false;
 
-  card.addEventListener("click", () => {
+  const flip = () => {
     flipped = !flipped;
     card.classList.toggle("flashcard--flipped", flipped);
-    if (flipped) gradeRow.hidden = false;
+    if (flipped) {
+      gradeRow.hidden = false;
+      if (dir === "en-fi") maybeAutoplay(word.fi);
+    }
+  };
+  card.addEventListener("click", flip);
+  card.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); }
   });
 
   gradeRow.querySelectorAll(".grade-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
-      const good = btn.dataset.grade === "good";
-      SRS.grade(word.id, good);
-      if (good) session.score += 1;
-      else session.missed.push(word);
+      recordResult(session, word, btn.dataset.grade === "good");
       advance(session);
     });
   });
 }
 
-// ---------- QUIZ ----------
+// ---------- Quiz ----------
 
 function buildDistractors(word, dir, count) {
   const pool = state.words.filter((w) => w.id !== word.id);
   const sameChapter = pool.filter((w) => w.chapter === word.chapter);
   const source = sameChapter.length >= count ? sameChapter : pool;
-  const shuffled = shuffle([...source]);
   const picks = [];
   const seen = new Set();
-  const correctAnswer = (dir === "fi-en" ? word.en : word.fi).trim().toLowerCase();
-  for (const w of shuffled) {
+  const correct = (dir === "fi-en" ? word.en : word.fi).trim().toLowerCase();
+  const sameFi = normalizeLoose(word.fi);
+  const sameEn = normalizeLoose(word.en);
+  for (const w of shuffle([...source])) {
+    // Skip glossary twins (same Finnish or same English in another chapter):
+    // their meaning would also be a right answer.
+    if (normalizeLoose(w.fi) === sameFi || normalizeLoose(w.en) === sameEn) continue;
     const val = dir === "fi-en" ? w.en : w.fi;
     const key = val.trim().toLowerCase();
-    if (key === correctAnswer || seen.has(key)) continue;
+    if (key === correct || seen.has(key)) continue;
     seen.add(key);
     picks.push(val);
     if (picks.length >= count) break;
@@ -362,26 +574,26 @@ function buildDistractors(word, dir, count) {
 
 function renderQuiz(session, body) {
   const word = session.queue[session.index];
-  const dir = pickDirectionFor(word);
+  const dir = pickDirectionFor();
   const { prompt, answer } = promptAndAnswer(word, dir);
 
   body.innerHTML = "";
   body.appendChild(tpl("tpl-quiz"));
   body.querySelector('[data-role="chapter"]').textContent = word.chapter;
   body.querySelector('[data-role="prompt"]').textContent = prompt;
+  if (dir === "fi-en") {
+    body.querySelector('[data-role="prompt-speak"]').appendChild(speakBtn(word.fi));
+    maybeAutoplay(word.fi);
+  }
 
-  const distractors = buildDistractors(word, dir, 3);
-  const options = shuffle([answer, ...distractors]);
-
+  const options = shuffle([answer, ...buildDistractors(word, dir, 3)]);
   const grid = body.querySelector('[data-role="options"]');
   const nextBtn = body.querySelector('[data-role="next"]');
-  const quizFeedback = body.querySelector('[data-role="quiz-feedback"]');
+  const feedback = body.querySelector('[data-role="quiz-feedback"]');
   let answered = false;
 
   options.forEach((opt) => {
-    const btn = document.createElement("button");
-    btn.className = "option-btn";
-    btn.textContent = opt;
+    const btn = el("button", { type: "button", class: "option-btn", text: opt });
     btn.addEventListener("click", () => {
       if (answered) return;
       answered = true;
@@ -391,19 +603,8 @@ function renderQuiz(session, body) {
         if (normalizeLoose(b.textContent) === normalizeLoose(answer)) b.classList.add("option-btn--correct");
       });
       if (!correct) btn.classList.add("option-btn--wrong");
-      SRS.grade(word.id, correct);
-      if (correct) session.score += 1;
-      else session.missed.push(word);
-
-      quizFeedback.hidden = false;
-      if (correct) {
-        quizFeedback.className = "write-feedback write-feedback--correct";
-        quizFeedback.textContent = randomPraise();
-      } else {
-        quizFeedback.className = "write-feedback write-feedback--wrong";
-        quizFeedback.textContent = `Correct answer: ${answer}`;
-      }
-
+      recordResult(session, word, correct);
+      showFeedback(feedback, correct ? "correct" : "wrong", correct ? randomPraise() : `Correct answer: ${answer}`, word);
       nextBtn.hidden = false;
       nextBtn.focus();
     });
@@ -413,25 +614,35 @@ function renderQuiz(session, body) {
   nextBtn.addEventListener("click", () => advance(session));
 }
 
-// ---------- WRITE ----------
+function showFeedback(box, kind, text, word) {
+  box.hidden = false;
+  box.className = `write-feedback write-feedback--${kind === "half" ? "half" : kind}`;
+  box.innerHTML = "";
+  box.appendChild(el("span", { text }));
+  box.appendChild(speakBtn(word.fi, { small: true }));
+}
+
+// ---------- Write ----------
 
 function stripParens(s) {
-  // Drop parenthetical asides entirely: "(around) here" -> "here"
+  // "(around) here" -> "here"
   return s.replace(/\([^)]*\)/g, " ").replace(/\s+/g, " ").trim();
 }
 
 function flattenParens(s) {
-  // Keep the words but drop the parens themselves: "(around) here" -> "around here"
+  // "(around) here" -> "around here"
   return s.replace(/[()]/g, "").replace(/\s+/g, " ").trim();
 }
 
 function normalizeLoose(s) {
-  return s
+  return String(s)
     .toLowerCase()
     .normalize("NFKC")
-    .replace(/[!?.,;:]+$/g, "")
-    .trim()
-    .replace(/\s+/g, " ");
+    .replace(/[’`]/g, "'")
+    .replace(/-{2,}/g, " ")
+    .replace(/[!?.,;:]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function acceptableAnswers(raw, { stripLeadTo = false, stripArticles = false } = {}) {
@@ -439,14 +650,11 @@ function acceptableAnswers(raw, { stripLeadTo = false, stripArticles = false } =
   const parts = raw.split("/").map((p) => p.trim());
   for (const part of parts) {
     for (const withParens of [part, stripParens(part), flattenParens(part)]) {
-      const sub = withParens
-        .split(",")
-        .map((p) => p.trim())
-        .filter(Boolean);
+      const sub = withParens.split(",").map((p) => p.trim()).filter(Boolean);
       for (const s of [withParens, ...sub]) {
-        if (!s) continue;
-        let norm = normalizeLoose(s);
-        if (norm) variants.add(norm);
+        const norm = normalizeLoose(s);
+        if (!norm) continue;
+        variants.add(norm);
         if (stripLeadTo && norm.startsWith("to ")) variants.add(norm.slice(3).trim());
         if (stripArticles) {
           for (const art of ["a ", "an ", "the "]) {
@@ -459,24 +667,38 @@ function acceptableAnswers(raw, { stripLeadTo = false, stripArticles = false } =
   return variants;
 }
 
+function undot(s) {
+  return s.replace(/ä/g, "a").replace(/ö/g, "o").replace(/å/g, "a");
+}
+
+// Returns "correct", "half" (right word, but the dots on ä/ö/å are missing
+// or misplaced) or "wrong".
 function checkWriteAnswer(userInput, correctRaw, dir) {
-  const isEnglishAnswer = dir === "fi-en"; // answer field is English
-  const opts = isEnglishAnswer
-    ? { stripLeadTo: true, stripArticles: true }
-    : {};
+  const opts = dir === "fi-en" ? { stripLeadTo: true, stripArticles: true } : {};
   const accepted = acceptableAnswers(correctRaw, opts);
-  return accepted.has(normalizeLoose(userInput));
+  const typed = normalizeLoose(userInput);
+  if (!typed) return "wrong";
+  if (accepted.has(typed)) return "correct";
+  if (/[äöå]/i.test(correctRaw)) {
+    const undotted = new Set([...accepted].map(undot));
+    if (undotted.has(undot(typed))) return "half";
+  }
+  return "wrong";
 }
 
 function renderWrite(session, body) {
   const word = session.queue[session.index];
-  const dir = pickDirectionFor(word);
+  const dir = pickDirectionFor();
   const { prompt, answer } = promptAndAnswer(word, dir);
 
   body.innerHTML = "";
   body.appendChild(tpl("tpl-write"));
   body.querySelector('[data-role="chapter"]').textContent = word.chapter;
   body.querySelector('[data-role="prompt"]').textContent = prompt;
+  if (dir === "fi-en") {
+    body.querySelector('[data-role="prompt-speak"]').appendChild(speakBtn(word.fi));
+    maybeAutoplay(word.fi);
+  }
 
   const form = body.querySelector('[data-role="form"]');
   const input = body.querySelector('[data-role="input"]');
@@ -484,48 +706,66 @@ function renderWrite(session, body) {
   const nextBtn = body.querySelector('[data-role="next"]');
   const hintBtn = body.querySelector('[data-role="hint"]');
   const hintText = body.querySelector('[data-role="hint-text"]');
+  const letters = body.querySelector('[data-role="letters"]');
+  input.placeholder = dir === "fi-en" ? "Type the English…" : "Type the Finnish…";
+  letters.hidden = dir === "fi-en";
   input.focus();
+
+  // ä / ö buttons for keyboards without Finnish letters.
+  letters.querySelectorAll("button").forEach((b) => {
+    b.addEventListener("click", () => {
+      const start = input.selectionStart ?? input.value.length;
+      const end = input.selectionEnd ?? input.value.length;
+      input.value = input.value.slice(0, start) + b.textContent + input.value.slice(end);
+      input.focus();
+      input.setSelectionRange(start + 1, start + 1);
+    });
+  });
 
   let answered = false;
   let hintUsed = false;
 
   hintBtn.addEventListener("click", () => {
     hintUsed = true;
-    if (word.hint) {
-      hintText.textContent = "💡 " + word.hint;
-    } else {
-      // Fallback for words that don't have a written hint yet (e.g. a newly
-      // added chapter) -- see scripts/build_vocab.py / data/hints.json.
-      const firstLetter = answer.replace(/^\(/, "").trim()[0] || "?";
-      hintText.textContent = `💡 Starts with "${firstLetter}"`;
-    }
+    hintText.textContent = word.hint
+      ? "💡 " + word.hint
+      : `💡 Starts with "${answer.replace(/^\(/, "").trim()[0] || "?"}"`;
     hintText.hidden = false;
     hintBtn.disabled = true;
+    input.focus();
   });
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     if (answered) return;
     answered = true;
-    const correct = checkWriteAnswer(input.value, answer, dir) && !hintUsed;
-    const lenientCorrect = checkWriteAnswer(input.value, answer, dir);
-
+    // Also accept the meaning of glossary twins: "tarkistaa" is "to check out"
+    // in one chapter and "to check" in another; "that" is "tuo" or "että".
+    const twins = state.words.filter((w) =>
+      dir === "fi-en" ? normalizeLoose(w.fi) === normalizeLoose(word.fi) : normalizeLoose(w.en) === normalizeLoose(word.en)
+    );
+    const allAnswers = [...new Set(twins.map((w) => (dir === "fi-en" ? w.en : w.fi)))].join(" / ") || answer;
+    let result = checkWriteAnswer(input.value, allAnswers, dir);
     input.disabled = true;
-    feedback.hidden = false;
-    if (lenientCorrect) {
-      feedback.className = "write-feedback write-feedback--correct";
-      feedback.textContent = hintUsed ? `Correct (with hint) — ${answer}` : randomPraise();
-    } else {
-      feedback.className = "write-feedback write-feedback--wrong";
-      feedback.textContent = `Correct answer: ${answer}`;
-    }
 
-    SRS.grade(word.id, correct);
-    if (correct) session.score += 1;
-    else session.missed.push(word);
+    if (result === "correct" && hintUsed) {
+      showFeedback(feedback, "half", `Correct with a hint: +0.5 · ${answer}`, word);
+      recordResult(session, word, "half");
+    } else if (result === "correct") {
+      showFeedback(feedback, "correct", randomPraise(), word);
+      recordResult(session, word, true);
+    } else if (result === "half") {
+      showFeedback(feedback, "half", `Almost! Watch the dots: ${answer} (+0.5)`, word);
+      recordResult(session, word, "half");
+    } else {
+      showFeedback(feedback, "wrong", `Correct answer: ${answer}`, word);
+      recordResult(session, word, false);
+    }
+    if (dir === "en-fi") maybeAutoplay(word.fi);
 
     form.querySelector('[data-role="check"]').hidden = true;
     hintBtn.hidden = true;
+    letters.hidden = true;
     nextBtn.hidden = false;
     nextBtn.focus();
   });
@@ -533,15 +773,16 @@ function renderWrite(session, body) {
   nextBtn.addEventListener("click", () => advance(session));
 }
 
-// ---------- SUMMARY ----------
+// ---------- Summary ----------
 
 function renderSummary(session) {
-  state.view = "summary";
+  state.view = "session";
   app.innerHTML = "";
   app.appendChild(tpl("tpl-summary"));
 
   // Best-effort, silent, never blocks the UI -- see js/sync.js.
-  if (typeof syncProgress === "function") syncProgress(state.words, state.chapters);
+  syncProgress(state.words, state.chapters);
+  if (getAccount()) syncAccount();
 
   const total = session.queue.length;
   const headline = app.querySelector('[data-role="headline"]');
@@ -551,182 +792,57 @@ function renderSummary(session) {
     headline.textContent = "Session complete";
     detail.textContent = `${session.score} / ${total} marked as known.`;
   } else {
-    headline.textContent = `${session.score} / ${total} correct`;
-    const pct = Math.round((session.score / total) * 100);
-    if (pct === 100) detail.textContent = randomFrom(SUMMARY_PRAISE_PERFECT);
-    else if (pct >= 80) detail.textContent = randomFrom(SUMMARY_PRAISE_GOOD);
-    else detail.textContent = randomFrom(SUMMARY_PRAISE_KEEP_GOING);
+    headline.textContent = `${formatScore(session.score)} / ${total} correct`;
+    const pct = (session.score / total) * 100;
+    detail.textContent = randomFrom(pct === 100 ? SUMMARY_PRAISE_PERFECT : pct >= 80 ? SUMMARY_PRAISE_GOOD : SUMMARY_PRAISE_KEEP_GOING);
   }
 
-  app.querySelector('[data-role="home"]').addEventListener("click", renderHome);
-  app.querySelector('[data-role="again"]').addEventListener("click", () => {
-    const mode = session.mode;
-    startSession(mode);
-  });
-}
-
-// ---------- STATS ----------
-
-function renderStats() {
-  state.view = "stats";
-  app.innerHTML = "";
-  app.appendChild(tpl("tpl-stats"));
-  app.querySelector('[data-role="exit"]').addEventListener("click", renderHome);
-  app.querySelector('[data-role="reset"]').addEventListener("click", () => {
-    if (confirm("Reset all progress? This can't be undone.")) {
-      SRS.resetAll();
-      renderStats();
-    }
-  });
-
-  const body = app.querySelector('[data-role="body"]');
-  body.innerHTML = "";
-
-  state.chapters.forEach((chapter) => {
-    const ids = state.words.filter((w) => w.chapter === chapter).map((w) => w.id);
-    const stats = SRS.statsForIds(ids);
-    const masteredPct = stats.total ? Math.round((stats.mastered / stats.total) * 100) : 0;
-    const learningPct = stats.total ? Math.round((stats.learning / stats.total) * 100) : 0;
-
-    const row = document.createElement("div");
-    row.className = "chapter-stat";
-    row.innerHTML = `
-      <div class="chapter-stat-head">
-        <span>${chapter}</span>
-        <span class="chapter-stat-count">${stats.mastered + stats.learning}/${stats.total}</span>
-      </div>
-      <div class="chapter-stat-bar">
-        <div class="chapter-stat-fill chapter-stat-fill--mastered" style="width:${masteredPct}%"></div>
-        <div class="chapter-stat-fill chapter-stat-fill--learning" style="width:${learningPct}%; margin-left:${masteredPct}%"></div>
-      </div>
-    `;
-    body.appendChild(row);
-  });
-
-  const legend = document.createElement("div");
-  legend.className = "chapter-stat-legend";
-  legend.innerHTML = `
-    <span><i class="legend-dot legend-dot--mastered"></i>Mastered</span>
-    <span><i class="legend-dot legend-dot--learning"></i>Learning</span>
-    <span><i class="legend-dot legend-dot--new"></i>New</span>
-  `;
-  body.appendChild(legend);
-}
-
-// ---------- GLOSSARY (browse all words) ----------
-
-function renderGlossary() {
-  state.view = "glossary";
-  state.glossaryChapters = state.glossaryChapters || new Set(state.chapters);
-  state.glossaryQuery = state.glossaryQuery || "";
-
-  app.innerHTML = "";
-  app.appendChild(tpl("tpl-glossary"));
-  app.querySelector('[data-role="exit"]').addEventListener("click", renderHome);
-
-  const chapterRow = app.querySelector('[data-role="glossary-chapters"]');
-  state.chapters.forEach((chapter) => {
-    const btn = document.createElement("button");
-    btn.className = "chip";
-    btn.textContent = chapter;
-    if (state.glossaryChapters.has(chapter)) btn.classList.add("chip--active");
-    btn.addEventListener("click", () => {
-      if (state.glossaryChapters.has(chapter)) {
-        state.glossaryChapters.delete(chapter);
-      } else {
-        state.glossaryChapters.add(chapter);
-      }
-      renderGlossaryBody();
-      updateGlossaryChapterChips();
-    });
-    chapterRow.appendChild(btn);
-  });
-
-  const allBtn = document.createElement("button");
-  allBtn.className = "chip chip--all";
-  allBtn.textContent = "All";
-  allBtn.addEventListener("click", () => {
-    state.glossaryChapters = new Set(state.chapters);
-    renderGlossaryBody();
-    updateGlossaryChapterChips();
-  });
-  chapterRow.prepend(allBtn);
-
-  const searchInput = app.querySelector('[data-role="glossary-search"]');
-  searchInput.value = state.glossaryQuery;
-  searchInput.addEventListener("input", () => {
-    state.glossaryQuery = searchInput.value;
-    renderGlossaryBody();
-  });
-
-  renderGlossaryBody();
-}
-
-function updateGlossaryChapterChips() {
-  app.querySelectorAll('[data-role="glossary-chapters"] .chip:not(.chip--all)').forEach((btn) => {
-    btn.classList.toggle("chip--active", state.glossaryChapters.has(btn.textContent));
-  });
-}
-
-function renderGlossaryBody() {
-  const body = app.querySelector('[data-role="body"]');
-  body.innerHTML = "";
-
-  const query = state.glossaryQuery.trim().toLowerCase();
-  let anyResults = false;
-
-  state.chapters
-    .filter((chapter) => state.glossaryChapters.has(chapter))
-    .forEach((chapter) => {
-      const words = state.words.filter((w) => {
-        if (w.chapter !== chapter) return false;
-        if (!query) return true;
-        return w.fi.toLowerCase().includes(query) || w.en.toLowerCase().includes(query);
-      });
-      if (!words.length) return;
-      anyResults = true;
-
-      const section = document.createElement("section");
-      section.className = "glossary-chapter";
-
-      const heading = document.createElement("h3");
-      heading.className = "glossary-chapter-heading";
-      heading.textContent = `${chapter} (${words.length} word${words.length === 1 ? "" : "s"})`;
-      section.appendChild(heading);
-
-      const list = document.createElement("div");
-      list.className = "glossary-list";
-      words.forEach((w) => {
-        const row = document.createElement("div");
-        row.className = "glossary-row";
-        row.innerHTML = `<span class="glossary-fi">${escapeHtml(w.fi)}</span><span class="glossary-en">${escapeHtml(w.en)}</span>`;
-        list.appendChild(row);
-      });
-      section.appendChild(list);
-      body.appendChild(section);
-    });
-
-  if (!anyResults) {
-    body.innerHTML = `<p class="empty-selection-note">No words match${query ? ` "${escapeHtml(state.glossaryQuery)}"` : ""}. Try a different search or pick a chapter above.</p>`;
+  const missedBox = app.querySelector('[data-role="missed"]');
+  const missed = [...new Map(session.missed.map((w) => [w.id, w])).values()];
+  if (missed.length) {
+    missedBox.hidden = false;
+    missedBox.appendChild(el("h3", { class: "panel-title", text: `Practise again (${missed.length})` }));
+    const list = el("div", { class: "glossary-list" });
+    missed.forEach((w) => list.appendChild(wordRow(w)));
+    missedBox.appendChild(list);
+    missedBox.appendChild(
+      el("button", {
+        type: "button",
+        class: "primary-btn missed-again",
+        text: "🔁 Practise these words",
+        onclick: () => startSession(session.kind === "focus" ? "focus" : session.mode, shuffle([...missed])),
+      })
+    );
   }
+
+  app.querySelector('[data-role="home"]').addEventListener("click", () => go(session.returnTab || "study"));
+  app.querySelector('[data-role="again"]').addEventListener("click", () => startSession(session.kind));
 }
 
-function escapeHtml(s) {
-  const div = document.createElement("div");
-  div.textContent = s;
-  return div.innerHTML;
+// One word as a row: Finnish, English, level dots and 🔊. Shared by several tabs.
+function wordRow(w, { showChapter = false } = {}) {
+  const lv = SRS.level(w.id);
+  return el("div", { class: "glossary-row" }, [
+    el("div", { class: "glossary-main" }, [
+      el("span", { class: "glossary-fi" }, [
+        w.fi,
+        w.verbType ? el("span", { class: "verb-type", title: `Verb type ${w.verbType}`, text: `vt ${w.verbType}` }) : null,
+      ]),
+      el("span", { class: "glossary-en", text: w.en }),
+      showChapter ? el("span", { class: "glossary-chapter-tag", text: w.chapter }) : null,
+    ]),
+    el("div", { class: "glossary-side" }, [
+      el("span", { class: `level-dot level-dot--${lv}`, title: LEVEL_LABELS[lv] }),
+      speakBtn(w.fi, { small: true }),
+    ]),
+  ]);
 }
 
-// ---------- SERVICE WORKER ----------
+// ---------- Service worker ----------
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator)) return;
-  // Register right away rather than waiting for window's "load" event --
-  // by the time this runs (after the initial vocab fetch) the document has
-  // already finished loading, so a "load" listener here would never fire.
-  navigator.serviceWorker.register("sw.js").catch((err) => {
-    console.warn("Service worker registration failed:", err);
-  });
+  navigator.serviceWorker.register("sw.js").catch((err) => console.warn("SW registration failed", err));
 }
 
 init();
