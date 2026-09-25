@@ -4,13 +4,11 @@
 
 const APP_VERSION = "2026-09-26";
 const WHATS_NEW = [
-  "🎯 Focus words replaces “Review due”: it practises only the words you keep missing",
-  "📖 Words is its own tab now, with search, ✓ filters and the teacher's Wordwall games",
-  "🔊 Tap any 🔊 to hear the Finnish pronunciation",
+  "☁️ Save your progress on all your devices with your name + a 4-digit PIN",
+  "✍️ Study tab to practise all the glossaries",
+  "📖 Words tab is useful to search words in either Finnish or English",
   "💬 Talk tab: dialogues, numbers (standard + spoken) and shopping phrases",
   "🎤 Oral test tab: all 26 questions, random-5 practice, space for your own answers",
-  "☁️ Save your progress on all your devices with your name + a 4-digit PIN",
-  "✍️ Forgot the dots (a instead of ä)? You now get half a point",
 ];
 
 const PREFS_KEY = "finVocabPrefs.v1";
@@ -161,6 +159,9 @@ function showTab(id) {
   Speech.stop();
   closeWordPopover();
   state.view = tab.id;
+  document.body.dataset.tab = tab.id; // each tab has its own colour (css/style.css)
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute("content", getComputedStyle(document.body).getPropertyValue("--bg").trim() || "#E6EEC9");
   app.innerHTML = "";
   tabbar.hidden = false;
   document.body.classList.add("has-tabbar");
@@ -180,7 +181,7 @@ function renderTabBar(activeId) {
     tabbar.appendChild(
       el("a", {
         href: "#/" + t.id,
-        class: "tab" + (t.id === activeId ? " tab--active" : ""),
+        class: `tab tab--${t.id}` + (t.id === activeId ? " tab--active" : ""),
         "aria-current": t.id === activeId ? "page" : false,
         html: `<span class="tab-icon" aria-hidden="true">${t.icon}</span><span class="tab-label">${t.label}</span>`,
       })
@@ -293,6 +294,8 @@ function renderStudy() {
   });
 
   app.querySelector('[data-role="words-link"]').addEventListener("click", () => go("words"));
+  const fb = app.querySelector('[data-role="feedback-cta"]');
+  fb.addEventListener("click", openFeedback);
 }
 
 function renderWhatsNew(box) {

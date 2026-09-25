@@ -899,3 +899,61 @@ body.has-tabbar .app { padding-bottom: calc(96px + env(safe-area-inset-bottom));
 .num-details .muted { font-size: 0.78rem; }
 .num-details .num-section { margin-top: 12px; }
 .num-details .glossary-list { box-shadow: none; border: 1px solid var(--border); }
+
+/* =====================================================================
+   Per-tab colours. Each tab swaps the accent family, so the app feels
+   different per section. Study keeps the original greens.
+   Study = green, Words = teal, Talk = coral, Oral test = plum,
+   Progress = amber. To change a tab's colour, edit its block below.
+   ===================================================================== */
+body[data-tab="words"] {
+  --bg: #E1EFEE; --accent: #35858E; --accent-soft: #BFE3E6; --accent-strong: #1F5B61; --lavender: #2B6F77; --lavender-soft: #E1EFEE;
+}
+body[data-tab="talk"] {
+  --bg: #F6EADF; --accent: #B85A40; --accent-soft: #F6D5C9; --accent-strong: #8C3F2B; --lavender: #B85A40; --lavender-soft: #F6EADF;
+}
+body[data-tab="oral"] {
+  --bg: #F0E6EF; --accent: #8A5A8C; --accent-soft: #E9D5EA; --accent-strong: #5C3A5E; --lavender: #8A5A8C; --lavender-soft: #F0E6EF;
+}
+body[data-tab="progress"] {
+  --bg: #F5EDD9; --accent: #9C6F1E; --accent-soft: #F3E1B8; --accent-strong: #6E4E14; --lavender: #9C6F1E; --lavender-soft: #F5EDD9;
+  --gold: #6E4E14; --gold-soft: #F3E1B8;
+}
+@media (prefers-color-scheme: dark) {
+  body[data-tab="words"] { --bg: #07161A; --accent-soft: #1F4A4E; --accent-strong: #BFE3E6; --surface: #1F4A4E; --lavender-soft: #1F4A4E; --border: #35858E; }
+  body[data-tab="talk"] { --bg: #1A0E0A; --accent-soft: #5A2E22; --accent-strong: #F6D5C9; --surface: #4A2A20; --lavender-soft: #5A2E22; --border: #B85A40; }
+  body[data-tab="oral"] { --bg: #150C16; --accent-soft: #4A2F4C; --accent-strong: #E9D5EA; --surface: #3E2A40; --lavender-soft: #4A2F4C; --border: #8A5A8C; }
+  body[data-tab="progress"] { --bg: #161006; --accent-soft: #4F3B14; --accent-strong: #F3E1B8; --surface: #3F2F12; --lavender-soft: #4F3B14; --border: #9C6F1E; --gold: #F3E1B8; --gold-soft: #4F3B14; }
+}
+body { transition: background-color 0.25s; }
+html { background: var(--bg); }
+
+/* Tab bar: each tab shows its own colour when active, and a small colour dot always */
+.tab { position: relative; }
+.tab::after { content: ""; position: absolute; top: 3px; right: calc(50% - 16px); width: 6px; height: 6px; border-radius: 50%; opacity: 0.8; }
+.tab--study::after { background: #408A71; }
+.tab--words::after { background: #35858E; }
+.tab--talk::after { background: #B85A40; }
+.tab--oral::after { background: #8A5A8C; }
+.tab--progress::after { background: #9C6F1E; }
+.tab--active::after { display: none; }
+.tab--study.tab--active { background: #B0E4CC; color: #285A48; }
+.tab--words.tab--active { background: #BFE3E6; color: #1F5B61; }
+.tab--talk.tab--active { background: #F6D5C9; color: #8C3F2B; }
+.tab--oral.tab--active { background: #E9D5EA; color: #5C3A5E; }
+.tab--progress.tab--active { background: #F3E1B8; color: #6E4E14; }
+
+/* Feedback card on the Study tab: warm coral so it stands out from the greens */
+.feedback-cta {
+  display: flex; align-items: center; gap: 14px;
+  width: 100%; text-align: left; font: inherit; cursor: pointer;
+  background: #F6D5C9; color: #4A2A20;
+  border: 2px solid #B85A40;
+}
+.feedback-cta .cta-text span { color: #8C3F2B; }
+.feedback-cta .cta-arrow { color: #B85A40; }
+@media (prefers-color-scheme: dark) {
+  .feedback-cta { background: #4A2A20; color: #F6D5C9; }
+  .feedback-cta .cta-text span { color: #F6D5C9; opacity: 0.85; }
+  .feedback-cta .cta-arrow { color: #F6D5C9; }
+}

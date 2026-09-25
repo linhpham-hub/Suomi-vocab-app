@@ -78,6 +78,10 @@ Supabase project + `js/config.js`. All SQL is in `supabase/setup.sql`
   408A71 B0E4CC DCCCAC FFF8EC` for light + dark themes. This overrides the
   old "no green" rule. Friend sharing: no email/OTP; one-time name prompt;
   hidden passphrase dashboard.
+- 2026-09-26 (later): Chloe asked for a different colour per tab ("all tabs
+  the same colour looks boring"). Study keeps the greens; Words = teal,
+  Talk = coral, Oral test = plum, Progress = amber (`body[data-tab]` blocks at
+  the end of css/style.css). Plus a coral feedback card on the Study tab.
 - 2026-09-26: Review due → **Focus words**; cross-device sync via **name +
   4-digit PIN** (opt-in tickbox); feedback via a **Microsoft Form** (email
   notification + Excel), with optional email or anonymous.

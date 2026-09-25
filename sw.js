@@ -6,7 +6,7 @@
 // When offline, the last copy saved in the cache is used.
 //
 // Bump CACHE_NAME whenever the list of files below changes.
-const CACHE_NAME = "sanasto-cache-v5";
+const CACHE_NAME = "sanasto-cache-v6";
 
 const PRECACHE_URLS = [
   "./",
