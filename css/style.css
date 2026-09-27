@@ -925,7 +925,12 @@ body[data-tab="progress"] {
   body[data-tab="oral"] { --bg: #150C16; --accent-soft: #4A2F4C; --accent-strong: #E9D5EA; --surface: #3E2A40; --lavender-soft: #4A2F4C; --border: #8A5A8C; }
   body[data-tab="progress"] { --bg: #161006; --accent-soft: #4F3B14; --accent-strong: #F3E1B8; --surface: #3F2F12; --lavender-soft: #4F3B14; --border: #9C6F1E; --gold: #F3E1B8; --gold-soft: #4F3B14; }
 }
-body { transition: background-color 0.25s; }
+/* No background fade between tabs: it repainted the whole screen for every
+   frame of the fade and made tab switches feel laggy on phones. */
+
+/* Long word lists: the browser skips layout/painting of chapters that are
+   off-screen until you scroll near them. */
+.glossary-chapter { content-visibility: auto; contain-intrinsic-size: auto 1200px; }
 html { background: var(--bg); }
 
 /* Tab bar: each tab shows its own colour when active, and a small colour dot always */
@@ -957,3 +962,112 @@ html { background: var(--bg); }
   .feedback-cta .cta-text span { color: #F6D5C9; opacity: 0.85; }
   .feedback-cta .cta-arrow { color: #F6D5C9; }
 }
+
+/* Accounts table on dashboard */
+.accounts-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.accounts-table th { text-align: left; padding: 4px 8px 6px; border-bottom: 2px solid var(--accent-soft); color: var(--accent-strong); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.accounts-table td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
+.accounts-table tr:last-child td { border-bottom: none; }
+
+/* Oral test list: skip layout of question cards that are off-screen. */
+.oral-list > .oral-card { content-visibility: auto; contain-intrinsic-size: auto 260px; }
+
+/* =====================================================================
+   Dark mode readability (2026-09-27)
+   1. Buttons/inputs used the browser's default BLACK text, which stayed
+      black on dark cards (quiz answers, Study mode cards, number game).
+      :where() keeps specificity at 0, so every class colour still wins.
+   2. Tell the browser the page is dark, so its own defaults are light.
+   3. Link-style text used mid-tone accents (coral, plum) on dark cards;
+      use each tab's light tint instead.
+   4. Slightly deeper accent behind white button text (contrast >= 4.5).
+   ===================================================================== */
+:where(button, input, select, textarea) { color: inherit; }
+:where(button:disabled) { color: inherit; }
+.option-btn:disabled:not(.option-btn--correct):not(.option-btn--wrong) { opacity: 0.75; }
+
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: dark; --accent: #387A64; }
+  body[data-tab="words"] { --accent: #2E7780; }
+  body[data-tab="talk"] { --accent: #A64E36; }
+  body[data-tab="progress"] { --accent: #8C6319; }
+
+  .link-btn, .dl-who, .cta-arrow, .oral-mine-say { color: var(--accent-strong); }
+  .gloss-word { text-decoration-color: var(--accent-strong); }
+  .write-feedback--half { border-color: var(--accent-strong); }
+  .level-pill--almost { color: #fff; }
+}
+
+/* Light mode: secondary text (labels, "1 / 15", chapter names) was a pale
+   sage (#7DA78C) that was hard to read; same hue, darker. Buttons with white
+   text get the slightly deeper accent too. */
+:root { --ink-soft: #3F6652; --accent: #387A64; }
+@media (prefers-color-scheme: dark) { :root { --ink-soft: #B0E4CC; } }
+body[data-tab="words"] { --accent: #2E7780; }
+body[data-tab="talk"] { --accent: #A64E36; }
+body[data-tab="progress"] { --accent: #8C6319; }
+.segmented-btn--active { background: var(--accent); }
+.dl-who, .oral-mine-say { color: var(--accent-strong); }
+.app-credit { color: var(--ink-soft); }
+
+/* EN → FI letter hints: monospace so each _ lines up with one letter */
+.hint-letters { font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.02em; white-space: pre-wrap; }
+.hint-count { font-size: 0.85rem; color: var(--ink-soft); }
+
+/* Progress: "158 words | New | Learning | Mastered" like the Study summary */
+.bucket-row--main { grid-template-columns: 0.8fr 1fr 1fr 1fr; margin-top: 10px; }
+.bucket-total { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 10px 4px; color: var(--ink); }
+.bucket-row--main .bucket-label { font-size: 0.78rem; }
+.bucket-hint { margin: 8px 0 0; }
+.sub-bucket-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.sub-chip { font-size: 0.82rem; }
+
+/* ---------- Talk tab: 4 sections + sub-tabs (2026-09-27) ---------- */
+.segmented--wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+.segmented--wrap .segmented-btn { line-height: 1.15; padding: 8px 4px; font-size: 0.8rem; }
+.sub-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.sub-tab { font-size: 0.84rem; }
+.topic-list { margin-top: 6px; }
+.vocab-row .glossary-main, .phrase-row .glossary-main { display: flex; flex-direction: column; gap: 3px; }
+.vocab-extra { display: flex; align-items: center; gap: 6px; font-size: 0.92rem; }
+.adj-pair { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; }
+.adj-side { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.adj-vs { color: var(--ink-soft); font-weight: 700; }
+.colour-row { display: flex; align-items: center; gap: 12px; }
+.colour-swatch { width: 28px; height: 28px; border-radius: 8px; border: 1px solid var(--border); flex: none; }
+.mini-quiz-prompt { font-size: 1.35rem; font-weight: 700; text-align: center; margin: 6px 0 12px; }
+.mini-quiz-grid .option-btn { text-align: center; padding: 12px 8px; font-size: 0.98rem; }
+.clock-row { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 6px 0; }
+.clock-digital { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.clock-face { width: 110px; height: 110px; flex: none; }
+.clock-rim { fill: var(--surface); stroke: var(--accent-strong); stroke-width: 3; }
+.clock-tick { stroke: var(--ink-soft); stroke-width: 2; stroke-linecap: round; }
+.clock-hour { stroke: var(--ink); stroke-width: 5; stroke-linecap: round; }
+.clock-min { stroke: var(--accent); stroke-width: 3; stroke-linecap: round; }
+.clock-pin { fill: var(--ink); }
+.clock-ex { display: grid; grid-template-columns: 56px 1fr; gap: 8px; align-items: start; }
+.segmented--wrap { border-radius: 18px; } .segmented--wrap .segmented-btn { border-radius: 14px; }
+/* compact word rows: Finnish + forms on one line, English under/after */
+.vocab-row .glossary-main { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 2px 14px; }
+.vocab-row .glossary-en { flex-basis: 100%; }
+.vocab-row .phrase-fi { font-weight: 700; }
+.vocab-extra { font-size: 0.9rem; gap: 4px; }
+.topic-list .glossary-row { padding-top: 8px; padding-bottom: 8px; }
+.clock-ex .num-forms { align-items: flex-start; text-align: left; }
+.clock-ex .num-form { justify-content: flex-start; flex-wrap: nowrap; }
+.clock-ex .num-form-text { text-align: left; }
+.clock-ex .num-form { width: 100%; } .clock-ex .num-form-text { flex: 1; }
+.colour-row .glossary-main { flex: 1; align-items: flex-start; text-align: left; }
+.voice-select { max-width: 100%; width: 100%; }
+/* Progress word lists: skip drawing chapters that are off-screen */
+.bucket-list .glossary-list { content-visibility: auto; contain-intrinsic-size: auto 900px; }
+
+/* Word rows (Words tab, Progress lists): 🔊 | Finnish | English | level */
+.word-row { justify-content: flex-start; gap: 10px; padding-left: 10px; }
+.word-row .word-cols { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2px 12px; align-items: baseline; }
+.word-row .glossary-fi, .word-row .glossary-en { overflow-wrap: anywhere; }
+.word-row .glossary-chapter-tag { grid-column: 1 / -1; }
+.word-row .glossary-side { margin-left: auto; }
+.table-scroll { overflow-x: auto; }
+.users-summary { margin: 0 0 8px; }
+.nowrap { white-space: nowrap; }

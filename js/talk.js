@@ -1,24 +1,76 @@
 // Talk tab: practice dialogues (tap a glossary word to see its meaning and
-// hear it), numbers in standard and spoken Finnish, prices, shopping phrases.
+// hear it); Numbers & € (numbers, prices, clock, shopping phrases); Time &
+// weather (seasons, months, week, weather); Adjectives (opposites, colours).
+// Word lists for the last two live in data/topics.json.
 
-const talkState = { section: "dialogues", openConv: null, showEnglish: false, numStyle: "both" };
+const talkState = {
+  section: "dialogues",
+  openConv: null,
+  showEnglish: false,
+  numStyle: "both",
+  sub: { numbers: "numbers", time: "calendar", adjectives: "opposites" },
+};
+
+const TALK_SUBS = {
+  numbers: [["numbers", "🔢 Numbers"], ["prices", "🏷️ Prices"], ["clock", "🕒 Clock"], ["shopping", "🛒 Shopping"]],
+  time: [["calendar", "🍂 Seasons & months"], ["week", "📅 Week & days"], ["weather", "🌦️ Weather"]],
+  adjectives: [["opposites", "↔️ Opposites"], ["colours", "🎨 Colours"]],
+};
+
+function openTalk(section, sub) {
+  talkState.section = section;
+  if (sub) talkState.sub[section] = sub;
+  talkState.openConv = null;
+  showTab("talk");
+}
 
 function renderTalk() {
   app.appendChild(tpl("tpl-talk"));
+  if (talkState.section === "shopping") { talkState.section = "numbers"; talkState.sub.numbers = "shopping"; }
   const seg = app.querySelector('[data-role="talk-sections"]');
   seg.querySelectorAll(".segmented-btn").forEach((b) => {
     b.classList.toggle("segmented-btn--active", b.dataset.value === talkState.section);
     b.addEventListener("click", () => {
       Speech.stop();
-      talkState.section = b.dataset.value;
-      talkState.openConv = null;
-      showTab("talk");
+      openTalk(b.dataset.value);
     });
   });
+
+  // Second row of buttons inside a section.
+  const subBox = app.querySelector('[data-role="talk-sub"]');
+  const subs = TALK_SUBS[talkState.section];
+  if (subs) {
+    const sub = talkState.sub[talkState.section];
+    subs.forEach(([v, label]) =>
+      subBox.appendChild(
+        el("button", {
+          type: "button",
+          class: "chip sub-tab" + (v === sub ? " chip--active" : ""),
+          "data-value": v,
+          text: label,
+          onclick: () => { Speech.stop(); openTalk(talkState.section, v); },
+        })
+      )
+    );
+  } else {
+    subBox.remove();
+  }
+
   const body = app.querySelector('[data-role="talk-body"]');
-  if (talkState.section === "numbers") renderNumbers(body);
-  else if (talkState.section === "shopping") renderShopping(body);
-  else if (talkState.openConv) renderDialogue(body, state.conversations.find((c) => c.id === talkState.openConv));
+  const sub = talkState.sub[talkState.section];
+  if (talkState.section === "numbers") {
+    if (sub === "prices") renderPrices(body);
+    else if (sub === "clock") renderClock(body);
+    else if (sub === "shopping") renderShopping(body);
+    else renderNumbers(body);
+  } else if (talkState.section === "time") {
+    if (sub === "week") renderWeek(body);
+    else if (sub === "weather") renderWeather(body);
+    else renderCalendar(body);
+  } else if (talkState.section === "adjectives") {
+    if (sub === "colours") renderColours(body);
+    else renderOpposites(body);
+  } else if (talkState.openConv) renderDialogue(body, state.conversations.find((c) => c.id === talkState.openConv));
   else renderDialogueList(body);
 }
 
@@ -258,8 +310,6 @@ function renderNumbers(body) {
     })
   );
 
-  // Price trainer + listening game first: the most useful practice.
-  body.appendChild(priceTrainer());
   body.appendChild(listenGame());
 
   // Look up any number.
@@ -304,6 +354,13 @@ function renderNumbers(body) {
   details.addEventListener("toggle", () => (talkState.tableOpen = details.open));
   body.appendChild(details);
 
+}
+
+function renderPrices(body) {
+  body.appendChild(
+    el("p", { class: "section-intro", html: "Prices are said as <strong>euros + cents</strong>: 3,50 € = kolme euroa viisikymmentä senttiä, or short: kolme viisikymmentä." })
+  );
+  body.appendChild(priceTrainer());
   const links = state.links.prices || [];
   if (links.length) {
     body.appendChild(
@@ -313,6 +370,11 @@ function renderNumbers(body) {
       ])
     );
   }
+  body.appendChild(
+    el("div", { class: "link-row" }, [
+      el("button", { type: "button", class: "link-btn", text: "🛒 Shopping phrases →", onclick: () => openTalk("numbers", "shopping") }),
+    ])
+  );
 }
 
 function numRow(n) {
@@ -450,7 +512,304 @@ function renderShopping(body) {
   body.appendChild(
     el("div", { class: "link-row" }, [
       kiosk ? el("button", { type: "button", class: "link-btn", text: "🍦 Practise the ice-cream kiosk dialogue →", onclick: () => { talkState.section = "dialogues"; talkState.openConv = kiosk.id; showTab("talk"); } }) : null,
-      el("button", { type: "button", class: "link-btn", text: "🏷️ Practise saying prices →", onclick: () => { talkState.section = "numbers"; showTab("talk"); } }),
+      el("button", { type: "button", class: "link-btn", text: "🏷️ Practise saying prices →", onclick: () => openTalk("numbers", "prices") }),
     ])
   );
+}
+
+// ---------- Shared bits for the word-list sections ----------
+
+function topics() {
+  return state.topics || {};
+}
+
+// One row: Finnish 🔊, optional extra forms ("in: tammikuussa"), English.
+function vocabRow(item, extras = []) {
+  return el("div", { class: "glossary-row vocab-row" }, [
+    el("div", { class: "glossary-main" }, [
+      el("span", { class: "phrase-fi" }, [item.fi, speakBtn(item.fi, { small: true })]),
+      ...extras
+        .filter((x) => x && x.text)
+        .map((x) => el("span", { class: "vocab-extra" }, [el("span", { class: "num-form-label", text: x.label }), x.text, speakBtn(x.text, { small: true })])),
+      el("span", { class: "glossary-en", text: item.en }),
+    ]),
+  ]);
+}
+
+function phraseRow(p) {
+  return el("div", { class: "glossary-row phrase-row" }, [
+    el("div", { class: "glossary-main" }, [
+      el("span", { class: "phrase-fi" }, [p.fi, speakBtn(p.fi, { small: true })]),
+      p.spoken && p.spoken !== p.fi
+        ? el("span", { class: "phrase-spoken" }, [el("span", { class: "num-form-label", text: "spoken" }), p.spoken, speakBtn(p.spoken, { small: true })])
+        : null,
+      el("span", { class: "glossary-en", text: p.en }),
+    ]),
+  ]);
+}
+
+function listCard(title, rows, note) {
+  return el("section", { class: "card panel" }, [
+    el("h2", { class: "panel-title", text: title }),
+    note ? el("p", { class: "muted small", text: note }) : null,
+    el("div", { class: "glossary-list topic-list" }, rows),
+  ]);
+}
+
+// Small multiple-choice game: items = [{ prompt, answer, speak? }].
+function miniQuiz(title, allItems, { intro = "" } = {}) {
+  const box = el("section", { class: "card panel mini-quiz" });
+  // One question per prompt ("It's windy" = Tuulee / On tuulista: ask once).
+  const items = allItems.filter((q, i, arr) => arr.findIndex((o) => o.prompt === q.prompt) === i);
+  const samePrompt = (a, b) => allItems.some((x) => x.prompt === a.prompt && normalizeLoose(x.answer) === normalizeLoose(b));
+  let score = 0, rounds = 0, last = null;
+  const draw = () => {
+    let item;
+    do { item = items[Math.floor(Math.random() * items.length)]; } while (items.length > 1 && item === last);
+    last = item;
+    // Wrong options never include another right answer for the same prompt.
+    const wrong = shuffle(allItems.filter((i) => normalizeLoose(i.answer) !== normalizeLoose(item.answer) && !samePrompt(item, i.answer)).map((i) => i.answer));
+    const opts = shuffle([item.answer, ...[...new Set(wrong)].slice(0, 3)]);
+    box.innerHTML = "";
+    const grid = el("div", { class: "listen-grid mini-quiz-grid" });
+    const fb = el("p", { class: "listen-fb", hidden: true });
+    let done = false;
+    opts.forEach((o) =>
+      grid.appendChild(
+        el("button", {
+          type: "button",
+          class: "option-btn mini-opt",
+          text: o,
+          onclick: (e) => {
+            if (done) return;
+            done = true;
+            rounds++;
+            const ok = o === item.answer || samePrompt(item, o);
+            if (ok) score++;
+            e.currentTarget.classList.add(ok ? "option-btn--correct" : "option-btn--wrong");
+            grid.querySelectorAll(".mini-opt").forEach((b) => {
+              b.disabled = true;
+              if (b.textContent === item.answer) b.classList.add("option-btn--correct");
+            });
+            Speech.say(item.speak || item.answer);
+            fb.hidden = false;
+            fb.textContent = `${ok ? randomPraise() : "Answer: " + item.answer}  ·  ${score}/${rounds}`;
+            setTimeout(() => box.isConnected && draw(), ok ? 1500 : 2600);
+          },
+        })
+      )
+    );
+    box.append(
+      el("h2", { class: "panel-title", text: title }),
+      intro ? el("p", { class: "muted small", text: intro }) : null,
+      el("p", { class: "mini-quiz-prompt", text: item.prompt }),
+      grid,
+      fb
+    );
+  };
+  draw();
+  return box;
+}
+
+// ---------- Clock ----------
+
+const CLOCK_YLI = { 5: ["viisi", "viis"], 10: ["kymmenen", "kymmenen"], 15: ["varttia", "vartti"], 20: ["kaksikymmentä", "kakskyt"], 25: ["kaksikymmentäviisi", "kakskytviis"] };
+const CLOCK_VAILLE = { 35: ["kahtakymmentäviittä", "kakskytviis"], 40: ["kahtakymmentä", "kakskyt"], 45: ["varttia", "vartti"], 50: ["kymmentä", "kymmenen"], 55: ["viittä", "viis"] };
+
+// Everyday, spoken and official (24-hour, timetables) ways to say a time.
+function clockForms(h24, m) {
+  const h12 = ((h24 + 11) % 12) + 1;
+  const next = (h12 % 12) + 1;
+  let everyday, spoken;
+  if (m === 0) {
+    everyday = `Kello on ${numStandard(h12)}.`;
+    spoken = `Kello on ${numSpoken(h12)}.`;
+  } else if (m === 30) {
+    everyday = `Kello on puoli ${numStandard(next)}.`;
+    spoken = `Kello on puol ${numSpoken(next)}.`;
+  } else if (m < 30) {
+    everyday = `Kello on ${CLOCK_YLI[m][0]} yli ${numStandard(h12)}.`;
+    spoken = `Kello on ${CLOCK_YLI[m][1]} yli ${numSpoken(h12)}.`;
+  } else {
+    everyday = `Kello on ${CLOCK_VAILLE[m][0]} vaille ${numStandard(next)}.`;
+    spoken = `Kello on ${CLOCK_VAILLE[m][1]} vaille ${numSpoken(next)}.`;
+  }
+  const official = `kello ${numStandard(h24)}${m ? " " + numStandard(m) : ""}`;
+  const digital = `${h24}.${String(m).padStart(2, "0")}`;
+  return { everyday, spoken, official, digital };
+}
+
+function clockFace(h24, m) {
+  const NS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(NS, "svg");
+  svg.setAttribute("viewBox", "0 0 100 100");
+  svg.setAttribute("class", "clock-face");
+  svg.setAttribute("aria-hidden", "true");
+  const add = (tag, attrs) => {
+    const n = document.createElementNS(NS, tag);
+    Object.entries(attrs).forEach(([k, v]) => n.setAttribute(k, v));
+    svg.appendChild(n);
+  };
+  add("circle", { cx: 50, cy: 50, r: 46, class: "clock-rim" });
+  for (let i = 0; i < 12; i++) {
+    const a = (i * 30 * Math.PI) / 180;
+    const r1 = i % 3 === 0 ? 36 : 39;
+    add("line", { x1: 50 + r1 * Math.sin(a), y1: 50 - r1 * Math.cos(a), x2: 50 + 42 * Math.sin(a), y2: 50 - 42 * Math.cos(a), class: "clock-tick" });
+  }
+  const hand = (deg, len, cls) => {
+    const a = (deg * Math.PI) / 180;
+    add("line", { x1: 50, y1: 50, x2: 50 + len * Math.sin(a), y2: 50 - len * Math.cos(a), class: cls });
+  };
+  hand(((h24 % 12) + m / 60) * 30, 22, "clock-hour");
+  hand(m * 6, 33, "clock-min");
+  add("circle", { cx: 50, cy: 50, r: 3, class: "clock-pin" });
+  return svg;
+}
+
+function clockTrainer() {
+  const box = el("section", { class: "card panel price-trainer clock-trainer" });
+  const draw = () => {
+    const h24 = 6 + Math.floor(Math.random() * 18);
+    const m = 5 * Math.floor(Math.random() * 12);
+    const f = clockForms(h24, m);
+    box.innerHTML = "";
+    const answers = el("div", { class: "price-answers", hidden: true }, [
+      priceLine("Everyday", f.everyday),
+      priceLine("Spoken", f.spoken),
+      priceLine("Official", f.official),
+    ]);
+    const reveal = el("button", { type: "button", class: "primary-btn", text: "Show how to say it", onclick: () => { answers.hidden = false; reveal.hidden = true; } });
+    box.append(
+      el("h2", { class: "panel-title", text: "🕒 Paljonko kello on? Say the time" }),
+      el("div", { class: "clock-row" }, [
+        clockFace(h24, m),
+        el("div", { class: "clock-digital" }, [el("span", { class: "price-tag", text: f.digital }), el("button", { type: "button", class: "ghost-btn", text: "🔊 Hear it", onclick: () => Speech.say(f.everyday) })]),
+      ]),
+      el("p", { class: "muted small", text: "Say it out loud first, then check." }),
+      answers,
+      el("div", { class: "price-actions" }, [reveal, el("button", { type: "button", class: "ghost-btn", text: "Next time →", onclick: draw })])
+    );
+  };
+  draw();
+  return box;
+}
+
+function renderClock(body) {
+  body.appendChild(
+    el("p", { class: "section-intro", html: "<strong>yli</strong> = past, <strong>vaille</strong> = to, <strong>vartti</strong> = a quarter. Careful: <strong>puoli neljä</strong> is 3.30 (half <em>to</em> four)!" })
+  );
+  body.appendChild(clockTrainer());
+  const examples = [[15, 0], [15, 5], [15, 10], [15, 15], [15, 20], [15, 30], [15, 40], [15, 45], [15, 50], [15, 55]];
+  const rows = examples.map(([h, m]) => {
+    const f = clockForms(h, m);
+    return el("div", { class: "glossary-row clock-ex" }, [
+      el("span", { class: "num-digit", text: `${(h % 12) || 12}.${String(m).padStart(2, "0")}` }),
+      el("span", { class: "num-forms" }, [
+        el("span", { class: "num-form" }, [el("span", { class: "num-form-text", text: f.everyday }), speakBtn(f.everyday, { small: true })]),
+        f.spoken !== f.everyday
+          ? el("span", { class: "num-form" }, [el("span", { class: "num-form-label", text: "spoken" }), el("span", { class: "num-form-text", text: f.spoken }), speakBtn(f.spoken, { small: true })])
+          : null,
+      ]),
+    ]);
+  });
+  body.appendChild(listCard("📋 How it works", rows));
+  const off = [[7, 15], [12, 0], [15, 30], [21, 45]].map(([h, m]) => {
+    const f = clockForms(h, m);
+    return vocabRow({ fi: f.official, en: `klo ${f.digital}` });
+  });
+  body.appendChild(listCard("🚆 Official time (timetables, TV, appointments)", off, "Uses the 24-hour clock: hours, then minutes."));
+  body.appendChild(listCard("💬 Phrases", (topics().clockPhrases || []).map(phraseRow)));
+}
+
+// ---------- Time & weather ----------
+
+function renderCalendar(body) {
+  const t = topics();
+  body.appendChild(el("p", { class: "section-intro", html: "To say <strong>in</strong> a month or season, change the ending: <strong>syyskuu → syyskuussa</strong> (in September), <strong>talvi → talvella</strong> (in winter)." }));
+  body.appendChild(listCard("🍂 Vuodenajat · Seasons", (t.seasons || []).map((s) => vocabRow({ fi: s.fi, en: `${s.en} · ${s.months}` }, [{ label: "in", text: s.when }]))));
+  body.appendChild(listCard("🗓️ Kuukaudet · Months", (t.months || []).map((m) => vocabRow(m, [{ label: "in", text: m.when }])), "Months are written with a small letter in Finnish."));
+  body.appendChild(
+    miniQuiz("🎲 Quiz: months & seasons", [...(t.months || []), ...(t.seasons || [])].map((x) => ({ prompt: x.en, answer: x.fi })), { intro: "Pick the Finnish word." })
+  );
+  body.appendChild(listCard("💬 Phrases", (t.calendarPhrases || []).map(phraseRow)));
+  const games = state.links.calendar || [];
+  if (games.length) {
+    body.appendChild(
+      el("section", { class: "card panel" }, [
+        el("h2", { class: "panel-title", text: "🎮 Teacher's links (lesson 10)" }),
+        el("div", { class: "link-list" }, games.map((l) => el("a", { href: l.url, target: "_blank", rel: "noopener", class: "game-link game-link--wide", text: l.title }))),
+      ])
+    );
+  }
+}
+
+function renderWeek(body) {
+  const t = topics();
+  body.appendChild(el("p", { class: "section-intro", html: "<strong>maanantaina</strong> = on Monday (once), <strong>maanantaisin</strong> = on Mondays (every week)." }));
+  body.appendChild(listCard("📅 Viikonpäivät · Days of the week", (t.weekdays || []).map((d) => vocabRow(d, [{ label: "on", text: d.when }, { label: "every", text: d.every }]))));
+  body.appendChild(listCard("🌅 Parts of the day", (t.dayparts || []).map((d) => vocabRow(d, [{ label: "in / at", text: d.when }]))));
+  body.appendChild(listCard("⏳ Time words", (t.timewords || []).map((d) => vocabRow(d))));
+  body.appendChild(
+    miniQuiz("🎲 Quiz: week & days", [...(t.weekdays || []), ...(t.dayparts || []), ...(t.timewords || [])].map((x) => ({ prompt: x.en, answer: x.fi })), { intro: "Pick the Finnish word." })
+  );
+  body.appendChild(listCard("💬 Phrases", (t.weekPhrases || []).map(phraseRow)));
+}
+
+function renderWeather(body) {
+  const t = topics();
+  const games = (state.links.weather || []);
+  body.appendChild(el("p", { class: "section-intro", html: "<strong>Millainen sää on?</strong> What's the weather like? Most answers start with <strong>On …</strong> (It is …)." }));
+  body.appendChild(listCard("🌦️ Sää · Weather", (t.weather || []).map(phraseRow)));
+  body.appendChild(listCard("🌡️ Temperature", (t.temperature || []).map(phraseRow), "lämmintä = above zero, pakkasta = below zero."));
+  body.appendChild(listCard("📖 Weather words", (t.weatherWords || []).map((w) => vocabRow(w))));
+  body.appendChild(
+    miniQuiz("🎲 Quiz: weather", [...(t.weather || []), ...(t.weatherWords || [])].map((x) => ({ prompt: x.en, answer: x.fi })), { intro: "Pick the Finnish." })
+  );
+  if (games.length) {
+    body.appendChild(
+      el("section", { class: "card panel" }, [
+        el("h2", { class: "panel-title", text: "🎮 Teacher's weather games (lesson 10)" }),
+        el("div", { class: "link-list" }, games.map((l) => el("a", { href: l.url, target: "_blank", rel: "noopener", class: "game-link game-link--wide", text: l.title }))),
+      ])
+    );
+  }
+}
+
+// ---------- Adjectives ----------
+
+function renderOpposites(body) {
+  const t = topics();
+  const core = t.adjectivePairs || [];
+  const more = t.adjectiveMore || [];
+  const pairs = [...core, ...more];
+  body.appendChild(el("p", { class: "section-intro", html: "<strong>Millainen?</strong> = What kind of? What … like? Learn adjectives in pairs of opposites." }));
+  const pairRow = ([a, b]) =>
+    el("div", { class: "glossary-row adj-pair" }, [
+      el("div", { class: "adj-side" }, [el("span", { class: "phrase-fi" }, [a.fi, speakBtn(a.fi, { small: true })]), el("span", { class: "glossary-en", text: a.en })]),
+      el("span", { class: "adj-vs", text: "↔" }),
+      el("div", { class: "adj-side" }, [el("span", { class: "phrase-fi" }, [b.fi, speakBtn(b.fi, { small: true })]), el("span", { class: "glossary-en", text: b.en })]),
+    ]);
+  body.appendChild(listCard("↔️ Must-know opposites", core.map(pairRow), "From the course book (kappale 3, s. 60) + nopea/hidas, paljon/vähän."));
+  if (more.length) body.appendChild(listCard("➕ More adjectives", more.map(pairRow)));
+  const all = core.flat();
+  const meaning = [...new Map(all.map((x) => [x.fi + x.en, x])).values()].map((x) => ({ prompt: x.en, answer: x.fi }));
+  const opposite = core.flatMap(([a, b]) => [{ prompt: `${a.fi} ↔ ?`, answer: b.fi }, { prompt: `${b.fi} ↔ ?`, answer: a.fi }])
+    .filter((q, i, arr) => arr.findIndex((o) => o.prompt === q.prompt) === i); // "vanha" has two opposites: ask once
+  body.appendChild(miniQuiz("🎲 Quiz: what's the opposite?", opposite, { intro: "Must-know pairs. Pick the opposite." }));
+  body.appendChild(miniQuiz("🎲 Quiz: meaning", [...meaning, ...more.flat().map((x) => ({ prompt: x.en, answer: x.fi }))], { intro: "Pick the Finnish word." }));
+  body.appendChild(listCard("💬 Phrases", (t.adjectivePhrases || []).map(phraseRow)));
+}
+
+function renderColours(body) {
+  const t = topics();
+  body.appendChild(el("p", { class: "section-intro", html: "<strong>Minkä värinen?</strong> = What colour?" }));
+  const rows = (t.colours || []).map((c) =>
+    el("div", { class: "glossary-row vocab-row colour-row" }, [
+      el("span", { class: "colour-swatch", style: `background:${c.hex}` }),
+      el("div", { class: "glossary-main" }, [el("span", { class: "phrase-fi" }, [c.fi, speakBtn(c.fi, { small: true })]), el("span", { class: "glossary-en", text: c.en })]),
+    ])
+  );
+  body.appendChild(listCard("🎨 Värit · Colours", rows));
+  body.appendChild(miniQuiz("🎲 Quiz: colours", (t.colours || []).map((c) => ({ prompt: c.en, answer: c.fi })), { intro: "Pick the Finnish word." }));
+  body.appendChild(listCard("💬 Phrases", (t.colourPhrases || []).map(phraseRow)));
 }

@@ -154,7 +154,7 @@ function buildProgressSnapshot(allWords, chapterList) {
   return {
     // One row per person when linked (all their devices), otherwise per device.
     device_id: acct ? "acct:" + acct.username.toLowerCase() : getDeviceId(),
-    name: displayName() || "Friend",
+    name: getPlayerName() || "Friend",
     chapters,
     total_mastered: totals.mastered,
     total_learning: totals.learning,

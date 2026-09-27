@@ -2,13 +2,14 @@
 // the study sessions (Focus / Flashcards / Quiz / Write). Other tabs live in
 // words.js, talk.js, oral.js and progress.js. Plain DOM, no build step.
 
-const APP_VERSION = "2026-09-26";
+const APP_VERSION = "2026-09-27";
 const WHATS_NEW = [
-  "☁️ Save your progress on all your devices with your name + a 4-digit PIN",
-  "✍️ Study tab to practise all the glossaries",
-  "📖 Words tab is useful to search words in either Finnish or English",
-  "💬 Talk tab: dialogues, numbers (standard + spoken) and shopping phrases",
-  "🎤 Oral test tab: all 26 questions, random-5 practice, space for your own answers",
+  "🌙 Dark mode is easier to read",
+  "💡 EN → FI hints now show letters, like j _ _ t _ _ ö",
+  "📊 Progress shows the same New / Learning / Mastered numbers as Study: tap one to see those words",
+  "🕒 Talk: clock, seasons & months, days of the week, weather, adjectives (from the book, s. 60–62) and colours",
+  "🔊 Pick your voice in Progress → Voice (on-device voices start instantly)",
+  "📖 Words tab: Finnish on the left, English on the right",
 ];
 
 const PREFS_KEY = "finVocabPrefs.v1";
@@ -42,6 +43,7 @@ const state = {
   phrases: [],
   oral: [],
   links: { glossary: [], prices: [], oral: [] },
+  topics: {},
   selectedChapters: new Set(),
   direction: "fi-en", // 'fi-en' | 'en-fi' | 'mixed'
   sessionSize: 15,
@@ -91,12 +93,13 @@ async function loadJson(path, fallback) {
 }
 
 async function init() {
-  const [vocab, conv, phrases, oral, links] = await Promise.all([
+  const [vocab, conv, phrases, oral, links, topics] = await Promise.all([
     loadJson("data/vocab.json", { chapters: [], words: [] }),
     loadJson("data/conversations.json", { conversations: [] }),
     loadJson("data/phrases.json", { shopping: [] }),
     loadJson("data/oral.json", { questions: [] }),
     loadJson("data/links.json", { glossary: [], prices: [], oral: [] }),
+    loadJson("data/topics.json", {}),
   ]);
   state.words = vocab.words;
   state.chapters = vocab.chapters;
@@ -104,7 +107,8 @@ async function init() {
   state.conversations = conv.conversations || [];
   state.phrases = phrases.shopping || [];
   state.oral = oral.questions || [];
-  state.links = { glossary: [], prices: [], oral: [], ...links };
+  state.links = { glossary: [], prices: [], oral: [], weather: [], calendar: [], ...links };
+  state.topics = topics || {};
 
   const prefs = loadPrefs();
   if (prefs && Array.isArray(prefs.selectedChapters)) {
@@ -121,6 +125,9 @@ async function init() {
   route();
   registerServiceWorker();
   maybeShowNamePrompt();
+  // Check in once per app open so the owner dashboard lists everyone using
+  // the app (name + last opened), even before they finish a study session.
+  if (getPlayerName()) syncProgress(state.words, state.chapters);
 
   // Linked devices: quietly pull progress made elsewhere, then refresh the view.
   if (getAccount()) {
@@ -139,6 +146,10 @@ const TABS = [
   { id: "oral", icon: "🎤", label: "Oral test", render: () => renderOral() },
   { id: "progress", icon: "📊", label: "Progress", render: () => renderProgress() },
 ];
+
+// Same values as the body[data-tab] blocks at the end of css/style.css.
+const TAB_BG = { study: "#E6EEC9", words: "#E1EFEE", talk: "#F6EADF", oral: "#F0E6EF", progress: "#F5EDD9" };
+const TAB_BG_DARK = { study: "#091413", words: "#07161A", talk: "#1A0E0A", oral: "#150C16", progress: "#161006" };
 
 function currentTabId() {
   const m = location.hash.match(/^#\/([\w-]+)/);
@@ -160,8 +171,10 @@ function showTab(id) {
   closeWordPopover();
   state.view = tab.id;
   document.body.dataset.tab = tab.id; // each tab has its own colour (css/style.css)
+  // Phone status-bar colour. A fixed list (not getComputedStyle) so switching
+  // tabs doesn't force the browser to recalculate every style first.
   const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute("content", getComputedStyle(document.body).getPropertyValue("--bg").trim() || "#E6EEC9");
+  if (meta) meta.setAttribute("content", (matchMedia("(prefers-color-scheme: dark)").matches ? TAB_BG_DARK : TAB_BG)[tab.id] || "#E6EEC9");
   app.innerHTML = "";
   tabbar.hidden = false;
   document.body.classList.add("has-tabbar");
@@ -365,6 +378,7 @@ function openNameModal({ editing }) {
 
   const close = () => {
     modal.hidden = true;
+    syncProgress(state.words, state.chapters); // new / changed name shows on the dashboard right away
     if (state.view !== "session") showTab(state.view);
   };
 
@@ -670,6 +684,38 @@ function acceptableAnswers(raw, { stripLeadTo = false, stripArticles = false } =
   return variants;
 }
 
+// "kello / kellonaika" -> "kello"; "(minun) nimi" -> "nimi"
+function firstAlternative(s) {
+  return stripParens(String(s).split("/")[0]).trim();
+}
+
+// Letter skeleton for EN → FI hints. Level 1 shows the first letter and every
+// third letter after it ("jäätelö" -> "j _ _ t _ _ ö"), level 2 every other
+// letter ("j _ ä _ e _ ö"). The last letter of each word is always shown.
+// Spaces and punctuation stay, so phrases keep their shape.
+function letterHint(text, level = 1) {
+  const step = level >= 2 ? 2 : 3;
+  return text
+    .split(" ")
+    .map((w) => {
+      const chars = [...w];
+      let lastLetter = -1;
+      chars.forEach((c, i) => { if (/\p{L}/u.test(c)) lastLetter = i; });
+      const letters = chars.filter((c) => /\p{L}/u.test(c)).length;
+      if (letters <= 3) lastLetter = -1; // "ja" would give the answer away
+      let k = 0;
+      return chars
+        .map((c, i) => {
+          if (!/\p{L}/u.test(c)) return c;
+          const show = letters <= 3 ? k === 0 : k % step === 0 || i === lastLetter;
+          k += 1;
+          return show ? c : "_";
+        })
+        .join(" ");
+    })
+    .join("   ");
+}
+
 function undot(s) {
   return s.replace(/ä/g, "a").replace(/ö/g, "o").replace(/å/g, "a");
 }
@@ -728,13 +774,30 @@ function renderWrite(session, body) {
   let answered = false;
   let hintUsed = false;
 
+  // FI → EN: a meaning hint ("You say this after bumping into someone").
+  // EN → FI: letter hints, "j _ _ t _ _ ö" for jäätelö; a second tap shows
+  // more letters. Either way the answer counts as half right.
+  let hintLevel = 0;
   hintBtn.addEventListener("click", () => {
     hintUsed = true;
-    hintText.textContent = word.hint
-      ? "💡 " + word.hint
-      : `💡 Starts with "${answer.replace(/^\(/, "").trim()[0] || "?"}"`;
+    hintLevel += 1;
     hintText.hidden = false;
-    hintBtn.disabled = true;
+    if (dir === "en-fi") {
+      const target = firstAlternative(answer);
+      hintText.innerHTML = "";
+      hintText.append(
+        el("span", { text: "💡 " }),
+        el("span", { class: "hint-letters", text: letterHint(target, hintLevel) }),
+        el("span", { class: "hint-count", text: ` · ${target.replace(/[^\p{L}]/gu, "").length} letters` })
+      );
+      hintBtn.textContent = "💡 More letters";
+      if (hintLevel >= 2) hintBtn.disabled = true;
+    } else {
+      hintText.textContent = word.hint
+        ? "💡 " + word.hint
+        : `💡 Starts with "${answer.replace(/^\(/, "").trim()[0] || "?"}"`;
+      hintBtn.disabled = true;
+    }
     input.focus();
   });
 
@@ -825,8 +888,10 @@ function renderSummary(session) {
 // One word as a row: Finnish, English, level dots and 🔊. Shared by several tabs.
 function wordRow(w, { showChapter = false } = {}) {
   const lv = SRS.level(w.id);
-  return el("div", { class: "glossary-row" }, [
-    el("div", { class: "glossary-main" }, [
+  // Two columns: 🔊 + Finnish on the left, English on the right, level at the end.
+  return el("div", { class: "glossary-row word-row" }, [
+    speakBtn(w.fi, { small: true }),
+    el("div", { class: "glossary-main word-cols" }, [
       el("span", { class: "glossary-fi" }, [
         w.fi,
         w.verbType ? el("span", { class: "verb-type", title: `Verb type ${w.verbType}`, text: `vt ${w.verbType}` }) : null,
@@ -836,7 +901,6 @@ function wordRow(w, { showChapter = false } = {}) {
     ]),
     el("div", { class: "glossary-side" }, [
       el("span", { class: `level-dot level-dot--${lv}`, title: LEVEL_LABELS[lv] }),
-      speakBtn(w.fi, { small: true }),
     ]),
   ]);
 }

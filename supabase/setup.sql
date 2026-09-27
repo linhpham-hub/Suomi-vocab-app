@@ -191,6 +191,23 @@ end;
 $$;
 grant execute on function list_feedback(text) to anon;
 
+-- Returns registered account names for the dashboard (no PINs or SRS data).
+create or replace function list_users(p_passphrase text)
+returns table(username text, display_name text, created_at timestamptz, updated_at timestamptz)
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  if not exists (select 1 from app_secrets where key = 'dashboard_passphrase' and value = p_passphrase) then
+    raise exception 'not allowed' using errcode = '42501';
+  end if;
+  return query select a.username, a.display_name, a.created_at, a.updated_at
+               from accounts a order by a.created_at asc;
+end;
+$$;
+grant execute on function list_users(text) to anon;
+
 -- Used by /dashboard.html to check the passphrase on the server.
 create or replace function dashboard_check(p_passphrase text)
 returns boolean

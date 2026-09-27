@@ -1,15 +1,22 @@
 // Progress tab: how the levels work, progress per chapter, every word grouped
 // by level (what to focus on), device sync, voice settings and feedback.
 
-const progressState = { bucket: "focus" };
+const progressState = { bucket: "learning", sub: "all" };
 
+// Same three groups (and the same counts) as the Study tab summary:
+// new + learning + mastered = all words in the selected chapters.
+const MAIN_BUCKETS = [
+  { id: "new", icon: "⚪", label: "New", note: "You haven't practised these yet." },
+  { id: "learning", icon: "📘", label: "Learning", note: "Practised, not mastered yet. Pick a level below to narrow it down." },
+  { id: "mastered", icon: "🏆", label: "Mastered", note: "5 right in a row. They still come back now and then, so you don't forget." },
+];
+// "Learning" split into its three levels.
 const BUCKETS = [
   { id: "focus", icon: "🎯", label: "Needs focus", note: "You got these wrong last time. Practise these first." },
   { id: "growing", icon: "🌱", label: "Getting there", note: "1–2 right in a row." },
   { id: "almost", icon: "🔥", label: "Almost", note: "3–4 right in a row. One or two more and they're mastered!" },
-  { id: "mastered", icon: "🏆", label: "Mastered", note: "5 right in a row. They still come back now and then, so you don't forget." },
-  { id: "new", icon: "⚪", label: "Not started", note: "You haven't practised these yet." },
 ];
+const LEVEL_ORDER = { focus: 0, growing: 1, almost: 2 };
 
 function renderProgress() {
   app.appendChild(tpl("tpl-progress"));
@@ -35,35 +42,62 @@ function renderProgress() {
     );
   });
 
-  // Word lists by level.
-  const counts = {};
-  const byBucket = {};
-  BUCKETS.forEach((b) => { counts[b.id] = 0; byBucket[b.id] = []; });
-  state.words.forEach((w) => {
-    const lv = SRS.level(w.id);
-    counts[lv]++;
-    byBucket[lv].push(w);
+  // Chapter filter: shared with the Study tab, so both show the same numbers.
+  chapterChips(app.querySelector('[data-role="chapters"]'), state.chapters, state.selectedChapters, (next) => {
+    state.selectedChapters = next;
+    savePrefs();
+    showTab("progress");
   });
-  if (!counts[progressState.bucket]) {
-    const firstNonEmpty = BUCKETS.find((b) => counts[b.id] && b.id !== "new");
-    if (firstNonEmpty) progressState.bucket = firstNonEmpty.id;
-  }
+
+  // Word lists: New / Learning / Mastered, Learning split by level.
+  const pool = activeWordPool();
+  const byLevel = { new: [], focus: [], growing: [], almost: [], mastered: [] };
+  pool.forEach((w) => byLevel[SRS.level(w.id)].push(w));
+  const main = {
+    new: byLevel.new,
+    learning: [...byLevel.focus, ...byLevel.growing, ...byLevel.almost],
+    mastered: byLevel.mastered,
+  };
 
   const tabs = app.querySelector('[data-role="buckets"]');
-  BUCKETS.forEach((b) => {
+  tabs.appendChild(el("div", { class: "bucket-total" }, [el("span", { class: "bucket-count", text: String(pool.length) }), el("span", { class: "bucket-label", text: "words" })]));
+  MAIN_BUCKETS.forEach((b) => {
     tabs.appendChild(
       el("button", {
         type: "button",
         class: `bucket-btn bucket-btn--${b.id}` + (progressState.bucket === b.id ? " bucket-btn--active" : ""),
-        onclick: () => { progressState.bucket = b.id; showTab("progress"); },
-      }, [el("span", { class: "bucket-count", text: String(counts[b.id]) }), el("span", { class: "bucket-label", text: `${b.icon} ${b.label}` })])
+        onclick: () => { progressState.bucket = b.id; progressState.sub = "all"; showTab("progress"); },
+      }, [el("span", { class: "bucket-count", text: String(main[b.id].length) }), el("span", { class: "bucket-label", text: `${b.icon} ${b.label}` })])
     );
   });
 
-  const bucket = BUCKETS.find((b) => b.id === progressState.bucket);
+  // Level chips under Learning: All · 🎯 · 🌱 · 🔥 (they add up to Learning).
+  const subs = app.querySelector('[data-role="subs"]');
+  if (progressState.bucket === "learning") {
+    [{ id: "all", icon: "", label: "All learning" }, ...BUCKETS].forEach((b) => {
+      const n = b.id === "all" ? main.learning.length : byLevel[b.id].length;
+      subs.appendChild(
+        el("button", {
+          type: "button",
+          class: "chip sub-chip" + (progressState.sub === b.id ? " chip--active" : ""),
+          text: `${b.icon ? b.icon + " " : ""}${b.label} ${n}`,
+          onclick: () => { progressState.sub = b.id; showTab("progress"); },
+        })
+      );
+    });
+  } else {
+    subs.remove();
+  }
+
+  const bucket = progressState.bucket === "learning" && progressState.sub !== "all"
+    ? BUCKETS.find((b) => b.id === progressState.sub)
+    : MAIN_BUCKETS.find((b) => b.id === progressState.bucket);
   const listBox = app.querySelector('[data-role="bucket-list"]');
   listBox.appendChild(el("p", { class: "muted small bucket-note", text: bucket.note }));
-  const words = byBucket[bucket.id];
+  let words = bucket.id === "learning" ? main.learning : bucket.id in main ? main[bucket.id] : byLevel[bucket.id];
+  // Inside a chapter: weakest first when showing all learning words.
+  const chapterIdx = new Map(state.chapters.map((c, i) => [c, i]));
+  words = [...words].sort((a, b) => chapterIdx.get(a.chapter) - chapterIdx.get(b.chapter) || (LEVEL_ORDER[SRS.level(a.id)] ?? 0) - (LEVEL_ORDER[SRS.level(b.id)] ?? 0));
   if (bucket.id === "focus" && words.length) {
     listBox.appendChild(
       el("button", {
@@ -163,6 +197,25 @@ function renderVoiceCard(box) {
     ? "Finnish voice found ✓"
     : "No Finnish voice on this device yet, so the pronunciation may sound off. Windows: Settings → Time & language → Speech → Add voices → Finnish. Android: Settings → Text-to-speech → Google → install Finnish. iPhone: it's built in (Satu).";
   box.appendChild(el("p", { class: "small", text: status }));
+
+  // Choose between voices when the device has more than one Finnish voice.
+  const voices = Speech.finnishVoices();
+  if (voices.length > 1) {
+    const cur = Speech.currentVoice();
+    const sel = el("select", { class: "select voice-select" });
+    voices.forEach((v) => {
+      const tag = Speech.isOnlineVoice(v) ? "online · best sound, needs internet" : "on this device · instant";
+      const o = el("option", { value: v.voiceURI, text: `${v.name.replace(/^Microsoft\s+/, "").replace(/\s*-\s*Finnish.*$/i, "")} (${tag})` });
+      if (cur && cur.voiceURI === v.voiceURI) o.selected = true;
+      sel.appendChild(o);
+    });
+    sel.addEventListener("change", () => {
+      Speech.saveSettings({ voiceURI: sel.value });
+      Speech.say("Hei! Mitä kuuluu?");
+    });
+    box.append(el("label", { class: "field-label", text: "Voice" }), sel,
+      el("p", { class: "muted small", text: "If 🔊 feels slow, pick an “on this device” voice: it starts instantly, even offline." }));
+  }
 
   const speed = el("div", { class: "segmented" });
   [[0.65, "🐢 Slow"], [0.9, "Normal"], [1.1, "Fast"]].forEach(([r, l]) =>

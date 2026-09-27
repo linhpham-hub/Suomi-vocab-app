@@ -1,0 +1,903 @@
+{
+  "_comment": "Talk tab → Time & weather and Adjectives. Original lists written for the app (standard Finnish vocabulary), matched to the topics of lesson 10 (seasons & months, adjectives, weather). Not copied from the textbook. 'spoken' is only filled when the everyday form differs. Checked against SM1 kpl 3 pages 60-62 (Chloe's reference pictures); adjectivePairs = Chloe's required list, in her order.",
+  "seasons": [
+    {
+      "fi": "kevät",
+      "when": "keväällä",
+      "en": "spring",
+      "months": "maaliskuu – toukokuu"
+    },
+    {
+      "fi": "kesä",
+      "when": "kesällä",
+      "en": "summer",
+      "months": "kesäkuu – elokuu"
+    },
+    {
+      "fi": "syksy",
+      "when": "syksyllä",
+      "en": "autumn",
+      "months": "syyskuu – marraskuu"
+    },
+    {
+      "fi": "talvi",
+      "when": "talvella",
+      "en": "winter",
+      "months": "joulukuu – helmikuu"
+    }
+  ],
+  "months": [
+    {
+      "fi": "tammikuu",
+      "when": "tammikuussa",
+      "en": "January"
+    },
+    {
+      "fi": "helmikuu",
+      "when": "helmikuussa",
+      "en": "February"
+    },
+    {
+      "fi": "maaliskuu",
+      "when": "maaliskuussa",
+      "en": "March"
+    },
+    {
+      "fi": "huhtikuu",
+      "when": "huhtikuussa",
+      "en": "April"
+    },
+    {
+      "fi": "toukokuu",
+      "when": "toukokuussa",
+      "en": "May"
+    },
+    {
+      "fi": "kesäkuu",
+      "when": "kesäkuussa",
+      "en": "June"
+    },
+    {
+      "fi": "heinäkuu",
+      "when": "heinäkuussa",
+      "en": "July"
+    },
+    {
+      "fi": "elokuu",
+      "when": "elokuussa",
+      "en": "August"
+    },
+    {
+      "fi": "syyskuu",
+      "when": "syyskuussa",
+      "en": "September"
+    },
+    {
+      "fi": "lokakuu",
+      "when": "lokakuussa",
+      "en": "October"
+    },
+    {
+      "fi": "marraskuu",
+      "when": "marraskuussa",
+      "en": "November"
+    },
+    {
+      "fi": "joulukuu",
+      "when": "joulukuussa",
+      "en": "December"
+    }
+  ],
+  "calendarPhrases": [
+    {
+      "fi": "Mikä kuukausi nyt on?",
+      "spoken": "",
+      "en": "What month is it now?"
+    },
+    {
+      "fi": "Nyt on syyskuu.",
+      "spoken": "",
+      "en": "It's September now."
+    },
+    {
+      "fi": "Mikä vuodenaika nyt on?",
+      "spoken": "",
+      "en": "What season is it now?"
+    },
+    {
+      "fi": "Nyt on syksy.",
+      "spoken": "",
+      "en": "It's autumn now."
+    },
+    {
+      "fi": "Milloin sinulla on syntymäpäivä?",
+      "spoken": "Milloin sulla on synttärit?",
+      "en": "When is your birthday?"
+    },
+    {
+      "fi": "Minulla on syntymäpäivä toukokuussa.",
+      "spoken": "Mulla on synttärit toukokuussa.",
+      "en": "My birthday is in May."
+    },
+    {
+      "fi": "Mikä on sinun lempivuodenaikasi?",
+      "spoken": "Mikä on sun lempivuodenaika?",
+      "en": "What's your favourite season?"
+    },
+    {
+      "fi": "Minä pidän kesästä.",
+      "spoken": "Mä tykkään kesästä.",
+      "en": "I like summer."
+    }
+  ],
+  "weekdays": [
+    {
+      "fi": "maanantai",
+      "when": "maanantaina",
+      "every": "maanantaisin",
+      "en": "Monday"
+    },
+    {
+      "fi": "tiistai",
+      "when": "tiistaina",
+      "every": "tiistaisin",
+      "en": "Tuesday"
+    },
+    {
+      "fi": "keskiviikko",
+      "when": "keskiviikkona",
+      "every": "keskiviikkoisin",
+      "en": "Wednesday"
+    },
+    {
+      "fi": "torstai",
+      "when": "torstaina",
+      "every": "torstaisin",
+      "en": "Thursday"
+    },
+    {
+      "fi": "perjantai",
+      "when": "perjantaina",
+      "every": "perjantaisin",
+      "en": "Friday"
+    },
+    {
+      "fi": "lauantai",
+      "when": "lauantaina",
+      "every": "lauantaisin",
+      "en": "Saturday"
+    },
+    {
+      "fi": "sunnuntai",
+      "when": "sunnuntaina",
+      "every": "sunnuntaisin",
+      "en": "Sunday"
+    }
+  ],
+  "dayparts": [
+    {
+      "fi": "aamu",
+      "when": "aamulla",
+      "en": "morning"
+    },
+    {
+      "fi": "aamupäivä",
+      "when": "aamupäivällä",
+      "en": "late morning (before noon)"
+    },
+    {
+      "fi": "päivä",
+      "when": "päivällä",
+      "en": "day, daytime"
+    },
+    {
+      "fi": "iltapäivä",
+      "when": "iltapäivällä",
+      "en": "afternoon"
+    },
+    {
+      "fi": "ilta",
+      "when": "illalla",
+      "en": "evening"
+    },
+    {
+      "fi": "yö",
+      "when": "yöllä",
+      "en": "night"
+    },
+    {
+      "fi": "aamuyö",
+      "when": "aamuyöllä",
+      "en": "early morning hours (after midnight)"
+    }
+  ],
+  "timewords": [
+    {
+      "fi": "tänään",
+      "en": "today"
+    },
+    {
+      "fi": "eilen",
+      "en": "yesterday"
+    },
+    {
+      "fi": "huomenna",
+      "en": "tomorrow"
+    },
+    {
+      "fi": "toissapäivänä",
+      "en": "the day before yesterday"
+    },
+    {
+      "fi": "ylihuomenna",
+      "en": "the day after tomorrow"
+    },
+    {
+      "fi": "nyt",
+      "en": "now"
+    },
+    {
+      "fi": "päivä",
+      "en": "a day"
+    },
+    {
+      "fi": "viikko",
+      "en": "a week"
+    },
+    {
+      "fi": "viikonloppu",
+      "en": "a weekend"
+    },
+    {
+      "fi": "viikonloppuna",
+      "en": "at the weekend"
+    },
+    {
+      "fi": "tällä viikolla",
+      "en": "this week"
+    },
+    {
+      "fi": "ensi viikolla",
+      "en": "next week"
+    },
+    {
+      "fi": "viime viikolla",
+      "en": "last week"
+    },
+    {
+      "fi": "kuukausi",
+      "en": "a month"
+    },
+    {
+      "fi": "vuosi",
+      "en": "a year"
+    },
+    {
+      "fi": "vuodenaika",
+      "en": "a season"
+    }
+  ],
+  "weekPhrases": [
+    {
+      "fi": "Mikä päivä tänään on?",
+      "spoken": "",
+      "en": "What day is it today?"
+    },
+    {
+      "fi": "Tänään on perjantai.",
+      "spoken": "",
+      "en": "Today is Friday."
+    },
+    {
+      "fi": "Huomenna on lauantai.",
+      "spoken": "",
+      "en": "Tomorrow is Saturday."
+    },
+    {
+      "fi": "Minä olen töissä maanantaina.",
+      "spoken": "Mä oon töissä maanantaina.",
+      "en": "I'm at work on Monday."
+    },
+    {
+      "fi": "Minulla on suomen kurssi tiistaisin.",
+      "spoken": "Mulla on suomen kurssi tiistaisin.",
+      "en": "I have a Finnish course on Tuesdays."
+    },
+    {
+      "fi": "Mitä sinä teet viikonloppuna?",
+      "spoken": "Mitä sä teet viikonloppuna?",
+      "en": "What are you doing at the weekend?"
+    }
+  ],
+  "weather": [
+    {
+      "fi": "Millainen sää tänään on?",
+      "spoken": "Millanen sää tänään on?",
+      "en": "What's the weather like today?"
+    },
+    {
+      "fi": "Millainen ilma tänään on?",
+      "spoken": "Millanen ilma tänään on?",
+      "en": "What's the weather like today? (ilma = sää)"
+    },
+    {
+      "fi": "On kaunis ilma.",
+      "spoken": "",
+      "en": "The weather is beautiful."
+    },
+    {
+      "fi": "On hyvä ilma.",
+      "spoken": "",
+      "en": "The weather is good."
+    },
+    {
+      "fi": "On huono ilma.",
+      "spoken": "",
+      "en": "The weather is bad."
+    },
+    {
+      "fi": "Aurinko paistaa.",
+      "spoken": "",
+      "en": "The sun is shining."
+    },
+    {
+      "fi": "On aurinkoista.",
+      "spoken": "",
+      "en": "It's sunny."
+    },
+    {
+      "fi": "On pilvistä.",
+      "spoken": "",
+      "en": "It's cloudy."
+    },
+    {
+      "fi": "On puolipilvistä.",
+      "spoken": "",
+      "en": "It's partly cloudy."
+    },
+    {
+      "fi": "On sumuista.",
+      "spoken": "",
+      "en": "It's foggy."
+    },
+    {
+      "fi": "Sataa.",
+      "spoken": "",
+      "en": "It's raining."
+    },
+    {
+      "fi": "On sateista.",
+      "spoken": "",
+      "en": "It's rainy."
+    },
+    {
+      "fi": "Sataa räntää.",
+      "spoken": "",
+      "en": "It's sleeting (wet snow)."
+    },
+    {
+      "fi": "Sataa lunta.",
+      "spoken": "",
+      "en": "It's snowing."
+    },
+    {
+      "fi": "Tuulee.",
+      "spoken": "",
+      "en": "It's windy."
+    },
+    {
+      "fi": "On tuulista.",
+      "spoken": "",
+      "en": "It's windy."
+    },
+    {
+      "fi": "On myrsky.",
+      "spoken": "",
+      "en": "There's a storm."
+    },
+    {
+      "fi": "On ukkonen.",
+      "spoken": "",
+      "en": "There's a thunderstorm."
+    },
+    {
+      "fi": "On liukasta.",
+      "spoken": "",
+      "en": "It's slippery."
+    }
+  ],
+  "temperature": [
+    {
+      "fi": "Kuinka monta astetta ulkona on?",
+      "spoken": "Montako astetta ulkona on?",
+      "en": "How many degrees is it outside?"
+    },
+    {
+      "fi": "On +30 astetta. On kuuma. On helle.",
+      "spoken": "",
+      "en": "It's +30 °C. It's hot. It's a heatwave."
+    },
+    {
+      "fi": "On +20 astetta. On lämmin.",
+      "spoken": "",
+      "en": "It's +20 °C. It's warm."
+    },
+    {
+      "fi": "On +2 astetta. On viileä.",
+      "spoken": "",
+      "en": "It's +2 °C. It's cool."
+    },
+    {
+      "fi": "On -15 astetta. On kylmä. On pakkasta.",
+      "spoken": "",
+      "en": "It's −15 °C. It's cold. It's below zero."
+    },
+    {
+      "fi": "On viisi astetta lämmintä.",
+      "spoken": "On viis astetta lämmintä.",
+      "en": "It's 5 degrees above zero."
+    },
+    {
+      "fi": "On kymmenen astetta pakkasta.",
+      "spoken": "",
+      "en": "It's 10 degrees below zero."
+    }
+  ],
+  "weatherWords": [
+    {
+      "fi": "sää",
+      "en": "weather"
+    },
+    {
+      "fi": "aurinko",
+      "en": "sun"
+    },
+    {
+      "fi": "sade",
+      "en": "rain"
+    },
+    {
+      "fi": "lumi",
+      "en": "snow"
+    },
+    {
+      "fi": "tuuli",
+      "en": "wind"
+    },
+    {
+      "fi": "pilvi",
+      "en": "cloud"
+    },
+    {
+      "fi": "sumu",
+      "en": "fog"
+    },
+    {
+      "fi": "ukkonen",
+      "en": "thunder"
+    },
+    {
+      "fi": "pakkanen",
+      "en": "frost, below-zero cold"
+    },
+    {
+      "fi": "lämpötila",
+      "en": "temperature"
+    },
+    {
+      "fi": "aste",
+      "en": "a degree"
+    },
+    {
+      "fi": "sateenvarjo",
+      "en": "an umbrella"
+    },
+    {
+      "fi": "ilma",
+      "en": "weather (also: air)"
+    },
+    {
+      "fi": "helle",
+      "en": "heat, a heatwave"
+    },
+    {
+      "fi": "räntä",
+      "en": "sleet"
+    },
+    {
+      "fi": "myrsky",
+      "en": "a storm"
+    },
+    {
+      "fi": "ulkona",
+      "en": "outside"
+    }
+  ],
+  "adjectivePairs": [
+    [
+      {
+        "fi": "hyvä",
+        "en": "good"
+      },
+      {
+        "fi": "huono",
+        "en": "bad"
+      }
+    ],
+    [
+      {
+        "fi": "kuuma",
+        "en": "hot"
+      },
+      {
+        "fi": "kylmä",
+        "en": "cold"
+      }
+    ],
+    [
+      {
+        "fi": "vaikea",
+        "en": "difficult"
+      },
+      {
+        "fi": "helppo",
+        "en": "easy"
+      }
+    ],
+    [
+      {
+        "fi": "pieni",
+        "en": "small"
+      },
+      {
+        "fi": "iso / suuri",
+        "en": "big"
+      }
+    ],
+    [
+      {
+        "fi": "uusi",
+        "en": "new"
+      },
+      {
+        "fi": "vanha",
+        "en": "old"
+      }
+    ],
+    [
+      {
+        "fi": "kaunis",
+        "en": "beautiful"
+      },
+      {
+        "fi": "ruma",
+        "en": "ugly"
+      }
+    ],
+    [
+      {
+        "fi": "lämmin",
+        "en": "warm"
+      },
+      {
+        "fi": "viileä",
+        "en": "cool"
+      }
+    ],
+    [
+      {
+        "fi": "valoisa",
+        "en": "bright, light"
+      },
+      {
+        "fi": "pimeä",
+        "en": "dark"
+      }
+    ],
+    [
+      {
+        "fi": "lyhyt",
+        "en": "short"
+      },
+      {
+        "fi": "pitkä",
+        "en": "tall, long"
+      }
+    ],
+    [
+      {
+        "fi": "nopea",
+        "en": "fast"
+      },
+      {
+        "fi": "hidas",
+        "en": "slow"
+      }
+    ],
+    [
+      {
+        "fi": "paljon",
+        "en": "a lot"
+      },
+      {
+        "fi": "vähän",
+        "en": "a little bit"
+      }
+    ]
+  ],
+  "adjectivePhrases": [
+    {
+      "fi": "Millainen talo on?",
+      "spoken": "Millanen talo on?",
+      "en": "What is the house like?"
+    },
+    {
+      "fi": "Talo on iso ja vanha.",
+      "spoken": "",
+      "en": "The house is big and old."
+    },
+    {
+      "fi": "Millainen sinun asuntosi on?",
+      "spoken": "Millanen sun asunto on?",
+      "en": "What is your flat like?"
+    },
+    {
+      "fi": "Minun asuntoni on pieni mutta kaunis.",
+      "spoken": "Mun asunto on pieni mut kaunis.",
+      "en": "My flat is small but beautiful."
+    },
+    {
+      "fi": "Tämä takki on liian kallis.",
+      "spoken": "Tää takki on liian kallis.",
+      "en": "This coat is too expensive."
+    },
+    {
+      "fi": "Suomen kieli on vaikea mutta kiinnostava.",
+      "spoken": "Suomen kieli on vaikee mut kiinnostava.",
+      "en": "Finnish is difficult but interesting."
+    },
+    {
+      "fi": "Helsinki on kaunis kaupunki.",
+      "spoken": "",
+      "en": "Helsinki is a beautiful city."
+    }
+  ],
+  "colours": [
+    {
+      "fi": "punainen",
+      "en": "red",
+      "hex": "#D0372F"
+    },
+    {
+      "fi": "oranssi",
+      "en": "orange",
+      "hex": "#EE8A2A"
+    },
+    {
+      "fi": "keltainen",
+      "en": "yellow",
+      "hex": "#F2C818"
+    },
+    {
+      "fi": "vihreä",
+      "en": "green",
+      "hex": "#3E9B4F"
+    },
+    {
+      "fi": "sininen",
+      "en": "blue",
+      "hex": "#2F6FD0"
+    },
+    {
+      "fi": "violetti",
+      "en": "purple",
+      "hex": "#8A4FC2"
+    },
+    {
+      "fi": "vaaleanpunainen",
+      "en": "pink",
+      "hex": "#F29BC1"
+    },
+    {
+      "fi": "ruskea",
+      "en": "brown",
+      "hex": "#8A5A34"
+    },
+    {
+      "fi": "musta",
+      "en": "black",
+      "hex": "#1B1B1B"
+    },
+    {
+      "fi": "valkoinen",
+      "en": "white",
+      "hex": "#FFFFFF"
+    },
+    {
+      "fi": "harmaa",
+      "en": "grey",
+      "hex": "#8E9494"
+    }
+  ],
+  "colourPhrases": [
+    {
+      "fi": "Minkä värinen auto on?",
+      "spoken": "Minkä värinen auto on?",
+      "en": "What colour is the car?"
+    },
+    {
+      "fi": "Auto on punainen.",
+      "spoken": "",
+      "en": "The car is red."
+    },
+    {
+      "fi": "Mikä on sinun lempivärisi?",
+      "spoken": "Mikä on sun lempiväri?",
+      "en": "What's your favourite colour?"
+    },
+    {
+      "fi": "Minun lempivärini on sininen.",
+      "spoken": "Mun lempiväri on sininen.",
+      "en": "My favourite colour is blue."
+    }
+  ],
+  "clockPhrases": [
+    {
+      "fi": "Paljonko kello on?",
+      "spoken": "Paljo kello on?",
+      "en": "What time is it?"
+    },
+    {
+      "fi": "Mitä kello on?",
+      "spoken": "",
+      "en": "What time is it?"
+    },
+    {
+      "fi": "Kello on kolme.",
+      "spoken": "",
+      "en": "It's three o'clock."
+    },
+    {
+      "fi": "Kello on tasan kolme.",
+      "spoken": "",
+      "en": "It's exactly three."
+    },
+    {
+      "fi": "Kello on puoli neljä.",
+      "spoken": "Kello on puol neljä.",
+      "en": "It's half past three (3.30). Literally \"half four\"!"
+    },
+    {
+      "fi": "Mihin aikaan?",
+      "spoken": "",
+      "en": "At what time?"
+    },
+    {
+      "fi": "Kello kolme.",
+      "spoken": "",
+      "en": "At three o'clock."
+    }
+  ],
+  "adjectiveMore": [
+    [
+      {
+        "fi": "nuori",
+        "en": "young"
+      },
+      {
+        "fi": "vanha",
+        "en": "old"
+      }
+    ],
+    [
+      {
+        "fi": "kallis",
+        "en": "expensive"
+      },
+      {
+        "fi": "halpa",
+        "en": "cheap"
+      }
+    ],
+    [
+      {
+        "fi": "iloinen",
+        "en": "happy"
+      },
+      {
+        "fi": "surullinen",
+        "en": "sad"
+      }
+    ],
+    [
+      {
+        "fi": "kiinnostava",
+        "en": "interesting"
+      },
+      {
+        "fi": "tylsä",
+        "en": "boring"
+      }
+    ],
+    [
+      {
+        "fi": "ystävällinen",
+        "en": "friendly"
+      },
+      {
+        "fi": "epäystävällinen",
+        "en": "unfriendly"
+      }
+    ],
+    [
+      {
+        "fi": "täysi",
+        "en": "full"
+      },
+      {
+        "fi": "tyhjä",
+        "en": "empty"
+      }
+    ],
+    [
+      {
+        "fi": "puhdas",
+        "en": "clean"
+      },
+      {
+        "fi": "likainen",
+        "en": "dirty"
+      }
+    ],
+    [
+      {
+        "fi": "raskas",
+        "en": "heavy"
+      },
+      {
+        "fi": "kevyt",
+        "en": "light (not heavy)"
+      }
+    ],
+    [
+      {
+        "fi": "vahva",
+        "en": "strong"
+      },
+      {
+        "fi": "heikko",
+        "en": "weak"
+      }
+    ],
+    [
+      {
+        "fi": "rikas",
+        "en": "rich"
+      },
+      {
+        "fi": "köyhä",
+        "en": "poor"
+      }
+    ],
+    [
+      {
+        "fi": "hiljainen",
+        "en": "quiet"
+      },
+      {
+        "fi": "äänekäs",
+        "en": "loud"
+      }
+    ],
+    [
+      {
+        "fi": "kova",
+        "en": "hard"
+      },
+      {
+        "fi": "pehmeä",
+        "en": "soft"
+      }
+    ]
+  ]
+}

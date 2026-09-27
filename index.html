@@ -215,11 +215,13 @@
   <header class="tab-header">
     <h1>💬 Talk</h1>
   </header>
-  <div class="segmented" data-role="talk-sections">
+  <div class="segmented segmented--wrap" data-role="talk-sections">
     <button type="button" class="segmented-btn" data-value="dialogues">Dialogues</button>
-    <button type="button" class="segmented-btn" data-value="numbers">Numbers</button>
-    <button type="button" class="segmented-btn" data-value="shopping">Shopping</button>
+    <button type="button" class="segmented-btn" data-value="numbers">Numbers &amp; €</button>
+    <button type="button" class="segmented-btn" data-value="time">Time &amp; weather</button>
+    <button type="button" class="segmented-btn" data-value="adjectives">Adjectives</button>
   </div>
+  <div class="sub-tabs" data-role="talk-sub"></div>
   <main class="talk-body" data-role="talk-body"></main>
 </template>
 
@@ -266,8 +268,11 @@
   </div>
 
   <section class="card panel">
-    <h2 class="panel-title">Your words by level</h2>
-    <div class="bucket-row" data-role="buckets"></div>
+    <h2 class="panel-title">Your words</h2>
+    <div class="chip-row" data-role="chapters"></div>
+    <p class="muted small bucket-hint">Same chapters and numbers as the Study tab. Tap a number to see those words.</p>
+    <div class="bucket-row bucket-row--main" data-role="buckets"></div>
+    <div class="sub-bucket-row" data-role="subs"></div>
   </section>
   <section data-role="bucket-list" class="bucket-list"></section>
 

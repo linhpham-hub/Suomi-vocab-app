@@ -141,6 +141,63 @@ async function loadFeedback() {
 }
 
 
+// ---------- Accounts ----------
+
+const accountsStatus = document.getElementById("accounts-status");
+const accountsList = document.getElementById("accounts-list");
+
+async function loadAccounts() {
+  accountsList.innerHTML = "";
+  accountsStatus.hidden = true;
+  if (!configured()) return;
+  const c = window.APP_CONFIG;
+  try {
+    const res = await fetch(`${c.SUPABASE_URL}/rest/v1/rpc/list_users`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: c.SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${c.SUPABASE_ANON_KEY}`,
+      },
+      body: JSON.stringify({ p_passphrase: passphrase }),
+    });
+    if (res.status === 404) {
+      accountsStatus.hidden = false;
+      accountsStatus.textContent = "One step left: in Supabase → SQL Editor, run the list_users part of supabase/setup.sql (see README). Then refresh.";
+      return;
+    }
+    if (!res.ok) throw new Error(`Supabase returned ${res.status}`);
+    const rows = await res.json();
+    if (!rows || !rows.length) {
+      accountsStatus.hidden = false;
+      accountsStatus.textContent = "No registered accounts yet.";
+      return;
+    }
+    const table = document.createElement("div");
+    table.className = "card";
+    table.innerHTML = `
+      <table class="accounts-table">
+        <thead><tr><th>Name</th><th>Username</th><th>Created</th><th>Last synced</th></tr></thead>
+        <tbody>
+          ${rows.map((r) => `
+            <tr>
+              <td>${escapeHtml(r.display_name || r.username)}</td>
+              <td class="muted">${escapeHtml(r.username)}</td>
+              <td class="muted">${escapeHtml(relativeTime(r.created_at))}</td>
+              <td class="muted">${escapeHtml(relativeTime(r.updated_at))}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+      <p class="muted small" style="margin-top:0.5rem">${rows.length} account${rows.length === 1 ? "" : "s"} with PIN sync set up</p>
+    `;
+    accountsList.appendChild(table);
+  } catch (e) {
+    accountsStatus.hidden = false;
+    accountsStatus.textContent = `Couldn't load accounts: ${e.message}.`;
+  }
+}
+
 passSubmit.addEventListener("click", tryUnlock);
 passInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") tryUnlock();
@@ -166,6 +223,8 @@ function showStatus(message) {
 async function loadDashboard() {
   list.innerHTML = "";
   statusBox.hidden = true;
+  document.getElementById("users-list").innerHTML = "";
+  loadAccounts();
   loadFeedback();
 
   if (!configured()) {
@@ -186,15 +245,55 @@ async function loadDashboard() {
     if (!res.ok) throw new Error(`Supabase returned ${res.status}`);
     const rows = await res.json();
 
+    renderUsersTable(rows);
     if (!rows.length) {
-      showStatus("No progress synced yet -- once a friend finishes a study session, they'll show up here.");
+      showStatus("No progress synced yet -- once a friend opens the app, they'll show up here.");
       return;
     }
 
-    rows.forEach((row) => list.appendChild(renderFriendCard(row)));
+    rows.filter((r) => r.total_learning || r.total_mastered).forEach((row) => list.appendChild(renderFriendCard(row)));
+    if (!list.children.length) showStatus("Nobody has studied yet.");
   } catch (e) {
     showStatus(`Couldn't load progress: ${e.message}`);
   }
+}
+
+// One line per person (or per device when not linked with a PIN).
+function renderUsersTable(rows) {
+  const box = document.getElementById("users-list");
+  const st = document.getElementById("users-status");
+  box.innerHTML = "";
+  st.hidden = true;
+  if (!rows.length) {
+    st.hidden = false;
+    st.textContent = "Nobody yet. People show up here the first time they open the app (after this update).";
+    return;
+  }
+  const linked = rows.filter((r) => String(r.device_id).startsWith("acct:")).length;
+  const active7 = rows.filter((r) => Date.now() - new Date(r.last_active).getTime() < 7 * 86400000).length;
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <p class="small users-summary"><strong>${rows.length}</strong> ${rows.length === 1 ? "person" : "people"} · <strong>${active7}</strong> active this week · <strong>${linked}</strong> with name + PIN</p>
+    <div class="table-scroll">
+    <table class="accounts-table">
+      <thead><tr><th>Name</th><th>User ID</th><th>Words</th><th>Last opened</th></tr></thead>
+      <tbody>
+        ${rows.map((r) => {
+          const id = String(r.device_id || "");
+          const uid = id.startsWith("acct:") ? "☁️ " + id.slice(5) : "📱 " + id.replace(/[^a-z0-9]/gi, "").slice(0, 6);
+          return `<tr>
+            <td>${escapeHtml(r.name || "Friend")}</td>
+            <td class="muted nowrap" title="${escapeHtml(id)}">${escapeHtml(uid)}</td>
+            <td class="nowrap">🏆 ${r.total_mastered || 0} · 📘 ${r.total_learning || 0}</td>
+            <td class="muted">${escapeHtml(relativeTime(r.last_active))}</td>
+          </tr>`;
+        }).join("")}
+      </tbody>
+    </table>
+    </div>
+    <p class="muted small">🏆 mastered · 📘 learning. ☁️ = account with name + PIN (all their devices together). 📱 = one device without a PIN (the code tells devices apart when two people use the same name).</p>`;
+  box.appendChild(card);
 }
 
 function renderFriendCard(row) {

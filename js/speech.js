@@ -13,12 +13,28 @@ const Speech = (() => {
     return typeof window !== "undefined" && "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
   }
 
+  function finnishVoices() {
+    if (!supported()) return [];
+    return (window.speechSynthesis.getVoices() || []).filter((v) => /^fi([-_]|$)/i.test(v.lang));
+  }
+
+  // The learner can pick a voice in Progress → Voice (saved as voiceURI).
+  // Otherwise prefer natural-sounding voices. Note: "Online" voices (e.g.
+  // Edge's "Microsoft Noora Online (Natural)") stream from the internet, so
+  // they sound better but can start a moment later on a slow connection.
   function pickVoice() {
     if (!supported()) return;
-    const voices = window.speechSynthesis.getVoices() || [];
-    const fi = voices.filter((v) => /^fi([-_]|$)/i.test(v.lang));
-    // Prefer Google / natural-sounding voices when there's a choice.
-    voice = fi.find((v) => /google|natural|online/i.test(v.name)) || fi[0] || null;
+    const fi = finnishVoices();
+    const chosen = settings().voiceURI;
+    voice = (chosen && fi.find((v) => v.voiceURI === chosen)) || fi.find((v) => /google|natural|online/i.test(v.name)) || fi[0] || null;
+  }
+
+  function currentVoice() {
+    return voice;
+  }
+
+  function isOnlineVoice(v) {
+    return !!v && (v.localService === false || /online/i.test(v.name));
   }
 
   if (supported()) {
@@ -36,6 +52,7 @@ const Speech = (() => {
 
   function saveSettings(s) {
     try { localStorage.setItem(SETTINGS_KEY, JSON.stringify({ ...settings(), ...s })); } catch {}
+    if ("voiceURI" in s) pickVoice();
   }
 
   // Glossary entries contain helper notation that shouldn't be read aloud.
@@ -90,5 +107,5 @@ const Speech = (() => {
     if (supported()) window.speechSynthesis.cancel();
   }
 
-  return { supported, hasFinnishVoice, say, sayAll, stop, settings, saveSettings };
+  return { supported, hasFinnishVoice, say, sayAll, stop, settings, saveSettings, finnishVoices, currentVoice, isOnlineVoice };
 })();

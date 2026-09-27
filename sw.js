@@ -6,7 +6,8 @@
 // When offline, the last copy saved in the cache is used.
 //
 // Bump CACHE_NAME whenever the list of files below changes.
-const CACHE_NAME = "sanasto-cache-v6";
+const CACHE_NAME = "sanasto-cache-v10";
+const NETWORK_TIMEOUT_MS = 3000;
 
 const PRECACHE_URLS = [
   "./",
@@ -31,6 +32,7 @@ const PRECACHE_URLS = [
   "./data/phrases.json",
   "./data/oral.json",
   "./data/links.json",
+  "./data/topics.json",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./icons/icon-maskable-512.png",
@@ -62,19 +64,28 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
 
+  const fromCache = () =>
+    caches.match(event.request, { ignoreSearch: true }).then(
+      (cached) => cached || (event.request.mode === "navigate" ? caches.match("./index.html") : undefined)
+    );
+
+  const network = fetch(event.request).then((response) => {
+    if (response && response.status === 200) {
+      const copy = response.clone();
+      caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+    }
+    return response;
+  });
+
+  // Weak Wi-Fi / mobile data: if the network hasn't answered within
+  // NETWORK_TIMEOUT_MS, use the saved copy instead of leaving a blank screen.
+  // (The network request still finishes in the background and refreshes the
+  // cache for next time.) With no saved copy, keep waiting for the network.
+  const timeout = new Promise((resolve) =>
+    setTimeout(() => fromCache().then((cached) => cached && resolve(cached)), NETWORK_TIMEOUT_MS)
+  );
+
   event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        if (response && response.status === 200) {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-        }
-        return response;
-      })
-      .catch(() =>
-        caches.match(event.request, { ignoreSearch: true }).then(
-          (cached) => cached || (event.request.mode === "navigate" ? caches.match("./index.html") : undefined)
-        )
-      )
+    Promise.race([network, timeout]).catch(() => fromCache().then((cached) => cached || network))
   );
 });

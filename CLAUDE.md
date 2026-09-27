@@ -8,8 +8,10 @@ Full user-facing details and setup steps: `README.md`.
 A static, no-build web app (plain HTML/CSS/JS, PWA, works offline) for
 Chloe's Metropolia Finnish A1.2 course, shared with classmates. Five tabs:
 Study (Focus words / Flashcards / Quiz / Write), Words (glossary + search +
-teacher's Wordwall links), Talk (dialogues, numbers, shopping), Oral test
-(26 questions), Progress (levels, device sync, voice, feedback). Credit line
+teacher's Wordwall links), Talk (Dialogues · Numbers & € [numbers, prices,
+clock, shopping] · Time & weather [seasons & months, week & days, weather] ·
+Adjectives [opposites, colours]), Oral test (26 questions), Progress
+(New/Learning/Mastered lists, device sync, voice, feedback). Credit line
 "Created by LinhPham" is on Study and Progress. Keep it.
 
 ## Tech choices (and why)
@@ -36,9 +38,45 @@ teacher's Wordwall links), Talk (dialogues, numbers, shopping), Oral test
   device. No API key. Quality depends on the device's installed voices.
 - **Service worker** (`sw.js`) is NETWORK FIRST with cache fallback. An
   earlier cache-first version served a mix of old and new files after a
-  deploy (blank glossary page), so don't switch back. Bump `CACHE_NAME` and
+  deploy (blank glossary page), so don't switch back. If the network takes
+  longer than `NETWORK_TIMEOUT_MS` (3 s) it serves the cached copy (weak
+  Wi-Fi made the app feel frozen). Bump `CACHE_NAME` and
   update `PRECACHE_URLS` when files are added or renamed. It skips
   cross-origin requests (Supabase, Microsoft Forms, Wordwall).
+- **Performance (2026-09-26, Chloe reported lag):** don't call
+  `getComputedStyle` in `showTab` (use the `TAB_BG` maps), don't animate the
+  body background between tabs (full-screen repaint), keep
+  `content-visibility: auto` on `.glossary-chapter` and `.oral-card`, and keep
+  Words search debounced + chapters drawn progressively. Profile at 4× CPU
+  throttling before adding anything heavy.
+- **Dark mode (2026-09-27):** buttons had the browser's default black text on
+  dark cards. Fixed with `:where(button, input, …) { color: inherit }` and
+  `color-scheme: dark`. Link-style text uses `--accent-strong` in dark mode.
+  Re-check contrast on every tab in both colour schemes after colour changes.
+- **Talk content** for Time & weather and Adjectives lives in
+  `data/topics.json`: original lists (standard Finnish), matched to lesson 10
+  topics, not copied from the textbook. Written forms keep possessive
+  suffixes (minun asuntoni); `spoken` holds the everyday form.
+- **Book pages:** Chloe keeps photos of Suomen mestari pages in
+  `../Reference pictures/` (outside this repo on purpose: the repo is public).
+  Use them to check word lists. Don't copy them into this repo or transcribe
+  the book's dialogues. The chapter 3 dialogues (Videopuhelu, Kurssitoimistossa)
+  are original practice versions of the book texts.
+- **Adjectives:** `adjectivePairs` in topics.json is Chloe's required list, in
+  her order (shown as "Must-know opposites"); `adjectiveMore` are extras.
+- **Dashboard "Everyone using the app":** the app upserts its `progress` row
+  once per app open and whenever the name changes (`syncProgress` in `init`
+  and the name modal), so people appear before they study. `device_id` is
+  `acct:<username>` for PIN accounts, otherwise a random device UUID.
+- **Hints:** FI → EN shows the meaning hint from `hints.json`; EN → FI shows a
+  letter skeleton (`letterHint`: every 3rd letter, then every 2nd). Both give
+  half credit.
+- **Progress** uses the same chapter selection as Study (`state.selectedChapters`)
+  so New/Learning/Mastered always match the Study summary; Learning splits
+  into focus/growing/almost.
+- **Voices:** "Online" voices (Edge's Noora/Harri Online) stream from the
+  internet and can start late on slow connections; Progress → Voice lets the
+  learner pick an on-device voice (saved as `voiceURI`).
 - CSS has a global `[hidden] { display: none !important; }`. Keep it: several
   components set `display` and would otherwise ignore the hidden attribute.
 

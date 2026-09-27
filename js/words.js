@@ -20,10 +20,14 @@ function renderWords() {
   const clear = app.querySelector('[data-role="search-clear"]');
   search.value = wordsState.query;
   clear.hidden = !wordsState.query;
+  // Wait until typing pauses briefly before redrawing the list, so each
+  // keystroke doesn't rebuild hundreds of rows.
+  let searchTimer = null;
   search.addEventListener("input", () => {
     wordsState.query = search.value;
     clear.hidden = !search.value;
-    renderWordList();
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(renderWordList, 150);
   });
   clear.addEventListener("click", () => {
     wordsState.query = "";
@@ -68,7 +72,9 @@ function renderWordList() {
   body.innerHTML = "";
   const q = wordsState.query.trim().toLowerCase();
   let shown = 0;
+  const token = (renderWordList.token = (renderWordList.token || 0) + 1);
 
+  const groups = [];
   state.chapters
     .filter((ch) => wordsState.chapters.has(ch))
     .forEach((ch) => {
@@ -77,15 +83,31 @@ function renderWordList() {
       );
       if (!words.length) return;
       shown += words.length;
-      const list = el("div", { class: "glossary-list" });
-      words.forEach((w) => list.appendChild(wordRow(w)));
-      body.appendChild(
-        el("section", { class: "glossary-chapter" }, [
-          el("h3", { class: "glossary-chapter-heading", text: `${ch} · ${words.length} word${words.length === 1 ? "" : "s"}` }),
-          list,
-        ])
-      );
+      groups.push([ch, words]);
     });
+
+  // Draw the first chapter straight away and the rest just after, so the
+  // screen appears immediately instead of waiting for every row.
+  const drawGroup = ([ch, words]) => {
+    const list = el("div", { class: "glossary-list" });
+    words.forEach((w) => list.appendChild(wordRow(w)));
+    body.appendChild(
+      el("section", { class: "glossary-chapter" }, [
+        el("h3", { class: "glossary-chapter-heading", text: `${ch} · ${words.length} word${words.length === 1 ? "" : "s"}` }),
+        list,
+      ])
+    );
+  };
+  if (groups.length) drawGroup(groups[0]);
+  let i = 1;
+  const drawRest = () => {
+    if (token !== renderWordList.token || !body.isConnected) return; // list was redrawn or tab changed
+    if (i < groups.length) {
+      drawGroup(groups[i++]);
+      requestAnimationFrame(drawRest);
+    }
+  };
+  if (groups.length > 1) requestAnimationFrame(drawRest);
 
   countBox.textContent = wordsState.chapters.size
     ? `${shown} word${shown === 1 ? "" : "s"} shown`
