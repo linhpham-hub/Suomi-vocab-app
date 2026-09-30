@@ -222,89 +222,99 @@
       "subtitle": "Practice for the book text “Pedro soittaa Mikolle” (s. 57): work, weather, the course and moving",
       "lines": [
         {
-          "who": "Sofia",
-          "fi": "[Moi](Hei! / Moi!), Anni! [Nukutko](nukkua) [vielä]?",
-          "en": "Hi, Anni! Are you still sleeping?"
+          "who": "Sara",
+          "fi": "[Moi](Hei! / Moi!), Ville! Mitä sinne kuuluu? Oletko [jo] [töissä](olla töissä)?",
+          "en": "Hi, Ville! How are things there? Are you at work already?"
         },
         {
-          "who": "Anni",
-          "fi": "En! [Kello] on [jo] [puoli] yhdeksän. [Minun täytyy] [lähteä töihin] pian.",
-          "en": "No! It's already half past eight. I have to leave for work soon."
+          "who": "Ville",
+          "fi": "[Moi](Hei! / Moi!)! [Ei vielä]. Täällä [kello] on [vasta] [puoli] seitsemän. Juon aamukahvia.",
+          "en": "Hi! Not yet. Here it's only half past six. I'm drinking my morning coffee."
         },
         {
-          "who": "Sofia",
-          "fi": "[Ai niin, totta]! Sinulla on [uusi] [työpaikka]. [Millainen] se on?",
-          "en": "Oh right! You have a new job. What is it like?"
+          "who": "Sara",
+          "fi": "[Ai niin, totta]! Kanadassa on [vielä] aamu.",
+          "en": "Oh right! It's still morning in Canada."
         },
         {
-          "who": "Anni",
-          "fi": "[Tosi] [mukava]. [Entä] sinä? [Oletko](olla) [jo] [töissä](olla töissä)?",
-          "en": "Really nice. And you? Are you working already?"
+          "who": "Ville",
+          "fi": "Täällä on [aika] [huono] [sää]. [Sataa] [ja] [on tuulista]. [Entä] Suomessa?",
+          "en": "The weather here is quite bad. It's raining and windy. And in Finland?"
         },
         {
-          "who": "Sofia",
-          "fi": "[Ei vielä]. [Etsin töitä](etsiä töitä), [mutta] se ei ole [helppoa](helppo).",
-          "en": "Not yet. I'm looking for a job, but it isn't easy."
+          "who": "Sara",
+          "fi": "Täällä [aurinko paistaa] [ja] on [tosi] [lämmin], kaksikymmentäkaksi [astetta](aste).",
+          "en": "Here the sun is shining and it's really warm, twenty-two degrees."
         },
         {
-          "who": "Sofia",
-          "fi": "[Nyt] olen [suomen kurssilla](suomen kurssi) [maanantaisin], [keskiviikkoisin] [ja] [torstaisin].",
-          "en": "Now I'm on a Finnish course on Mondays, Wednesdays and Thursdays."
+          "who": "Sara",
+          "fi": "[Kesällä](kesä) [yö] on [niin] [valoisa], [että] minun on [vaikea] [nukkua].",
+          "en": "In summer the night is so bright that it's hard for me to sleep."
         },
         {
-          "who": "Anni",
-          "fi": "[Hieno juttu]! Sinun suomesi on [jo] [tosi] hyvä.",
-          "en": "That's great! Your Finnish is already really good."
+          "who": "Ville",
+          "fi": "[Nauti](nauttia) [nyt]! [Marraskuussa](marraskuu) on taas [tosi] [pimeää](pimeä).",
+          "en": "Enjoy it now! In November it's really dark again."
         },
         {
-          "who": "Sofia",
-          "fi": "[Kiitos], [mutta] en puhu [yhtä hyvin kuin] sinä.",
-          "en": "Thanks, but I don't speak as well as you."
+          "who": "Sara",
+          "fi": "[Niin kuulemma].",
+          "en": "So I hear."
         },
         {
-          "who": "Sofia",
-          "fi": "[Millainen] [sää] on Rovaniemellä?",
-          "en": "What's the weather like in Rovaniemi?"
+          "who": "Ville",
+          "fi": "Mitä muuta? [Onko sinulla] [jo] [työpaikka]?",
+          "en": "What else? Do you have a job already?"
         },
         {
-          "who": "Anni",
-          "fi": "[Aika] [huono]. Vain kahdeksan [astetta](aste). [Sataa] [ja] [on tuulista].",
-          "en": "Quite bad. Only eight degrees. It's raining and windy."
+          "who": "Sara",
+          "fi": "[Ei vielä]. [Etsin töitä](etsiä töitä) joka päivä, [mutta] se ei ole [helppoa](helppo). [Nyt] olen suomen kurssilla.",
+          "en": "Not yet. I look for work every day, but it isn't easy. Now I'm on a Finnish course."
         },
         {
-          "who": "Sofia",
-          "fi": "Täällä [aurinko paistaa] [ja] on [lämmin]. Mutta [kesällä](kesä) [yö] on [valoisa], [ja] en [nuku](nukkua) hyvin.",
-          "en": "Here the sun is shining and it's warm. But in summer the night is bright, and I don't sleep well."
+          "who": "Ville",
+          "fi": "[Hieno juttu]! [Millainen] kurssi on?",
+          "en": "That's great! What's the course like?"
         },
         {
-          "who": "Anni",
-          "fi": "[Marraskuussa](marraskuu) täällä on [tosi] [pimeää](pimeä). [Nauti](nauttia) valosta!",
-          "en": "In November it's really dark here. Enjoy the light!"
+          "who": "Sara",
+          "fi": "[Tosi] [mukava]. Opettaja on hauska, [ja] minun naapurini on [samalla](sama) kurssilla. Tunnit ovat [maanantaisin], [keskiviikkoisin] [ja] [torstaisin].",
+          "en": "Really nice. The teacher is fun, and my neighbour is on the same course. Lessons are on Mondays, Wednesdays and Thursdays."
         },
         {
-          "who": "Sofia",
-          "fi": "[Niin kuulemma]!",
-          "en": "So I hear!"
+          "who": "Ville",
+          "fi": "Kolme [kertaa](kerta) viikossa! Pian sinä puhut suomea [yhtä hyvin kuin] minä.",
+          "en": "Three times a week! Soon you'll speak Finnish as well as I do."
         },
         {
-          "who": "Anni",
-          "fi": "Asutteko te [vielä] [opiskelija-asunnossa](opiskelija-asunto)?",
-          "en": "Do you still live in the student apartment?"
+          "who": "Sara",
+          "fi": "Ha ha, ehkä joskus.",
+          "en": "Ha ha, maybe some day."
         },
         {
-          "who": "Sofia",
+          "who": "Ville",
+          "fi": "Asutko [vielä] [opiskelija-asunnossa](opiskelija-asunto) Tampereella?",
+          "en": "Do you still live in the student apartment in Tampere?"
+        },
+        {
+          "who": "Sara",
           "fi": "Joo, [mutta] me [muutamme](muuttaa) [syyskuussa](syyskuu). [Meidän] [uusi] [koti] on Vantaalla.",
           "en": "Yes, but we're moving in September. Our new home is in Vantaa."
         },
         {
-          "who": "Anni",
-          "fi": "[Kuulostaa hyvältä]! Nyt [minun täytyy] mennä. [Terveisiä Hannalle!]",
-          "en": "Sounds good! Now I have to go. Say hi to Hanna!"
+          "who": "Ville",
+          "fi": "[Kuulostaa hyvältä]! Hei, [nyt] [minun täytyy] [lähteä töihin]. [Terveisiä Liisalle!](Terveisiä Hannalle!)",
+          "en": "Sounds good! Hey, now I have to leave for work. Say hi to Liisa!"
         },
         {
-          "who": "Sofia",
-          "fi": "[Kiitos], [minä] [kerron](kertoa)! Moi moi!",
+          "who": "Sara",
+          "fi": "[Kiitos], [kerron](kertoa) hänelle! Hei hei!",
           "en": "Thanks, I'll tell her! Bye bye!"
+        },
+        {
+          "who": "Ville",
+          "fi": "Moi moi!",
+          "en": "Bye bye!"
         }
       ]
     },
@@ -316,83 +326,98 @@
       "lines": [
         {
           "who": "Kurssisihteeri",
-          "fi": "[Hei]! Voinko [auttaa]?",
-          "en": "Hi! Can I help?"
+          "fi": "[Hei]! Miten voin [auttaa]?",
+          "en": "Hi! How can I help?"
         },
         {
           "who": "Leo",
-          "fi": "[Hei]. [Haluan](haluta) [ilmoittautua] suomen kurssille.",
-          "en": "Hi. I want to enroll in a Finnish course."
+          "fi": "[Hei]! [Haluaisin](haluta) [ilmoittautua] suomen kurssille, [tasolle](taso) yksi.",
+          "en": "Hi! I'd like to enrol on a Finnish course, level one."
         },
         {
           "who": "Kurssisihteeri",
-          "fi": "Mikä [taso]?",
-          "en": "Which level?"
+          "fi": "Selvä. [Seuraava] Suomi 1 -kurssi [alkaa] [jo] [ensi] maanantaina.",
+          "en": "OK. The next Finnish 1 course already starts next Monday."
         },
         {
           "who": "Leo",
-          "fi": "Suomi 2. Milloin [seuraava] kurssi [alkaa]?",
-          "en": "Finnish 2. When does the next course start?"
+          "fi": "[Ensi] maanantaina? Voi ei, silloin olen matkalla. [Se ei käy].",
+          "en": "Next Monday? Oh no, I'm travelling then. That doesn't work."
         },
         {
           "who": "Kurssisihteeri",
-          "fi": "[Hetkinen], [minä] [tarkistan](tarkistaa)… [Seuraava] kurssi [alkaa] [ensi] maanantaina [kello] 9.",
-          "en": "Just a moment, I'll check… The next course starts next Monday at 9."
+          "fi": "[No], [toinen] kurssi [alkaa] lokakuussa.",
+          "en": "Well, another course starts in October."
         },
         {
           "who": "Leo",
-          "fi": "Aamulla? [Se ei käy]. Olen aamulla [töissä](olla töissä).",
-          "en": "In the morning? That doesn't work. I'm at work in the mornings."
+          "fi": "Lokakuu sopii hyvin. Onko kurssilla [vielä] tilaa?",
+          "en": "October suits me well. Is there still room on the course?"
         },
         {
           "who": "Kurssisihteeri",
-          "fi": "[No], on [myös] [toinen] ryhmä: [maanantaisin] [ja] [keskiviikkoisin] [kello] 18.",
-          "en": "Well, there's also another group: on Mondays and Wednesdays at 18."
+          "fi": "[Hetkinen], [minä] [tarkistan](tarkistaa)… Joo, [siellä] on [vielä] [pari] vapaata paikkaa.",
+          "en": "Just a moment, I'll check… Yes, there are still a couple of free places."
         },
         {
           "who": "Leo",
+          "fi": "Hyvä, kiitos!",
+          "en": "Good, thanks!"
+        },
+        {
+          "who": "Kurssisihteeri",
+          "fi": "Mikä sinun nimesi on?",
+          "en": "What's your name?"
+        },
+        {
+          "who": "Leo",
+          "fi": "Leo Martins.",
+          "en": "Leo Martins."
+        },
+        {
+          "who": "Kurssisihteeri",
           "fi": "[Anteeksi], [sanotko uudelleen]?",
           "en": "Sorry, can you say that again?"
         },
         {
-          "who": "Kurssisihteeri",
-          "fi": "[Maanantaisin] [ja] [keskiviikkoisin], [kello] kuusi illalla.",
-          "en": "On Mondays and Wednesdays, at six in the evening."
-        },
-        {
           "who": "Leo",
-          "fi": "Hyvä, se käy!",
-          "en": "Good, that works!"
+          "fi": "[Etunimi] on Leo, [sukunimi] on Martins. M – A – R – T – I – N – S.",
+          "en": "My first name is Leo, my last name is Martins. M – A – R – T – I – N – S."
         },
         {
           "who": "Kurssisihteeri",
-          "fi": "[Tässä] on [lomake]. Kirjoita [etunimi], [sukunimi] [ja] kotikunta.",
-          "en": "Here's a form. Write your first name, last name and home municipality."
+          "fi": "Kiitos. [Tässä] on [lomake]. Kirjoita tähän sinun tietosi.",
+          "en": "Thanks. Here's a form. Write your details here."
         },
         {
           "who": "Leo",
-          "fi": "Mitä \"kotikunta\" [tarkoittaa]?",
-          "en": "What does \"kotikunta\" mean?"
+          "fi": "Okei, kiitos.",
+          "en": "OK, thanks."
+        },
+        {
+          "who": "Leo",
+          "fi": "[Anteeksi], [voitko](voida) [auttaa]? Mitä ”postinumero” [tarkoittaa]?",
+          "en": "Excuse me, can you help? What does “postinumero” mean?"
         },
         {
           "who": "Kurssisihteeri",
-          "fi": "Se [tarkoittaa] [kaupunkia](kaupunki), missä sinä [asut](asua).",
-          "en": "It means the city where you live."
+          "fi": "Se on viisi numeroa ennen [kaupungin](kaupunki) nimeä, esimerkiksi 00100 Helsinki.",
+          "en": "It's the five numbers before the city name, for example 00100 Helsinki."
         },
         {
           "who": "Leo",
-          "fi": "Okei. [Valmis]!",
-          "en": "OK. Ready!"
+          "fi": "Aa, minulla se on 02150 Espoo. Nyt lomake on [valmis]. [Kiitos avusta]!",
+          "en": "Ah, mine is 02150 Espoo. Now the form is ready. Thanks for the help!"
         },
         {
           "who": "Kurssisihteeri",
-          "fi": "[Kiitos]. Nyt kaikki on [tehty]. [Saat](saada) [laskun](lasku) [sähköpostitse].",
-          "en": "Thanks. Now everything is done. You'll get the invoice by e-mail."
+          "fi": "Ole hyvä. Ilmoittautuminen on [tehty]. [Saat](saada) [laskun](lasku) [sähköpostitse] [ensi] viikolla.",
+          "en": "You're welcome. The registration is done. You'll get the invoice by e-mail next week."
         },
         {
           "who": "Leo",
-          "fi": "[Kiitos avusta]!",
-          "en": "Thanks for the help!"
+          "fi": "Selvä, kiitos. Hei hei!",
+          "en": "OK, thanks. Bye!"
         }
       ]
     }

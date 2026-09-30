@@ -1023,8 +1023,9 @@ body[data-tab="progress"] { --accent: #8C6319; }
 .sub-chip { font-size: 0.82rem; }
 
 /* ---------- Talk tab: 4 sections + sub-tabs (2026-09-27) ---------- */
-.segmented--wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
-.segmented--wrap .segmented-btn { line-height: 1.15; padding: 8px 4px; font-size: 0.8rem; }
+.segmented--wrap { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.segmented--wrap .segmented-btn { line-height: 1.15; padding: 8px 2px; font-size: 0.8rem; overflow-wrap: anywhere; }
+@media (max-width: 420px) { .segmented--wrap .segmented-btn { font-size: 0.7rem; } }
 .sub-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
 .sub-tab { font-size: 0.84rem; }
 .topic-list { margin-top: 6px; }
@@ -1071,3 +1072,12 @@ body[data-tab="progress"] { --accent: #8C6319; }
 .table-scroll { overflow-x: auto; }
 .users-summary { margin: 0 0 8px; }
 .nowrap { white-space: nowrap; }
+
+/* Talk → Questions */
+.qword-row { display: flex; flex-direction: column; align-items: stretch; gap: 6px; }
+.qword-head { display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap; gap: 2px 12px; text-align: left; }
+.qword-fi { font-size: 1.1rem; font-weight: 700; }
+.qword-row .qa-row { border: 0; padding: 0 0 0 12px; border-left: 3px solid var(--border); }
+.qa-row .glossary-main { display: flex; flex-direction: column; gap: 3px; }
+.qa-answer { display: flex; align-items: center; flex-wrap: wrap; gap: 0 4px; font-size: 0.92rem; }
+.qa-answer-en { flex-basis: 100%; }

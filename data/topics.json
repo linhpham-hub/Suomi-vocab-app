@@ -899,5 +899,394 @@
         "en": "soft"
       }
     ]
+  ],
+  "questionWords": [
+    {
+      "fi": "Kuka?",
+      "en": "Who?",
+      "q": "Kuka tuo on?",
+      "qen": "Who is that?",
+      "a": "Tuo on Mikko.",
+      "aen": "That's Mikko."
+    },
+    {
+      "fi": "Kenen?",
+      "en": "Whose?",
+      "q": "Kenen kynä tämä on?",
+      "qen": "Whose pen is this?",
+      "a": "Se on minun.",
+      "aen": "It's mine."
+    },
+    {
+      "fi": "Mikä?",
+      "en": "What? / Which?",
+      "q": "Mikä tämä on?",
+      "qen": "What is this?",
+      "a": "Se on sanakirja.",
+      "aen": "It's a dictionary."
+    },
+    {
+      "fi": "Mitä?",
+      "en": "What? (doing, wanting)",
+      "q": "Mitä sinä teet?",
+      "qs": "Mitä sä teet?",
+      "qen": "What are you doing?",
+      "a": "Minä opiskelen suomea.",
+      "aen": "I'm studying Finnish."
+    },
+    {
+      "fi": "Missä?",
+      "en": "Where? (in / at)",
+      "q": "Missä sinä asut?",
+      "qs": "Missä sä asut?",
+      "qen": "Where do you live?",
+      "a": "Minä asun Helsingissä.",
+      "aen": "I live in Helsinki."
+    },
+    {
+      "fi": "Mistä?",
+      "en": "Where from?",
+      "q": "Mistä sinä olet kotoisin?",
+      "qs": "Mistä sä oot kotosin?",
+      "qen": "Where are you from?",
+      "a": "Olen kotoisin Espanjasta.",
+      "aen": "I'm from Spain."
+    },
+    {
+      "fi": "Mihin? / Minne?",
+      "en": "Where to?",
+      "q": "Mihin sinä menet?",
+      "qs": "Mihin sä meet?",
+      "qen": "Where are you going?",
+      "a": "Menen kauppaan.",
+      "aen": "I'm going to the shop."
+    },
+    {
+      "fi": "Milloin?",
+      "en": "When?",
+      "q": "Milloin kurssi alkaa?",
+      "qen": "When does the course start?",
+      "a": "Kurssi alkaa maanantaina.",
+      "aen": "The course starts on Monday."
+    },
+    {
+      "fi": "Koska?",
+      "en": "When? (spoken)",
+      "q": "Koska tunti alkaa?",
+      "qen": "When does the lesson start?",
+      "a": "Kello yhdeksän.",
+      "aen": "At nine o'clock.",
+      "note": "koska also means “because”"
+    },
+    {
+      "fi": "Mihin aikaan?",
+      "en": "At what time?",
+      "q": "Mihin aikaan kauppa aukeaa?",
+      "qen": "What time does the shop open?",
+      "a": "Kello kahdeksan.",
+      "aen": "At eight."
+    },
+    {
+      "fi": "Miten?",
+      "en": "How?",
+      "q": "Miten menee?",
+      "qen": "How's it going?",
+      "a": "Hyvin, kiitos.",
+      "aen": "Fine, thanks."
+    },
+    {
+      "fi": "Kuinka?",
+      "en": "How? (+ adjective)",
+      "q": "Kuinka vanha sinä olet?",
+      "qs": "Kuinka vanha sä oot?",
+      "qen": "How old are you?",
+      "a": "Olen kolmekymmentä vuotta vanha.",
+      "aen": "I'm thirty years old."
+    },
+    {
+      "fi": "Millainen?",
+      "en": "What kind of? What … like?",
+      "q": "Millainen sää tänään on?",
+      "qs": "Millanen sää tänään on?",
+      "qen": "What's the weather like today?",
+      "a": "On aurinkoista.",
+      "aen": "It's sunny."
+    },
+    {
+      "fi": "Miksi?",
+      "en": "Why?",
+      "q": "Miksi sinä opiskelet suomea?",
+      "qs": "Miks sä opiskelet suomee?",
+      "qen": "Why are you studying Finnish?",
+      "a": "Koska asun Suomessa.",
+      "aen": "Because I live in Finland."
+    },
+    {
+      "fi": "Paljonko?",
+      "en": "How much?",
+      "q": "Paljonko tämä maksaa?",
+      "qs": "Paljo tää maksaa?",
+      "qen": "How much does this cost?",
+      "a": "Se maksaa viisi euroa.",
+      "aen": "It costs five euros."
+    },
+    {
+      "fi": "Montako? / Kuinka monta?",
+      "en": "How many?",
+      "q": "Montako kieltä sinä puhut?",
+      "qs": "Montako kieltä sä puhut?",
+      "qen": "How many languages do you speak?",
+      "a": "Kolme: englantia, espanjaa ja vähän suomea.",
+      "aen": "Three: English, Spanish and a little Finnish."
+    },
+    {
+      "fi": "Kumpi?",
+      "en": "Which one (of two)?",
+      "q": "Kumpi on parempi, kahvi vai tee?",
+      "qen": "Which is better, coffee or tea?",
+      "a": "Kahvi!",
+      "aen": "Coffee!"
+    },
+    {
+      "fi": "Minkä värinen?",
+      "en": "What colour?",
+      "q": "Minkä värinen sinun laukkusi on?",
+      "qs": "Minkä värinen sun laukku on?",
+      "qen": "What colour is your bag?",
+      "a": "Se on musta.",
+      "aen": "It's black."
+    },
+    {
+      "fi": "Minkämaalainen?",
+      "en": "What nationality?",
+      "q": "Minkämaalainen sinä olet?",
+      "qs": "Minkämaalainen sä oot?",
+      "qen": "What nationality are you?",
+      "a": "Olen espanjalainen.",
+      "aen": "I'm Spanish."
+    },
+    {
+      "fi": "Monesko?",
+      "en": "Which (number)? What date?",
+      "q": "Monesko päivä tänään on?",
+      "qen": "What's the date today?",
+      "a": "Tänään on ensimmäinen lokakuuta.",
+      "aen": "Today is the first of October."
+    }
+  ],
+  "yesNoQuestions": [
+    {
+      "fi": "Puhutko englantia?",
+      "spoken": "Puhuksä englantii?",
+      "en": "Do you speak English?",
+      "a": "Puhun. / En puhu.",
+      "aen": "Yes (I speak). / No (I don't speak)."
+    },
+    {
+      "fi": "Oletko sinä opiskelija?",
+      "spoken": "Ooksä opiskelija?",
+      "en": "Are you a student?",
+      "a": "Olen. / En ole.",
+      "aen": "Yes (I am). / No (I'm not)."
+    },
+    {
+      "fi": "Asutko sinä Helsingissä?",
+      "spoken": "Asuksä Helsingissä?",
+      "en": "Do you live in Helsinki?",
+      "a": "Asun. / En asu.",
+      "aen": "Yes. / No."
+    },
+    {
+      "fi": "Onko sinulla kynä?",
+      "spoken": "Onks sulla kynä?",
+      "en": "Do you have a pen?",
+      "a": "On. / Ei ole.",
+      "aen": "Yes. / No."
+    },
+    {
+      "fi": "Ymmärrätkö?",
+      "spoken": "Ymmärräksä?",
+      "en": "Do you understand?",
+      "a": "Ymmärrän. / En ymmärrä.",
+      "aen": "Yes. / No."
+    },
+    {
+      "fi": "Tuletko sinä huomenna?",
+      "spoken": "Tuuksä huomenna?",
+      "en": "Are you coming tomorrow?",
+      "a": "Tulen. / En tule.",
+      "aen": "Yes. / No."
+    }
+  ],
+  "commonQuestions": [
+    {
+      "title": "🙋 About you",
+      "items": [
+        {
+          "fi": "Mikä sinun nimesi on?",
+          "spoken": "Mikä sun nimi on?",
+          "en": "What's your name?",
+          "a": "Minun nimeni on Linh.",
+          "aen": "My name is Linh."
+        },
+        {
+          "fi": "Mistä sinä olet kotoisin?",
+          "spoken": "Mistä sä oot kotosin?",
+          "en": "Where are you from?",
+          "a": "Olen kotoisin Vietnamista.",
+          "aen": "I'm from Vietnam."
+        },
+        {
+          "fi": "Missä sinä asut?",
+          "spoken": "Missä sä asut?",
+          "en": "Where do you live?",
+          "a": "Asun Espoossa.",
+          "aen": "I live in Espoo."
+        },
+        {
+          "fi": "Mitä kieliä sinä puhut?",
+          "spoken": "Mitä kieliä sä puhut?",
+          "en": "What languages do you speak?",
+          "a": "Puhun englantia ja vähän suomea.",
+          "aen": "I speak English and a little Finnish."
+        },
+        {
+          "fi": "Mitä sinä teet työksesi?",
+          "spoken": "Mitä sä teet työks?",
+          "en": "What do you do for work?",
+          "a": "Olen opiskelija.",
+          "aen": "I'm a student."
+        },
+        {
+          "fi": "Mikä sinun puhelinnumerosi on?",
+          "spoken": "Mikä sun puhelinnumero on?",
+          "en": "What's your phone number?",
+          "a": "Se on 040 123 4567.",
+          "aen": "It's 040 123 4567."
+        }
+      ]
+    },
+    {
+      "title": "☀️ Everyday",
+      "items": [
+        {
+          "fi": "Mitä kuuluu?",
+          "spoken": "Mitä sulle kuuluu?",
+          "en": "How are you?",
+          "a": "Kiitos, hyvää. Entä sinulle?",
+          "aen": "Fine, thanks. And you?"
+        },
+        {
+          "fi": "Mitä sinä teet viikonloppuna?",
+          "spoken": "Mitä sä teet viikonloppuna?",
+          "en": "What are you doing at the weekend?",
+          "a": "Menen kauppaan ja siivoan.",
+          "aen": "I'm going to the shop and cleaning."
+        },
+        {
+          "fi": "Paljonko kello on?",
+          "spoken": "Paljo kello on?",
+          "en": "What time is it?",
+          "a": "Kello on kaksi.",
+          "aen": "It's two o'clock."
+        },
+        {
+          "fi": "Mikä päivä tänään on?",
+          "en": "What day is it today?",
+          "a": "Tänään on torstai.",
+          "aen": "Today is Thursday."
+        },
+        {
+          "fi": "Millainen sää tänään on?",
+          "spoken": "Millanen sää tänään on?",
+          "en": "What's the weather like today?",
+          "a": "Sataa ja on kylmä.",
+          "aen": "It's raining and cold."
+        }
+      ]
+    },
+    {
+      "title": "🛒 In a shop or café",
+      "items": [
+        {
+          "fi": "Paljonko se maksaa?",
+          "spoken": "Paljo se maksaa?",
+          "en": "How much does it cost?",
+          "a": "Kolme euroa.",
+          "aen": "Three euros."
+        },
+        {
+          "fi": "Onko teillä maitoa?",
+          "spoken": "Onks teillä maitoo?",
+          "en": "Do you have milk?",
+          "a": "On. / Ei ole.",
+          "aen": "Yes. / No."
+        },
+        {
+          "fi": "Voinko maksaa kortilla?",
+          "spoken": "Voinks mä maksaa kortilla?",
+          "en": "Can I pay by card?",
+          "a": "Voit, tietysti.",
+          "aen": "Yes, of course."
+        },
+        {
+          "fi": "Missä vessa on?",
+          "en": "Where is the toilet?",
+          "a": "Tuolla oikealla.",
+          "aen": "Over there on the right."
+        },
+        {
+          "fi": "Mihin aikaan kauppa menee kiinni?",
+          "en": "What time does the shop close?",
+          "a": "Kello yhdeksän illalla.",
+          "aen": "At nine in the evening."
+        }
+      ]
+    },
+    {
+      "title": "📚 In class",
+      "items": [
+        {
+          "fi": "Mitä ”kiitos” tarkoittaa?",
+          "en": "What does “kiitos” mean?",
+          "a": "Se tarkoittaa ”thank you”.",
+          "aen": "It means “thank you”."
+        },
+        {
+          "fi": "Miten sanotaan ”thank you” suomeksi?",
+          "spoken": "Miten sanotaan ”thank you” suomeks?",
+          "en": "How do you say “thank you” in Finnish?",
+          "a": "Kiitos.",
+          "aen": "Kiitos."
+        },
+        {
+          "fi": "Mikä tämä on suomeksi?",
+          "spoken": "Mikä tää on suomeks?",
+          "en": "What is this in Finnish?",
+          "a": "Se on kynä.",
+          "aen": "It's a pen."
+        },
+        {
+          "fi": "Miten se kirjoitetaan?",
+          "en": "How is it written (spelled)?",
+          "a": "K - Y - N - Ä.",
+          "aen": "K - Y - N - Ä."
+        },
+        {
+          "fi": "Voitko toistaa?",
+          "spoken": "Voiksä toistaa?",
+          "en": "Can you repeat?",
+          "a": "Totta kai.",
+          "aen": "Of course."
+        },
+        {
+          "fi": "Voitko puhua hitaammin?",
+          "spoken": "Voiksä puhuu hitaammin?",
+          "en": "Can you speak more slowly?",
+          "a": "Joo, anteeksi.",
+          "aen": "Yes, sorry."
+        }
+      ]
+    }
   ]
 }

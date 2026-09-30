@@ -10,7 +10,8 @@ Chloe's Metropolia Finnish A1.2 course, shared with classmates. Five tabs:
 Study (Focus words / Flashcards / Quiz / Write), Words (glossary + search +
 teacher's Wordwall links), Talk (Dialogues · Numbers & € [numbers, prices,
 clock, shopping] · Time & weather [seasons & months, week & days, weather] ·
-Adjectives [opposites, colours]), Oral test (26 questions), Progress
+Adjectives [opposites, colours] · Questions [question words, common
+questions]), Oral test (26 questions), Progress
 (New/Learning/Mastered lists, device sync, voice, feedback). Credit line
 "Created by LinhPham" is on Study and Progress. Keep it.
 
@@ -62,6 +63,8 @@ Adjectives [opposites, colours]), Oral test (26 questions), Progress
   Use them to check word lists. Don't copy them into this repo or transcribe
   the book's dialogues. The chapter 3 dialogues (Videopuhelu, Kurssitoimistossa)
   are original practice versions of the book texts.
+- **Questions (2026-10-01):** `questionWords`, `commonQuestions` and
+  `yesNoQuestions` in topics.json (original examples), shown in Talk → Questions.
 - **Adjectives:** `adjectivePairs` in topics.json is Chloe's required list, in
   her order (shown as "Must-know opposites"); `adjectiveMore` are extras.
 - **Dashboard "Everyone using the app":** the app upserts its `progress` row
@@ -125,6 +128,10 @@ Supabase project + `js/config.js`. All SQL is in `supabase/setup.sql`
   notification + Excel), with optional email or anonymous.
 
 ## Working in this repo
+
+- **"What's new" card:** before changing `APP_VERSION` / `WHATS_NEW` in
+  `js/app.js`, draft the lines in chat and let Chloe review and edit them
+  first (her request, 2026-09-27).
 
 - Preview: `python3 -m http.server 8000` from this folder.
 - There's no committed test suite. The 2026-09-26 build was verified with a

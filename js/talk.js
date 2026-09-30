@@ -1,6 +1,7 @@
 // Talk tab: practice dialogues (tap a glossary word to see its meaning and
 // hear it); Numbers & € (numbers, prices, clock, shopping phrases); Time &
-// weather (seasons, months, week, weather); Adjectives (opposites, colours).
+// weather (seasons, months, week, weather); Adjectives (opposites, colours);
+// Questions (question words, common questions).
 // Word lists for the last two live in data/topics.json.
 
 const talkState = {
@@ -8,13 +9,14 @@ const talkState = {
   openConv: null,
   showEnglish: false,
   numStyle: "both",
-  sub: { numbers: "numbers", time: "calendar", adjectives: "opposites" },
+  sub: { numbers: "numbers", time: "calendar", adjectives: "opposites", questions: "words" },
 };
 
 const TALK_SUBS = {
   numbers: [["numbers", "🔢 Numbers"], ["prices", "🏷️ Prices"], ["clock", "🕒 Clock"], ["shopping", "🛒 Shopping"]],
   time: [["calendar", "🍂 Seasons & months"], ["week", "📅 Week & days"], ["weather", "🌦️ Weather"]],
   adjectives: [["opposites", "↔️ Opposites"], ["colours", "🎨 Colours"]],
+  questions: [["words", "❓ Question words"], ["common", "💬 Common questions"]],
 };
 
 function openTalk(section, sub) {
@@ -70,6 +72,9 @@ function renderTalk() {
   } else if (talkState.section === "adjectives") {
     if (sub === "colours") renderColours(body);
     else renderOpposites(body);
+  } else if (talkState.section === "questions") {
+    if (sub === "common") renderCommonQuestions(body);
+    else renderQuestionWords(body);
   } else if (talkState.openConv) renderDialogue(body, state.conversations.find((c) => c.id === talkState.openConv));
   else renderDialogueList(body);
 }
@@ -812,4 +817,53 @@ function renderColours(body) {
   body.appendChild(listCard("🎨 Värit · Colours", rows));
   body.appendChild(miniQuiz("🎲 Quiz: colours", (t.colours || []).map((c) => ({ prompt: c.en, answer: c.fi })), { intro: "Pick the Finnish word." }));
   body.appendChild(listCard("💬 Phrases", (t.colourPhrases || []).map(phraseRow)));
+}
+
+
+// ---------- Questions ----------
+
+// A question (written + spoken form, 🔊) with an example answer underneath.
+function qaRow(q) {
+  const fi = q.q || q.fi, spoken = q.qs || q.spoken;
+  return el("div", { class: "glossary-row phrase-row qa-row" }, [
+    el("div", { class: "glossary-main" }, [
+      el("span", { class: "phrase-fi" }, [fi, speakBtn(fi, { small: true })]),
+      spoken && spoken !== fi
+        ? el("span", { class: "phrase-spoken" }, [el("span", { class: "num-form-label", text: "spoken" }), spoken, speakBtn(spoken, { small: true })])
+        : null,
+      el("span", { class: "glossary-en", text: q.qen || q.en }),
+      q.a
+        ? el("span", { class: "qa-answer" }, [el("span", { class: "num-form-label", text: "answer" }), q.a, speakBtn(q.a, { small: true }), el("span", { class: "muted small qa-answer-en", text: q.aen })])
+        : null,
+    ]),
+  ]);
+}
+
+function renderQuestionWords(body) {
+  const t = topics();
+  const words = t.questionWords || [];
+  body.appendChild(el("p", { class: "section-intro", html: "Who? What? Where? When? How? Each question word has an example question and answer. Tap 🔊 to listen." }));
+  const rows = words.map((w) =>
+    el("div", { class: "glossary-row qword-row" }, [
+      el("div", { class: "qword-head" }, [
+        el("span", { class: "phrase-fi qword-fi" }, [w.fi, speakBtn(w.fi.replace(/\?/g, ""), { small: true })]),
+        el("span", { class: "glossary-en", text: w.en }),
+      ]),
+      qaRow(w),
+      w.note ? el("p", { class: "muted small", text: "💡 " + w.note }) : null,
+    ])
+  );
+  body.appendChild(listCard("❓ Kysymyssanat · Question words", rows));
+  body.appendChild(miniQuiz("🎲 Quiz: question words", words.map((w) => ({ prompt: w.en, answer: w.fi })), { intro: "Pick the Finnish question word." }));
+  body.appendChild(miniQuiz("🎲 Quiz: ask the question", words.map((w) => ({ prompt: w.qen, answer: w.q })), { intro: "Pick the Finnish question." }));
+}
+
+function renderCommonQuestions(body) {
+  const t = topics();
+  body.appendChild(el("p", { class: "section-intro", html: "Everyday questions with a sample answer. Yes/no questions add <strong>-ko / -kö</strong> to the verb: <em>Puhut → Puhutko?</em>" }));
+  (t.commonQuestions || []).forEach((g) => body.appendChild(listCard(g.title, g.items.map(qaRow))));
+  const yn = t.yesNoQuestions || [];
+  if (yn.length) body.appendChild(listCard("✅ Yes / no questions", yn.map(qaRow), "Answer with the verb: Puhutko? → Puhun (yes) / En puhu (no). No need for “kyllä”."));
+  const all = [...(t.commonQuestions || []).flatMap((g) => g.items), ...yn];
+  body.appendChild(miniQuiz("🎲 Quiz: ask in Finnish", all.map((q) => ({ prompt: q.en, answer: q.fi })), { intro: "Pick the Finnish question." }));
 }
