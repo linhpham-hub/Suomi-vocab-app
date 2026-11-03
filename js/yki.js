@@ -593,3 +593,9 @@ function unlock(pass) {
   if (saved && saved !== "1") checkPassphrase(saved).then((ok) => (ok ? unlock(saved) : null));
   else input.focus();
 })();
+
+// Same service worker as the main app (needed so the YKI page can be
+// installed as its own home-screen app and opens offline after one visit).
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+}

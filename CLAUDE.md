@@ -76,6 +76,9 @@ questions]), Oral test (26 questions), Progress
   (`finYki.v1`). Not precached in sw.js on purpose (cached after first visit).
   Content source: build script outside the repo; edit data/yki.json directly
   for small fixes and validate that each `a` index is inside `opts`.
+  Installs as its own home-screen app: `manifest-yki.webmanifest` (id and
+  scope `./yki.html`, short_name "YKI", icons `icons/yki-*.png`) separate from
+  the main manifest; yki.js registers the same sw.js.
 - **Adjectives:** `adjectivePairs` in topics.json is Chloe's required list, in
   her order (shown as "Must-know opposites"); `adjectiveMore` are extras.
 - **Dashboard "Everyone using the app":** the app upserts its `progress` row
