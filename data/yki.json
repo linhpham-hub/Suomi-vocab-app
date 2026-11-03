@@ -1,0 +1,1200 @@
+{
+ "_comment": "Original YKI-style practice material written for this app (A1-A2 / YKI basic level). Not copied from any YKI test, sample test or textbook. Grade estimates are rough self-study guides, not official YKI scoring.",
+ "dates": [
+  {
+   "date": "2027-01-18",
+   "label": "Registration opens for the 13 Feb test (closes 28 Jan)",
+   "kind": "register"
+  },
+  {
+   "date": "2027-02-13",
+   "label": "YKI basic level test (first attempt)",
+   "kind": "test"
+  },
+  {
+   "date": "2027-03-08",
+   "label": "Registration opens for the 10 Apr test (closes 25 Mar), optional backup",
+   "kind": "register"
+  },
+  {
+   "date": "2027-03-22",
+   "label": "Registration opens for the 24 Apr test (closes 8 Apr)",
+   "kind": "register"
+  },
+  {
+   "date": "2027-04-10",
+   "label": "YKI basic level test (optional backup)",
+   "kind": "test"
+  },
+  {
+   "date": "2027-04-24",
+   "label": "YKI basic level test (main attempt)",
+   "kind": "test"
+  }
+ ],
+ "milestones": [
+  {
+   "id": "m1",
+   "by": "2026-11-30",
+   "text": "Ask Student Services: mixed subtest grades, and applying with the better of two tests"
+  },
+  {
+   "id": "m2",
+   "by": "2026-11-30",
+   "text": "Confirm I pay tuition fees (fee-paying students only)"
+  },
+  {
+   "id": "m3",
+   "by": "2026-12-15",
+   "text": "Do the level test once to find my weakest skill"
+  },
+  {
+   "id": "m4",
+   "by": "2026-12-31",
+   "text": "Pass Finnish 1 and the December oral test"
+  },
+  {
+   "id": "m5",
+   "by": "2027-01-10",
+   "text": "Find out which spring Finnish course I take, and when it starts"
+  },
+  {
+   "id": "m6",
+   "by": "2027-01-18",
+   "text": "Register for 13 Feb on yki.fi (first day of the window)"
+  },
+  {
+   "id": "m7",
+   "by": "2027-01-31",
+   "text": "Write 5–6 simple sentences about myself without help"
+  },
+  {
+   "id": "m8",
+   "by": "2027-02-13",
+   "text": "Take the 13 Feb test, then write down what surprised me"
+  },
+  {
+   "id": "m9",
+   "by": "2027-03-22",
+   "text": "Register for 24 Apr (first day of the window)"
+  },
+  {
+   "id": "m10",
+   "by": "2027-04-15",
+   "text": "Finish a full timed practice test (level test) with all four skills"
+  },
+  {
+   "id": "m11",
+   "by": "2027-04-24",
+   "text": "Take the 24 Apr test"
+  },
+  {
+   "id": "m12",
+   "by": "2027-07-31",
+   "text": "Certificate arrived: apply with the e-form and show the original at Student Services"
+  }
+ ],
+ "genWriting": [
+  "I greeted the reader and ended with my name",
+  "My sentences have a verb in the right form (minä asun, sinä asut…)",
+  "I reached the word count",
+  "I checked ä / ö and double letters (tuli / tulli)"
+ ],
+ "genSpeaking": [
+  "I spoke at least 4 full sentences",
+  "I answered what was asked",
+  "I didn't stop for long pauses",
+  "I used the right verb endings (asun, asut, asuu)"
+ ],
+ "reading": [
+  {
+   "id": "r1",
+   "title": "Kirjaston aukioloajat",
+   "en": "Library opening hours",
+   "text": "Kirjasto\nma–to klo 9–19\npe klo 9–17\nla klo 10–15\nsu suljettu\n\nKirjastokortti on ilmainen. Kirjan saa lainata kolmeksi viikoksi.",
+   "tr": "Library. Mon–Thu 9–19, Fri 9–17, Sat 10–15, Sun closed. The library card is free. You can borrow a book for three weeks.",
+   "qs": [
+    {
+     "q": "Milloin kirjasto on auki lauantaina?",
+     "opts": [
+      "Klo 9–19",
+      "Klo 9–17",
+      "Klo 10–15",
+      "Kirjasto on kiinni"
+     ],
+     "a": 2,
+     "why": "“la klo 10–15” = Saturday 10–15."
+    },
+    {
+     "q": "Kuinka kauan kirjan saa lainata?",
+     "opts": [
+      "Viikon",
+      "Kaksi viikkoa",
+      "Kolme viikkoa",
+      "Kuukauden"
+     ],
+     "a": 2,
+     "why": "“kolmeksi viikoksi” = for three weeks."
+    }
+   ]
+  },
+  {
+   "id": "r2",
+   "title": "Viesti ystävälle",
+   "en": "A message to a friend",
+   "text": "Hei Anna!\n\nEn pääse huomenna kahville, koska olen töissä iltaan asti. Voinko tulla torstaina? Laita viesti tai soita minulle.\n\nTerveisin Tomi",
+   "tr": "Hi Anna! I can't come for coffee tomorrow because I'm at work until the evening. Can I come on Thursday? Send a message or call me. Best wishes, Tomi",
+   "qs": [
+    {
+     "q": "Miksi Tomi ei pääse huomenna kahville?",
+     "opts": [
+      "Hän on sairas",
+      "Hän on töissä",
+      "Hän on matkalla",
+      "Hän on koulussa"
+     ],
+     "a": 1,
+     "why": "“koska olen töissä” = because I'm at work."
+    },
+    {
+     "q": "Mitä Tomi kysyy?",
+     "opts": [
+      "Voiko hän tulla kahville torstaina",
+      "Voiko Anna tulla töihin",
+      "Onko kahvia kotona",
+      "Missä kahvila on"
+     ],
+     "a": 0,
+     "why": "“Voinko tulla torstaina?” = Can I come on Thursday?"
+    }
+   ]
+  },
+  {
+   "id": "r3",
+   "title": "Vuokra-asunto",
+   "en": "Flat for rent",
+   "text": "Vuokrataan kaksio Espoossa\n\n45 m², 2. kerros, hissi\nVuokra 850 € / kk\nLähellä bussipysäkki ja kauppa\nVapaa 1.1. alkaen\n\nLisätietoja: 040 123 4567 (puhelin klo 16–20)",
+   "tr": "Two-room flat for rent in Espoo. 45 m², 2nd floor, lift. Rent €850 / month. Bus stop and shop nearby. Available from 1 Jan. More information by phone, 16–20.",
+   "qs": [
+    {
+     "q": "Paljonko vuokra on kuukaudessa?",
+     "opts": [
+      "485 €",
+      "580 €",
+      "850 €",
+      "1 850 €"
+     ],
+     "a": 2,
+     "why": "“Vuokra 850 € / kk”."
+    },
+    {
+     "q": "Milloin asunto on vapaa?",
+     "opts": [
+      "Heti",
+      "1.1. alkaen",
+      "1.6. alkaen",
+      "Ensi viikolla"
+     ],
+     "a": 1,
+     "why": "“Vapaa 1.1. alkaen” = available from 1 January."
+    },
+    {
+     "q": "Milloin voi soittaa?",
+     "opts": [
+      "Klo 9–12",
+      "Klo 12–16",
+      "Klo 16–20",
+      "Klo 20–22"
+     ],
+     "a": 2,
+     "why": "“puhelin klo 16–20”."
+    }
+   ]
+  },
+  {
+   "id": "r4",
+   "title": "Kurssi-ilmoitus",
+   "en": "Course notice",
+   "text": "Suomen kurssi, taso 2\n\nAlkaa tiistaina 12.1.\nTunnit ovat tiistaisin ja torstaisin klo 15.30–17.00.\nLuokka: B214\nTuo mukaan kirja ja kynä.\nIlmoittaudu sähköpostilla.",
+   "tr": "Finnish course, level 2. Starts on Tuesday 12 Jan. Lessons on Tuesdays and Thursdays 15.30–17.00. Room B214. Bring a book and a pen. Register by e-mail.",
+   "qs": [
+    {
+     "q": "Missä kurssi on?",
+     "opts": [
+      "Luokassa B214",
+      "Kirjastossa",
+      "Kahvilassa",
+      "Toimistossa"
+     ],
+     "a": 0,
+     "why": "“Luokka: B214”."
+    },
+    {
+     "q": "Mitä kurssille pitää tuoda?",
+     "opts": [
+      "Kortti ja puhelin",
+      "Kirja ja kynä",
+      "Ruokaa ja juomaa",
+      "Passi"
+     ],
+     "a": 1,
+     "why": "“Tuo mukaan kirja ja kynä.”"
+    },
+    {
+     "q": "Miten kurssille ilmoittaudutaan?",
+     "opts": [
+      "Puhelimella",
+      "Kirjeellä",
+      "Sähköpostilla",
+      "Kassalla"
+     ],
+     "a": 2,
+     "why": "“Ilmoittaudu sähköpostilla.”"
+    }
+   ]
+  },
+  {
+   "id": "r5",
+   "title": "Sääennuste",
+   "en": "Weather forecast",
+   "text": "Sääennuste huomiseksi\n\nAamulla on pilvistä ja sataa vettä. Iltapäivällä aurinko paistaa. Lämpötila on kahdeksan astetta. Tuulee vähän.",
+   "tr": "Forecast for tomorrow. In the morning it is cloudy and rains. In the afternoon the sun shines. The temperature is eight degrees. A little wind.",
+   "qs": [
+    {
+     "q": "Milloin sataa vettä?",
+     "opts": [
+      "Aamulla",
+      "Iltapäivällä",
+      "Illalla",
+      "Yöllä"
+     ],
+     "a": 0,
+     "why": "“Aamulla … sataa vettä.”"
+    },
+    {
+     "q": "Millainen sää on iltapäivällä?",
+     "opts": [
+      "Aurinkoista",
+      "Sateista",
+      "Tuulista",
+      "Lumista"
+     ],
+     "a": 0,
+     "why": "“Iltapäivällä aurinko paistaa.”"
+    }
+   ]
+  },
+  {
+   "id": "r6",
+   "title": "Opettajan sähköposti",
+   "en": "E-mail from the teacher",
+   "text": "Hei kaikki!\n\nHuomenna ei ole oppituntia, koska opettaja on sairas. Seuraava oppitunti on torstaina. Tehkää kotitehtävä: sivu 45, tehtävät 1–3.\n\nTerveisin Leena",
+   "tr": "Hi everyone! There is no lesson tomorrow because the teacher is ill. The next lesson is on Thursday. Do the homework: page 45, exercises 1–3. Best wishes, Leena",
+   "qs": [
+    {
+     "q": "Miksi huomenna ei ole oppituntia?",
+     "opts": [
+      "Opettaja on sairas",
+      "On loma",
+      "Luokka on kiinni",
+      "Opettaja on matkalla"
+     ],
+     "a": 0,
+     "why": "“koska opettaja on sairas”."
+    },
+    {
+     "q": "Mikä on kotitehtävä?",
+     "opts": [
+      "Sivu 54, tehtävät 1–3",
+      "Sivu 45, tehtävät 1–3",
+      "Sivu 45, tehtävät 4–6",
+      "Ei ole kotitehtävää"
+     ],
+     "a": 1,
+     "why": "“sivu 45, tehtävät 1–3”."
+    }
+   ]
+  },
+  {
+   "id": "r7",
+   "title": "Kaupan tarjous",
+   "en": "Shop offer",
+   "text": "Tarjous!\n\nMaito 1,29 €\nLeipä 2,49 €\nBanaanit 1,99 € / kg\n\nTarjous on voimassa lauantaihin asti.\nKassalla voi maksaa kortilla tai käteisellä.",
+   "tr": "Offer! Milk €1.29, bread €2.49, bananas €1.99/kg. The offer is valid until Saturday. At the checkout you can pay by card or cash.",
+   "qs": [
+    {
+     "q": "Paljonko leipä maksaa?",
+     "opts": [
+      "1,29 €",
+      "1,99 €",
+      "2,49 €",
+      "2,94 €"
+     ],
+     "a": 2,
+     "why": "“Leipä 2,49 €”."
+    },
+    {
+     "q": "Mihin asti tarjous on voimassa?",
+     "opts": [
+      "Perjantaihin",
+      "Lauantaihin",
+      "Sunnuntaihin",
+      "Maanantaihin"
+     ],
+     "a": 1,
+     "why": "“voimassa lauantaihin asti” = valid until Saturday."
+    }
+   ]
+  },
+  {
+   "id": "r8",
+   "title": "Päiväkirja",
+   "en": "Diary entry (past tense)",
+   "text": "Eilen oli minun syntymäpäiväni. Aamulla ystäväni soitti minulle. Illalla menimme ravintolaan. Söin pizzaa ja join teetä. Tulin kotiin myöhään.",
+   "tr": "Yesterday was my birthday. In the morning my friend called me. In the evening we went to a restaurant. I ate pizza and drank tea. I came home late.",
+   "qs": [
+    {
+     "q": "Kuka soitti aamulla?",
+     "opts": [
+      "Ystävä",
+      "Äiti",
+      "Opettaja",
+      "Veli"
+     ],
+     "a": 0,
+     "why": "“ystäväni soitti minulle”."
+    },
+    {
+     "q": "Mitä kirjoittaja söi ravintolassa?",
+     "opts": [
+      "Keittoa",
+      "Pizzaa",
+      "Salaattia",
+      "Kalaa"
+     ],
+     "a": 1,
+     "why": "“Söin pizzaa” = I ate pizza."
+    },
+    {
+     "q": "Milloin kirjoittaja tuli kotiin?",
+     "opts": [
+      "Aikaisin",
+      "Aamulla",
+      "Myöhään",
+      "Ei tullut kotiin"
+     ],
+     "a": 2,
+     "why": "“Tulin kotiin myöhään” = I came home late."
+    }
+   ]
+  },
+  {
+   "id": "r9",
+   "title": "Kutsu juhliin",
+   "en": "Party invitation",
+   "text": "Tervetuloa kotibileisiin!\n\nLauantaina 20.2. klo 18 alkaen\nKuusitie 5, Vantaa\n\nRuokaa ja juomaa on tarjolla.\nKerro viimeistään keskiviikkona, tuletko.\n\nMira",
+   "tr": "Welcome to a house party! Saturday 20 Feb from 18.00. Kuusitie 5, Vantaa. There is food and drink. Tell me by Wednesday at the latest if you are coming. Mira",
+   "qs": [
+    {
+     "q": "Missä juhlat ovat?",
+     "opts": [
+      "Helsingissä",
+      "Espoossa",
+      "Vantaalla",
+      "Tampereella"
+     ],
+     "a": 2,
+     "why": "“Kuusitie 5, Vantaa”."
+    },
+    {
+     "q": "Mihin mennessä pitää kertoa?",
+     "opts": [
+      "Maanantaihin",
+      "Keskiviikkoon",
+      "Perjantaihin",
+      "Lauantaihin"
+     ],
+     "a": 1,
+     "why": "“viimeistään keskiviikkona” = by Wednesday at the latest."
+    }
+   ]
+  },
+  {
+   "id": "r10",
+   "title": "Bussin aikataulu",
+   "en": "Bus information",
+   "text": "Bussi 550\n\nLähtee Tapiolasta joka 10. minuutti.\nViimeinen bussi lähtee klo 23.40.\nLipun voi ostaa kortilla tai puhelimella.",
+   "tr": "Bus 550. Leaves from Tapiola every 10 minutes. The last bus leaves at 23.40. You can buy a ticket by card or by phone.",
+   "qs": [
+    {
+     "q": "Kuinka usein bussi lähtee?",
+     "opts": [
+      "Joka 5. minuutti",
+      "Joka 10. minuutti",
+      "Joka 15. minuutti",
+      "Joka tunti"
+     ],
+     "a": 1,
+     "why": "“joka 10. minuutti” = every 10 minutes."
+    },
+    {
+     "q": "Milloin viimeinen bussi lähtee?",
+     "opts": [
+      "Klo 22.40",
+      "Klo 23.00",
+      "Klo 23.40",
+      "Klo 24.00"
+     ],
+     "a": 2,
+     "why": "“Viimeinen bussi lähtee klo 23.40.”"
+    }
+   ]
+  }
+ ],
+ "listening": [
+  {
+   "id": "l1",
+   "title": "Vaatekaupassa",
+   "en": "In a clothes shop",
+   "lines": [
+    "Anteeksi, paljonko tämä paita maksaa?",
+    "Se maksaa kaksikymmentäviisi euroa.",
+    "Onko sitä isompaa kokoa?",
+    "On. Hetkinen, katson."
+   ],
+   "tr": "Excuse me, how much is this shirt? – It costs 25 euros. – Do you have it in a bigger size? – Yes. One moment, I'll look.",
+   "qs": [
+    {
+     "q": "Paljonko paita maksaa?",
+     "opts": [
+      "15 €",
+      "25 €",
+      "35 €",
+      "52 €"
+     ],
+     "a": 1,
+     "why": "“kaksikymmentäviisi” = 25."
+    },
+    {
+     "q": "Mitä asiakas haluaa?",
+     "opts": [
+      "Isomman paidan",
+      "Pienemmän paidan",
+      "Punaisen paidan",
+      "Toisen kaupan"
+     ],
+     "a": 0,
+     "why": "“Onko sitä isompaa kokoa?” = Do you have a bigger size?"
+    }
+   ]
+  },
+  {
+   "id": "l2",
+   "title": "Vastaajaviesti",
+   "en": "Voicemail from the dentist",
+   "lines": [
+    "Hei, täällä on hammaslääkäri Virtanen. Aikasi on tiistaina kello kymmenen. Jos et pääse, soita meille."
+   ],
+   "tr": "Hi, this is dentist Virtanen. Your appointment is on Tuesday at ten o'clock. If you can't come, call us.",
+   "qs": [
+    {
+     "q": "Mikä päivä aika on?",
+     "opts": [
+      "Maanantai",
+      "Tiistai",
+      "Keskiviikko",
+      "Torstai"
+     ],
+     "a": 1,
+     "why": "“tiistaina”."
+    },
+    {
+     "q": "Mihin aikaan aika on?",
+     "opts": [
+      "Kello 9",
+      "Kello 10",
+      "Kello 11",
+      "Kello 12"
+     ],
+     "a": 1,
+     "why": "“kello kymmenen” = 10."
+    },
+    {
+     "q": "Mitä pitää tehdä, jos ei pääse?",
+     "opts": [
+      "Soittaa",
+      "Tulla silti",
+      "Odottaa",
+      "Kirjoittaa kirje"
+     ],
+     "a": 0,
+     "why": "“Jos et pääse, soita meille.”"
+    }
+   ]
+  },
+  {
+   "id": "l3",
+   "title": "Asemakuulutus",
+   "en": "Station announcement",
+   "lines": [
+    "Huomio! Juna Tampereelle lähtee raiteelta kolme. Juna lähtee kello neljätoista viisitoista. Juna on viisi minuuttia myöhässä."
+   ],
+   "tr": "Attention! The train to Tampere leaves from platform three. The train leaves at 14.15. The train is five minutes late.",
+   "qs": [
+    {
+     "q": "Mihin juna menee?",
+     "opts": [
+      "Turkuun",
+      "Tampereelle",
+      "Ouluun",
+      "Lahteen"
+     ],
+     "a": 1,
+     "why": "“Tampereelle” = to Tampere."
+    },
+    {
+     "q": "Miltä raiteelta juna lähtee?",
+     "opts": [
+      "Raide 1",
+      "Raide 2",
+      "Raide 3",
+      "Raide 5"
+     ],
+     "a": 2,
+     "why": "“raiteelta kolme”."
+    },
+    {
+     "q": "Onko juna ajoissa?",
+     "opts": [
+      "Kyllä, ajoissa",
+      "Ei, myöhässä",
+      "Ei, juna on peruttu",
+      "Ei tiedetä"
+     ],
+     "a": 1,
+     "why": "“myöhässä” = late."
+    }
+   ]
+  },
+  {
+   "id": "l4",
+   "title": "Illan suunnitelma",
+   "en": "Plans for the evening",
+   "lines": [
+    "Moi Laura! Mitä sinä teet tänään?",
+    "Moi! Menen illalla elokuviin. Tuletko mukaan?",
+    "Joo, mielelläni. Mihin aikaan elokuva alkaa?",
+    "Elokuva alkaa seitsemältä illalla."
+   ],
+   "tr": "Hi Laura! What are you doing today? – Hi! I'm going to the cinema this evening. Are you coming? – Yes, gladly. What time does the film start? – It starts at seven in the evening.",
+   "qs": [
+    {
+     "q": "Mitä Laura tekee illalla?",
+     "opts": [
+      "Menee elokuviin",
+      "Menee kauppaan",
+      "Katsoo televisiota",
+      "Opiskelee"
+     ],
+     "a": 0,
+     "why": "“Menen illalla elokuviin.”"
+    },
+    {
+     "q": "Milloin elokuva alkaa?",
+     "opts": [
+      "17.00",
+      "18.00",
+      "19.00",
+      "20.00"
+     ],
+     "a": 2,
+     "why": "“seitsemältä illalla” = 7 pm = 19.00."
+    }
+   ]
+  },
+  {
+   "id": "l5",
+   "title": "Säätiedotus",
+   "en": "Weather report",
+   "lines": [
+    "Huomenna on kylmä päivä. Lämpötila on miinus kolme astetta. Illalla sataa lunta."
+   ],
+   "tr": "Tomorrow is a cold day. The temperature is minus three degrees. In the evening it snows.",
+   "qs": [
+    {
+     "q": "Mikä lämpötila on huomenna?",
+     "opts": [
+      "+3 astetta",
+      "-3 astetta",
+      "-13 astetta",
+      "+13 astetta"
+     ],
+     "a": 1,
+     "why": "“miinus kolme” = minus 3."
+    },
+    {
+     "q": "Mitä sataa illalla?",
+     "opts": [
+      "Vettä",
+      "Lunta",
+      "Rakeita",
+      "Ei sada"
+     ],
+     "a": 1,
+     "why": "“sataa lunta” = it snows."
+    }
+   ]
+  },
+  {
+   "id": "l6",
+   "title": "Ajanvaraus",
+   "en": "Booking a doctor's appointment",
+   "lines": [
+    "Terveysasema, hyvää päivää.",
+    "Hei, haluaisin varata ajan lääkärille.",
+    "Millä nimellä?",
+    "Maria Costa.",
+    "Meillä on vapaa aika torstaina kello puoli kymmenen.",
+    "Se sopii hyvin, kiitos."
+   ],
+   "tr": "Health centre, good day. – Hi, I'd like to book an appointment with a doctor. – Under what name? – Maria Costa. – We have a free time on Thursday at 9.30. – That suits me well, thank you.",
+   "qs": [
+    {
+     "q": "Mitä asiakas haluaa?",
+     "opts": [
+      "Varata ajan lääkärille",
+      "Peruuttaa ajan",
+      "Ostaa lääkettä",
+      "Kysyä reseptiä"
+     ],
+     "a": 0,
+     "why": "“haluaisin varata ajan lääkärille”."
+    },
+    {
+     "q": "Milloin aika on?",
+     "opts": [
+      "Tiistaina klo 9.30",
+      "Torstaina klo 9.30",
+      "Torstaina klo 10.30",
+      "Perjantaina klo 9.30"
+     ],
+     "a": 1,
+     "why": "“torstaina kello puoli kymmenen” = Thursday at 9.30 (half to ten)."
+    }
+   ]
+  },
+  {
+   "id": "l7",
+   "title": "Esittely",
+   "en": "Introducing yourself",
+   "lines": [
+    "Hei, minun nimeni on Ali. Olen kotoisin Turkista, mutta asun nyt Helsingissä. Opiskelen suomea ja työskentelen kahvilassa. Vapaa-ajalla pelaan jalkapalloa."
+   ],
+   "tr": "Hi, my name is Ali. I'm from Turkey but I now live in Helsinki. I study Finnish and work in a café. In my free time I play football.",
+   "qs": [
+    {
+     "q": "Missä Ali asuu?",
+     "opts": [
+      "Turkissa",
+      "Helsingissä",
+      "Espoossa",
+      "Tampereella"
+     ],
+     "a": 1,
+     "why": "“asun nyt Helsingissä”."
+    },
+    {
+     "q": "Missä Ali työskentelee?",
+     "opts": [
+      "Koulussa",
+      "Kaupassa",
+      "Kahvilassa",
+      "Ravintolassa"
+     ],
+     "a": 2,
+     "why": "“työskentelen kahvilassa”."
+    },
+    {
+     "q": "Mitä Ali tekee vapaa-ajalla?",
+     "opts": [
+      "Pelaa jalkapalloa",
+      "Lukee kirjoja",
+      "Katsoo elokuvia",
+      "Kokkaa"
+     ],
+     "a": 0,
+     "why": "“pelaan jalkapalloa”."
+    }
+   ]
+  },
+  {
+   "id": "l8",
+   "title": "Tien kysyminen",
+   "en": "Asking for directions",
+   "lines": [
+    "Anteeksi, missä posti on?",
+    "Mene suoraan tästä ja käänny toisesta risteyksestä vasemmalle. Posti on kaupan vieressä.",
+    "Kiitos paljon!"
+   ],
+   "tr": "Excuse me, where is the post office? – Go straight from here and turn left at the second crossing. The post office is next to the shop. – Thank you very much!",
+   "qs": [
+    {
+     "q": "Mihin suuntaan pitää mennä toisessa risteyksessä?",
+     "opts": [
+      "Vasemmalle",
+      "Oikealle",
+      "Suoraan",
+      "Takaisin"
+     ],
+     "a": 0,
+     "why": "“käänny … vasemmalle” = turn left."
+    },
+    {
+     "q": "Missä posti on?",
+     "opts": [
+      "Kaupan vieressä",
+      "Kaupan edessä",
+      "Koulun takana",
+      "Pysäkin vieressä"
+     ],
+     "a": 0,
+     "why": "“kaupan vieressä” = next to the shop."
+    }
+   ]
+  },
+  {
+   "id": "l9",
+   "title": "Kahvilassa",
+   "en": "In a café",
+   "lines": [
+    "Mitä saisi olla?",
+    "Yksi kahvi ja korvapuusti, kiitos.",
+    "Se tekee kuusi euroa viisikymmentä.",
+    "Maksan kortilla."
+   ],
+   "tr": "What can I get you? – One coffee and a cinnamon bun, please. – That comes to six euros fifty. – I'll pay by card.",
+   "qs": [
+    {
+     "q": "Mitä asiakas ostaa?",
+     "opts": [
+      "Kahvin ja korvapuustin",
+      "Teen ja leivän",
+      "Kahvin ja kakun",
+      "Vain kahvin"
+     ],
+     "a": 0,
+     "why": "“Yksi kahvi ja korvapuusti.”"
+    },
+    {
+     "q": "Paljonko asiakas maksaa?",
+     "opts": [
+      "5,60 €",
+      "6,15 €",
+      "6,50 €",
+      "7,50 €"
+     ],
+     "a": 2,
+     "why": "“kuusi euroa viisikymmentä” = 6.50."
+    }
+   ]
+  },
+  {
+   "id": "l10",
+   "title": "Huomisen päivä",
+   "en": "Tomorrow's day",
+   "lines": [
+    "Huomenna herään kello seitsemän. Syön aamupalaa ja menen bussilla kouluun. Koulu alkaa kello yhdeksän. Iltapäivällä menen kauppaan ja illalla katson televisiota."
+   ],
+   "tr": "Tomorrow I wake up at seven. I eat breakfast and go to school by bus. School starts at nine. In the afternoon I go to the shop and in the evening I watch TV.",
+   "qs": [
+    {
+     "q": "Miten puhuja menee kouluun?",
+     "opts": [
+      "Bussilla",
+      "Pyörällä",
+      "Junalla",
+      "Kävellen"
+     ],
+     "a": 0,
+     "why": "“menen bussilla kouluun”."
+    },
+    {
+     "q": "Mihin aikaan koulu alkaa?",
+     "opts": [
+      "Kello 7",
+      "Kello 8",
+      "Kello 9",
+      "Kello 10"
+     ],
+     "a": 2,
+     "why": "“Koulu alkaa kello yhdeksän.”"
+    },
+    {
+     "q": "Mitä puhuja tekee illalla?",
+     "opts": [
+      "Menee kauppaan",
+      "Katsoo televisiota",
+      "Menee kouluun",
+      "Syö aamupalaa"
+     ],
+     "a": 1,
+     "why": "“illalla katson televisiota”."
+    }
+   ]
+  }
+ ],
+ "writing": [
+  {
+   "id": "w1",
+   "title": "Kutsu kahville",
+   "en": "Invite a friend for coffee",
+   "words": "30–40",
+   "min": 30,
+   "task": "Write a short message to a friend. Invite them for coffee on Saturday. Say the time and the place.",
+   "fi": "Kirjoita viesti ystävälle. Kutsu hänet kahville lauantaina. Kerro aika ja paikka.",
+   "phrases": [
+    "Haluatko tulla …?",
+    "Sopiiko sinulle …?",
+    "Tavataan kello …",
+    "Laita viesti!",
+    "Terveisin …"
+   ],
+   "check": [
+    "I asked a question (Haluatko … ?)",
+    "I said the day",
+    "I said the time",
+    "I said the place"
+   ],
+   "model": "Hei Mikko! Haluatko tulla kahville lauantaina? Voimme tavata kello kaksi keskustassa, kahvilassa aseman vieressä. Sen jälkeen voimme kävellä puistossa. Laita viesti, jos sinulle sopii! Terveisin Eva"
+  },
+  {
+   "id": "w2",
+   "title": "Kerro itsestäsi",
+   "en": "Introduce yourself",
+   "words": "40–60",
+   "min": 40,
+   "task": "Write about yourself: your name, where you are from, where you live, what you do, and your free time.",
+   "fi": "Kirjoita itsestäsi: nimi, mistä olet kotoisin, missä asut, mitä teet ja mitä teet vapaa-ajalla.",
+   "phrases": [
+    "Minun nimeni on …",
+    "Olen kotoisin …-sta / -stä",
+    "Asun …-ssa / -ssä",
+    "Opiskelen / Työskentelen …",
+    "Vapaa-ajalla …"
+   ],
+   "check": [
+    "Name and home country",
+    "Where I live",
+    "Study or work",
+    "Free time / hobbies"
+   ],
+   "model": "Hei! Minun nimeni on Maria. Olen kotoisin Espanjasta, mutta asun nyt Espoossa. Opiskelen yliopistossa ja puhun vähän suomea. Minulla on yksi sisko. Vapaa-ajalla luen kirjoja ja kävelen luonnossa. Pidän suomalaisesta ruoasta, varsinkin lohikeitosta."
+  },
+  {
+   "id": "w3",
+   "title": "Olen sairas",
+   "en": "E-mail: you are ill",
+   "words": "30–40",
+   "min": 30,
+   "task": "Write an e-mail to your teacher. You are ill and can't come to the lesson tomorrow. Ask for the homework.",
+   "fi": "Kirjoita sähköposti opettajalle. Olet sairas etkä pääse huomenna tunnille. Kysy kotitehtävää.",
+   "phrases": [
+    "Olen sairas.",
+    "En pääse huomenna tunnille.",
+    "Voinko saada …?",
+    "Tulen takaisin …",
+    "Kiitos!"
+   ],
+   "check": [
+    "I said I am ill",
+    "I said when I can't come",
+    "I asked for the homework",
+    "I said when I come back"
+   ],
+   "model": "Hei Leena! Olen sairas, enkä pääse huomenna tunnille. Voinko saada kotitehtävän sähköpostilla? Tulen takaisin kurssille torstaina, jos olen terve. Kiitos! Terveisin Maria Costa"
+  },
+  {
+   "id": "w4",
+   "title": "Minun lauantaini",
+   "en": "My typical Saturday",
+   "words": "40–60",
+   "min": 40,
+   "task": "Describe a normal Saturday: morning, afternoon and evening. Use times.",
+   "fi": "Kerro tavallisesta lauantaista: aamu, iltapäivä ja ilta. Kerro myös kellonajat.",
+   "phrases": [
+    "Aamulla …",
+    "Iltapäivällä …",
+    "Illalla …",
+    "Herään kello …",
+    "Menen nukkumaan kello …"
+   ],
+   "check": [
+    "Morning, afternoon and evening",
+    "At least two times (kello …)",
+    "At least five different verbs",
+    "Words like ensin, sitten, sen jälkeen"
+   ],
+   "model": "Lauantaina herään yleensä kello yhdeksän. Ensin syön aamupalaa ja juon kahvia. Aamupäivällä siivoan kotia. Iltapäivällä menen kauppaan ja sitten tapaan ystävän. Illalla kokkaan ja katson elokuvan. Menen nukkumaan kello yksitoista."
+  },
+  {
+   "id": "w5",
+   "title": "Viime viikonloppu",
+   "en": "Last weekend (past tense)",
+   "words": "40–60",
+   "min": 40,
+   "task": "Write about what you did last weekend. Use the past tense (imperfekti).",
+   "fi": "Kirjoita, mitä teit viime viikonloppuna. Käytä imperfektiä.",
+   "phrases": [
+    "Viime viikonloppuna …",
+    "Lauantaina kävin …",
+    "Sunnuntaina olin …",
+    "Se oli kiva / tylsä.",
+    "koska …"
+   ],
+   "check": [
+    "Most verbs are in the past tense (kävin, olin, söin)",
+    "Saturday and Sunday",
+    "I said how it was (Se oli …)",
+    "I used koska or mutta"
+   ],
+   "model": "Viime viikonloppuna kävin Helsingissä. Lauantaina tapasin ystäviä kahvilassa. Sunnuntaina menin museoon. Se oli kiva, mutta liput olivat kalliita. Illalla kävelin kotiin, koska sää oli kaunis."
+  },
+  {
+   "id": "w6",
+   "title": "Hana vuotaa",
+   "en": "Message to the building manager",
+   "words": "30–40",
+   "min": 30,
+   "task": "The kitchen tap in your flat is leaking. Write to the building maintenance. Say your address, the problem and when you are at home.",
+   "fi": "Asuntosi keittiön hana vuotaa. Kirjoita huoltoyhtiölle. Kerro osoite, ongelma ja milloin olet kotona.",
+   "phrases": [
+    "Asun osoitteessa …",
+    "… on rikki / vuotaa.",
+    "Voitteko korjata …?",
+    "Olen kotona …",
+    "Kiitos!"
+   ],
+   "check": [
+    "Address and flat number",
+    "The problem",
+    "A polite request (Voitteko …?)",
+    "When I am at home"
+   ],
+   "model": "Hei! Asun osoitteessa Kuusitie 5 A 12. Keittiön hana vuotaa. Voitteko korjata sen pian? Olen kotona arkisin kello viiden jälkeen. Kiitos! Terveisin Ali Demir, puh. 040 123 4567"
+  },
+  {
+   "id": "w7",
+   "title": "Minun kotini",
+   "en": "Describe your home",
+   "words": "40–60",
+   "min": 40,
+   "task": "Describe your home: where it is, what rooms it has, and what you like or don't like about it.",
+   "fi": "Kerro kodistasi: missä se on, mitä huoneita siinä on ja mistä pidät tai et pidä.",
+   "phrases": [
+    "Asun …-ssa",
+    "Asunnossa on …",
+    "Pidän …-sta, koska …",
+    "En pidä …-sta",
+    "lähellä on …"
+   ],
+   "check": [
+    "Where the home is",
+    "At least three rooms or things",
+    "Something I like + koska",
+    "Something nearby (lähellä on …)"
+   ],
+   "model": "Asun pienessä kaksiossa Espoossa. Asunnossa on olohuone, makuuhuone, keittiö ja kylpyhuone. Pidän asunnosta, koska se on valoisa ja lähellä koulua. Bussipysäkki on myös lähellä. Vuokra on kuitenkin vähän kallis."
+  },
+  {
+   "id": "w8",
+   "title": "Vastaus kutsuun",
+   "en": "Reply to an invitation",
+   "words": "30–40",
+   "min": 30,
+   "task": "Your friend Mira invited you to a party on Saturday. Thank her, say you can't come and why, and suggest another day to meet.",
+   "fi": "Ystäväsi Mira kutsui sinut juhliin lauantaina. Kiitä, kerro ettet pääse ja miksi, ja ehdota toista päivää.",
+   "phrases": [
+    "Kiitos kutsusta!",
+    "Valitettavasti en pääse, koska …",
+    "Voimmeko tavata …?",
+    "Sopiiko sinulle …?"
+   ],
+   "check": [
+    "I thanked Mira",
+    "I said I can't come",
+    "I gave a reason (koska …)",
+    "I suggested another day"
+   ],
+   "model": "Hei Mira! Kiitos kutsusta! Valitettavasti en pääse juhliin, koska olen lauantaina töissä. Haluan kuitenkin nähdä sinut. Voimmeko mennä kahville sunnuntaina? Terveisin Tom"
+  }
+ ],
+ "speaking": [
+  {
+   "id": "s1",
+   "fi": "Kerro itsestäsi.",
+   "en": "Tell about yourself.",
+   "hints": [
+    "nimi",
+    "kotimaa",
+    "asun",
+    "opiskelen / työskentelen",
+    "puhun … kieltä"
+   ],
+   "model": "Minun nimeni on Maria. Olen kotoisin Espanjasta. Asun nyt Helsingissä. Opiskelen yliopistossa. Puhun espanjaa, englantia ja vähän suomea."
+  },
+  {
+   "id": "s2",
+   "fi": "Kerro perheestäsi.",
+   "en": "Tell about your family.",
+   "hints": [
+    "minulla on …",
+    "äiti, isä, sisko, veli",
+    "asuu …",
+    "on ammatiltaan …"
+   ],
+   "model": "Minulla on äiti, isä ja kaksi siskoa. Äitini on opettaja ja isäni on insinööri. Perheeni asuu Espanjassa. Soitan heille joka sunnuntai."
+  },
+  {
+   "id": "s3",
+   "fi": "Millainen tavallinen päiväsi on?",
+   "en": "What is your normal day like?",
+   "hints": [
+    "herään kello …",
+    "aamulla, iltapäivällä, illalla",
+    "menen … bussilla"
+   ],
+   "model": "Herään kello seitsemän. Syön aamupalaa ja menen kouluun bussilla. Iltapäivällä opiskelen kirjastossa. Illalla kokkaan ja katson televisiota. Menen nukkumaan kello kymmenen."
+  },
+  {
+   "id": "s4",
+   "fi": "Mitä teet vapaa-ajalla?",
+   "en": "What do you do in your free time?",
+   "hints": [
+    "luen, kävelen, pelaan",
+    "joskus, usein",
+    "pidän …-sta"
+   ],
+   "model": "Vapaa-ajalla luen kirjoja ja kävelen puistossa. Joskus tapaan ystäviä kahvilassa. Pidän myös musiikista. Viikonloppuna katson elokuvia."
+  },
+  {
+   "id": "s5",
+   "fi": "Millainen sää tänään on?",
+   "en": "What is the weather like today?",
+   "hints": [
+    "on pilvistä / aurinkoista",
+    "sataa vettä / lunta",
+    "lämpötila on … astetta",
+    "tuulee"
+   ],
+   "model": "Tänään on pilvistä ja vähän kylmää. Lämpötila on viisi astetta. Ei sada, mutta tuulee. Pidän enemmän kesästä, koska silloin on lämmin."
+  },
+  {
+   "id": "s6",
+   "fi": "Mikä on lempiruokasi?",
+   "en": "What is your favourite food?",
+   "hints": [
+    "lempiruokani on …",
+    "pidän siitä, koska …",
+    "syön sitä …",
+    "suomalainen ruoka"
+   ],
+   "model": "Lempiruokani on pasta. Pidän siitä, koska se on helppo tehdä ja hyvää. Syön sitä kerran viikossa. Suomalaisista ruoista pidän lohikeitosta."
+  },
+  {
+   "id": "s7",
+   "fi": "Olet kahvilassa. Tilaa kahvi ja pulla, kysy hinta ja maksa.",
+   "en": "Role play: order coffee and a bun in a café, ask the price and pay.",
+   "hints": [
+    "Saisinko …?",
+    "Paljonko se maksaa?",
+    "Maksan kortilla.",
+    "Kiitos!"
+   ],
+   "model": "Hei! Saisinko yhden kahvin ja yhden korvapuustin? Paljonko se maksaa? Selvä. Maksan kortilla. Kiitos ja hyvää päivänjatkoa!"
+  },
+  {
+   "id": "s8",
+   "fi": "Kysy tietä rautatieasemalle.",
+   "en": "Role play: ask the way to the railway station.",
+   "hints": [
+    "Anteeksi, missä … on?",
+    "Onko se kaukana?",
+    "Voiko sinne kävellä?",
+    "Kiitos paljon!"
+   ],
+   "model": "Anteeksi, missä rautatieasema on? Onko se kaukana? Voiko sinne kävellä, vai pitääkö mennä bussilla? Kiitos paljon avusta!"
+  },
+  {
+   "id": "s9",
+   "fi": "Olet vaatekaupassa. Kysy hintaa ja pyydä isompaa kokoa.",
+   "en": "Role play: in a clothes shop, ask the price and ask for a bigger size.",
+   "hints": [
+    "Paljonko tämä … maksaa?",
+    "Onko tätä isompana?",
+    "Voinko sovittaa?",
+    "Missä sovituskoppi on?"
+   ],
+   "model": "Anteeksi, paljonko tämä takki maksaa? Onko tätä isompana? Voinko sovittaa sitä? Missä sovituskoppi on?"
+  },
+  {
+   "id": "s10",
+   "fi": "Soita terveysasemalle ja varaa aika lääkärille.",
+   "en": "Role play: call the health centre and book a doctor's appointment.",
+   "hints": [
+    "Haluaisin varata ajan …",
+    "Minulla on kuumetta / yskää",
+    "Onko vapaata aikaa …?",
+    "Se sopii.",
+    "Nimeni on …"
+   ],
+   "model": "Hyvää päivää. Haluaisin varata ajan lääkärille. Minulla on kuumetta ja yskää. Onko huomenna vapaata aikaa? Se sopii hyvin. Nimeni on Maria Costa."
+  },
+  {
+   "id": "s11",
+   "fi": "Mitä aiot tehdä ensi viikonloppuna?",
+   "en": "What are you going to do next weekend?",
+   "hints": [
+    "ensi viikonloppuna …",
+    "lauantaina, sunnuntaina",
+    "menen …-lle / …-han",
+    "ystävän kanssa"
+   ],
+   "model": "Ensi viikonloppuna menen ystävän kanssa Tampereelle. Lauantaina kävelemme keskustassa ja syömme ravintolassa. Sunnuntaina palaan kotiin junalla."
+  },
+  {
+   "id": "s12",
+   "fi": "Kerro kodistasi.",
+   "en": "Tell about your home.",
+   "hints": [
+    "asun …-ssa",
+    "asunnossa on …",
+    "pidän …-sta, koska …",
+    "lähellä on …"
+   ],
+   "model": "Asun pienessä kaksiossa Espoossa. Asunnossa on olohuone, makuuhuone ja keittiö. Pidän kodistani, koska se on valoisa. Lähellä on kauppa ja bussipysäkki."
+  },
+  {
+   "id": "s13",
+   "fi": "Mitä teit viime viikonloppuna?",
+   "en": "What did you do last weekend? (past tense)",
+   "hints": [
+    "kävin, olin, söin, tapasin",
+    "lauantaina, sunnuntaina",
+    "se oli …"
+   ],
+   "model": "Viime viikonloppuna kävin kaupassa ja siivosin kotia. Lauantaina tapasin ystävää. Sunnuntaina olin kotona ja lepäsin. Se oli rauhallinen viikonloppu."
+  },
+  {
+   "id": "s14",
+   "fi": "Mistä pidät Suomessa? Mistä et pidä?",
+   "en": "What do you like in Finland? What don't you like?",
+   "hints": [
+    "pidän …-sta",
+    "en pidä …-sta",
+    "täällä on …",
+    "mutta, koska"
+   ],
+   "model": "Suomessa pidän luonnosta ja puhtaasta ilmasta. Täällä on rauhallista ja turvallista. En pidä pimeästä talvesta. Suomi on kuitenkin hyvä maa opiskelijalle."
+  }
+ ]
+}

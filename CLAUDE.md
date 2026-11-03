@@ -65,6 +65,17 @@ questions]), Oral test (26 questions), Progress
   are original practice versions of the book texts.
 - **Questions (2026-10-01):** `questionWords`, `commonQuestions` and
   `yesNoQuestions` in topics.json (original examples), shown in Talk → Questions.
+- **YKI practice (2026-11-03):** owner-only `yki.html` (+ `js/yki.js`,
+  `css/yki.css`, `data/yki.json`) for Chloe's YKI basic-level scholarship goal.
+  Not in the tab bar; linked from dashboard.html; same passphrase gate
+  (`dashboard_check`, shared sessionStorage key). Files are public like the
+  rest of the repo, so content must stay ORIGINAL (no copied YKI tests or
+  textbook texts). Level test = 3 reading + 3 listening (max 2 plays) +
+  1 writing + 2 speaking; writing/speaking are self-checked, with a
+  "Copy for Claude" button for real marking. Progress in localStorage
+  (`finYki.v1`). Not precached in sw.js on purpose (cached after first visit).
+  Content source: build script outside the repo; edit data/yki.json directly
+  for small fixes and validate that each `a` index is inside `opts`.
 - **Adjectives:** `adjectivePairs` in topics.json is Chloe's required list, in
   her order (shown as "Must-know opposites"); `adjectiveMore` are extras.
 - **Dashboard "Everyone using the app":** the app upserts its `progress` row

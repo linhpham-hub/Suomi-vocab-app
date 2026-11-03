@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>YKI practice — Suomen Sanasto</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/yki.css" />
+</head>
+<body class="yki-page">
+
+<div class="app">
+
+  <div id="gate" class="card dashboard-gate">
+    <h2>🔒 YKI practice</h2>
+    <p>Owner only. Enter the dashboard passphrase.</p>
+    <input id="passphrase-input" type="password" placeholder="Passphrase" autocomplete="off" />
+    <button id="passphrase-submit" class="primary-btn">Unlock</button>
+    <p id="gate-error" class="write-feedback write-feedback--wrong" hidden>Incorrect passphrase.</p>
+  </div>
+
+  <div id="yki-content" hidden>
+    <header class="app-header">
+      <h1>🎓 YKI practice</h1>
+      <p class="subtitle">Basic level (perustaso) · grade 1 = €1,000 · grade 2 = €2,000</p>
+    </header>
+    <nav class="yki-nav" id="yki-nav" aria-label="YKI sections"></nav>
+    <main id="yki-main"></main>
+    <p class="muted small yki-foot">Original practice tasks in YKI style, written for this app. Grade estimates are a rough guide, not official YKI scoring. Test dates: check <a href="https://www.oph.fi/en/education-and-qualifications/selecting-right-yki-test-test-days" target="_blank" rel="noopener">oph.fi</a>.</p>
+  </div>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/speech.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/yki.js"></script>
+</body>
+</html>

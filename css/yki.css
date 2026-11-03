@@ -1,0 +1,88 @@
+/* YKI practice page (yki.html), owner only. Builds on css/style.css. */
+
+body.yki-page {
+  --bg: #E4E9F4; --accent: #3D5A99; --accent-soft: #D3DCF0; --accent-strong: #253A69;
+  --lavender: #3D5A99; --lavender-soft: #E4E9F4; --gold: #1F5B3F; --gold-soft: #CDEBD9;
+  --rose: #8C2F2F; --rose-soft: #F4DADA;
+  --bg-soft: #D3DCF0; --border: #B7C4E3; --ink-soft: #4A5878;
+}
+@media (prefers-color-scheme: dark) {
+  body.yki-page {
+    --bg: #0B1020; --surface: #1C2744; --accent: #4A68AD; --accent-soft: #2A3A63; --accent-strong: #D3DCF0;
+    --border: #3D5A99; --ink: #F1F4FB; --ink-soft: #B9C5E2; --lavender-soft: #2A3A63; --bg-soft: #111A33;
+    --gold: #9FE0B9; --gold-soft: #1E4A35; --rose: #F2B8B8; --rose-soft: #4A2328;
+  }
+}
+body.yki-page { background: var(--bg); }
+
+.yki-nav { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.yki-nav .chip { padding: 7px 11px; font-size: 0.84rem; }
+#yki-main { display: flex; flex-direction: column; gap: 14px; }
+.yki-card { display: flex; flex-direction: column; gap: 10px; }
+.yki-card h3 { margin: 6px 0 0; font-size: 0.95rem; color: var(--accent-strong); }
+.yki-foot { text-align: center; margin-top: 8px; }
+.yki-foot a, .yki-card a:not(.primary-btn) { color: var(--accent-strong); }
+
+.yki-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.yki-link-btn { text-decoration: none; display: inline-block; text-align: center; }
+.chip--done { border-style: dashed; }
+.chip--done::after { content: " ✓"; }
+
+.yki-unit-head { display: flex; flex-direction: column; gap: 2px; }
+.yki-unit-head strong { font-size: 1.1rem; color: var(--accent-strong); }
+.yki-step { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); font-weight: 600; }
+.yki-text {
+  white-space: pre-line; background: var(--bg-soft, var(--bg)); background: color-mix(in srgb, var(--accent-soft) 45%, var(--surface));
+  border-left: 4px solid var(--accent); border-radius: 10px; padding: 12px 14px; line-height: 1.55; font-size: 1rem;
+}
+.yki-model { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 6px; }
+.yki-script { font-size: 0.92rem; }
+.yki-q { display: flex; flex-direction: column; gap: 6px; }
+.yki-q-text { margin: 4px 0 0; font-weight: 600; }
+.yki-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+@media (max-width: 420px) { .yki-opts { grid-template-columns: 1fr; } }
+.yki-opt { text-align: left; }
+.yki-opt--picked { outline: 3px solid var(--accent); outline-offset: -1px; }
+.yki-why, .yki-tr { margin: 0; color: var(--ink-soft); }
+.yki-after { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+.yki-play-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.yki-play { min-width: 120px; }
+
+.yki-task { margin: 0; }
+.yki-task-fi { margin: 0; font-weight: 600; color: var(--accent-strong); }
+.yki-prompt-fi { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.yki-phrases summary, .yki-list summary { cursor: pointer; font-weight: 600; font-size: 0.9rem; }
+.yki-phrases ul { margin: 6px 0 0; padding-left: 20px; font-size: 0.9rem; }
+.yki-list .chip-row { margin-top: 8px; }
+.yki-area {
+  width: 100%; border-radius: 12px; border: 1px solid var(--border); background: var(--surface); color: var(--ink);
+  padding: 10px 12px; font: inherit; font-size: 1rem; line-height: 1.5; resize: vertical;
+}
+.yki-area--small { font-size: 0.92rem; }
+.yki-area:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.yki-ok { color: var(--gold); font-weight: 600; }
+.yki-review { display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--border); padding-top: 10px; }
+.yki-checks { display: flex; flex-direction: column; gap: 8px; }
+
+.yki-timer { display: flex; align-items: center; gap: 12px; }
+.yki-timer-num { font-variant-numeric: tabular-nums; font-weight: 700; font-size: 1.1rem; color: var(--accent-strong); }
+.yki-timer-num--done { color: var(--rose); }
+.yki-rec { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+.yki-audio { width: 100%; max-width: 360px; }
+
+.yki-count { margin: 0; font-size: 1.05rem; }
+.yki-count strong { font-size: 1.5rem; color: var(--accent-strong); }
+.yki-result-title { margin: 0; color: var(--accent-strong); }
+.yki-band { margin: 0; padding: 8px 12px; border-radius: 10px; font-weight: 600; }
+.yki-band--g2 { background: var(--gold-soft); color: var(--gold); }
+.yki-band--g1 { background: var(--accent-soft); color: var(--accent-strong); }
+.yki-band--g0 { background: var(--rose-soft); color: var(--rose); }
+.yki-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.yki-skill { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--border); }
+.yki-skill-name { font-size: 0.85rem; font-weight: 600; }
+.yki-skill strong { font-size: 1.25rem; }
+.yki-money { margin: 0; font-size: 1.05rem; }
+.yki-dates { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 0.92rem; }
+.yki-past { opacity: 0.55; text-decoration: line-through; }
+
+.yki-practice:empty { display: none; }
